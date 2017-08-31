@@ -20,7 +20,6 @@ class HomeViewController: UIViewController{
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
 }
 
 //extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource{
