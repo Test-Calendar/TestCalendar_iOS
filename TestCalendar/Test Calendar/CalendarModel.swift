@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Alamofire
-
 
 class CalendarModel{
     static let sharedInstance = CalendarModel()
@@ -19,11 +17,10 @@ class CalendarModel{
     var studys = [StudySchedule]()
     var tests = [Test]()
     
-    func deleteSchdule(){
-        
-    }
 }
 
 enum Genre:Int{
-    case task, study,test
+    case task, study, test
 }
+
+

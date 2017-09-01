@@ -9,11 +9,17 @@
 import UIKit
 import MaterialComponents
 
-class HomeViewController: UIViewController{
+class HomeViewController: UIViewController,UICollectionViewDelegate{
+    
+    var calendarModel = CalendarModel.sharedInstance
+    
+    override func loadView() {
+        self.view.addSubview(statusBar())
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(statusBar())
+//        self.view.addSubview(statusBar())
     }
     
 
