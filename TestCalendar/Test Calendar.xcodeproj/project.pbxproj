@@ -35,6 +35,9 @@
 		E64E208C1F59469200D12289 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64E208B1F59469200D12289 /* CalendarView.swift */; };
 		E64E208E1F5946DD00D12289 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64E208D1F5946DD00D12289 /* CalendarCollectionViewCell.swift */; };
 		E64E20901F59572A00D12289 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64E208F1F59572A00D12289 /* Color.swift */; };
+		E64E20941F59927900D12289 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64E20931F59927900D12289 /* CalendarViewModel.swift */; };
+		E64E20961F59CC4400D12289 /* Objects.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64E20951F59CC4400D12289 /* Objects.swift */; };
+		E64E20981F59D92E00D12289 /* CalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64E20971F59D92E00D12289 /* CalendarView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +97,9 @@
 		E64E208B1F59469200D12289 /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		E64E208D1F5946DD00D12289 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		E64E208F1F59572A00D12289 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		E64E20931F59927900D12289 /* CalendarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		E64E20951F59CC4400D12289 /* Objects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Objects.swift; sourceTree = "<group>"; };
+		E64E20971F59D92E00D12289 /* CalendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarView.xib; sourceTree = "<group>"; };
 		FBB319E5C383253FC2A354F6 /* Pods-Test CalendarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test CalendarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Test CalendarTests/Pods-Test CalendarTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -301,6 +307,7 @@
 		E64E205C1F58091600D12289 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E64E208F1F59572A00D12289 /* Color.swift */,
 				E64E205E1F58095100D12289 /* Font */,
 				E64E1FD81F56A38700D12289 /* Assets.xcassets */,
 				E64E20851F5862E300D12289 /* View.swift */,
@@ -325,7 +332,6 @@
 		E64E205E1F58095100D12289 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				E64E208F1F59572A00D12289 /* Color.swift */,
 			);
 			name = Font;
 			sourceTree = "<group>";
@@ -465,8 +471,11 @@
 		E64E20731F580CD700D12289 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				E64E208B1F59469200D12289 /* CalendarView.swift */,
+				E64E20951F59CC4400D12289 /* Objects.swift */,
 				E64E208D1F5946DD00D12289 /* CalendarCollectionViewCell.swift */,
+				E64E20931F59927900D12289 /* CalendarViewModel.swift */,
+				E64E208B1F59469200D12289 /* CalendarView.swift */,
+				E64E20971F59D92E00D12289 /* CalendarView.xib */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -638,6 +647,7 @@
 				E64E20801F5811BE00D12289 /* MakeTestCalendar.storyboard in Resources */,
 				E64E1FD91F56A38700D12289 /* Assets.xcassets in Resources */,
 				E64E1FD71F56A38700D12289 /* Main.storyboard in Resources */,
+				E64E20981F59D92E00D12289 /* CalendarView.xib in Resources */,
 				E64E20001F56B54B00D12289 /* Setting.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -805,11 +815,13 @@
 				E64E20881F5895CA00D12289 /* CalendarModel.swift in Sources */,
 				E64E204B1F5807D100D12289 /* ShowSubjectViewController.swift in Sources */,
 				E64E20491F5807BE00D12289 /* ShowDayViewController.swift in Sources */,
+				E64E20961F59CC4400D12289 /* Objects.swift in Sources */,
 				E64E204D1F5807EA00D12289 /* TestListViewController.swift in Sources */,
 				E64E20901F59572A00D12289 /* Color.swift in Sources */,
 				E64E20551F58084B00D12289 /* SettingViewController.swift in Sources */,
 				E64E207B1F5810F500D12289 /* HomeViewController.swift in Sources */,
 				E64E20531F58082E00D12289 /* SelectCalendarViewController.swift in Sources */,
+				E64E20941F59927900D12289 /* CalendarViewModel.swift in Sources */,
 				E64E208C1F59469200D12289 /* CalendarView.swift in Sources */,
 				E64E208E1F5946DD00D12289 /* CalendarCollectionViewCell.swift in Sources */,
 				E64E204F1F5807F300D12289 /* AddTestViewController.swift in Sources */,
