@@ -22,11 +22,6 @@ class CalendarCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-    
-//    convenience init(title:Sti)
-//    func setLabels(){
-//        self.day.frame = CGRect(x: 0, y: 0, width: self.bounds.width*0.46 , height: self.bounds.height*0.23)
-//    }
 }
 
 

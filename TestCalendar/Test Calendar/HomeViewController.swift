@@ -11,7 +11,8 @@ import MaterialComponents
 
 class HomeViewController: UIViewController{
     
-    @IBOutlet weak var collectionView: UIView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     
     var calendarModel = CalendarViewModel()
     let cellMargin: CGFloat = 2.0
@@ -19,22 +20,13 @@ class HomeViewController: UIViewController{
     
     
     override func loadView() {
-        self.view = statusBar()
+//        self.view = statusBar()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.inputView
-//        let satus = statusBar()
-//        self.view.addSubview(satus)
-//        self.view.addSubview(statusBar())
-        let calendar = collectionView as! CalendarView
-        calendar.collection.dataSource = calendarModel
-        calendar.collection.delegate = self
-//        collectionView = CalendarView()
-//        collectionView.collection.datasource
-//        let view = CalendarView(frame: self.collectionView.frame)
-//        self.collectionView.addSubview(view)
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = calendarModel
     }
 
     
@@ -60,6 +52,7 @@ extension HomeViewController: UICollectionViewDelegate{
         print("selected")
     }
 }
+
 
 
 extension HomeViewController:UICollectionViewDelegateFlowLayout{

@@ -8,14 +8,11 @@
 
 import UIKit
 
-class CalendarViewModel: NSObject{
+class CalendarViewModel: NSObject, UICollectionViewDataSource{
     
     override init() {
         super.init()
     }
-}
-
-extension CalendarViewModel: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 30
