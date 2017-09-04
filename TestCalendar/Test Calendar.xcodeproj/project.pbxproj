@@ -604,7 +604,7 @@
 				TargetAttributes = {
 					E64E1FCD1F56A38700D12289 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = VTFR494599;
+						DevelopmentTeam = Q4P7RE8LGW;
 						ProvisioningStyle = Automatic;
 					};
 					E64E1FE11F56A38700D12289 = {
@@ -989,7 +989,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = VTFR494599;
+				DEVELOPMENT_TEAM = Q4P7RE8LGW;
 				INFOPLIST_FILE = "Test Calendar/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1008,7 +1008,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = VTFR494599;
+				DEVELOPMENT_TEAM = Q4P7RE8LGW;
 				INFOPLIST_FILE = "Test Calendar/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
