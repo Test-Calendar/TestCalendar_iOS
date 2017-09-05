@@ -8,72 +8,78 @@
 
 import UIKit
 import MaterialComponents
+import Koyomi
 
 class HomeViewController: UIViewController{
+
+    @IBOutlet weak var month: UILabel! {
+        didSet{
+            let currentDateString = calendar.currentDateString(withFormat: "yyyy年MM月")
+            month.text = currentDateString
+        }
+    }
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var calendar: Koyomi! {
+        didSet{
+            calendar.sectionSpace = 1.5
+            calendar.cellSpace = 0.5
+            calendar.inset = .zero
+            calendar.weekCellHeight = 25
+            calendar.selectionMode = .single(style: .circle)
+            calendar.weeks = ("日", "月", "火", "水", "木", "金", "土")
+            calendar.dayPosition = .topLeft
+            calendar.calendarDelegate = self
+        }
+    }
     
     
-    var calendarModel = CalendarViewModel()
-    let cellMargin: CGFloat = 2.0
-    let numberOfWeek: CGFloat = 7.0
+    @IBAction func previousMonth(_ sender: Any) {
+        calendar.display(in: .previous)
+        let currentDateString = calendar.currentDateString(withFormat: "yyyy年MM月")
+        month.text = currentDateString
+    }
+    @IBAction func nextMonth(_ sender: Any) {
+        calendar.display(in: .next)
+        let currentDateString = calendar.currentDateString(withFormat: "yyyy年MM月")
+        month.text = currentDateString
+    }
     
+    fileprivate let invalidPeriodLength = 90
+
     
     override func loadView() {
-//        self.view = statusBar()
+        super.loadView()
+        self.view.addSubview(statusBar())
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = calendarModel
+        
     }
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 }
 
-//extension HomeViewController{
-//    func addPlusButton(){
-//        let floatingButton = MDCFloatingButton()
-//        floatingButton.setTitle("+", for: .normal)
-//        floatingButton.sizeToFit()
-//        floatingButton.addTarget(self, action: Selector(("tap:")), for: .touchUpInside)
-//        self.view.addSubview(floatingButton)
-//    }
-//}
-
-
-extension HomeViewController: UICollectionViewDelegate{
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("selected")
+extension HomeViewController: KoyomiDelegate{
+    func koyomi(_ koyomi: Koyomi, didSelect date: Date?, forItemAt indexPath: IndexPath) {
+        print("このセルが選択されました")
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        print(formatter.string(from: date!))
     }
+    func koyomi(_ koyomi: Koyomi, currentDateString dateString: String) {
+        print("tttttttt")
+    }
+    
+    @objc(koyomi:shouldSelectDates:to:withPeriodLength:)
+    func koyomi(_ koyomi: Koyomi, shouldSelectDates date: Date?, to toDate: Date?, withPeriodLength length: Int) -> Bool {
+        if length > invalidPeriodLength {
+            print("More than \(invalidPeriodLength) days are invalid period.")
+            return false
+        }
+        return true
+    }
+
 }
-
-
-
-extension HomeViewController:UICollectionViewDelegateFlowLayout{
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width:CGFloat = (collectionView.frame.width - cellMargin * 6)/numberOfWeek
-        let height:CGFloat = (collectionView.frame.height - cellMargin * 6)/numberOfWeek
-        return CGSize(width: width, height: height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    }
-    
-//    水平方向のマージン
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return cellMargin
-    }
-//    垂直方向のマージン
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return cellMargin
-    }
-}
-

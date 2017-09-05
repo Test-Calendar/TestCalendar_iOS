@@ -5,20 +5,8 @@ target 'Test Calendar' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'MaterialComponents/Buttons'
-  pod 'MaterialComponents/AnimationTiming'
-  pod 'MaterialComponents/AppBar'
-  pod 'MaterialComponents/Collections'
-  pod 'MaterialComponents/Dialogs'
-  pod 'MaterialComponents/HeaderStackView'
-  pod 'MaterialComponents/Ink'
-  pod 'MaterialComponents/NavigationBar'
-  pod 'MaterialComponents/PageControl'
-  pod 'MaterialComponents/ProgressView'
-  pod 'MaterialComponents/ShadowElevations'
-  pod 'MaterialComponents/ShadowLayer'
-  pod 'MaterialComponents/Typography'
-
+  pod 'MaterialComponents/Buttons', '33.0.0'
+  pod "Koyomi", '1.2.6'
   pod 'RealmSwift','2.4.3'
   pod 'Alamofire','4.0.0'
   pod 'SwiftyJSON','3.1'
