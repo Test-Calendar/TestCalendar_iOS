@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RealmSwift
+
 
 class CalendarModel{
     static let sharedInstance = CalendarModel()

@@ -5,6 +5,13 @@
 
 import UIKit
 import EventKit
+import RealmSwift
+
+class User: Object {
+    dynamic var id = 1
+    dynamic var name = ""
+}
+
 
 class TestingViewController: UIViewController {
     
@@ -14,7 +21,15 @@ class TestingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        let me = User()
+//        me.name = "はるふ"
+//        
+//        let realm = try! Realm()
+//        try! realm.write {
+//            realm.add(me)
+//        }
         
+//        print(realm.objects(User))
         // 背景を水色に設定.
         self.view.backgroundColor = UIColor.cyan
         
@@ -160,19 +175,29 @@ class TestingViewController: UIViewController {
 //        print(events)
         
         var eventItems = [String]()
-
+        
         if !events.isEmpty {
             for i in events{
                 print(i.title)
                 print(i.startDate)
                 print(i.endDate)
-                
                 // 配列に格納.
+                let aa = Task.create()
+                aa.name = i.title
+                aa.startTime = i.startDate as NSDate 
+                aa.endTime = i.endDate as NSDate
+                
+                print("これはrealmdだよ")
+                print("aa\(aa.id)")
+                print("aa" + aa.name)
+                print("aa\(aa.startTime)")
+                print("aa\(aa.endTime)")
+                aa.save()
+
+                print(Realm.Configuration.defaultConfiguration.fileURL!)
                 eventItems += ["\(i.title): \(i.startDate) * \(i.endDate)"]
             }
         }
-        print(eventItems)
-        
         // 発見したイベントを格納する配列を生成.
  }
 }
