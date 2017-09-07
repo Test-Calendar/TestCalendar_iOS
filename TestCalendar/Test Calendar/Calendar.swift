@@ -122,12 +122,22 @@ class StudySchedule: Event{
         }
     }
     
-
+    
     static func delete(){
         let studys = realm.objects(self)
         try! realm.write {
             realm.delete(studys)
         }
+    }
+    
+    
+    static func getAll() -> [StudySchedule]{
+        let studys = realm.objects(StudySchedule.self)
+        var ret: [StudySchedule] = []
+        for study in studys{
+            ret.append(study)
+        }
+        return ret
     }
     
     
@@ -165,6 +175,16 @@ class Test: Event{
         try! realm.write {
             realm.delete(tests)
         }
+    }
+    
+    
+    static func getAll() -> [Test]{
+        let tests = realm.objects(Test.self)
+        var ret: [Test] = []
+        for test in tests{
+            ret.append(test)
+        }
+        return ret
     }
     
     

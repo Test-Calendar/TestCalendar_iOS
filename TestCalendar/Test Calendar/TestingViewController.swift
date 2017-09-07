@@ -199,5 +199,5 @@ class TestingViewController: UIViewController {
         }
         print(Task.getAll())
         // 発見したイベントを格納する配列を生成.
- }
+    }
 }
