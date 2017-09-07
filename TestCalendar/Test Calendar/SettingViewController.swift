@@ -60,7 +60,7 @@ class SettingViewController: UIViewController {
     
     // ボタンを押すとiOS設定を起動、遷移する
     func flatButtonDidTap(_ sender: UIButton){
-        if let url = URL(string:"app-prefs:root") {
+        if let url = URL(string:"App-Prefs:root=NOTIFICATIONS_ID") {
             if #available(iOS 10.0, *) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             } else {
@@ -91,7 +91,7 @@ extension SettingViewController{
         flatButton.frame = CGRect(x: posX, y: posY, width: bWidth, height: bHeight)
         
         // ボタンの背景色を設定.
-        flatButton.backgroundColor = UIColor.white
+        flatButton.backgroundColor = UIColor.gray
         
         // タイトルを設定する(通常時).
         flatButton.setTitle("iOSカレンダーへのアクセスを許可", for: .normal)
@@ -99,6 +99,9 @@ extension SettingViewController{
         
         // ボタンにタグをつける.
         flatButton.tag = 1
+        
+        // ボタンをViewに追加.
+        self.view.addSubview(flatButton)
         
     }
 }
