@@ -5,7 +5,7 @@ target 'Test Calendar' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'MaterialComponents/Buttons', '33.0.0'
+  pod 'MaterialComponents', '33.0.0'
   pod "Koyomi", '1.2.6'
   pod 'RealmSwift','2.4.3'
   pod 'Alamofire','4.0.0'

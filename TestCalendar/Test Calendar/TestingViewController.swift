@@ -28,7 +28,6 @@ class TestingViewController: UIViewController {
 //        try! realm.write {
 //            realm.add(me)
 //        }
-        
 //        print(realm.objects(User))
         // 背景を水色に設定.
         self.view.backgroundColor = UIColor.cyan
@@ -139,7 +138,7 @@ class TestingViewController: UIViewController {
         print("onClickMyButton")
         
         // NSCalendarを生成.
-        var myCalendar: NSCalendar = NSCalendar.current as NSCalendar
+        let myCalendar: NSCalendar = NSCalendar.current as NSCalendar
         
         // ユーザのカレンダーを取得.
         var myEventCalendars = myEventStore.calendars(for: EKEntityType.event)
@@ -198,6 +197,7 @@ class TestingViewController: UIViewController {
                 eventItems += ["\(i.title): \(i.startDate) * \(i.endDate)"]
             }
         }
+        print(Task.getAll())
         // 発見したイベントを格納する配列を生成.
  }
 }

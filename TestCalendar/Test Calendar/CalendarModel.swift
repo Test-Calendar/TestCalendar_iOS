@@ -19,6 +19,17 @@ class CalendarModel{
     var studys = [StudySchedule]()
     var tests = [Test]()
     
+    func addTask(){
+        
+    }
+    
+    func deleteTask(){
+        
+    }
+    
+    func getOneDaySubject(){
+        
+    }
 }
 
 enum Genre:Int{
