@@ -15,7 +15,7 @@ let eventStore = EKEventStore()
 // 許可状況を確認して、許可されていなかったら許可を得る
 func allowAuthorization() {
     if getAuthorization_status() {
-        // 許可されている
+//         許可されている
         return
     } else {
         // 許可されていない

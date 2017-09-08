@@ -12,12 +12,35 @@ import RealmSwift
 
 
 class Event: Object{
+    
+    static let realm = try! Realm()
     dynamic var id = 0
     dynamic var name = ""
     dynamic var notification = false
     dynamic var startTime = NSDate()
     
-    override static func primaryKey() -> String { return "id" }
+    
+    override static func primaryKey() -> String {
+        return "id"
+    }
+    
+    
+    static func lastId() -> Int{
+        if let event = realm.objects(self).last{
+            print(event.id)
+            return event.id + 1
+        }else {
+            return 1
+        }
+    }
+    
+    
+    func deleteAll(){
+        try! Event.realm.write {
+            Event.realm.deleteAll()
+        }
+    }
+    
     
     convenience init(json: JSON){
         self.init(json: json)
@@ -29,9 +52,45 @@ class Event: Object{
     }
 }
 
+
+
 class Task: Event{
+    
     dynamic var endTime = NSDate()
     dynamic var repetation = 0
+    
+    
+    static func create() ->Task{
+        let task = Task()
+        task.id = lastId()
+        return task
+    }
+    
+    
+    func save(){
+        try! Task.realm.write {
+            Task.realm.add(self)
+        }
+    }
+    
+    
+    static func getAll() -> [Task]{
+        let tasks = Task.realm.objects(Task.self)
+        var ret: [Task] = []
+        for task in tasks{
+            ret.append(task)
+        }
+        return ret
+    }
+    
+    
+    func delete(){
+        let tasks = Task.realm.objects(Task.self)
+        try! Task.realm.write {
+            Task.realm.delete(tasks)
+        }
+    }
+   
     
     convenience init(json:JSON){
         self.init(json: json)
@@ -41,7 +100,10 @@ class Task: Event{
     }
 }
 
-class StudySchedule: Event{
+
+
+class Study: Event{
+    
     dynamic var endTime = NSDate()
     dynamic var color = ""
     dynamic var type = 0 //テストかレポートか
@@ -53,11 +115,77 @@ class StudySchedule: Event{
         self.color = json["color"].stringValue
         self.type = json["type"].intValue
     }
+    
+    
+    static func create() -> Study{
+        let study = Study()
+        study.id = lastId()
+        return study
+    }
+    
+    
+    func save(){
+        try! Study.realm.write {
+            Study.realm.add(self)
+        }
+    }
+    
+    
+    static func delete(){
+        let studys = realm.objects(self)
+        try! realm.write {
+            realm.delete(studys)
+        }
+    }
+    
+    
+    static func getAll() -> [Study]{
+        let studys = realm.objects(Study.self)
+        var ret: [Study] = []
+        for study in studys{
+            ret.append(study)
+        }
+        return ret
+    }
 }
+
+
 
 class Test: Event{
     dynamic var color = ""
     dynamic var type = 0 //テストかレポートか
+    
+    static func create() -> Test{
+        let test = Test()
+        test.id = lastId()
+        return test
+    }
+
+    
+    func save(){
+        try! Test.realm.write {
+            Test.realm.add(self)
+        }
+    }
+    
+    
+    static func delete(){
+        let tests = realm.objects(self)
+        try! realm.write {
+            realm.delete(tests)
+        }
+    }
+    
+    
+    static func getAll() -> [Test]{
+        let tests = realm.objects(Test.self)
+        var ret: [Test] = []
+        for test in tests{
+            ret.append(test)
+        }
+        return ret
+    }
+    
     
     convenience init(json: JSON){
         self.init(json: json)
