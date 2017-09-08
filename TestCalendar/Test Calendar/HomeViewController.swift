@@ -29,6 +29,11 @@ class HomeViewController: UIViewController{
             calendar.weeks = ("日", "月", "火", "水", "木", "金", "土")
             calendar.dayPosition = .topLeft
             calendar.calendarDelegate = self
+            let today = Date()
+            var components = DateComponents()
+            components.day = 7
+            let weekLaterDay = Calendar.current.date(byAdding: components, to: today)
+            calendar.select(date: today, to: weekLaterDay)
         }
     }
     
@@ -38,40 +43,55 @@ class HomeViewController: UIViewController{
         let currentDateString = calendar.currentDateString(withFormat: "yyyy年MM月")
         month.text = currentDateString
     }
+    
     @IBAction func nextMonth(_ sender: Any) {
         calendar.display(in: .next)
         let currentDateString = calendar.currentDateString(withFormat: "yyyy年MM月")
         month.text = currentDateString
     }
     
+    
     fileprivate let invalidPeriodLength = 90
-
+//    var model = CalendarModel.sharedInstance
     
     override func loadView() {
         super.loadView()
         self.view.addSubview(statusBar())
     }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 }
 
+
+
+
 extension HomeViewController: KoyomiDelegate{
+    
+    func setData(){
+        
+    }
+    
     func koyomi(_ koyomi: Koyomi, didSelect date: Date?, forItemAt indexPath: IndexPath) {
         print("このセルが選択されました")
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
         print(formatter.string(from: date!))
     }
+    
+    
     func koyomi(_ koyomi: Koyomi, currentDateString dateString: String) {
         print("tttttttt")
     }
+    
     
     @objc(koyomi:shouldSelectDates:to:withPeriodLength:)
     func koyomi(_ koyomi: Koyomi, shouldSelectDates date: Date?, to toDate: Date?, withPeriodLength length: Int) -> Bool {
@@ -81,5 +101,4 @@ extension HomeViewController: KoyomiDelegate{
         }
         return true
     }
-
 }
