@@ -14,7 +14,6 @@ import RealmSwift
 class Event: Object{
     
     static let realm = try! Realm()
-    
     dynamic var id = 0
     dynamic var name = ""
     dynamic var notification = false
@@ -103,22 +102,31 @@ class Task: Event{
 
 
 
-class StudySchedule: Event{
+class Study: Event{
     
     dynamic var endTime = NSDate()
     dynamic var color = ""
     dynamic var type = 0 //テストかレポートか
     
-    static func create() -> StudySchedule{
-        let study = StudySchedule()
+    convenience init(json:JSON){
+        self.init(json: json)
+        let unixtime = json["endTime"].intValue
+        self.endTime = NSDate.init(timeIntervalSince1970: TimeInterval(unixtime))
+        self.color = json["color"].stringValue
+        self.type = json["type"].intValue
+    }
+    
+    
+    static func create() -> Study{
+        let study = Study()
         study.id = lastId()
         return study
     }
     
     
     func save(){
-        try! StudySchedule.realm.write {
-            StudySchedule.realm.add(self)
+        try! Study.realm.write {
+            Study.realm.add(self)
         }
     }
     
@@ -131,22 +139,13 @@ class StudySchedule: Event{
     }
     
     
-    static func getAll() -> [StudySchedule]{
-        let studys = realm.objects(StudySchedule.self)
-        var ret: [StudySchedule] = []
+    static func getAll() -> [Study]{
+        let studys = realm.objects(Study.self)
+        var ret: [Study] = []
         for study in studys{
             ret.append(study)
         }
         return ret
-    }
-    
-    
-    convenience init(json:JSON){
-        self.init(json: json)
-        let unixtime = json["endTime"].intValue
-        self.endTime = NSDate.init(timeIntervalSince1970: TimeInterval(unixtime))
-        self.color = json["color"].stringValue
-        self.type = json["type"].intValue
     }
 }
 

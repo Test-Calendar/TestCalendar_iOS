@@ -29,6 +29,11 @@ class HomeViewController: UIViewController{
             calendar.weeks = ("日", "月", "火", "水", "木", "金", "土")
             calendar.dayPosition = .topLeft
             calendar.calendarDelegate = self
+            let today = Date()
+            var components = DateComponents()
+            components.day = 7
+            let weekLaterDay = Calendar.current.date(byAdding: components, to: today)
+            calendar.select(date: today, to: weekLaterDay)
         }
     }
     
@@ -47,7 +52,7 @@ class HomeViewController: UIViewController{
     
     
     fileprivate let invalidPeriodLength = 90
-
+//    var model = CalendarModel.sharedInstance
     
     override func loadView() {
         super.loadView()
@@ -70,6 +75,10 @@ class HomeViewController: UIViewController{
 
 
 extension HomeViewController: KoyomiDelegate{
+    
+    func setData(){
+        
+    }
     
     func koyomi(_ koyomi: Koyomi, didSelect date: Date?, forItemAt indexPath: IndexPath) {
         print("このセルが選択されました")

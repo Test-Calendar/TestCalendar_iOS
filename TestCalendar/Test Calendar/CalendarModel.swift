@@ -9,6 +9,15 @@
 import UIKit
 import EventKit
 
+class CalendarModel{
+    static let sharedInstance = CalendarModel()
+    
+    let tasks = Task.getAll()
+    let studies = Study.getAll()
+    let tests = Test.getAll()
+}
+
+
 
 func addTask(name: String, notification: Bool, starttime:NSDate, endtime:NSDate, repetaion: Int){
     
@@ -26,7 +35,7 @@ func addTask(name: String, notification: Bool, starttime:NSDate, endtime:NSDate,
 
 func addStudy(name: String, notification: Bool, starttime: NSDate, endtime: NSDate, color:String, type:Int){
     
-    let study = StudySchedule.create()
+    let study = Study.create()
     
     study.name = name
     study.notification = notification
@@ -50,20 +59,6 @@ func addTest(name: String, notification: Bool, startTime: Date, color: String, t
     test.save()
 }
 
-
-
-
-class CalendarModel{
-    
-    static let sharedInstance = CalendarModel()
-    
-    var tasks = [Task]()
-    var studys = [StudySchedule]()
-    var tests = [Test]()
-    
-    private init(){}
-    
-}
 
 enum Genre:Int{
     case task, study, test
