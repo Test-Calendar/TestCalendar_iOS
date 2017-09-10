@@ -33,13 +33,26 @@ class TestListViewController: UIViewController {
     }
 }
 
-
 extension TestListViewController: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return names.count
+        if section == 0{
+            return names.count
+        }else {
+            return 1
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        return cell
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+            return cell
+        }else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "add", for: indexPath)
+            return cell
+        }
+        
     }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
 }
