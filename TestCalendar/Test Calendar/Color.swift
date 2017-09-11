@@ -68,5 +68,9 @@ struct CalendarColor {
     static func lightPurple() -> UIColor {
         return UIColor(red: 187/255, green: 107/255, blue: 217/255, alpha: 1)
     }
+    
+    static func watchBackgroundColor() -> UIColor {
+        return UIColor(red: 235, green: 238, blue: 240, alpha: 1)
+    }
 }
 
