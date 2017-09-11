@@ -42,6 +42,9 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="4Eu-RI-N3H" secondAttribute="height" multiplier="1:1" id="FIA-gZ-sAl"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="backButton:" destination="GNh-Mu-yVB" eventType="touchUpInside" id="Y8r-ae-ztd"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -61,7 +64,7 @@
                                         <rect key="frame" x="0.0" y="28" width="345" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rsj-DT-8Qa" id="qmo-EK-Mni">
-                                            <rect key="frame" x="0.0" y="0.0" width="345" height="110.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="345" height="111"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZVa-1x-XwW" userLabel="ColorIcon">
@@ -166,7 +169,7 @@
                                         <rect key="frame" x="0.0" y="139" width="345" height="48"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RKc-J9-Hxp" id="Dqg-Ur-mdS">
-                                            <rect key="frame" x="0.0" y="0.0" width="345" height="47.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="345" height="48"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nn4-6y-rBs">
@@ -186,6 +189,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="0.26048644360000001" blue="0.080657623440000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <segue destination="T6i-wp-jlI" kind="show" id="9U9-Om-Rha"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -236,6 +242,9 @@
                                             <constraint firstAttribute="width" secondItem="V29-Op-yfi" secondAttribute="height" multiplier="1:1" id="IEh-Du-Okk"/>
                                             <constraint firstAttribute="width" constant="24" id="sPS-jj-N3Y"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="backButton:" destination="T6i-wp-jlI" eventType="touchUpInside" id="fka-y4-Vhh"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="テストおよびレポートの追加" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAp-z2-29H">
                                         <rect key="frame" x="67.5" y="19" width="240" height="22"/>

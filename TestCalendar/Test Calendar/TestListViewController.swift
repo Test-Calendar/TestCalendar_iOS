@@ -16,6 +16,10 @@ class TestListViewController: UIViewController {
     
     var names = ["ataso","sazae", "mauso"]
 
+    @IBAction func backButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func loadView() {
         super.loadView()
         self.view.addSubview(statusBar())
