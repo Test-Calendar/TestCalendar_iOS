@@ -10,6 +10,8 @@ import UIKit
 
 class AddTestViewController: UIViewController {
 
+    @IBOutlet weak var header: UILabel!
+    @IBOutlet weak var SubjectName: UITextField!
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -23,16 +25,42 @@ class AddTestViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+extension AddTestViewController{
+    func setButton(){
+        let flatButton = MDCFlatButton()
+        flatButton.customTitleColor = UIColor.black
+        flatButton.setTitle("Flat Button", for: .normal)
+        flatButton.sizeToFit()
+        flatButton.addTarget(self, action: #selector(SettingViewController.flatButtonDidTap(_:)), for: .touchUpInside)
+        
+        
+        // ボタンのサイズ.
+        let bWidth: CGFloat = 347
+        let bHeight: CGFloat = 46
+        
+        // ボタンのX,Y座標.
+        let posX: CGFloat = self.view.frame.width/2 - bWidth/2
+        let posY: CGFloat = self.view.frame.height - bHeight - 12
+        
+        // ボタンの設置座標とサイズを設定する.
+        flatButton.frame = CGRect(x: posX, y: posY, width: bWidth, height: bHeight)
+        
+        // ボタンの背景色を設定.
+        flatButton.backgroundColor = UIColor.red
+        
+        // タイトルを設定する(通常時).
+        flatButton.setTitle("iOSカレンダーへのアクセスを許可", for: .normal)
+        flatButton.setTitleColor(UIColor.white, for: .normal)
+        
+        // ボタンにタグをつける.
+        flatButton.tag = 1
+        
+        // ボタンをViewに追加.
+        self.view.addSubview(flatButton)
+        
+    }
+}
+
+

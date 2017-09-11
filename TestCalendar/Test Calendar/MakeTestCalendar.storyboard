@@ -354,7 +354,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="51" height="50"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                 </view>
                                                             </collectionViewCell>
@@ -518,6 +518,10 @@
                             <constraint firstItem="Vnk-WJ-l1E" firstAttribute="top" secondItem="SrM-2Z-RWP" secondAttribute="bottom" constant="36" id="pLz-Dv-2nN"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="SubjectName" destination="vzY-SC-6rm" id="al9-Bq-Oeh"/>
+                        <outlet property="header" destination="PAp-z2-29H" id="QQr-DC-2Ts"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cy4-Fg-F4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
