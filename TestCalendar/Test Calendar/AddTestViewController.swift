@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MaterialComponents
 
 class AddTestViewController: UIViewController {
 
@@ -15,6 +16,12 @@ class AddTestViewController: UIViewController {
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    override func loadView() {
+        super.loadView()
+        setButton()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,7 +58,7 @@ extension AddTestViewController{
         flatButton.backgroundColor = UIColor.red
         
         // タイトルを設定する(通常時).
-        flatButton.setTitle("iOSカレンダーへのアクセスを許可", for: .normal)
+        flatButton.setTitle("次へ", for: .normal)
         flatButton.setTitleColor(UIColor.white, for: .normal)
         
         // ボタンにタグをつける.
