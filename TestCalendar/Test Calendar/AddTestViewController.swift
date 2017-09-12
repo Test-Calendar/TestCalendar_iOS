@@ -49,13 +49,13 @@ extension AddTestViewController{
         
         // ボタンのX,Y座標.
         let posX: CGFloat = self.view.frame.width/2 - bWidth/2
-        let posY: CGFloat = self.view.frame.height - bHeight - 12
+        let posY: CGFloat = self.view.frame.height - bHeight - 30
         
         // ボタンの設置座標とサイズを設定する.
         flatButton.frame = CGRect(x: posX, y: posY, width: bWidth, height: bHeight)
         
         // ボタンの背景色を設定.
-        flatButton.backgroundColor = UIColor.red
+        flatButton.setBackgroundColor(UIColor.red, for: .normal)
         
         // タイトルを設定する(通常時).
         flatButton.setTitle("次へ", for: .normal)
