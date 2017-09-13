@@ -178,7 +178,7 @@
                                     <constraint firstItem="TuJ-cH-CFZ" firstAttribute="leading" secondItem="3Ga-CH-wUc" secondAttribute="leading" constant="19" id="zDs-g8-Hk8"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jjC-Pr-bmi" userLabel="Timer View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jjC-Pr-bmi" userLabel="Timer View" customClass="WatchView" customModule="Test_Calendar" customModuleProvider="target">
                                 <rect key="frame" x="32" y="91.5" width="311" height="313.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
