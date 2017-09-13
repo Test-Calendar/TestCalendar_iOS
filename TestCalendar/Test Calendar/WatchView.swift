@@ -71,50 +71,10 @@ class WatchView: UIView {
 //        CalendarColor.watchBackgroundColor().setFill()
 //        oval.fill()
 //        self.addSubview(oval)
-
     }
     
-    
-    override func draw(_ rect: CGRect) {
-        super.draw(rect)
-        
-//        let margin: CGFloat = 60
-//        let padding: CGFloat = 10
-//        let labelWidth: CGFloat = 20
-//        let labelHeight: CGFloat = 20
-//        let radius: CGFloat = self.frame.width/2
-//        let marginX: CGFloat = margin - padding - labelWidth * 0.5
-//        let marginY: CGFloat = margin - padding - labelHeight * 0.5
-//        let labelRadius: CGFloat = radius + padding
-//        let labelPosition = [(x: (marginX + labelRadius * (1 + 0.5)), y: (marginY + labelRadius * (1 - CGFloat(sqrt(3))/2))),
-//                             (x: (marginX + labelRadius * (1 + CGFloat(sqrt(3))/2)), y: (marginY + labelRadius * (1 - 0.5))),
-//                             (x: (marginX + labelRadius * (2)), y: (marginY + labelRadius * 1)),
-//                             (x: (marginX + labelRadius * (1 + CGFloat(sqrt(3))/2)), y: (marginY + labelRadius * (1 + 0.5))),
-//                             (x: (marginX + labelRadius * (1 + 0.5)), y: (marginY + labelRadius * (1 + CGFloat(sqrt(3))/2))),
-//                             (x: (marginX + labelRadius * (1)), y: (marginY + labelRadius * (2))),
-//                             (x: (marginX + labelRadius * (1 - 0.5)),y: (marginY + labelRadius * (1 + CGFloat(sqrt(3))/2))),
-//                             (x: (marginX + labelRadius * (1 - CGFloat(sqrt(3)/2))), y: (marginY + labelRadius * (1 + 0.5))),
-//                             (x: (marginX + labelRadius * (0)), y: (marginY + labelRadius * (1))),
-//                             (x: (marginX + labelRadius * (1 - CGFloat(sqrt(3))/2)), y: (marginY + labelRadius * (1 - 0.5))),
-//                             (x: (marginX + labelRadius * (1 - 0.5)), y: (marginY + labelRadius * (1 - CGFloat(sqrt(3)/2)))),
-//                             (x: (marginX + labelRadius * (1)), y: (marginY + labelRadius * (0)))]
-//        
-//        for num in 0 ... 12{
-//            let timeLabel = UILabel()
-//            timeLabel.text = "\(num + 1)"
-//            timeLabel.font = UIFont.systemFont(ofSize: 12.0)
-//            timeLabel.frame = CGRect(x: labelPosition[num].x, y: labelPosition[num].y, width: 20, height: 20)
-//        }
-//        
-//        let oval = UIBezierPath(ovalIn: CGRect(x: margin/2, y: margin/2, width: self.frame.width - margin, height: self.frame.height - margin))
-//        CalendarColor.watchBackgroundColor().setFill()
-//        oval.fill()
-        
-//        UIColor.green.setStroke()
-//        oval.lineWidth = 2
-//        oval.stroke()
-        
-        
+    static func addSubject(){
+        print("addSubject")
     }
 }
     
