@@ -212,11 +212,23 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pE6-dR-4Tg">
+                                                <rect key="frame" x="215" y="17" width="100" height="23"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="23" id="k3z-bn-FGK"/>
+                                                    <constraint firstAttribute="width" constant="100" id="ybd-XO-CiA"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="w1w-f1-xjW" firstAttribute="leading" secondItem="DJI-oJ-euw" secondAttribute="leading" constant="21" id="7JN-wa-hJH"/>
                                             <constraint firstItem="w1w-f1-xjW" firstAttribute="centerY" secondItem="DJI-oJ-euw" secondAttribute="centerY" id="aLg-t3-Fl5"/>
+                                            <constraint firstAttribute="trailing" secondItem="pE6-dR-4Tg" secondAttribute="trailing" constant="30" id="bC1-nA-ji9"/>
+                                            <constraint firstItem="pE6-dR-4Tg" firstAttribute="centerY" secondItem="DJI-oJ-euw" secondAttribute="centerY" id="fCf-nq-kIh"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXy-0L-oYy" userLabel="Notification View">
@@ -331,12 +343,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="time" destination="pE6-dR-4Tg" id="6wZ-U3-XcX"/>
                         <outlet property="watch" destination="jjC-Pr-bmi" id="tjg-1n-rgl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x8F-4Y-9Gf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-571.01449275362324" y="474.45652173913049"/>
+            <point key="canvasLocation" x="-572" y="473.6131934032984"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ukV-Fn-f1p">

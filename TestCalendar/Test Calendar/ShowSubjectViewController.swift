@@ -11,20 +11,21 @@ import UIKit
 class ShowSubjectViewController: UIViewController {
 
     var colors: [UIColor] = [CalendarColor.redColor(), CalendarColor.orangeColor(), CalendarColor.yellowColor(), CalendarColor.darkGreen(), CalendarColor.green(), CalendarColor.lightGreen(),CalendarColor.darkBlue(), CalendarColor.blue(), CalendarColor.lightBlue(), CalendarColor.darkPurple(), CalendarColor.lightPurple()]
-    
+
     var color = UIColor()
+    var model = CalendarModel.sharedInstance
+    var data = Study()
     
+    @IBOutlet weak var time: UILabel!
     @IBOutlet weak var watch: WatchView!
     
     override func loadView() {
         super.loadView()
         self.view.addSubview(statusBar())
+        time.text = showTime(start: data.startTime, end: data.endTime)
+        //ボタンのオンオフの更新
         
-       // watch.addSubject()
-        let shikaku = UIView()
-        //watch.bringSubview(toFront: shikaku)
         watch.addSubject()
-        //showSbject()
     }
     
     override func viewDidLoad() {
@@ -38,11 +39,14 @@ class ShowSubjectViewController: UIViewController {
     }
 }
 
+
+
 extension ShowSubjectViewController: UICollectionViewDelegate,UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //色情報を変える。もし他にあれば切り替えしていいかのダイアログを表示
         
+        collectionView.reloadData() //色の更新
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return colors.count //色の数
@@ -86,3 +90,11 @@ func getColor(color: String) -> UIColor{
     }
 }
 
+
+func showTime(start: NSDate, end: NSDate)-> String{
+    let formatter = DateFormatter()
+    formatter.dateFormat = "HH:mm"
+    let startTime = formatter.string(from: start as Date)
+    let endTime = formatter.string(from: end as Date)
+    return startTime + " ~ " + endTime
+}
