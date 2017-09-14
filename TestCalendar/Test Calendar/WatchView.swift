@@ -1,5 +1,3 @@
-
-
 //
 //  WatchView.swift
 //  Test Calendar
@@ -23,9 +21,9 @@ class WatchView: UIView {
         super.init(coder: aDecoder)
     }
     
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         self.backgroundColor = UIColor.clear
         let margin: CGFloat = self.frame.width * 0.1
         let padding: CGFloat = margin/2
@@ -55,7 +53,6 @@ class WatchView: UIView {
             timeLabel.textAlignment = .center
             timeLabel.font = UIFont.systemFont(ofSize: 16.0)
             timeLabel.frame = CGRect(x: labelPosition[num].x, y: labelPosition[num].y, width: labelWidth, height: labelHeight)
-
             self.addSubview(timeLabel)
         }
         
@@ -66,6 +63,7 @@ class WatchView: UIView {
         //circle.backgroundColor = UIColor.black
         circle.clipsToBounds = true
         self.addSubview(circle)
+        self.sendSubview(toBack: circle)
         
 //        let oval = UIBezierPath(ovalIn: CGRect(x: margin/2, y: margin/2, width: self.frame.width - margin, height: self.frame.height - margin))
 //        CalendarColor.watchBackgroundColor().setFill()
@@ -73,8 +71,18 @@ class WatchView: UIView {
 //        self.addSubview(oval)
     }
     
-    static func addSubject(){
-        print("addSubject")
+    override func bringSubview(toFront view: UIView) {
+        view.frame = CGRect(x: self.frame.width/2, y: self.frame.height/2, width: 200, height: 200)
+        view.backgroundColor = UIColor.white
+        self.addSubview(view)
+        super.bringSubview(toFront: view)
+    }
+    
+    func addSubject(){//start: Date, end: Date, color: String
+        let view = UIView()
+        view.frame = CGRect(x: self.frame.width/2, y: self.frame.height/2, width: 200, height: 200)
+        view.backgroundColor = UIColor.white
+        self.addSubview(view)
+        super.bringSubview(toFront: view)
     }
 }
-    
