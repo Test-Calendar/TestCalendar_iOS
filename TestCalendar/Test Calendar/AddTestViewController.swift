@@ -12,27 +12,36 @@ import MaterialComponents
 class AddTestViewController: UIViewController {
 
     @IBOutlet weak var header: UILabel!
-    @IBOutlet weak var SubjectName: UITextField!
+    
+    
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     
     override func loadView() {
         super.loadView()
         setButton()
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    
+    func flatButtonDidTap(_ sender: UIButton){
+        let SetTimeViewController = self.storyboard!.instantiateViewController( withIdentifier: "SetTime" ) as! SetTimeViewController
+//        performSegue(withIdentifier: "SetTimeViewController", sender: nil)
+        self.present(SetTimeViewController, animated: true, completion: nil)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }
+
 
 extension AddTestViewController{
     func setButton(){
@@ -68,6 +77,7 @@ extension AddTestViewController{
         self.view.addSubview(flatButton)
         
     }
+    
 }
 
 
