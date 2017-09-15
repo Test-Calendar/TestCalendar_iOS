@@ -16,8 +16,19 @@ class ShowSubjectViewController: UIViewController {
 //    var model = CalendarModel.sharedInstance
 //    var data = Study()
     
+    
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var watch: WatchView!
+    
+    
+    @IBAction func changeToAM(_ sender: Any) {
+        //changeButtonColor
+        //changeSubject show in Watch
+    }
+    
+    @IBAction func changeToPM(_ sender: Any) {
+    }
+    
     
     override func loadView() {
         super.loadView()
@@ -61,10 +72,10 @@ extension ShowSubjectViewController: UICollectionViewDelegate,UICollectionViewDa
         
         view.frame = CGRect(x: 0, y: 0, width: radius * 2, height: radius * 2 )
         view.backgroundColor = colors[indexPath.row]
-        if color == colors[indexPath.row] {
-            view.layer.borderColor = CalendarColor.black().cgColor
-            view.layer.borderWidth = 2.0
-        }
+//        if color == colors[indexPath.row] {
+//            view.layer.borderColor = CalendarColor.black().cgColor
+//            view.layer.borderWidth = 2.0
+//        }
         view.layer.cornerRadius = radius
         view.clipsToBounds = true
         cell.addSubview(view)

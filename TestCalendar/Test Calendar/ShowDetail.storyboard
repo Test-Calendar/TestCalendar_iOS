@@ -94,7 +94,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7L1-nu-NE8">
-                                                    <rect key="frame" x="672" y="11" width="38" height="21"/>
+                                                    <rect key="frame" x="279" y="11" width="38" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -190,6 +190,9 @@
                                     <constraint firstAttribute="width" secondItem="Hts-7e-OVv" secondAttribute="height" multiplier="1:1" id="znm-A6-APg"/>
                                 </constraints>
                                 <state key="normal" title="AM"/>
+                                <connections>
+                                    <action selector="changeToAM:" destination="6F6-3B-djE" eventType="touchUpInside" id="j7P-9k-Yzl"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvj-L1-8G7">
                                 <rect key="frame" x="299" y="357" width="44" height="44"/>
@@ -199,6 +202,9 @@
                                     <constraint firstAttribute="width" secondItem="Dvj-L1-8G7" secondAttribute="height" multiplier="1:1" id="wlt-Xe-Ged"/>
                                 </constraints>
                                 <state key="normal" title="PM"/>
+                                <connections>
+                                    <action selector="changeToPM:" destination="6F6-3B-djE" eventType="touchUpInside" id="bjC-YA-f1V"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VTq-H9-AuN">
                                 <rect key="frame" x="15" y="414" width="345" height="166.5"/>
