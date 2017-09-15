@@ -45,6 +45,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 自動的にマイグレーションが実行されます
         let realm = try! Realm() 
 
+        
+        
+//        let fileManager = FileManager.default
+//        do {
+//            let url = try fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+//            if let enumerator = fileManager.enumerator(at: url, includingPropertiesForKeys: nil) {
+//                while let fileURL = enumerator.nextObject() as? URL {
+//                    try fileManager.removeItem(at: fileURL)
+//                }
+//            }
+//
+//        }  catch  {
+//            print(error)
+//        }
+//       
 //        autoreleasepool {
 //            // all Realm usage here
 //        }
@@ -55,15 +70,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            realmURL.appendingPathExtension("note"),
 //            realmURL.appendingPathExtension("management")
 //        ]
+//         print("おおおお")
 //        let manager = FileManager.default
+//        if let fileURL = Realm.Configuration.defaultConfiguration.fileURL {
+//            try! FileManager.default.removeItem(at: fileURL)
+//            print("keseta")
+//        }
 //        for URL in realmURLs {
 //            do {
 //                try FileManager.default.removeItem(at: URL)
+//                print("おおおおお")
 //            } catch {
+//                 print("データエラーだよん")
 //                // handle error
 //            }
 //        }
-//
+
         
         // Inside your application(application:didFinishLaunchingWithOptions:)
 //        

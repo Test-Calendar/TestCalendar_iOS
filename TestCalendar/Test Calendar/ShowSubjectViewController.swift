@@ -13,8 +13,8 @@ class ShowSubjectViewController: UIViewController {
     var colors: [UIColor] = [CalendarColor.redColor(), CalendarColor.orangeColor(), CalendarColor.yellowColor(), CalendarColor.darkGreen(), CalendarColor.green(), CalendarColor.lightGreen(),CalendarColor.darkBlue(), CalendarColor.blue(), CalendarColor.lightBlue(), CalendarColor.darkPurple(), CalendarColor.lightPurple()]
 
     var color = UIColor()
-    var model = CalendarModel.sharedInstance
-    var data = Study()
+//    var model = CalendarModel.sharedInstance
+//    var data = Study()
     
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var watch: WatchView!
@@ -22,7 +22,8 @@ class ShowSubjectViewController: UIViewController {
     override func loadView() {
         super.loadView()
         self.view.addSubview(statusBar())
-        time.text = showTime(start: data.startTime, end: data.endTime)
+        
+        //time.text = showTime(start: data.startTime, end: data.endTime)
         //ボタンのオンオフの更新
         
         watch.addSubject()
@@ -60,10 +61,10 @@ extension ShowSubjectViewController: UICollectionViewDelegate,UICollectionViewDa
         
         view.frame = CGRect(x: 0, y: 0, width: radius * 2, height: radius * 2 )
         view.backgroundColor = colors[indexPath.row]
-/*        if color == colors[indexPath.row] {
+        if color == colors[indexPath.row] {
             view.layer.borderColor = CalendarColor.black().cgColor
             view.layer.borderWidth = 2.0
-        } */
+        }
         view.layer.cornerRadius = radius
         view.clipsToBounds = true
         cell.addSubview(view)
@@ -92,9 +93,11 @@ func getColor(color: String) -> UIColor{
 
 
 func showTime(start: NSDate, end: NSDate)-> String{
+    
     let formatter = DateFormatter()
-    formatter.dateFormat = "HH:mm"
+    formatter.setTemplate(.time) //12:30
     let startTime = formatter.string(from: start as Date)
     let endTime = formatter.string(from: end as Date)
+    
     return startTime + " ~ " + endTime
 }

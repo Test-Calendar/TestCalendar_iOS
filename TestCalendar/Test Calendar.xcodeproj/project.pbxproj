@@ -41,6 +41,7 @@
 		E64E20981F59D92E00D12289 /* CalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64E20971F59D92E00D12289 /* CalendarView.xib */; };
 		E64E209C1F5D603200D12289 /* DefaultCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64E209B1F5D603200D12289 /* DefaultCalendar.swift */; };
 		E64E209E1F5D646B00D12289 /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64E209D1F5D646B00D12289 /* TestingViewController.swift */; };
+		E6579A071F6BE6CC00136A55 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6579A061F6BE6CC00136A55 /* DateFormatter.swift */; };
 		E6EAB4A71F66B22F004F45A9 /* WatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EAB4A61F66B22F004F45A9 /* WatchView.swift */; };
 /* End PBXBuildFile section */
 
@@ -107,6 +108,7 @@
 		E64E20971F59D92E00D12289 /* CalendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarView.xib; sourceTree = "<group>"; };
 		E64E209B1F5D603200D12289 /* DefaultCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCalendar.swift; sourceTree = "<group>"; };
 		E64E209D1F5D646B00D12289 /* TestingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
+		E6579A061F6BE6CC00136A55 /* DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		E6EAB4A61F66B22F004F45A9 /* WatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchView.swift; sourceTree = "<group>"; };
 		FBB319E5C383253FC2A354F6 /* Pods-Test CalendarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test CalendarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Test CalendarTests/Pods-Test CalendarTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -315,6 +317,7 @@
 		E64E205C1F58091600D12289 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E6579A061F6BE6CC00136A55 /* DateFormatter.swift */,
 				E64E208F1F59572A00D12289 /* Color.swift */,
 				E64E205E1F58095100D12289 /* Font */,
 				E64E1FD81F56A38700D12289 /* Assets.xcassets */,
@@ -860,6 +863,7 @@
 				E64E20961F59CC4400D12289 /* Label.swift in Sources */,
 				E64E204D1F5807EA00D12289 /* TestListViewController.swift in Sources */,
 				E64E20901F59572A00D12289 /* Color.swift in Sources */,
+				E6579A071F6BE6CC00136A55 /* DateFormatter.swift in Sources */,
 				E64E20551F58084B00D12289 /* SettingViewController.swift in Sources */,
 				E64E207B1F5810F500D12289 /* HomeViewController.swift in Sources */,
 				E64E20531F58082E00D12289 /* SelectCalendarViewController.swift in Sources */,
