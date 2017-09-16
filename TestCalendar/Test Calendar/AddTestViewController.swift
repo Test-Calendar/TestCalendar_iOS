@@ -12,6 +12,7 @@ import MaterialComponents
 class AddTestViewController: UIViewController {
 
     @IBOutlet weak var header: UILabel!
+    @IBOutlet weak var tableView: UIView!
     
     
     @IBAction func backButton(_ sender: Any) {
