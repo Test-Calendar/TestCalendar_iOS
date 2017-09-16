@@ -10,12 +10,12 @@ import UIKit
 
 class ShowSubjectViewController: UIViewController {
 
-    var colors: [UIColor] = [CalendarColor.redColor(), CalendarColor.orangeColor(), CalendarColor.yellowColor(), CalendarColor.darkGreen(), CalendarColor.green(), CalendarColor.lightGreen(),CalendarColor.darkBlue(), CalendarColor.blue(), CalendarColor.lightBlue(), CalendarColor.darkPurple(), CalendarColor.lightPurple()]
-
-//    var color = UIColor()
     var date = Date()
     var events = [oneEvent]()
     var model = CalendarModel.sharedInstance
+    var colors: [UIColor] = [CalendarColor.redColor(), CalendarColor.orangeColor(), CalendarColor.yellowColor(), CalendarColor.darkGreen(), CalendarColor.green(), CalendarColor.lightGreen(),CalendarColor.darkBlue(), CalendarColor.blue(), CalendarColor.lightBlue(), CalendarColor.darkPurple(), CalendarColor.lightPurple()]
+
+//    var color = UIColor()
 //    var data = Study()
     
     
@@ -24,8 +24,8 @@ class ShowSubjectViewController: UIViewController {
     
     
     @IBAction func changeToAM(_ sender: Any) {
+        watch.changeAmPm()
         //changeButtonColor
-        //changeSubject show in Watch
     }
     
     @IBAction func changeToPM(_ sender: Any) {
