@@ -26,3 +26,13 @@ extension DateFormatter {
     }
 }
 
+
+func showTime(start: NSDate, end: NSDate)-> String{
+    
+    let formatter = DateFormatter()
+    formatter.setTemplate(.time) //12:30
+    let startTime = formatter.string(from: start as Date)
+    let endTime = formatter.string(from: end as Date)
+    
+    return startTime + " ~ " + endTime
+}

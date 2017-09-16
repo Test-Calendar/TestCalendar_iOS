@@ -74,3 +74,21 @@ struct CalendarColor {
     }
 }
 
+
+func getColor(color: String) -> UIColor{
+    switch color {
+    case "red" : return CalendarColor.redColor()
+    case "orange" : return CalendarColor.orangeColor()
+    case "yellow" : return CalendarColor.yellowColor()
+    case "darkGreen" : return CalendarColor.darkGreen()
+    case "green" : return CalendarColor.green()
+    case "lightGreen" : return CalendarColor.lightGreen()
+    case "darkBlue" : return CalendarColor.darkBlue()
+    case "blue" : return CalendarColor.blue()
+    case "lightBlue" : return CalendarColor.lightBlue()
+    case "darkPurple" : return CalendarColor.darkPurple()
+    case "black" :  return CalendarColor.black()
+    default: return CalendarColor.buttonColor()
+    }
+}
+

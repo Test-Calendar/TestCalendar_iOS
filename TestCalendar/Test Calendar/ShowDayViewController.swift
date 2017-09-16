@@ -26,6 +26,7 @@ class ShowDayViewController: UIViewController {
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var watch: WatchView!
     
+    
     @IBAction func showYesterDay(_ sender: Any) {
         date = getYesterDay(date: date)
         dateLabel.text = showDate(date: date)
@@ -50,6 +51,7 @@ class ShowDayViewController: UIViewController {
         watch.changeAmPm()
     }
     
+    
     override func loadView() {
         self.view.addSubview(statusBar())
         dateLabel.text = showDate(date: date)
@@ -64,6 +66,9 @@ class ShowDayViewController: UIViewController {
     }
 }
 
+
+
+
 extension ShowDayViewController{
     
     func showDate(date: NSDate) -> String{
@@ -72,16 +77,13 @@ extension ShowDayViewController{
         return formatter.string(from: date as Date)
     }
     
-    
     func getYesterDay(date: NSDate) -> NSDate{
         return NSDate(timeInterval: 60*60*24*1, since: date as Date)
     }
     
-    
     func getTomorrow(date: NSDate) -> NSDate{
         return NSDate(timeInterval: -60*60*24*1, since: date as Date)
     }
-    
     
     func loadData(date: NSDate) -> [oneDayEvent]{
         
@@ -92,13 +94,17 @@ extension ShowDayViewController{
         model.tests = model.searchTest(predicate: predicate)
         
         for i in model.tasks{
-            events.append(oneDayEvent(name: i.name, start: i.startTime, end: i.endTime, color: "test"))
+            events.append(oneDayEvent(name: i.name, start: i.startTime, end: i.endTime, color: "black"))
         }
         for i in model.studies{
             events.append(oneDayEvent(name: i.name, start: i.startTime, end: i.endTime, color: i.color))
         }
         for i in model.tests{
             events.append(oneDayEvent(name: i.name, start: i.startTime, end: i.startTime, color: i.color))
+        }
+        
+        events.sort{
+            $0.start.timeIntervalSince1970 < $1.start.timeIntervalSince1970
         }
         
         return events
@@ -116,7 +122,15 @@ extension ShowDayViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ShowDayTableViewCell
+        
+        cell.colorView.backgroundColor = getColor(color: events[indexPath.row].color)
+        cell.subjectLabel.text = events[indexPath.row].name
+        cell.timeLabel.text = showTime(start: events[indexPath.row].start, end: events[indexPath.row].end)
+        
         return cell
     }
+    
+        
+    
 }
