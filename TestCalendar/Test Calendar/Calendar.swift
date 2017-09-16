@@ -13,7 +13,7 @@ import RealmSwift
 
 class Event: Object{
     
-    static let realm = try! Realm()
+    
     dynamic var id = 0
     dynamic var name = ""
     dynamic var notification = false

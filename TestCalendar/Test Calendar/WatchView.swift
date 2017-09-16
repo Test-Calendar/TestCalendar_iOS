@@ -76,14 +76,14 @@ class WatchView: UIView {
 
 extension WatchView{
     
-    func addSubject(){//start: Date, end: Date, color: String かstudys: [Study]を引数に持たせる
+    func addSchedule(){//start: Date, end: Date, color: String かstudys: [Study]を引数に持たせる
         //ここから下をsubjectsに追加していく for文で
         let start = Date()
         let end = Date()
         let  dateFormatter = DateFormatter()
         dateFormatter.setTemplate(.onlyHour)
-        let startTime = getAngle(date: start)
-        let endTime = getAngle(date: end)
+//        let startTime = getAngle(date: start)
+//        let endTime = getAngle(date: end)
         
         
         viewAm.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)

@@ -12,8 +12,10 @@ class ShowSubjectViewController: UIViewController {
 
     var colors: [UIColor] = [CalendarColor.redColor(), CalendarColor.orangeColor(), CalendarColor.yellowColor(), CalendarColor.darkGreen(), CalendarColor.green(), CalendarColor.lightGreen(),CalendarColor.darkBlue(), CalendarColor.blue(), CalendarColor.lightBlue(), CalendarColor.darkPurple(), CalendarColor.lightPurple()]
 
-    var color = UIColor()
-//    var model = CalendarModel.sharedInstance
+//    var color = UIColor()
+    var date = Date()
+    var events = [oneEvent]()
+    var model = CalendarModel.sharedInstance
 //    var data = Study()
     
     
@@ -33,23 +35,64 @@ class ShowSubjectViewController: UIViewController {
     override func loadView() {
         super.loadView()
         self.view.addSubview(statusBar())
+        getData()
+        setData()
         
         //time.text = showTime(start: data.startTime, end: data.endTime)
         //ボタンのオンオフの更新
         
-        watch.addSubject()
+        watch.addSchedule()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
+
+
+
+extension ShowSubjectViewController{
+    
+    
+    func getData(){
+        
+        
+        let predicate = NSPredicate(format: "startTime = %@", "\(date as NSDate)")
+        
+        model.tasks = model.searchTask(predicate: predicate)
+        model.studies = model.searchStudy(predicate: predicate)
+        model.tests = model.searchTest(predicate: predicate)
+        
+        
+        for i in model.tasks{
+            events.append(oneEvent(name: i.name, start: i.startTime as Date, end: i.endTime as Date, notification: i.notification, color: "test"))
+        }
+        for i in model.studies{
+            events.append(oneEvent(name: i.name, start: i.startTime as Date, end: i.endTime as Date, notification: i.notification, color: i.color))
+        }
+        for i in model.tests{
+            events.append(oneEvent(name: i.name, start: i.startTime as Date, end: i.startTime as Date, notification: i.notification, color: i.color))
+        }
+
+    }
+    
+    func setData(){
+            }
+}
+
+
+struct oneEvent{
+    var name: String
+    var start: Date
+    var end: Date
+    var notification: Bool
+    var color: String
+}
+
 
 
 
@@ -98,7 +141,8 @@ func getColor(color: String) -> UIColor{
     case "blue" : return CalendarColor.blue()
     case "lightBlue" : return CalendarColor.lightBlue()
     case "darkPurple" : return CalendarColor.darkPurple()
-    default: return CalendarColor.black()
+    case "black" :  return CalendarColor.black()
+    default: return CalendarColor.buttonColor()
     }
 }
 

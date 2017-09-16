@@ -8,13 +8,28 @@
 
 import UIKit
 import EventKit
+import RealmSwift
 
 class CalendarModel{
     static let sharedInstance = CalendarModel()
     
-    let tasks = Task.getAll()
-    let studies = Study.getAll()
-    let tests = Test.getAll()
+    let realm = try! Realm()
+    
+    var tasks = [Task]()
+    var studies = [Study]()
+    var tests = [Test]()
+    
+    func searchTask(predicate: NSPredicate)-> [Task]{
+        return realm.objects(Task.self).filter(predicate).map{$0}
+    }
+    
+    func searchStudy(predicate: NSPredicate)-> [Study]{
+        return realm.objects(Study.self).filter(predicate).map{$0}
+    }
+    
+    func searchTest(predicate: NSPredicate)-> [Test]{
+        return realm.objects(Test.self).filter(predicate).map{$0}
+    }
 }
 
 

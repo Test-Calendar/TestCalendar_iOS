@@ -49,12 +49,18 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pl0-9P-Twh">
                                 <rect key="frame" x="87.5" y="98" width="30" height="30"/>
                                 <state key="normal" title="&lt;"/>
+                                <connections>
+                                    <action selector="showYesterDay:" destination="T8y-eI-bGT" eventType="touchUpInside" id="EXn-Om-uFX"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bcr-wh-POW">
                                 <rect key="frame" x="257.5" y="97" width="30" height="30"/>
                                 <state key="normal" title="&gt;"/>
+                                <connections>
+                                    <action selector="showTomorrow:" destination="T8y-eI-bGT" eventType="touchUpInside" id="gjr-bZ-Y0g"/>
+                                </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1p-CE-J69">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1p-CE-J69" customClass="WatchView" customModule="Test_Calendar" customModuleProvider="target">
                                 <rect key="frame" x="32" y="137" width="311" height="313.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -66,6 +72,9 @@
                                     <constraint firstAttribute="width" constant="44" id="bEk-H5-mhY"/>
                                 </constraints>
                                 <state key="normal" title="AM"/>
+                                <connections>
+                                    <action selector="showAm:" destination="T8y-eI-bGT" eventType="touchUpInside" id="Jvv-O9-qSP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJa-8Z-FOS">
                                 <rect key="frame" x="299" y="421.5" width="44" height="44"/>
@@ -75,6 +84,9 @@
                                     <constraint firstAttribute="width" secondItem="HJa-8Z-FOS" secondAttribute="height" multiplier="1:1" id="mXE-sX-eZo"/>
                                 </constraints>
                                 <state key="normal" title="PM"/>
+                                <connections>
+                                    <action selector="showPm:" destination="T8y-eI-bGT" eventType="touchUpInside" id="ZIS-wK-f36"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lsf-mT-2yM">
                                 <rect key="frame" x="15" y="466" width="345" height="187"/>
@@ -113,6 +125,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="T8y-eI-bGT" id="Dcu-W6-poL"/>
+                                    <outlet property="delegate" destination="T8y-eI-bGT" id="IpD-nq-b5k"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
@@ -138,6 +154,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="D0v-p7-cr0"/>
+                    <connections>
+                        <outlet property="dateLabel" destination="DQS-cK-nUq" id="hgu-oe-I8k"/>
+                        <outlet property="table" destination="Lsf-mT-2yM" id="Qjg-2m-ZGQ"/>
+                        <outlet property="watch" destination="V1p-CE-J69" id="PVH-ai-IQV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wmz-E8-6fy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
