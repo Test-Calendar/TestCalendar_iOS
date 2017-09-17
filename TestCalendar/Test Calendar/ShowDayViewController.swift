@@ -22,7 +22,6 @@ class ShowDayViewController: UIViewController {
     var events = [oneDayEvent]()
     var model = CalendarModel.sharedInstance
     
-    
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var watch: WatchView!

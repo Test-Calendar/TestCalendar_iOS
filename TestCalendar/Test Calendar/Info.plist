@@ -27,7 +27,11 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
+<<<<<<< HEAD
 	<string>ShowDetail</string>
+=======
+	<string>MakeTestCalendar</string>
+>>>>>>> d691165e9222d3956da8ee0a585be86e1625f114
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
