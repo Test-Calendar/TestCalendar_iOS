@@ -13,6 +13,7 @@ enum watchType: Int{
     case am, pm
 }
 
+
 struct WatchEvent {
     var color: UIColor
     var start: NSDate
@@ -23,11 +24,8 @@ struct WatchEvent {
 class WatchView: UIView {
     
     var type = watchType.pm
-    let amView = SubjectView()
-    let pmView = SubjectView()
-    var amEvents = [WatchEvent]()
-    var pmEvents = [WatchEvent]()
-    
+    var amView = SubjectView()
+    var pmView = SubjectView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -85,31 +83,32 @@ class WatchView: UIView {
 
 extension WatchView{
     
-    func addSchedule(events: [WatchEvent]){//start: Date, end: Date, color: String
-        //ここから下をsubjectsに追加していく for文で
-        for i in events {
-            if type == .am{
-                amEvents.append(WatchEvent(color: i.color, start: getAngle(date: i.), end: <#T##CGFloat#>)
-            }
-        }
-        let start = NSDate()
-        let end = NSDate()
-        let  dateFormatter = DateFormatter()
-        dateFormatter.setTemplate(.onlyHour)
-        let startAngle = getAngle(date: start)
-        let endAngle = getAngle(date: end)
+    func addSchedule(events: [WatchEvent]){
         
+        //viewのframe, tagの設定
         amView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         pmView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         amView.viewWithTag(watchType.am.rawValue)
         pmView.viewWithTag(watchType.pm.rawValue)
         
-        let subject = SubjectView()
-        subject.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
-        //        subject.subjects = [Subject(color: CalendarColor.blue(), start: startTime, end: endTime)]
-        subject.subjects = [WatchEvent(color: CalendarColor.redColor(), start: 30, end: 180)]
-        self.addSubview(subject)
+        //データの代入
+        for i in events {
+            if type == .am {
+                amView.events.append(WatchEvent(color: i.color, start: i.start, end: i.end))
+            }
+            if type == .pm {
+                pmView.events.append(WatchEvent(color: i.color, start: i.start, end: i.end))
+            }
+        }
+        
+        //表示
+        if type == .am{
+            self.addSubview(amView)
+        }else {
+            self.addSubview(pmView)
+        }
     }
+    
     
     func changeAmPm(){
         if type == watchType.pm{
@@ -123,32 +122,12 @@ extension WatchView{
             self.addSubview(pmView)
         }
     }
-    
-    
-    func getAngle(date: NSDate) -> CGFloat{
-        let  dateFormatter = DateFormatter()
-        dateFormatter.setTemplate(.onlyHour)
-        var retTime: CGFloat!
-        
-        for i in 0...23{
-            if dateFormatter.string(from: date as Date) == "\(i+1)"{
-                if i > 11 {
-                    retTime = CGFloat(Double(i) - 11.0) * 30.0
-                    break
-                } else {
-                    retTime = CGFloat(Double(i) + 1.0) * 30.0
-                    break
-                }
-            }
-        }
-        return retTime
-    }
 }
 
 
 class SubjectView: UIView {
     
-    var subjects = [WatchEvent]() {
+    var events = [WatchEvent]() {
         didSet {
             setNeedsDisplay() // re-draw view when the values get set 
         }
@@ -169,15 +148,38 @@ class SubjectView: UIView {
         let radius: CGFloat = (min(self.frame.width, self.frame.height) - margin * 2 )/2
         let ctx = UIGraphicsGetCurrentContext()
         let center = CGPoint(x: bounds.size.width * 0.5, y: bounds.size.height * 0.5)
-//        let zero = -CGFloat.pi * 0.5
         
-        for subject in subjects {
-            let startAngle = (subject.start - 90) * CGFloat.pi / 180
-            let endAngle = (subject.end - 90) * CGFloat.pi / 180
-            ctx?.setFillColor(subject.color.cgColor)
+        let  dateFormatter = DateFormatter()
+        dateFormatter.setTemplate(.onlyHour)
+        //データを表示
+        for i in events {
+            let startAngle = (getAngle(date: i.start) - 90) * CGFloat.pi / 180
+            let endAngle = (getAngle(date: i.end) - 90) * CGFloat.pi / 180
+            ctx?.setFillColor(i.color.cgColor)
             ctx?.move(to: center)
             ctx?.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
             ctx?.fillPath()
         }
     }
 }
+
+
+func getAngle(date: NSDate) -> CGFloat{
+    let  dateFormatter = DateFormatter()
+    dateFormatter.setTemplate(.onlyHour)
+    var retTime: CGFloat!
+    
+    for i in 0...23{
+        if dateFormatter.string(from: date as Date) == "\(i+1)"{
+            if i > 11 {
+                retTime = CGFloat(Double(i) - 11.0) * 30.0
+                break
+            } else {
+                retTime = CGFloat(Double(i) + 1.0) * 30.0
+                break
+            }
+        }
+    }
+    return retTime
+}
+
