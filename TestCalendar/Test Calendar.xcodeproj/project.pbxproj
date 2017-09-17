@@ -44,7 +44,6 @@
 		E6579A071F6BE6CC00136A55 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6579A061F6BE6CC00136A55 /* DateFormatter.swift */; };
 		E6579A091F6DB31300136A55 /* ShowDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6579A081F6DB31300136A55 /* ShowDayTableViewCell.swift */; };
 		E6579A0B1F6DBA7800136A55 /* WatchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6579A0A1F6DBA7800136A55 /* WatchButton.swift */; };
-		E6579A0F1F6EC57100136A55 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E6579A0E1F6EC57100136A55 /* Default-568h@2x.png */; };
 		E6EAB4A71F66B22F004F45A9 /* WatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EAB4A61F66B22F004F45A9 /* WatchView.swift */; };
 /* End PBXBuildFile section */
 
@@ -114,7 +113,6 @@
 		E6579A061F6BE6CC00136A55 /* DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		E6579A081F6DB31300136A55 /* ShowDayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDayTableViewCell.swift; sourceTree = "<group>"; };
 		E6579A0A1F6DBA7800136A55 /* WatchButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchButton.swift; sourceTree = "<group>"; };
-		E6579A0E1F6EC57100136A55 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		E6EAB4A61F66B22F004F45A9 /* WatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchView.swift; sourceTree = "<group>"; };
 		FBB319E5C383253FC2A354F6 /* Pods-Test CalendarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test CalendarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Test CalendarTests/Pods-Test CalendarTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,7 +171,6 @@
 		E64E1FC51F56A38700D12289 = {
 			isa = PBXGroup;
 			children = (
-				E6579A0E1F6EC57100136A55 /* Default-568h@2x.png */,
 				E64E1FD01F56A38700D12289 /* Test Calendar */,
 				E64E1FE51F56A38700D12289 /* Test CalendarTests */,
 				E64E1FF01F56A38700D12289 /* Test CalendarUITests */,
@@ -626,7 +623,6 @@
 			files = (
 				E64E207E1F58114100D12289 /* AddEvent.storyboard in Resources */,
 				E64E1FDC1F56A38700D12289 /* LaunchScreen.storyboard in Resources */,
-				E6579A0F1F6EC57100136A55 /* Default-568h@2x.png in Resources */,
 				E64E20821F5811CD00D12289 /* ShowDetail.storyboard in Resources */,
 				E64E20801F5811BE00D12289 /* MakeTestCalendar.storyboard in Resources */,
 				E64E1FD91F56A38700D12289 /* Assets.xcassets in Resources */,
