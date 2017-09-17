@@ -396,7 +396,9 @@
                     </view>
                     <connections>
                         <outlet property="amButton" destination="Hts-7e-OVv" id="bFS-Qu-ASx"/>
+                        <outlet property="collection" destination="fzi-Fv-is1" id="ekV-gQ-yFq"/>
                         <outlet property="pmButton" destination="Dvj-L1-8G7" id="QQ0-xX-Tdm"/>
+                        <outlet property="subjectLabel" destination="STx-Yk-mhW" id="7od-36-NSV"/>
                         <outlet property="time" destination="pE6-dR-4Tg" id="6wZ-U3-XcX"/>
                         <outlet property="watch" destination="jjC-Pr-bmi" id="tjg-1n-rgl"/>
                     </connections>
