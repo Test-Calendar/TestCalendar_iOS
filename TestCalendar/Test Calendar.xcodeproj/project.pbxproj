@@ -461,8 +461,8 @@
 			isa = PBXGroup;
 			children = (
 				E6EAB4A61F66B22F004F45A9 /* WatchView.swift */,
-				E6579A081F6DB31300136A55 /* ShowDayTableViewCell.swift */,
 				E6579A0A1F6DBA7800136A55 /* WatchButton.swift */,
+				E6579A081F6DB31300136A55 /* ShowDayTableViewCell.swift */,
 			);
 			name = ShowDetail;
 			sourceTree = "<group>";

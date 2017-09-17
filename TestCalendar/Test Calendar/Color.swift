@@ -75,6 +75,7 @@ struct CalendarColor {
 }
 
 
+
 func getColor(color: String) -> UIColor{
     switch color {
     case "red" : return CalendarColor.redColor()
@@ -92,3 +93,13 @@ func getColor(color: String) -> UIColor{
     }
 }
 
+struct WatchButtonColor{
+    
+    static func selected() -> UIColor{
+        return UIColor(red: 0/255, green: 150/255, blue: 136/255, alpha: 1.0)
+    }
+    
+    static func enabled() -> UIColor{
+        return UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
+    }
+}

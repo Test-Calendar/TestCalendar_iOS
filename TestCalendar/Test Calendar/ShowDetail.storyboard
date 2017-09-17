@@ -63,7 +63,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V1p-CE-J69" customClass="WatchView" customModule="Test_Calendar" customModuleProvider="target">
                                 <rect key="frame" x="32" y="137" width="311" height="313.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJa-8Z-FOS">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJa-8Z-FOS" customClass="WatchButton" customModule="Test_Calendar" customModuleProvider="target">
                                         <rect key="frame" x="267" y="269.5" width="44" height="44"/>
                                         <color key="backgroundColor" red="0.068248678470000004" green="0.97196739909999996" blue="0.43760405969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -75,7 +75,7 @@
                                             <action selector="showPm:" destination="T8y-eI-bGT" eventType="touchUpInside" id="ZIS-wK-f36"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eR-dC-9SP">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eR-dC-9SP" customClass="WatchButton" customModule="Test_Calendar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="269.5" width="44" height="44"/>
                                         <color key="backgroundColor" red="0.068248678470000004" green="0.97196739909999996" blue="0.43760405969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -178,7 +178,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="D0v-p7-cr0"/>
                     <connections>
+                        <outlet property="amButton" destination="2eR-dC-9SP" id="hcS-RM-f9B"/>
                         <outlet property="dateLabel" destination="DQS-cK-nUq" id="hgu-oe-I8k"/>
+                        <outlet property="pmButton" destination="HJa-8Z-FOS" id="qJc-hU-6jh"/>
                         <outlet property="table" destination="Lsf-mT-2yM" id="Qjg-2m-ZGQ"/>
                         <outlet property="watch" destination="V1p-CE-J69" id="PVH-ai-IQV"/>
                     </connections>
@@ -226,7 +228,7 @@
                                 <rect key="frame" x="32" y="87.5" width="311" height="313.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hts-7e-OVv">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hts-7e-OVv" customClass="WatchButton" customModule="Test_Calendar" customModuleProvider="target">
                                 <rect key="frame" x="32" y="357" width="44" height="44"/>
                                 <color key="backgroundColor" red="0.068248678470000004" green="0.97196739909999996" blue="0.43760405969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -238,7 +240,7 @@
                                     <action selector="changeToAM:" destination="6F6-3B-djE" eventType="touchUpInside" id="j7P-9k-Yzl"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvj-L1-8G7">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvj-L1-8G7" customClass="WatchButton" customModule="Test_Calendar" customModuleProvider="target">
                                 <rect key="frame" x="299" y="357" width="44" height="44"/>
                                 <color key="backgroundColor" red="0.068248678470000004" green="0.97196739909999996" blue="0.43760405969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -393,6 +395,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="amButton" destination="Hts-7e-OVv" id="bFS-Qu-ASx"/>
+                        <outlet property="pmButton" destination="Dvj-L1-8G7" id="QQ0-xX-Tdm"/>
                         <outlet property="time" destination="pE6-dR-4Tg" id="6wZ-U3-XcX"/>
                         <outlet property="watch" destination="jjC-Pr-bmi" id="tjg-1n-rgl"/>
                     </connections>

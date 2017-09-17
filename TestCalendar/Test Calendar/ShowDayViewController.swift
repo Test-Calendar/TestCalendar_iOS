@@ -22,9 +22,12 @@ class ShowDayViewController: UIViewController {
     var events = [oneDayEvent]()
     var model = CalendarModel.sharedInstance
     
+    
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var watch: WatchView!
+    @IBOutlet weak var amButton: WatchButton!
+    @IBOutlet weak var pmButton: WatchButton!
     
     
     @IBAction func showYesterDay(_ sender: Any) {
@@ -45,10 +48,12 @@ class ShowDayViewController: UIViewController {
     
     @IBAction func showAm(_ sender: Any) {
         watch.changeAmPm()
+        changeWatchButtonType(am: amButton, pm: pmButton, type: .am)
     }
     
     @IBAction func showPm(_ sender: Any) {
         watch.changeAmPm()
+        changeWatchButtonType(am: amButton, pm: pmButton, type: .pm)
     }
     
     
@@ -86,7 +91,6 @@ extension ShowDayViewController{
     }
     
     func loadData(date: NSDate) -> [oneDayEvent]{
-        
         let predicate = NSPredicate(format: "startTime = %@", "\(date)")
         
         model.tasks = model.searchTask(predicate: predicate)
@@ -102,11 +106,9 @@ extension ShowDayViewController{
         for i in model.tests{
             events.append(oneDayEvent(name: i.name, start: i.startTime, end: i.startTime, color: i.color))
         }
-        
         events.sort{
             $0.start.timeIntervalSince1970 < $1.start.timeIntervalSince1970
         }
-        
         return events
     }
 }
@@ -130,7 +132,5 @@ extension ShowDayViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
-        
-    
 }
+

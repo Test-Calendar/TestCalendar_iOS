@@ -8,10 +8,19 @@
 
 import UIKit
 
+
+struct oneEvent{
+    var name: String
+    var start: NSDate
+    var end: NSDate
+    var notification: Bool
+    var color: String
+}
+
+
 class ShowSubjectViewController: UIViewController {
 
-    var date = Date()
-    var events = [oneEvent]()
+    var event: oneEvent!
     var model = CalendarModel.sharedInstance
     var colors: [UIColor] = [CalendarColor.redColor(), CalendarColor.orangeColor(), CalendarColor.yellowColor(), CalendarColor.darkGreen(), CalendarColor.green(), CalendarColor.lightGreen(),CalendarColor.darkBlue(), CalendarColor.blue(), CalendarColor.lightBlue(), CalendarColor.darkPurple(), CalendarColor.lightPurple()]
 
@@ -21,14 +30,18 @@ class ShowSubjectViewController: UIViewController {
     
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var watch: WatchView!
+    @IBOutlet weak var amButton: WatchButton!
+    @IBOutlet weak var pmButton: WatchButton!
     
     
     @IBAction func changeToAM(_ sender: Any) {
         watch.changeAmPm()
-        //changeButtonColor
+        changeWatchButtonType(am: amButton, pm: pmButton, type: .am)
     }
     
     @IBAction func changeToPM(_ sender: Any) {
+        watch.changeAmPm()
+        changeWatchButtonType(am: amButton, pm: pmButton, type: .pm)
     }
     
     
@@ -38,10 +51,9 @@ class ShowSubjectViewController: UIViewController {
         getData()
         setData()
         
-        //time.text = showTime(start: data.startTime, end: data.endTime)
-        //ボタンのオンオフの更新
+        time.text = showTime(start: data.startTime, end: data.endTime)
         
-        watch.addSchedule()
+        watch.addSchedule(events: WatchEvent(color: event.color, start: event.start, end: event.end))
     }
     
     override func viewDidLoad() {
@@ -57,41 +69,24 @@ class ShowSubjectViewController: UIViewController {
 
 extension ShowSubjectViewController{
     
-    
     func getData(){
-        
-        
-        let predicate = NSPredicate(format: "startTime = %@", "\(date as NSDate)")
+        //データを検索して探す
+        let predicate = NSPredicate(format: "startTime == %@", "\(event.start as Date)")
         
         model.tasks = model.searchTask(predicate: predicate)
         model.studies = model.searchStudy(predicate: predicate)
         model.tests = model.searchTest(predicate: predicate)
+        //データをeventに入れる
         
-        
-        for i in model.tasks{
-            events.append(oneEvent(name: i.name, start: i.startTime as Date, end: i.endTime as Date, notification: i.notification, color: "test"))
-        }
-        for i in model.studies{
-            events.append(oneEvent(name: i.name, start: i.startTime as Date, end: i.endTime as Date, notification: i.notification, color: i.color))
-        }
-        for i in model.tests{
-            events.append(oneEvent(name: i.name, start: i.startTime as Date, end: i.startTime as Date, notification: i.notification, color: i.color))
-        }
-
+        event.notification = model.tasks[0].notification
+        event.notification = model.studies[0].notification
+        event.notification = model.tests[0].notification
     }
     
     func setData(){
             }
 }
 
-
-struct oneEvent{
-    var name: String
-    var start: Date
-    var end: Date
-    var notification: Bool
-    var color: String
-}
 
 
 
@@ -123,25 +118,5 @@ extension ShowSubjectViewController: UICollectionViewDelegate,UICollectionViewDa
         view.clipsToBounds = true
         cell.addSubview(view)
         return cell
-    }
-}
-
-
-
-
-func getColor(color: String) -> UIColor{
-    switch color {
-    case "red" : return CalendarColor.redColor()
-    case "orange" : return CalendarColor.orangeColor()
-    case "yellow" : return CalendarColor.yellowColor()
-    case "darkGreen" : return CalendarColor.darkGreen()
-    case "green" : return CalendarColor.green()
-    case "lightGreen" : return CalendarColor.lightGreen()
-    case "darkBlue" : return CalendarColor.darkBlue()
-    case "blue" : return CalendarColor.blue()
-    case "lightBlue" : return CalendarColor.lightBlue()
-    case "darkPurple" : return CalendarColor.darkPurple()
-    case "black" :  return CalendarColor.black()
-    default: return CalendarColor.buttonColor()
     }
 }
