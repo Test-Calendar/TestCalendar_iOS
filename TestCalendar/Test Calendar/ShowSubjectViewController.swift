@@ -8,28 +8,117 @@
 
 import UIKit
 
+
+struct oneEvent{
+    var name: String
+    var start: NSDate
+    var end: NSDate
+    var notification: Bool
+    var color: String
+}
+
+
 class ShowSubjectViewController: UIViewController {
 
+    var event: oneEvent!
+    var model = CalendarModel.sharedInstance
+    var colors: [UIColor] = [CalendarColor.redColor(), CalendarColor.orangeColor(), CalendarColor.yellowColor(), CalendarColor.darkGreen(), CalendarColor.green(), CalendarColor.lightGreen(),CalendarColor.darkBlue(), CalendarColor.blue(), CalendarColor.lightBlue(), CalendarColor.darkPurple(), CalendarColor.lightPurple()]
+    
+    @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var subjectLabel: UILabel!
+    @IBOutlet weak var watch: WatchView!
+    @IBOutlet weak var amButton: WatchButton!
+    @IBOutlet weak var pmButton: WatchButton!
+    @IBOutlet weak var collection: UICollectionView!
+    
+    
+    @IBAction func changeToAM(_ sender: Any) {
+        watch.changeAmPm()
+        changeWatchButtonType(am: amButton, pm: pmButton, type: .am)
+    }
+    
+    @IBAction func changeToPM(_ sender: Any) {
+        watch.changeAmPm()
+        changeWatchButtonType(am: amButton, pm: pmButton, type: .pm)
+    }
+    
+    
+    override func loadView() {
+        super.loadView()
+        self.view.addSubview(statusBar())
+        getData() //足りないデータの取得
+        setData() //データを使って表示を更新
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+}
+
+
+
+extension ShowSubjectViewController{
+    
+    func getData(){
+        //データを検索して探す
+        let predicate = NSPredicate(format: "name == %@ AND startTime == %@", "\(event.name)","\(event.start as Date)")
+        model.tasks = model.searchTask(predicate: predicate)
+        model.studies = model.searchStudy(predicate: predicate)
+        model.tests = model.searchTest(predicate: predicate)
+    
+        //データをeventに入れる
+        event.notification = model.tasks[0].notification
+        event.notification = model.studies[0].notification
+        event.notification = model.tests[0].notification
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func setData(){
+        subjectLabel.text = event.name
+        time.text = showTime(start: event.start, end: event.end)
+        //通知の更新
+        collection.reloadData()
+        watch.addSchedule(events: [WatchEvent(color: getColor(color: event.color), start: event.start, end: event.end)])
     }
-    */
+}
 
+
+
+
+
+extension ShowSubjectViewController: UICollectionViewDelegate,UICollectionViewDataSource{
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if colors[indexPath.row] != getColor(color: event.color){
+            //色を変えるのかダイアログの表示
+            //色の入れ替えができるか検討
+            //他に使われてたら変更するかダイアログを表示
+        }
+        collection.reloadData() //表示の更新
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return colors.count //色の数
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        let radius = cell.frame.width * 0.40
+        let view = UIView()
+        
+        view.frame = CGRect(x: 0, y: 0, width: radius * 2, height: radius * 2 )
+        view.backgroundColor = colors[indexPath.row]
+        if getColor(color: event.color) == colors[indexPath.row] {
+            view.layer.borderColor = CalendarColor.black().cgColor
+            view.layer.borderWidth = 2.0
+        }
+        view.layer.cornerRadius = radius
+        view.clipsToBounds = true
+        cell.addSubview(view)
+        return cell
+    }
 }

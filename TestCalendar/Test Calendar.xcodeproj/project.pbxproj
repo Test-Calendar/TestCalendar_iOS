@@ -41,6 +41,10 @@
 		E64E20981F59D92E00D12289 /* CalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64E20971F59D92E00D12289 /* CalendarView.xib */; };
 		E64E209C1F5D603200D12289 /* DefaultCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64E209B1F5D603200D12289 /* DefaultCalendar.swift */; };
 		E64E209E1F5D646B00D12289 /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64E209D1F5D646B00D12289 /* TestingViewController.swift */; };
+		E6579A071F6BE6CC00136A55 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6579A061F6BE6CC00136A55 /* DateFormatter.swift */; };
+		E6579A091F6DB31300136A55 /* ShowDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6579A081F6DB31300136A55 /* ShowDayTableViewCell.swift */; };
+		E6579A0B1F6DBA7800136A55 /* WatchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6579A0A1F6DBA7800136A55 /* WatchButton.swift */; };
+		E6EAB4A71F66B22F004F45A9 /* WatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EAB4A61F66B22F004F45A9 /* WatchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +110,10 @@
 		E64E20971F59D92E00D12289 /* CalendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarView.xib; sourceTree = "<group>"; };
 		E64E209B1F5D603200D12289 /* DefaultCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCalendar.swift; sourceTree = "<group>"; };
 		E64E209D1F5D646B00D12289 /* TestingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
+		E6579A061F6BE6CC00136A55 /* DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		E6579A081F6DB31300136A55 /* ShowDayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDayTableViewCell.swift; sourceTree = "<group>"; };
+		E6579A0A1F6DBA7800136A55 /* WatchButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchButton.swift; sourceTree = "<group>"; };
+		E6EAB4A61F66B22F004F45A9 /* WatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchView.swift; sourceTree = "<group>"; };
 		FBB319E5C383253FC2A354F6 /* Pods-Test CalendarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test CalendarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Test CalendarTests/Pods-Test CalendarTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -313,6 +321,7 @@
 		E64E205C1F58091600D12289 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E6579A061F6BE6CC00136A55 /* DateFormatter.swift */,
 				E64E208F1F59572A00D12289 /* Color.swift */,
 				E64E205E1F58095100D12289 /* Font */,
 				E64E1FD81F56A38700D12289 /* Assets.xcassets */,
@@ -420,11 +429,6 @@
 			isa = PBXGroup;
 			children = (
 				E64E20891F58963A00D12289 /* Calendar.swift */,
-				E64E20781F580D0500D12289 /* Home */,
-				E64E20771F580CFC00D12289 /* AddEvent */,
-				E64E20761F580CF100D12289 /* MakeTestCalendar */,
-				E64E20751F580CE600D12289 /* ShowDetail */,
-				E64E20741F580CE100D12289 /* Setting */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -451,6 +455,9 @@
 		E64E206F1F580B2D00D12289 /* ShowDetail */ = {
 			isa = PBXGroup;
 			children = (
+				E6EAB4A61F66B22F004F45A9 /* WatchView.swift */,
+				E6579A0A1F6DBA7800136A55 /* WatchButton.swift */,
+				E6579A081F6DB31300136A55 /* ShowDayTableViewCell.swift */,
 			);
 			name = ShowDetail;
 			sourceTree = "<group>";
@@ -485,41 +492,6 @@
 				E64E208D1F5946DD00D12289 /* CalendarCell.swift */,
 				E64E208B1F59469200D12289 /* CalendarView.swift */,
 				E64E20971F59D92E00D12289 /* CalendarView.xib */,
-			);
-			name = Home;
-			sourceTree = "<group>";
-		};
-		E64E20741F580CE100D12289 /* Setting */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Setting;
-			sourceTree = "<group>";
-		};
-		E64E20751F580CE600D12289 /* ShowDetail */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = ShowDetail;
-			sourceTree = "<group>";
-		};
-		E64E20761F580CF100D12289 /* MakeTestCalendar */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = MakeTestCalendar;
-			sourceTree = "<group>";
-		};
-		E64E20771F580CFC00D12289 /* AddEvent */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = AddEvent;
-			sourceTree = "<group>";
-		};
-		E64E20781F580D0500D12289 /* Home */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -856,13 +828,16 @@
 				E64E20961F59CC4400D12289 /* Label.swift in Sources */,
 				E64E204D1F5807EA00D12289 /* TestListViewController.swift in Sources */,
 				E64E20901F59572A00D12289 /* Color.swift in Sources */,
+				E6579A071F6BE6CC00136A55 /* DateFormatter.swift in Sources */,
 				E64E20551F58084B00D12289 /* SettingViewController.swift in Sources */,
 				E64E207B1F5810F500D12289 /* HomeViewController.swift in Sources */,
 				E64E20531F58082E00D12289 /* SelectCalendarViewController.swift in Sources */,
+				E6579A0B1F6DBA7800136A55 /* WatchButton.swift in Sources */,
 				E64E20941F59927900D12289 /* CalendarViewModel.swift in Sources */,
 				E64E208C1F59469200D12289 /* CalendarView.swift in Sources */,
 				E64E208E1F5946DD00D12289 /* CalendarCell.swift in Sources */,
 				E60CBE2A1F6229CE004E8D5C /* API.swift in Sources */,
+				E6EAB4A71F66B22F004F45A9 /* WatchView.swift in Sources */,
 				E64E204F1F5807F300D12289 /* AddTestViewController.swift in Sources */,
 				E64E208A1F58963A00D12289 /* Calendar.swift in Sources */,
 				E64E20471F58075C00D12289 /* AddEventViewController.swift in Sources */,
@@ -870,6 +845,7 @@
 				E64E1FD21F56A38700D12289 /* AppDelegate.swift in Sources */,
 				E64E209C1F5D603200D12289 /* DefaultCalendar.swift in Sources */,
 				E64E209E1F5D646B00D12289 /* TestingViewController.swift in Sources */,
+				E6579A091F6DB31300136A55 /* ShowDayTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

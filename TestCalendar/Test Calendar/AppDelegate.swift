@@ -18,8 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UIApplication.shared.isStatusBarHidden = false
         
-        
-        
         let config = Realm.Configuration(
             // 新しいスキーマバージョンを設定します。以前のバージョンより大きくなければなりません。
             // （スキーマバージョンを設定したことがなければ、最初は0が設定されています）
@@ -45,75 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 自動的にマイグレーションが実行されます
         let realm = try! Realm() 
 
-//        autoreleasepool {
-//            // all Realm usage here
-//        }
-//        let realmURL = Realm.Configuration.defaultConfiguration.fileURL!
-//        let realmURLs = [
-//            realmURL,
-//            realmURL.appendingPathExtension("lock"),
-//            realmURL.appendingPathExtension("note"),
-//            realmURL.appendingPathExtension("management")
-//        ]
-//        let manager = FileManager.default
-//        for URL in realmURLs {
-//            do {
-//                try FileManager.default.removeItem(at: URL)
-//            } catch {
-//                // handle error
-//            }
-//        }
-//
-        
-        // Inside your application(application:didFinishLaunchingWithOptions:)
-//        
-//            let config = Realm.Configuration(
-//                // Set the new schema version. This must be greater than the previously used
-//                // version (if you've never set a schema version before, the version is 0).
-//                schemaVersion: 1,
-//                
-//                // Set the block which will be called automatically when opening a Realm with
-//                // a schema version lower than the one set above
-//                migrationBlock: { migration, oldSchemaVersion in
-//                    // We haven’t migrated anything yet, so oldSchemaVersion == 0
-//                    if (oldSchemaVersion < 1) {
-//                        
-//                        
-//                        migration.enumerateObjects(ofType: Test.className()) { oldObject, newObject in
-//                            // No-op.
-//                            // dynamic properties are defaulting the new column to true
-//                            // but the migration block is still needed
-//                        }
-//                        migration.enumerateObjects(ofType: Study.className()) { oldObject, newObject in
-//                            // No-op.
-//                            // dynamic properties are defaulting the new column to true
-//                            // but the migration block is still needed
-//                        }
-//                        migration.enumerateObjects(ofType: Test.className()) { oldObject, newObject in
-//                            // No-op.
-//                            // dynamic properties are defaulting the new column to true
-//                            // but the migration block is still needed
-//                        }
-//                    }else {
-//                       
-//                    }
-//            })
-//            
-//            // Tell Realm to use this new configuration object for the default Realm
-//            Realm.Configuration.defaultConfiguration = config
-//        
-//            // Now that we've told Realm how to handle the schema change, opening the file
-//            // will automatically perform the migration
-//            do {
-//                _ = try Realm()
-//            } catch let _ as NSError {
-//                // print error
-//            }
-//            
-//            
-//            return true
-//            
-        
         return true
     }
 
