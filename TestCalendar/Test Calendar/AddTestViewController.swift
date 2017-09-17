@@ -75,27 +75,25 @@ extension AddTestViewController: UITableViewDelegate, UITableViewDataSource{
     {
         var cell: UITableViewCell?
         var cellID: String!
-
-        let type: CellType
         
-        switch type {
-        case .subject :
+        switch indexPath.row {
+        case 0 :
             cellID = subjectCellID
-        case .select :
+        case 1 :
             cellID = subjectCellID
-        case .color :
+        case 2 :
             cellID = colorCellID
-        case .notification :
+        case 3 :
             cellID = notificationCellID
-        case .study :
+        case 4 :
             cellID = studyCellID
-        case .studyPicker :
-            cellID = studyPickerCellID
-        case .start :
+//        case 5 :
+//            cellID = studyPickerCellID
+        case 5 :
             cellID = startCellID
-        case .startPicker :
-            cellID = startPickerCellID
-        
+//        case .startPicker :
+//            cellID = startPickerCellID
+        default : break
         }
             
             
@@ -138,19 +136,19 @@ extension AddTestViewController: UITableViewDelegate, UITableViewDataSource{
             modelRow -= 1
         }
         
-        let itemData = dataArray[modelRow]
+   //     let itemData = dataArray[modelRow]
         
-        if cellID == startCellID {
+      //  if cellID == startCellID {
             // we have either start or end date cells, populate their date field
             //
-            cell?.textLabel?.text = itemData[kTitleKey] as? String
-            cell?.detailTextLabel?.text = self.dateFormatter.string(from: itemData[kDateKey] as! Date)
-        } else cellID == kOtherCellID {
-            // this cell is a non-date cell, just assign it's text label
-            //
-            cell?.textLabel?.text = itemData[kTitleKey] as? String
-        }
-        
+//            cell?.textLabel?.text = itemData[kTitleKey] as? String
+//            cell?.detailTextLabel?.text = self.dateFormatter.string(from: itemData[kDateKey] as! Date)
+//        } else cellID == kOtherCellID {
+//            // this cell is a non-date cell, just assign it's text label
+//            //
+//            cell?.textLabel?.text = itemData[kTitleKey] as? String
+//        }
+//        
         return cell!
         
     }
@@ -194,10 +192,10 @@ extension AddTestViewController{
     
     func indexPathHasDate(_ indexPath: IndexPath) -> Bool {
         var hasDate = false
-        
-        if (indexPath.row == kDateStartRow) || (indexPath.row == kDateEndRow || (hasInlineDatePicker() && (indexPath.row == kDateEndRow + 1))) {
-            hasDate = true
-        }
+//        
+//        if (indexPath.row == kDateStartRow) || (indexPath.row == kDateEndRow || (hasInlineDatePicker() && (indexPath.row == kDateEndRow + 1))) {
+//            hasDate = true
+    //    }
         return hasDate
     }
 
