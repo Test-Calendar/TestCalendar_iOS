@@ -11,8 +11,8 @@ import EventKit
 import RealmSwift
 
 class CalendarModel{
-    static let sharedInstance = CalendarModel()
     
+    static let sharedInstance = CalendarModel()
     static let realm = try! Realm()
     
     var tasks = [Task]()
