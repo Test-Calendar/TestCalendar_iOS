@@ -10,9 +10,25 @@ import UIKit
 
 class SetTimeViewController: UIViewController {
 
+    
+    @IBOutlet weak var watch: WatchView!
+    
+    @IBOutlet weak var amButton: WatchButton!
+    @IBOutlet weak var pmButton: WatchButton!
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func changeToAM(_ sender: Any) {
+        watch.changeAmPm()
+        changeWatchButtonType(am: amButton, pm: pmButton, type: .am)
+    }
+    
+    @IBAction func changeToPM(_ sender: Any) {
+        watch.changeAmPm()
+        changeWatchButtonType(am: amButton, pm: pmButton, type: .pm)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
