@@ -45,6 +45,7 @@
 		E6579A091F6DB31300136A55 /* ShowDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6579A081F6DB31300136A55 /* ShowDayTableViewCell.swift */; };
 		E6579A0B1F6DBA7800136A55 /* WatchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6579A0A1F6DBA7800136A55 /* WatchButton.swift */; };
 		E6579A161F756B6400136A55 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6579A151F756B6400136A55 /* Button.swift */; };
+		E6579A1E1F76C3B900136A55 /* Schedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6579A1D1F76C3B900136A55 /* Schedules.swift */; };
 		E6EAB4A71F66B22F004F45A9 /* WatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EAB4A61F66B22F004F45A9 /* WatchView.swift */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +117,7 @@
 		E6579A0A1F6DBA7800136A55 /* WatchButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchButton.swift; sourceTree = "<group>"; };
 		E6579A121F70420900136A55 /* Test Calendar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Test Calendar.entitlements"; sourceTree = "<group>"; };
 		E6579A151F756B6400136A55 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		E6579A1D1F76C3B900136A55 /* Schedules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedules.swift; sourceTree = "<group>"; };
 		E6EAB4A61F66B22F004F45A9 /* WatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchView.swift; sourceTree = "<group>"; };
 		FBB319E5C383253FC2A354F6 /* Pods-Test CalendarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test CalendarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Test CalendarTests/Pods-Test CalendarTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -497,6 +499,7 @@
 				E64E208B1F59469200D12289 /* CalendarView.swift */,
 				E64E20971F59D92E00D12289 /* CalendarView.xib */,
 				E6579A151F756B6400136A55 /* Button.swift */,
+				E6579A1D1F76C3B900136A55 /* Schedules.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -844,6 +847,7 @@
 				E64E20901F59572A00D12289 /* Color.swift in Sources */,
 				E6579A071F6BE6CC00136A55 /* DateFormatter.swift in Sources */,
 				E64E20551F58084B00D12289 /* SettingViewController.swift in Sources */,
+				E6579A1E1F76C3B900136A55 /* Schedules.swift in Sources */,
 				E64E207B1F5810F500D12289 /* HomeViewController.swift in Sources */,
 				E64E20531F58082E00D12289 /* SelectCalendarViewController.swift in Sources */,
 				E6579A161F756B6400136A55 /* Button.swift in Sources */,

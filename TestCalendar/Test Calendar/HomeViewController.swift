@@ -72,9 +72,7 @@ class HomeViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        showTasks()
-        showTests()
-        showStudies()
+        showSchedules(calendar: calendar, model: model)
         add.delegate = self
         todo.delegate = self
         test.delegate = self
@@ -143,44 +141,6 @@ extension HomeViewController:AddButtonDelegate, AddSmallDelegate{
 }
 
 
-extension HomeViewController{
-    
-    func showTasks(){
-        var days = [Date]()
-        for task in model.tasks{
-            days.append(task.startTime as Date)
-        }
-        //draw black circle
-        calendar.selectedStyleColor = .red
-        calendar.selectionMode = .multiple(style: .circle)
-        calendar.lineView.height = 0.5
-        calendar.lineView.position = .bottom
-        calendar.select(dates: days)
-        print("show tasks")
-    }
-    
-    
-    func showTests(){
-        for test in model.tests{
-            calendar.selectedStyleColor = getColor(color: test.color)
-            calendar.selectionMode = .single(style: .line)
-            calendar.lineView.height = 0.5
-            calendar.lineView.position = .center
-            calendar.select(date: test.startTime as Date)
-        }
-        print("show tests")
-    }
-    
-    
-    func showStudies(){
-        for study in model.studies{
-            calendar.selectedStyleColor = getColor(color: study.color)
-            calendar.selectionMode = .multiple(style: .background)
-            calendar.select(date: study.startTime as Date)
-        }
-        print("show studies")
-    }
-}
 
 
 
