@@ -116,9 +116,17 @@ extension HomeViewController:AddButtonDelegate, AddSmallDelegate{
     //+
     func tapped(type: Bool) {
         if type == true{
-            
+            add.type = false
+            add.setTitle("x", for: .normal)
+            add.titleLabel?.font = UIFont.systemFont(ofSize: CGFloat(14))
+//            add.titleLabel?.backgroundColor = .white
+            self.view.addSubview(todo)
+            self.view.addSubview(test)
         }else {
-            
+            add.type = true
+            add.setTitle("+", for: .normal)
+            todo.removeFromSuperview()
+            test.removeFromSuperview()
         }
     }
     
