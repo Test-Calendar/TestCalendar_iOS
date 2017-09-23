@@ -17,9 +17,9 @@ func showSchedules(calendar: Koyomi, model: CalendarModel){
             days.append(task.startTime as Date)
         }
         //draw black circle
-        calendar.selectedStyleColor = .red
+        calendar.selectedStyleColor = .black
         calendar.selectionMode = .multiple(style: .circle)
-        calendar.lineView.height = 0.5
+        calendar.lineView.height = 0.2
         calendar.lineView.position = .bottom
         calendar.select(dates: days)
         print("show tasks")

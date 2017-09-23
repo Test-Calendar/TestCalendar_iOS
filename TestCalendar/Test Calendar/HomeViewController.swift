@@ -27,7 +27,8 @@ class HomeViewController: UIViewController{
             calendar.cellSpace = 0.5
             calendar.inset = .zero
             calendar.weekCellHeight = 25
-            calendar.selectionMode = .single(style: .circle)
+//            calendar.selectionMode = .single(style: .circle)
+//            calendar.selectedStyleColor = .blue
             calendar.weeks = ("日", "月", "火", "水", "木", "金", "土")
             calendar.dayPosition = .topLeft
             calendar.calendarDelegate = self
@@ -65,7 +66,7 @@ class HomeViewController: UIViewController{
         test.frame = CGRect(x: self.view.frame.width * 0.79 + 4, y:self.view.frame.height * 0.87 - 70, width: 48, height: 48)
         todo.buttontag = 1
         test.buttontag = 2
-        todo.setTitle("TODO", for: .normal)
+        todo.setTitle("TASK", for: .normal)
         test.setTitle("TEST", for: .normal)
         self.view.addSubview(add)
     }
@@ -93,6 +94,7 @@ extension HomeViewController: KoyomiDelegate{
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
         print(formatter.string(from: date!))
+        self.performSegue(withIdentifier: "toShowDayViewController", sender: date! as NSDate)
         //画面を遷移
     }
     
@@ -132,10 +134,32 @@ extension HomeViewController:AddButtonDelegate, AddSmallDelegate{
     
     //small
     func tapped(tag: Int) {
-        if tag == 1{ //todo
-            //todo 画面遷移
+        if tag == 1{ //task
+            //task 画面遷移
         }else{ //test
             //画面遷移
+        }
+    }
+}
+
+extension HomeViewController{
+    
+//    func segue(){
+//        let storyboard: UIStoryboard =UIStoryboard(name: "ShowDetail", bundle: nil)
+//        let nextView = storyboard.instantiateInitialViewController()
+//        
+//    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toShowDayViewController" {
+//            let storyboard: UIStoryboard = UIStoryboard(name: "AddEvent", bundle: nil)
+//            let next = storyboard.instantiateViewController()
+//            let secondViewController = segue.destination as! ShowDayViewController
+//            secondViewController.date = sender as! NSDate
+        }
+        if segue.identifier == "toAddEventViewController" {
+//            let secondeViewController = segue.destination as! AddEventViewController
+//            secondeViewController.date = sender as! NSDate
         }
     }
 }
