@@ -77,8 +77,8 @@ class AddSmallButton: MDCFloatingButton{
         self.setTitle(name, for: .normal)
         self.sizeToFit()
         self.addTarget(self, action: #selector(AddSmallButton.smallTapped(sender:)), for: .touchUpInside)
-        self.titleLabel?.font = UIFont.systemFont(ofSize: CGFloat(20))
-        self.titleLabel?.textColor = .white
+        self.titleLabel?.adjustsFontSizeToFitWidth = true
+//        self.titleLabel?.frame =
         self.backgroundColor = CalendarColor.black()
     }
     

@@ -65,6 +65,8 @@ class HomeViewController: UIViewController{
         test.frame = CGRect(x: self.view.frame.width * 0.79 + 4, y:self.view.frame.height * 0.87 - 70, width: 48, height: 48)
         todo.buttontag = 1
         test.buttontag = 2
+        todo.setTitle("TODO", for: .normal)
+        test.setTitle("TEST", for: .normal)
         self.view.addSubview(add)
     }
     
