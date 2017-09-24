@@ -12,12 +12,25 @@ import RealmSwift
 
 class CalendarModel{
     
-    static let sharedInstance = CalendarModel()
-    static let realm = try! Realm()
+//    class var sharedInstance: CalendarModel{
+//        struct Static{
+//            static let instance: CalendarModel = CalendarModel()
+//        }
+//        return Static.instance
+//    }
     
+    static let sharedInstance = CalendarModel()
+
+    static let realm = try! Realm()
     var tasks = [Task]()
     var studies = [Study]()
     var tests = [Test]()
+    
+    private init(){
+        self.tasks = getAllTask()
+        self.studies = getAllStudy()
+        self.tests = getAllTest()
+    }
     
     func lastId() -> Int{
         if let event = CalendarModel.realm.objects(Event.self).last{
@@ -27,34 +40,8 @@ class CalendarModel{
         }
     }
     
-    //クエリ
-    func searchTask(predicate: NSPredicate)-> [Task]{
-        return CalendarModel.realm.objects(Task.self).filter(predicate).map{$0}
-    }
-    
-    func searchStudy(predicate: NSPredicate)-> [Study]{
-        return CalendarModel.realm.objects(Study.self).filter(predicate).map{$0}
-    }
-    
-    func searchTest(predicate: NSPredicate)-> [Test]{
-        return CalendarModel.realm.objects(Test.self).filter(predicate).map{$0}
-    }
-    
-    //種別の全てのオブジェクトの取得
-    func getAllTask() -> [Task]{
-        return  CalendarModel.realm.objects(Task.self).map{$0}
-    }
-    
-    func getAllStudy() -> [Study]{
-        return  CalendarModel.realm.objects(Study.self).map{$0}
-    }
-    
-    func getAllTest() -> [Test]{
-        return  CalendarModel.realm.objects(Test.self).map{$0}
-    }
-    
     //新しいオブジェクトの作成
-    func create() ->Task{
+    func create() -> Task{
         let task = Task()
         task.id = self.lastId()
         return task
@@ -71,7 +58,23 @@ class CalendarModel{
         test.id = self.lastId()
         return test
     }
+
+    //クエリ
+    func searchTask(predicate: NSPredicate)-> [Task]{
+        return CalendarModel.realm.objects(Task.self).filter(predicate).map{$0}
+    }
     
+    func searchStudy(predicate: NSPredicate)-> [Study]{
+        return CalendarModel.realm.objects(Study.self).filter(predicate).map{$0}
+    }
+    
+    func searchTest(predicate: NSPredicate)-> [Test]{
+        return CalendarModel.realm.objects(Test.self).filter(predicate).map{$0}
+    }
+    
+    
+    
+
     //１つ保存
     func save(task: Task){
         try! CalendarModel.realm.write {
@@ -109,6 +112,19 @@ class CalendarModel{
             CalendarModel.realm.delete(test)
         }
     }
+}
+
+//種別の全てのオブジェクトの取得
+func getAllTask() -> [Task]{
+    return  CalendarModel.realm.objects(Task.self).map{$0}
+}
+
+func getAllStudy() -> [Study]{
+    return  CalendarModel.realm.objects(Study.self).map{$0}
+}
+
+func getAllTest() -> [Test]{
+    return  CalendarModel.realm.objects(Test.self).map{$0}
 }
 
 enum Genre:Int{

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6F6-3B-djE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="T8y-eI-bGT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -65,24 +65,20 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJa-8Z-FOS" customClass="WatchButton" customModule="Test_Calendar" customModuleProvider="target">
                                         <rect key="frame" x="267" y="269.5" width="44" height="44"/>
-                                        <color key="backgroundColor" red="0.068248678470000004" green="0.97196739909999996" blue="0.43760405969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="44" id="BB6-Xx-MVr"/>
                                             <constraint firstAttribute="width" secondItem="HJa-8Z-FOS" secondAttribute="height" multiplier="1:1" id="mXE-sX-eZo"/>
                                         </constraints>
-                                        <state key="normal" title="PM"/>
                                         <connections>
                                             <action selector="showPm:" destination="T8y-eI-bGT" eventType="touchUpInside" id="ZIS-wK-f36"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2eR-dC-9SP" customClass="WatchButton" customModule="Test_Calendar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="269.5" width="44" height="44"/>
-                                        <color key="backgroundColor" red="0.068248678470000004" green="0.97196739909999996" blue="0.43760405969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="2eR-dC-9SP" secondAttribute="height" multiplier="1:1" id="7Nx-RF-e7l"/>
                                             <constraint firstAttribute="width" constant="44" id="bEk-H5-mhY"/>
                                         </constraints>
-                                        <state key="normal" title="AM"/>
                                         <connections>
                                             <action selector="showAm:" destination="T8y-eI-bGT" eventType="touchUpInside" id="Jvv-O9-qSP"/>
                                         </connections>
