@@ -10,6 +10,7 @@
 import UIKit
 
 
+/// WatchViewを切り替えるButton
 class WatchButton: UIButton {
     
     override init(frame: CGRect) {
@@ -24,24 +25,32 @@ class WatchButton: UIButton {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-//        fatalError("init(coder:) has not been implemented")
+        fatalError("init(coder:) has not been implemented")
     }
 }
 
 
+
+
+/// AMボタンとPMボタンとの見た目を同時に切り替える
+///
+/// - Parameters:
+///   - am: AMボタン
+///   - pm: PMボタン
+///   - type: WatchViewの状態
 func changeWatchButtonType(am: WatchButton , pm: WatchButton, type: watchType){
 
     if type == .am{
-        am.titleLabel?.textColor = WatchButtonColor.enabled()
+        am.setTitleColor(WatchButtonColor.enabled(), for: .normal)
         am.backgroundColor = WatchButtonColor.selected()
         
-        pm.titleLabel?.textColor = WatchButtonColor.selected()
+        pm.setTitleColor(WatchButtonColor.selected() , for: .normal)
         pm.backgroundColor = WatchButtonColor.enabled()
     }else {
-        am.titleLabel?.textColor = WatchButtonColor.selected()
+        am.setTitleColor(WatchButtonColor.selected(), for: .normal)
         am.backgroundColor = WatchButtonColor.enabled()
         
-        pm.titleLabel?.textColor = WatchButtonColor.enabled()
+        pm.setTitleColor(WatchButtonColor.enabled(), for: .normal)
         pm.backgroundColor = WatchButtonColor.selected()
     }
 }
