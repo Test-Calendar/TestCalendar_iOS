@@ -15,17 +15,23 @@ class WatchButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+
+    /// Butttonの初期設定
+    func commonInit(){
         let width = self.frame.width
         let height = width
         self.frame = CGRect(x: 0, y: 0, width: width, height: height)
         self.layer.cornerRadius = width/2
         self.layer.masksToBounds = true
         self.titleLabel?.textAlignment = .center
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        fatalError("init(coder:) has not been implemented")
+
     }
 }
 
