@@ -59,6 +59,10 @@ class ShowDayViewController: UIViewController {
         changeWatchButtonType(am: amButton, pm: pmButton, type: .pm)
     }
     
+    @IBAction func dismiss(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     override func loadView() {
         super.loadView()
