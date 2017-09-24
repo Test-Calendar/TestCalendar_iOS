@@ -57,12 +57,17 @@ class ShowDayViewController: UIViewController {
     
     
     override func loadView() {
+        super.loadView()
+        amButton.titleLabel?.text = "AM"
+        pmButton.titleLabel?.text = "PM"
+        changeWatchButtonType(am: amButton, pm: pmButton, type: .pm)
         self.view.addSubview(statusBar())
         dateLabel.text = showDate(date: date)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 
     override func didReceiveMemoryWarning() {
