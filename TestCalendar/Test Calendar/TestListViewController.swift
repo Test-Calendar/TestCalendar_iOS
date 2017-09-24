@@ -12,6 +12,7 @@ class TestListViewController: UIViewController {
     @IBOutlet weak var testListTitle: UILabel!
     @IBOutlet weak var testListView: UITableView!
     @IBOutlet weak var testListCell: UITableViewCell!
+    @IBOutlet weak var addCell: UITableViewCell!
     @IBOutlet weak var ListCellBack: UIView!
     
     var names = ["ataso","sazae", "mauso"]
@@ -58,5 +59,15 @@ extension TestListViewController: UITableViewDataSource,UITableViewDelegate{
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1{
+//            self.performSegue(withIdentifier: "AddTestView", sender: section())
+            let storyboard: UIStoryboard = self.storyboard!
+            let nextView = storyboard.instantiateViewController(withIdentifier: "nextView")
+            present(nextView, animated: true, completion: nil)
+        }
+    }
+
     
 }
