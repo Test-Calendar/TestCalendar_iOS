@@ -27,8 +27,6 @@ class HomeViewController: UIViewController{
             calendar.cellSpace = 0.5
             calendar.inset = .zero
             calendar.weekCellHeight = 25
-//            calendar.selectionMode = .single(style: .circle)
-//            calendar.selectedStyleColor = .blue
             calendar.weeks = ("日", "月", "火", "水", "木", "金", "土")
             calendar.dayPosition = .topLeft
             calendar.calendarDelegate = self
@@ -94,7 +92,12 @@ extension HomeViewController: KoyomiDelegate{
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd"
         print(formatter.string(from: date!))
-        self.performSegue(withIdentifier: "toShowDayViewController", sender: date! as NSDate)
+        let storyboard: UIStoryboard = UIStoryboard(name: "ShowDetail", bundle: nil)
+        let initalViewController = storyboard.instantiateInitialViewController()
+        let viewController = ShowDayViewController()
+        viewController.date = date! as NSDate
+        present(initalViewController!, animated: true, completion: nil)
+//        self.performSegue(withIdentifier: "toShowDayViewController", sender: date! as NSDate)
         //画面を遷移
     }
     
@@ -115,7 +118,7 @@ extension HomeViewController: KoyomiDelegate{
 
 extension HomeViewController:AddButtonDelegate, AddSmallDelegate{
     
-    //+
+
     func tapped(type: Bool) {
         if type == true{
             add.type = false
