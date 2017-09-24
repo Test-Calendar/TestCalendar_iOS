@@ -31,7 +31,6 @@ class WatchButton: UIButton {
         self.layer.cornerRadius = width/2
         self.layer.masksToBounds = true
         self.titleLabel?.textAlignment = .center
-
     }
 }
 
