@@ -88,17 +88,17 @@ class HomeViewController: UIViewController{
 extension HomeViewController: KoyomiDelegate{
     
     func koyomi(_ koyomi: Koyomi, didSelect date: Date?, forItemAt indexPath: IndexPath) {
-        print("このセルが選択されました")
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
-        print(formatter.string(from: date!))
-        let storyboard: UIStoryboard = UIStoryboard(name: "ShowDetail", bundle: nil)
-        let initalViewController = storyboard.instantiateInitialViewController()
-        let viewController = ShowDayViewController()
-        viewController.date = date! as NSDate
-        present(initalViewController!, animated: true, completion: nil)
-//        self.performSegue(withIdentifier: "toShowDayViewController", sender: date! as NSDate)
-        //画面を遷移
+//        print("このセルが選択されました")
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "yyyy/MM/dd"
+//        print(formatter.string(from: date!))
+        guard let next = UIStoryboard(name: "ShowDetail", bundle: nil).instantiateInitialViewController() as? ShowDayViewController else {
+            print("Could not instantiate view controller with identifier of type SecondViewController")
+            return
+        }
+        next.date = date! as NSDate
+        self.navigationController?.pushViewController(next, animated: true)
+        self.showDetailViewController(next, sender: nil)
     }
     
     func koyomi(_ koyomi: Koyomi, currentDateString dateString: String) {
@@ -118,13 +118,14 @@ extension HomeViewController: KoyomiDelegate{
 
 extension HomeViewController:AddButtonDelegate, AddSmallDelegate{
     
-
+    /// 「+」ボタンが押された時に呼ばれる関数
+    ///
+    /// - Parameter type: ボタンの状態(true: +, false: x)
     func tapped(type: Bool) {
         if type == true{
             add.type = false
             add.setTitle("x", for: .normal)
             add.titleLabel?.font = UIFont.systemFont(ofSize: CGFloat(14))
-//            add.titleLabel?.backgroundColor = .white
             self.view.addSubview(todo)
             self.view.addSubview(test)
         }else {
@@ -135,12 +136,19 @@ extension HomeViewController:AddButtonDelegate, AddSmallDelegate{
         }
     }
     
-    //small
+    
+    /// 「テスト」、「TODO」ボタンが押されたに呼ばれる関数
+    ///
+    /// - Parameter tag: ボタンの種類(1: TODO, 2: テスト)
     func tapped(tag: Int) {
-        if tag == 1{ //task
+        if tag == 1{
             //task 画面遷移
-        }else{ //test
+            let storyboard: UIStoryboard = UIStoryboard(name: "AddEvent", bundle: nil)
+            let inital = storyboard.instantiateInitialViewController()
+            self.showDetailViewController(inital!, sender: nil)
+        }else{
             //画面遷移
+            
         }
     }
 }

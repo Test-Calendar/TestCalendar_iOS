@@ -36,9 +36,9 @@ class ShowDayViewController: UIViewController {
     @IBAction func showYesterDay(_ sender: Any) {
         date = getYesterDay(date: date)
         dateLabel.text = showDate(date: date)
-        events = loadData(date:date)
+//        events = loadData(date:date)
         watch.reloadInputViews()
-        table.reloadData()
+//        table.reloadData()
     }
     
     @IBAction func showTomorrow(_ sender: Any) {
