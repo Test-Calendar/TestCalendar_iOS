@@ -23,7 +23,17 @@ class WatchButton: UIButton {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        setup()
+//        fatalError("init(coder:) hs not been implemented")
+    }
+    func setup(){
+        let width = self.frame.width
+        let height = width
+        self.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        self.layer.cornerRadius = width/2
+        self.layer.masksToBounds = true
+        self.titleLabel?.textAlignment = .center
     }
 }
 
