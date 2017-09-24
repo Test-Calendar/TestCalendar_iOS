@@ -43,7 +43,7 @@ class WatchButton: UIButton {
 /// - Parameters:
 ///   - am: AMボタン
 ///   - pm: PMボタン
-///   - type: WatchViewの状態
+///   - type: WatchViewの状態:切り替えたい時間帯を入力
 func changeWatchButtonType(am: WatchButton , pm: WatchButton, type: watchType){
 
     if type == .am{

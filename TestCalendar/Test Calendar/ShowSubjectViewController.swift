@@ -61,34 +61,7 @@ class ShowSubjectViewController: UIViewController {
 
 
 
-extension ShowSubjectViewController{
-    
-    func getData(){
-        //データを検索して探す
-        let predicate = NSPredicate(format: "name == %@ AND startTime == %@", "\(event.name)","\(event.start as Date)")
-        model.tasks = model.searchTask(predicate: predicate)
-        model.studies = model.searchStudy(predicate: predicate)
-        model.tests = model.searchTest(predicate: predicate)
-    
-        //データをeventに入れる
-        event.notification = model.tasks[0].notification
-        event.notification = model.studies[0].notification
-        event.notification = model.tests[0].notification
-    }
-    
-    func setData(){
-        subjectLabel.text = event.name
-        time.text = showTime(start: event.start, end: event.end)
-        //通知の更新
-        collection.reloadData()
-        watch.addSchedule(events: [WatchEvent(color: getColor(color: event.color), start: event.start, end: event.end)])
-    }
-}
-
-
-
-
-
+// MARK: - UICollectionViewDelegate,UICollectionViewDataSource
 extension ShowSubjectViewController: UICollectionViewDelegate,UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -120,5 +93,30 @@ extension ShowSubjectViewController: UICollectionViewDelegate,UICollectionViewDa
         view.clipsToBounds = true
         cell.addSubview(view)
         return cell
+    }
+}
+
+
+extension ShowSubjectViewController{
+    
+    func getData(){
+        //データを検索して探す
+        let predicate = NSPredicate(format: "name == %@ AND startTime == %@", "\(event.name)","\(event.start as Date)")
+        model.tasks = model.searchTask(predicate: predicate)
+        model.studies = model.searchStudy(predicate: predicate)
+        model.tests = model.searchTest(predicate: predicate)
+        
+        //データをeventに入れる
+        event.notification = model.tasks[0].notification
+        event.notification = model.studies[0].notification
+        event.notification = model.tests[0].notification
+    }
+    
+    func setData(){
+        subjectLabel.text = event.name
+        time.text = showTime(start: event.start, end: event.end)
+        //通知の更新
+        collection.reloadData()
+        watch.addSchedule(events: [WatchEvent(color: getColor(color: event.color), start: event.start, end: event.end)])
     }
 }

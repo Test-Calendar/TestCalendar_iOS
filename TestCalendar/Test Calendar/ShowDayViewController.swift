@@ -11,7 +11,7 @@ import UIKit
 
 
 
-/// 1日のデータの構造体
+/// 1日表示に利用するデータの構造体
 struct oneDayEvent{
     var name: String
     var start: NSDate
