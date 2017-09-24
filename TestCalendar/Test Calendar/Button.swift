@@ -11,14 +11,13 @@ import MaterialComponents
 import UIKit
 
 
-/*
- * 「+」ボタンクラス
- */
 
+/// 「+」ボタンが押された時のコールバック関数
 protocol AddButtonDelegate {
     func tapped(type: Bool) //call when button tapped
 }
 
+/// 「+」ボタン
 class AddButton: MDCFloatingButton{
     
     var type = true
@@ -30,7 +29,8 @@ class AddButton: MDCFloatingButton{
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        setup()
     }
     
     internal func setup(){
@@ -42,6 +42,9 @@ class AddButton: MDCFloatingButton{
         self.backgroundColor = CalendarColor.black()
     }
     
+    /// ボタンが押された時の関数
+    ///
+    /// - Parameter sender: Anything is ok 
     func tapped(sender: Any){
         self.delegate?.tapped(type: type)
     }
@@ -49,15 +52,15 @@ class AddButton: MDCFloatingButton{
 
 
 
-/*
- * todo, testのボタンクラス
- */
 
+
+/// テスト、TODOが押された時のコールバック関数
 protocol AddSmallDelegate {
     func tapped(tag: Int) //call when button tapped
 }
 
 
+/// テスト、TODOボタン
 class AddSmallButton: MDCFloatingButton{
     
     var buttontag = Int()
@@ -70,7 +73,8 @@ class AddSmallButton: MDCFloatingButton{
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        setup()
     }
     
     internal func setup(){
@@ -78,10 +82,12 @@ class AddSmallButton: MDCFloatingButton{
         self.sizeToFit()
         self.addTarget(self, action: #selector(AddSmallButton.smallTapped(sender:)), for: .touchUpInside)
         self.titleLabel?.adjustsFontSizeToFitWidth = true
-//        self.titleLabel?.frame =
         self.backgroundColor = CalendarColor.black()
     }
     
+    /// ボタンが押された時に呼ばれる関数
+    ///
+    /// - Parameter sender: Anything is ok
     func smallTapped(sender: Any){
         self.delegate?.tapped(tag: buttontag)
     }
