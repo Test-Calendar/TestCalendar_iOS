@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+/// テストとレポート一覧画面
 class TestListViewController: UIViewController {
     @IBOutlet weak var testListTitle: UILabel!
     @IBOutlet weak var testListView: UITableView!
@@ -38,7 +40,9 @@ class TestListViewController: UIViewController {
     }
 }
 
+
 extension TestListViewController: UITableViewDataSource,UITableViewDelegate{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0{
             return names.count
@@ -56,6 +60,7 @@ extension TestListViewController: UITableViewDataSource,UITableViewDelegate{
         }
         
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }

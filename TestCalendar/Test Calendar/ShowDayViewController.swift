@@ -10,20 +10,18 @@
 import UIKit
 
 
-
 /// 1日表示に利用するデータの構造体
-struct oneDayEvent{
+struct OneDayEvent{
     var name: String
     var start: NSDate
     var end: NSDate
     var color: String
 }
 
-
 class ShowDayViewController: UIViewController {
     
     var date = NSDate()
-    var events = [oneDayEvent]()
+    var events = [OneDayEvent]()
     var model = CalendarModel.sharedInstance
     
     @IBOutlet weak var dateLabel: UILabel!
@@ -45,7 +43,6 @@ class ShowDayViewController: UIViewController {
         date = getTomorrow(date: date)
         dateLabel.text = showDate(date: date)
 //        events = loadData(date: date)
-        print("tomorrow")
 //        table.reloadData()
     }
     
@@ -66,16 +63,15 @@ class ShowDayViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
+        self.view.addSubview(statusBar()) //ステータスバーの表示
+        dateLabel.text = showDate(date: date) //日付の表示
         amButton.setTitle("AM", for: .normal)
         pmButton.setTitle("PM", for: .normal)
         changeWatchButtonType(am: amButton, pm: pmButton, type: .pm)
-        self.view.addSubview(statusBar())
-        dateLabel.text = showDate(date: date)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -84,26 +80,25 @@ class ShowDayViewController: UIViewController {
 }
 
 
-
 // MARK: - UITableViewDelegate, UITableViewDataSource
 extension ShowDayViewController: UITableViewDelegate, UITableViewDataSource {
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ShowDayTableViewCell
-        
+    
         cell.colorView.backgroundColor = getColor(color: events[indexPath.row].color)
         cell.subjectLabel.text = events[indexPath.row].name
         cell.timeLabel.text = showTime(start: events[indexPath.row].start, end: events[indexPath.row].end)
-        
         return cell
     }
 }
+
+
 
 
 
@@ -142,7 +137,7 @@ extension ShowDayViewController{
     ///
     /// - Parameter date: 取得したいデータの日付
     /// - Returns: 取得したデータ時間順に並べたもの
-    func loadData(date: NSDate) -> [oneDayEvent]{
+    func loadData(date: NSDate) -> [OneDayEvent]{
         
         let predicate = NSPredicate(format: "startTime = %@", "\(date)")
         let tasks = model.searchTask(predicate: predicate)
@@ -151,17 +146,17 @@ extension ShowDayViewController{
         
         if tasks.isEmpty == false{
             for i in tasks{
-                events.append(oneDayEvent(name: i.name, start: i.startTime, end: i.endTime, color: "black"))
+                events.append(OneDayEvent(name: i.name, start: i.startTime, end: i.endTime, color: "black"))
             }
         }
         if studies.isEmpty == false{
             for i in studies{
-                events.append(oneDayEvent(name: i.name, start: i.startTime, end: i.endTime, color: i.color))
+                events.append(OneDayEvent(name: i.name, start: i.startTime, end: i.endTime, color: i.color))
             }
         }
         if tests.isEmpty == false{
             for i in model.tests{
-                events.append(oneDayEvent(name: i.name, start: i.startTime, end: i.startTime, color: i.color))
+                events.append(OneDayEvent(name: i.name, start: i.startTime, end: i.startTime, color: i.color))
             }
         }
         

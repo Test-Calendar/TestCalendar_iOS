@@ -166,38 +166,6 @@
             </objects>
             <point key="canvasLocation" x="229" y="550"/>
         </scene>
-        <!--Testing View Controller-->
-        <scene sceneID="ifF-NC-FKO">
-            <objects>
-                <viewController id="4sP-Az-x3k" customClass="TestingViewController" customModule="Test_Calendar" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jWF-F0-FdY"/>
-                        <viewControllerLayoutGuide type="bottom" id="N3y-fA-61I"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="OQx-87-Gfy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07O-QG-RV8">
-                                <rect key="frame" x="56" y="75" width="160" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8e8-eX-h81">
-                                <rect key="frame" x="24" y="356" width="325" height="245"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Wfb-dj-0LB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="306.39999999999998" y="1379.4602698650676"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Setting" width="4" height="24"/>
