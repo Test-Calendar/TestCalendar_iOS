@@ -40,7 +40,6 @@
 		E64E20941F59927900D12289 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64E20931F59927900D12289 /* CalendarViewModel.swift */; };
 		E64E20981F59D92E00D12289 /* CalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E64E20971F59D92E00D12289 /* CalendarView.xib */; };
 		E64E209C1F5D603200D12289 /* DefaultCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64E209B1F5D603200D12289 /* DefaultCalendar.swift */; };
-		E64E209E1F5D646B00D12289 /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64E209D1F5D646B00D12289 /* TestingViewController.swift */; };
 		E6579A071F6BE6CC00136A55 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6579A061F6BE6CC00136A55 /* DateFormatter.swift */; };
 		E6579A091F6DB31300136A55 /* ShowDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6579A081F6DB31300136A55 /* ShowDayTableViewCell.swift */; };
 		E6579A0B1F6DBA7800136A55 /* WatchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6579A0A1F6DBA7800136A55 /* WatchButton.swift */; };
@@ -112,7 +111,6 @@
 		E64E20931F59927900D12289 /* CalendarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		E64E20971F59D92E00D12289 /* CalendarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CalendarView.xib; sourceTree = "<group>"; };
 		E64E209B1F5D603200D12289 /* DefaultCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCalendar.swift; sourceTree = "<group>"; };
-		E64E209D1F5D646B00D12289 /* TestingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
 		E6579A061F6BE6CC00136A55 /* DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		E6579A081F6DB31300136A55 /* ShowDayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDayTableViewCell.swift; sourceTree = "<group>"; };
 		E6579A0A1F6DBA7800136A55 /* WatchButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchButton.swift; sourceTree = "<group>"; };
@@ -490,7 +488,6 @@
 			isa = PBXGroup;
 			children = (
 				E64E207A1F5810F500D12289 /* HomeViewController.swift */,
-				E64E209D1F5D646B00D12289 /* TestingViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -867,7 +864,6 @@
 				E64E20861F5862E300D12289 /* View.swift in Sources */,
 				E64E1FD21F56A38700D12289 /* AppDelegate.swift in Sources */,
 				E64E209C1F5D603200D12289 /* DefaultCalendar.swift in Sources */,
-				E64E209E1F5D646B00D12289 /* TestingViewController.swift in Sources */,
 				E6579A091F6DB31300136A55 /* ShowDayTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
