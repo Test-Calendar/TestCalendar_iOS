@@ -32,9 +32,31 @@ class CalendarModel{
         self.tests = getAllTest()
     }
     
-    func lastId() -> Int{
-        if let event = CalendarModel.realm.objects(Event.self).last{
+    func lastTaskId() -> Int{
+        if let event = CalendarModel.realm.objects(Task.self).last{
             return event.id + 1
+            print("last id")
+            print(event.id)
+        }else {
+            return 1
+        }
+    }
+    
+    func lastStudyId() -> Int{
+        if let event = CalendarModel.realm.objects(Study.self).last{
+            return event.id + 1
+            print("last id")
+            print(event.id)
+        }else {
+            return 1
+        }
+    }
+    
+    func lastTestId() -> Int{
+        if let event = CalendarModel.realm.objects(Test.self).last{
+            return event.id + 1
+            print("last id")
+            print(event.id)
         }else {
             return 1
         }
@@ -43,19 +65,19 @@ class CalendarModel{
     //新しいオブジェクトの作成
     func createTask() -> Task{
         let task = Task()
-        task.id = self.lastId()
+        task.id = self.lastTaskId()
         return task
     }
     
     func createStudy() -> Study{
         let study = Study()
-        study.id = self.lastId()
+        study.id = self.lastStudyId()
         return study
     }
     
     func createTest() -> Test{
         let test = Test()
-        test.id = self.lastId()
+        test.id = self.lastTestId()
         return test
     }
 
@@ -78,6 +100,7 @@ class CalendarModel{
     //１つ保存
     func save(task: Task){
         try! CalendarModel.realm.write {
+            print(task.id)
             CalendarModel.realm.add(task)
         }
     }

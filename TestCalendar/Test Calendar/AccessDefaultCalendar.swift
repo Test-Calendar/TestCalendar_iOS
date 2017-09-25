@@ -11,12 +11,20 @@ import EventKit
 import UIKit
 
 
-class AccessToCalendar{
+protocol AccessDefaultCalendarDelegate {
+    func showAlart()
+}
+
+
+class AccessDefaultCalendar{
     
     let eventStore = EKEventStore()
+    var delegate: AccessDefaultCalendarDelegate?
     
-    /// iOSカレンダーからデータを取得
+    /// iOSカレンダーから
     func getTasksFromDefaultCalendar(){
+        //アクセスの確認
+        allowAuthorization()
         
         let model = CalendarModel.sharedInstance
         let calendar: NSCalendar = NSCalendar.current as NSCalendar
@@ -33,9 +41,10 @@ class AccessToCalendar{
         predicate = eventStore.predicateForEvents(withStart: yestarday!, end: OneYearFromNow!, calendars: nil)
         
         let events = eventStore.events(matching: predicate)
-        print(events)
+        
         if !events.isEmpty{
             for i in events{
+                print("ここよ＝＝")
                 print(i.title)
                 print(i.startDate)
                 print(i.endDate)
@@ -50,11 +59,14 @@ class AccessToCalendar{
             print("データはありません")
         }
     }
+}
 
-   
-    /// カレンダーへのアクセスを許可しているかどうかを確認する
+
+extension AccessDefaultCalendar{
+    
+    /// カレンダーへのアクセスを確認する
     ///
-    /// - Returns: 許可されていればtrue, されていなければfalse
+    /// - Returns: (許可: true, 許可なし: false)を返す
     func getAuthorization_status() -> Bool {
         let status: EKAuthorizationStatus = EKEventStore.authorizationStatus(for: .event)
         switch status {
@@ -75,29 +87,23 @@ class AccessToCalendar{
             return false
         }
     }
+    
+    
+    /// カレンダーへの許可があるのかを確認する
+    func allowAuthorization(){
+        if getAuthorization_status() {
+            return
+        } else {
+            eventStore.requestAccess(to: .event, completion: {
+                (granted , error) -> Void in
+                if granted {
+                    return
+                }
+                else {
+                    self.delegate?.showAlart()
+                }
+            })
+        }
+    }
 }
 
-
-//初回処理
-// 許可がされいくかどうか確認して、されていなければ許可を求める
-func allowAuthorization(){
-            if getAuthorization_status(self) {
-                return
-            } else {
-                eventStore.requestAccess(to: .event, completion: {
-                    (granted , error) -> Void in
-                    if granted {
-                        return
-                    }
-                    else {
-                        DispatchQueue.main.async(execute: { () -> Void in
-                            let myAlert = UIAlertController(title: "許可されませんでした", message: "Privacy->App->Reminderで変更してください", preferredStyle: UIAlertControllerStyle.alert)
-                            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
-
-                            myAlert.addAction(okAction)
-                            //                        self.presentViewController(myAlert, animated: true, completion: nil)
-                        })
-                    }
-                })
-            }
-}

@@ -75,6 +75,10 @@ class HomeViewController: UIViewController{
         add.delegate = self
         todo.delegate = self
         test.delegate = self
+        let access = AccessDefaultCalendar()
+        access.delegate = self
+        access.getTasksFromDefaultCalendar()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -153,26 +157,22 @@ extension HomeViewController:AddButtonDelegate, AddSmallDelegate{
     }
 }
 
-extension HomeViewController{
+extension HomeViewController: AccessDefaultCalendarDelegate{
     
-//    func segue(){
-//        let storyboard: UIStoryboard =UIStoryboard(name: "ShowDetail", bundle: nil)
-//        let nextView = storyboard.instantiateInitialViewController()
-//        
-//    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toShowDayViewController" {
-//            let storyboard: UIStoryboard = UIStoryboard(name: "AddEvent", bundle: nil)
-//            let next = storyboard.instantiateViewController()
-//            let secondViewController = segue.destination as! ShowDayViewController
-//            secondViewController.date = sender as! NSDate
-        }
-        if segue.identifier == "toAddEventViewController" {
-//            let secondeViewController = segue.destination as! AddEventViewController
-//            secondeViewController.date = sender as! NSDate
-        }
+    /// カレンダーへのアクセスを求める
+    func showAlart() {
+        DispatchQueue.main.async(execute: { () -> Void in
+            let alert = UIAlertController(title: "許可されませんでした", message: "Privacy->App->Reminderで変更してください", preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+            
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        })
     }
+}
+
+
+extension HomeViewController{
 }
 
 
