@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -42,8 +43,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Realmファイルを開こうとしたときスキーマバージョンが異なれば、
         // 自動的にマイグレーションが実行されます
         let realm = try! Realm() 
-
-        getTasksFromDefaultCalendar() //デフォルトのカレンダーから情報を取得
+        
+        
+        //初回のみ許可を得る
+        let userDefault = UserDefaults.standard
+        let dict = ["firstLaunch": true]
+        userDefault.register(defaults: dict)
+        
+        if userDefault.bool(forKey: "firstLaunch"){
+            userDefault.set(false, forKey: "firstLaunch")
+            print("初回起動時だよ")
+        }else {
+            print("初回起動じゃなくても呼ばれるよ")
+        }
+        
+        //通知の許可
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, _) in
+            // got granted :)
+        }
         
         return true
     }

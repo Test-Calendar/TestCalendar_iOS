@@ -46,7 +46,7 @@
 		E6579A0B1F6DBA7800136A55 /* WatchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6579A0A1F6DBA7800136A55 /* WatchButton.swift */; };
 		E6579A161F756B6400136A55 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6579A151F756B6400136A55 /* Button.swift */; };
 		E6579A1E1F76C3B900136A55 /* showSchedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6579A1D1F76C3B900136A55 /* showSchedules.swift */; };
-		E6579A201F781EFF00136A55 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6579A1F1F781EFF00136A55 /* Tasks.swift */; };
+		E6579A201F781EFF00136A55 /* AccessDefaultCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6579A1F1F781EFF00136A55 /* AccessDefaultCalendar.swift */; };
 		E6EAB4A71F66B22F004F45A9 /* WatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EAB4A61F66B22F004F45A9 /* WatchView.swift */; };
 /* End PBXBuildFile section */
 
@@ -119,7 +119,7 @@
 		E6579A121F70420900136A55 /* Test Calendar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Test Calendar.entitlements"; sourceTree = "<group>"; };
 		E6579A151F756B6400136A55 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		E6579A1D1F76C3B900136A55 /* showSchedules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = showSchedules.swift; sourceTree = "<group>"; };
-		E6579A1F1F781EFF00136A55 /* Tasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
+		E6579A1F1F781EFF00136A55 /* AccessDefaultCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessDefaultCalendar.swift; sourceTree = "<group>"; };
 		E6EAB4A61F66B22F004F45A9 /* WatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchView.swift; sourceTree = "<group>"; };
 		FBB319E5C383253FC2A354F6 /* Pods-Test CalendarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test CalendarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Test CalendarTests/Pods-Test CalendarTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -370,7 +370,6 @@
 				E64E20691F580A5900D12289 /* ShowDetail */,
 				E64E20681F580A5300D12289 /* Setting */,
 				E64E206C1F580A9400D12289 /* Entity */,
-				E6579A1F1F781EFF00136A55 /* Tasks.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -403,6 +402,7 @@
 		E64E20631F5809FB00D12289 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				E6579A1F1F781EFF00136A55 /* AccessDefaultCalendar.swift */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -841,7 +841,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6579A201F781EFF00136A55 /* Tasks.swift in Sources */,
+				E6579A201F781EFF00136A55 /* AccessDefaultCalendar.swift in Sources */,
 				E64E20511F58080A00D12289 /* SetTimeViewController.swift in Sources */,
 				E64E20881F5895CA00D12289 /* CalendarModel.swift in Sources */,
 				E64E204B1F5807D100D12289 /* ShowSubjectViewController.swift in Sources */,
@@ -1029,7 +1029,7 @@
 				INFOPLIST_FILE = "Test Calendar/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "TakumiAbe.Test-Calendar";
+				PRODUCT_BUNDLE_IDENTIFIER = TestCalendar.TestCalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
@@ -1048,7 +1048,7 @@
 				INFOPLIST_FILE = "Test Calendar/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "TakumiAbe.Test-Calendar";
+				PRODUCT_BUNDLE_IDENTIFIER = TestCalendar.TestCalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
