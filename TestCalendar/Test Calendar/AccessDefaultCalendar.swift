@@ -24,7 +24,7 @@ class AccessDefaultCalendar{
     /// iOSカレンダーから
     func getTasksFromDefaultCalendar(){
         //アクセスの確認
-        allowAuthorization()
+//        allowAuthorization()
         
         let model = CalendarModel.sharedInstance
         let calendar: NSCalendar = NSCalendar.current as NSCalendar
@@ -48,11 +48,18 @@ class AccessDefaultCalendar{
                 print(i.title)
                 print(i.startDate)
                 print(i.endDate)
-                let task = model.createTask()
-                task.name = i.title
-                task.startTime = i.startDate as NSDate
-                task.endTime = i.endDate as NSDate
-                model.save(task: task)
+                let predicate = NSPredicate(format: "name == %@ AND startTime == %@ ", i.title, i.startDate as CVarArg)
+                let data = model.searchTask(predicate: predicate)
+                if data.isEmpty == true{
+                    print("新しいデータです")
+                    let task = model.createTask()
+                    task.name = i.title
+                    task.startTime = i.startDate as NSDate
+                    task.endTime = i.endDate as NSDate
+                    model.save(task: task)
+                } else {
+                    print("すでにあるデータです")
+                }
             }
             print("データ取得完了")
         }else {
@@ -92,7 +99,7 @@ extension AccessDefaultCalendar{
     /// カレンダーへの許可があるのかを確認する
     func allowAuthorization(){
         if getAuthorization_status() {
-            return
+            getTasksFromDefaultCalendar()
         } else {
             eventStore.requestAccess(to: .event, completion: {
                 (granted , error) -> Void in
@@ -104,6 +111,7 @@ extension AccessDefaultCalendar{
                 }
             })
         }
+        
     }
 }
 

@@ -11,19 +11,23 @@ import Koyomi
 
 
 func showSchedules(calendar: Koyomi, model: CalendarModel){
-    func showTasks(){
-        var days = [Date]()
-        for task in model.tasks{
-            days.append(task.startTime as Date)
+    print("show Scheduleだよ")
+    
+    calendar.selectionMode = .multiple(style: .line)
+    let tasks = model.getAllTask()
+    if tasks.isEmpty == true{
+        print("Taskはないよ")
+    }else {
+        for task in tasks{
+            calendar.selectedStyleColor = .black
+            calendar.lineView.height = 0.3
+            calendar.lineView.position = .bottom
+            calendar.select(date: task.startTime as Date)
+            print("show tasks")
         }
-        //draw black circle
-        calendar.selectedStyleColor = .black
-        calendar.selectionMode = .multiple(style: .circle)
-        calendar.lineView.height = 0.2
-        calendar.lineView.position = .bottom
-        calendar.select(dates: days)
-        print("show tasks")
     }
+    
+    
     
     
     func showTests(){

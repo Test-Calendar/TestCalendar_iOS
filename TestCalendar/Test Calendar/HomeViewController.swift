@@ -29,6 +29,7 @@ class HomeViewController: UIViewController{
             calendar.weekCellHeight = 25
             calendar.weeks = ("日", "月", "火", "水", "木", "金", "土")
             calendar.dayPosition = .topLeft
+            calendar.selectionMode = .multiple(style: .background)
             calendar.calendarDelegate = self
         }
     }
@@ -54,7 +55,7 @@ class HomeViewController: UIViewController{
     var add = AddButton()
     var todo = AddSmallButton()
     var test = AddSmallButton()
-    
+    let access = AccessDefaultCalendar()
     
     override func loadView() {
         super.loadView()
@@ -71,14 +72,15 @@ class HomeViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        showSchedules(calendar: calendar, model: model)
+        
         add.delegate = self
         todo.delegate = self
         test.delegate = self
-        let access = AccessDefaultCalendar()
-        access.delegate = self
-        access.getTasksFromDefaultCalendar()
         
+        access.delegate = self
+        access.allowAuthorization()
+//        access.getTasksFromDefaultCalendar()
+        showSchedules(calendar: calendar, model: model)
     }
     
     override func didReceiveMemoryWarning() {
@@ -167,6 +169,7 @@ extension HomeViewController: AccessDefaultCalendarDelegate{
             
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
+            self.access.allowAuthorization()
         })
     }
 }
