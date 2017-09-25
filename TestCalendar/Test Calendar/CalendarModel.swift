@@ -41,19 +41,19 @@ class CalendarModel{
     }
     
     //新しいオブジェクトの作成
-    func create() -> Task{
+    func createTask() -> Task{
         let task = Task()
         task.id = self.lastId()
         return task
     }
     
-    func create() -> Study{
+    func createStudy() -> Study{
         let study = Study()
         study.id = self.lastId()
         return study
     }
     
-    func create() -> Test{
+    func createTest() -> Test{
         let test = Test()
         test.id = self.lastId()
         return test
@@ -112,20 +112,25 @@ class CalendarModel{
             CalendarModel.realm.delete(test)
         }
     }
+    
+    /// タスクを全て渡す関数
+    ///
+    /// - Returns: Taskの配列
+    func getAllTask() -> [Task]{
+        return  CalendarModel.realm.objects(Task.self).map{$0}
+    }
+    
+    func getAllStudy() -> [Study]{
+        return  CalendarModel.realm.objects(Study.self).map{$0}
+    }
+    
+    func getAllTest() -> [Test]{
+        return  CalendarModel.realm.objects(Test.self).map{$0}
+    }
+
 }
 
 //種別の全てのオブジェクトの取得
-func getAllTask() -> [Task]{
-    return  CalendarModel.realm.objects(Task.self).map{$0}
-}
-
-func getAllStudy() -> [Study]{
-    return  CalendarModel.realm.objects(Study.self).map{$0}
-}
-
-func getAllTest() -> [Test]{
-    return  CalendarModel.realm.objects(Test.self).map{$0}
-}
 
 enum Genre:Int{
     case task, study, test

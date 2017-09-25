@@ -46,5 +46,4 @@ func showSchedules(calendar: Koyomi, model: CalendarModel){
         }
         print("show studies")
     }
-    
 }

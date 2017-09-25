@@ -43,6 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 自動的にマイグレーションが実行されます
         let realm = try! Realm() 
 
+        getTasksFromDefaultCalendar() //デフォルトのカレンダーから情報を取得
+        
         return true
     }
 
