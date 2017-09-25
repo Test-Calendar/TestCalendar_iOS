@@ -29,7 +29,7 @@ class HomeViewController: UIViewController{
             calendar.weekCellHeight = 25
             calendar.weeks = ("日", "月", "火", "水", "木", "金", "土")
             calendar.dayPosition = .topLeft
-            calendar.selectionMode = .multiple(style: .background)
+//            calendar.selectionMode = .multiple(style: .background)
             calendar.calendarDelegate = self
         }
     }
@@ -79,7 +79,6 @@ class HomeViewController: UIViewController{
         
         access.delegate = self
         access.allowAuthorization()
-//        access.getTasksFromDefaultCalendar()
         showSchedules(calendar: calendar, model: model)
     }
     
@@ -94,10 +93,6 @@ class HomeViewController: UIViewController{
 extension HomeViewController: KoyomiDelegate{
     
     func koyomi(_ koyomi: Koyomi, didSelect date: Date?, forItemAt indexPath: IndexPath) {
-//        print("このセルが選択されました")
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "yyyy/MM/dd"
-//        print(formatter.string(from: date!))
         guard let next = UIStoryboard(name: "ShowDetail", bundle: nil).instantiateInitialViewController() as? ShowDayViewController else {
             print("Could not instantiate view controller with identifier of type SecondViewController")
             return
@@ -106,6 +101,7 @@ extension HomeViewController: KoyomiDelegate{
         self.navigationController?.pushViewController(next, animated: true)
         self.showDetailViewController(next, sender: nil)
     }
+    
     
     func koyomi(_ koyomi: Koyomi, currentDateString dateString: String) {
         print(dateString)

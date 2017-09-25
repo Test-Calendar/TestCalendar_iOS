@@ -10,24 +10,28 @@ import Foundation
 import Koyomi
 
 
+/// カレンダーにイベントを丸や線で表示する
+///
+/// - Parameters:
+///   - calendar: 読み込むKoyomi
+///   - model: 利用するデータモデル
 func showSchedules(calendar: Koyomi, model: CalendarModel){
     print("show Scheduleだよ")
     
     calendar.selectionMode = .multiple(style: .line)
+    calendar.selectedStyleColor = .black
+    calendar.lineView.height = 0.3
+    calendar.lineView.position = .bottom
+
     let tasks = model.getAllTask()
-    if tasks.isEmpty == true{
-        print("Taskはないよ")
-    }else {
-        for task in tasks{
-            calendar.selectedStyleColor = .black
-            calendar.lineView.height = 0.3
-            calendar.lineView.position = .bottom
-            calendar.select(date: task.startTime as Date)
-            print("show tasks")
+    var days = [Date]()
+    if tasks.isEmpty == false{
+        for i in tasks{
+            days.append(i.startTime as Date)
         }
+//        calendar.select(dates: days)
     }
-    
-    
+    calendar.select(dates: days)
     
     
     func showTests(){
