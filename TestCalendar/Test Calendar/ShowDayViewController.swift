@@ -64,7 +64,8 @@ class ShowDayViewController: UIViewController {
     override func loadView() {
         super.loadView()
         self.view.addSubview(statusBar()) //ステータスバーの表示
-        dateLabel.text = showDate(date: date) //日付の表示
+        dateLabel.text = showDate(date: date)//日付の表示
+        events = loadData(date: date)
         amButton.setTitle("AM", for: .normal)
         pmButton.setTitle("PM", for: .normal)
         changeWatchButtonType(am: amButton, pm: pmButton, type: .pm)
@@ -139,7 +140,7 @@ extension ShowDayViewController{
     /// - Returns: 取得したデータ時間順に並べたもの
     func loadData(date: NSDate) -> [OneDayEvent]{
         
-        let predicate = NSPredicate(format: "startTime = %@", "\(date)")
+        let predicate = NSPredicate(format: "startTime == %@", date as CVarArg)
         let tasks = model.searchTask(predicate: predicate)
         let studies = model.searchStudy(predicate: predicate)
         let tests = model.searchTest(predicate: predicate)
@@ -159,7 +160,7 @@ extension ShowDayViewController{
                 events.append(OneDayEvent(name: i.name, start: i.startTime, end: i.startTime, color: i.color))
             }
         }
-        
+        print(events)
         events.sort{
             $0.start.timeIntervalSince1970 < $1.start.timeIntervalSince1970
         }
