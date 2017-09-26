@@ -168,10 +168,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AkY-20-mRZ">
                                 <rect key="frame" x="0.0" y="20" width="375" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAX-rH-Xx7">
-                                        <rect key="frame" x="26" y="15" width="31" height="30"/>
-                                        <color key="backgroundColor" red="0.97196739912033081" green="0.11018574075468683" blue="0.08861846414899674" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="batu"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAX-rH-Xx7">
+                                        <rect key="frame" x="26" y="19" width="15" height="22"/>
+                                        <state key="normal" image="close"/>
                                         <connections>
                                             <action selector="backButton:" destination="qdv-t9-Pcw" eventType="touchUpInside" id="mJ8-3L-oRP"/>
                                         </connections>
@@ -231,4 +230,7 @@
             <point key="canvasLocation" x="-48.75" y="-16.901408450704224"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="close" width="15" height="14"/>
+    </resources>
 </document>
