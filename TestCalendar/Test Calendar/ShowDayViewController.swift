@@ -140,8 +140,7 @@ extension ShowDayViewController{
     /// - Returns: 取得したデータ時間順に並べたものを返す
     func loadData(date: NSDate) -> [OneDayEvent]{
         let predicate = NSPredicate(format: "startTime == %@", date as CVarArg)
-        let tasks = model.getAllTask()
-//        let tasks = model.searchTask(predicate: predicate)
+        let tasks = model.searchTask(predicate: predicate)
         print(tasks)
         let studies = model.searchStudy(predicate: predicate)
         let tests = model.searchTest(predicate: predicate)
