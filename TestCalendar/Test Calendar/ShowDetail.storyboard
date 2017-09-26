@@ -232,9 +232,9 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TuJ-cH-CFZ">
-                                        <rect key="frame" x="19" y="7" width="30" height="30"/>
-                                        <color key="backgroundColor" red="0.079796801907318485" green="0.97196739912033081" blue="0.91391244939303329" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TuJ-cH-CFZ">
+                                        <rect key="frame" x="19" y="11" width="15" height="22"/>
+                                        <state key="normal" image="close"/>
                                         <connections>
                                             <action selector="dismiss:" destination="6F6-3B-djE" eventType="touchUpInside" id="OII-5X-3wn"/>
                                         </connections>
@@ -431,39 +431,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x8F-4Y-9Gf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="44" y="-403"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="ukV-Fn-f1p">
-            <objects>
-                <viewController id="kGS-zB-OB1" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="0sO-Ko-A7a"/>
-                        <viewControllerLayoutGuide type="bottom" id="nfb-E5-gU3"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="eJj-ey-GSM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gGv-yZ-GPc">
-                                <rect key="frame" x="37" y="154" width="300" height="300"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ntI-Oj-8M2">
-                                <rect key="frame" x="127" y="49" width="121" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                            </segmentedControl>
-                        </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PS2-Od-rHL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1922.4000000000001" y="403.44827586206901"/>
         </scene>
     </scenes>
     <resources>
