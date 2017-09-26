@@ -107,7 +107,6 @@ extension ShowDayViewController: UITableViewDelegate, UITableViewDataSource {
         }
         next.event.name = events[indexPath.row].name
         next.event.start = events[indexPath.row].start
-//        next.date = date! as NSDate
 //        self.navigationController?.pushViewController(next, animated: true
         self.showDetailViewController(next, sender: nil)
     }
