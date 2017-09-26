@@ -14,6 +14,11 @@ class AddEventViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    override func loadView() {
+        super.loadView()
+        self.view.addSubview(statusBar())
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

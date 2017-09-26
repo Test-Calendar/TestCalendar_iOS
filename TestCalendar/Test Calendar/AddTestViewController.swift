@@ -31,6 +31,7 @@ class AddTestViewController: UIViewController{
     
     override func loadView() {
         super.loadView()
+        self.view.addSubview(statusBar())
         setButton()
     }
     
@@ -46,13 +47,11 @@ class AddTestViewController: UIViewController{
     }
     
     
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 //
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        // Do any additional setup after loading the view.
-//    }
-//    
 //    
 //    override func didReceiveMemoryWarning() {
 //        super.didReceiveMemoryWarning()

@@ -42,6 +42,7 @@ class SettingViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
+        self.view.addSubview(statusBar())
         setButton()
     }
     

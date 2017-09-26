@@ -10,6 +10,11 @@ import UIKit
 import MaterialComponents
 
 class SelectCalendarViewController: UIViewController {
+    
+    override func loadView() {
+        super.loadView()
+        self.view.addSubview(statusBar())
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
