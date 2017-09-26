@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="GNh-Mu-yVB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q3j-ih-rhX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,7 +12,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Test List View Controller-->
+        <!--テスト又はレポートを追加-->
         <scene sceneID="Ex1-zO-r3G">
             <objects>
                 <viewController id="GNh-Mu-yVB" customClass="TestListViewController" customModule="Test_Calendar" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,40 +24,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MGi-ar-QRV">
-                                <rect key="frame" x="0.0" y="20" width="375" height="60"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="テスト又はレポートを追加" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vp-yy-T7f">
-                                        <rect key="frame" x="83" y="19" width="210" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="210" id="Ad8-1o-u8l"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Eu-RI-N3H">
-                                        <rect key="frame" x="19.5" y="19" width="22" height="22"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="4Eu-RI-N3H" secondAttribute="height" multiplier="1:1" id="FIA-gZ-sAl"/>
-                                        </constraints>
-                                        <state key="normal" image="close"/>
-                                        <connections>
-                                            <action selector="backButton:" destination="GNh-Mu-yVB" eventType="touchUpInside" id="Y8r-ae-ztd"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="9Vp-yy-T7f" firstAttribute="centerY" secondItem="MGi-ar-QRV" secondAttribute="centerY" id="A5Q-xd-ibo"/>
-                                    <constraint firstAttribute="height" constant="60" id="HzG-G8-6mM"/>
-                                    <constraint firstItem="9Vp-yy-T7f" firstAttribute="centerX" secondItem="MGi-ar-QRV" secondAttribute="centerX" id="KE9-dE-hLf"/>
-                                    <constraint firstItem="4Eu-RI-N3H" firstAttribute="leading" secondItem="MGi-ar-QRV" secondAttribute="leading" constant="19.5" id="XBP-9e-OdN"/>
-                                    <constraint firstItem="4Eu-RI-N3H" firstAttribute="centerY" secondItem="MGi-ar-QRV" secondAttribute="centerY" id="lXR-vR-IfV"/>
-                                </constraints>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="111" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oxy-BG-YRZ">
-                                <rect key="frame" x="15" y="102" width="345" height="487"/>
+                                <rect key="frame" x="15" y="91" width="345" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="111" id="Rsj-DT-8Qa">
@@ -189,6 +157,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="0.26048644360000001" blue="0.080657623440000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <segue destination="T6i-wp-jlI" kind="showDetail" trigger="accessoryAction" id="uu8-gA-Bac"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -199,29 +170,26 @@
                         </subviews>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="MGi-ar-QRV" secondAttribute="trailing" id="4Pr-CY-I63"/>
                             <constraint firstItem="oxy-BG-YRZ" firstAttribute="height" secondItem="V2v-6E-5Bf" secondAttribute="height" multiplier="0.73" id="6ic-7Q-BoB"/>
-                            <constraint firstItem="MGi-ar-QRV" firstAttribute="leading" secondItem="V2v-6E-5Bf" secondAttribute="leading" id="8Y1-4c-Rcx"/>
-                            <constraint firstItem="oxy-BG-YRZ" firstAttribute="top" secondItem="MGi-ar-QRV" secondAttribute="bottom" constant="22" id="f2F-rb-iS6"/>
-                            <constraint firstItem="MGi-ar-QRV" firstAttribute="top" secondItem="6nd-Ri-vUS" secondAttribute="bottom" id="gcC-NK-O3m"/>
+                            <constraint firstItem="oxy-BG-YRZ" firstAttribute="top" secondItem="6nd-Ri-vUS" secondAttribute="bottom" constant="27" id="O1R-a6-Ruj"/>
                             <constraint firstItem="oxy-BG-YRZ" firstAttribute="centerX" secondItem="V2v-6E-5Bf" secondAttribute="centerX" id="tT0-2F-FV9"/>
                             <constraint firstItem="oxy-BG-YRZ" firstAttribute="width" secondItem="V2v-6E-5Bf" secondAttribute="width" multiplier="0.92" id="vf5-Gc-eaD"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="テスト又はレポートを追加" id="w4Q-n1-5CG"/>
                     <connections>
-                        <outlet property="testListTitle" destination="9Vp-yy-T7f" id="enE-QV-Oj4"/>
+                        <outlet property="navigationBar" destination="w4Q-n1-5CG" id="6eZ-Oi-0t0"/>
                         <outlet property="testListView" destination="oxy-BG-YRZ" id="03F-n6-xpk"/>
-                        <segue destination="Q3j-ih-rhX" kind="push" id="ihT-49-Jbn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o5C-xw-upa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1586" y="170"/>
+            <point key="canvasLocation" x="-953" y="170"/>
         </scene>
         <!--テストまたはレポートの追加-->
         <scene sceneID="2YP-fR-ebc">
             <objects>
-                <viewController id="T6i-wp-jlI" customClass="AddTestViewController" customModule="Test_Calendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="nextView" id="T6i-wp-jlI" customClass="AddTestViewController" customModule="Test_Calendar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ypl-qU-Odk"/>
                         <viewControllerLayoutGuide type="bottom" id="fzB-2n-zNZ"/>
@@ -794,15 +762,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="T6i-wp-jlI" kind="relationship" relationship="rootViewController" id="Vq5-zs-9NH"/>
+                        <segue destination="GNh-Mu-yVB" kind="relationship" relationship="rootViewController" id="iIG-bR-rcu"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ilZ-HM-zi9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-815" y="170"/>
+            <point key="canvasLocation" x="-2042" y="170"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="close" width="15" height="14"/>
-    </resources>
 </document>

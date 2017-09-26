@@ -16,12 +16,14 @@ class TestListViewController: UIViewController {
     @IBOutlet weak var testListCell: UITableViewCell!
     @IBOutlet weak var addCell: UITableViewCell!
     @IBOutlet weak var ListCellBack: UIView!
+    @IBOutlet weak var navigationBar: UINavigationItem!
     
     var names = ["ataso","sazae", "mauso"]
 
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
     
     override func loadView() {
         super.loadView()
@@ -30,6 +32,13 @@ class TestListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationBar.titleView?.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 64)
+//        self.preferredContentSize
+        let leftCloseButton:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: Selector(("closeThisPage")))
+        let rightCloseButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: Selector(("addNewTest")))
+        self.navigationItem.setLeftBarButton(leftCloseButton, animated: true)
+        self.navigationItem.setRightBarButton(rightCloseButton, animated: true)
+        
 
         // Do any additional setup after loading the view.
     }
@@ -67,10 +76,10 @@ extension TestListViewController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1{
-//            self.performSegue(withIdentifier: "AddTestView", sender: section())
-            let storyboard: UIStoryboard = self.storyboard!
-            let nextView = storyboard.instantiateViewController(withIdentifier: "nextView")
-            present(nextView, animated: true, completion: nil)
+////            self.performSegue(withIdentifier: "AddTestView", sender: section())
+//            let storyboard: UIStoryboard = self.storyboard!
+//            let nextView = storyboard.instantiateViewController(withIdentifier: "nextView")
+//            present(nextView, animated: true, completion: nil)
         }
     }
 
