@@ -95,7 +95,21 @@ extension ShowDayViewController: UITableViewDelegate, UITableViewDataSource {
         cell.colorView.backgroundColor = getColor(color: events[indexPath.row].color)
         cell.subjectLabel.text = events[indexPath.row].name
         cell.timeLabel.text = showTime(start: events[indexPath.row].start, end: events[indexPath.row].end)
+        cell.colorView.backgroundColor = getColor(color: events[indexPath.row].color)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //画面遷移
+        guard let next = UIStoryboard(name: "ShowDetail", bundle: nil).instantiateInitialViewController() as? ShowSubjectViewController else {
+            print("Could not instantiate view controller with identifier of type SecondViewController")
+            return
+        }
+        next.event.name = events[indexPath.row].name
+        next.event.start = events[indexPath.row].start
+//        next.date = date! as NSDate
+//        self.navigationController?.pushViewController(next, animated: true
+        self.showDetailViewController(next, sender: nil)
     }
 }
 
