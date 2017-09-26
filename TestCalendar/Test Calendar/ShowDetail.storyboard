@@ -36,9 +36,13 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rya-je-mW3">
-                                        <rect key="frame" x="24" y="15" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rya-je-mW3">
+                                        <rect key="frame" x="24" y="19" width="22" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="rya-je-mW3" secondAttribute="height" multiplier="22:22" id="5q9-z1-ixM"/>
+                                            <constraint firstAttribute="height" constant="22" id="tts-pQ-xQd"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="close"/>
                                         <connections>
                                             <action selector="dismiss:" destination="T8y-eI-bGT" eventType="touchUpInside" id="Ffx-ci-7WC"/>
                                         </connections>
@@ -462,4 +466,7 @@
             <point key="canvasLocation" x="-1922.4000000000001" y="403.44827586206901"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="close" width="15" height="14"/>
+    </resources>
 </document>

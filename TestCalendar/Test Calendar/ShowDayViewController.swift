@@ -137,9 +137,9 @@ extension ShowDayViewController{
     /// 表示に用いるデータの取得
     ///
     /// - Parameter date: 取得したいデータの日付
-    /// - Returns: 取得したデータ時間順に並べたもの
+    /// - Returns: 取得したデータ時間順に並べたものを返す
     func loadData(date: NSDate) -> [OneDayEvent]{
-        let predicate = NSPredicate(format: "startTime == %@", date )
+        let predicate = NSPredicate(format: "startTime == %@", date as CVarArg)
         let tasks = model.searchTask(predicate: predicate)
         print(tasks)
         let studies = model.searchStudy(predicate: predicate)
