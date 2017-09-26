@@ -34,7 +34,7 @@ class TestListViewController: UIViewController {
         super.viewDidLoad()
         navigationBar.titleView?.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 64)
 //        self.preferredContentSize
-        let leftCloseButton:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: Selector(("closeThisPage")))
+        let leftCloseButton:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(TestListViewController.closeThisPage))
         let rightCloseButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: Selector(("addNewTest")))
         self.navigationItem.setLeftBarButton(leftCloseButton, animated: true)
         self.navigationItem.setRightBarButton(rightCloseButton, animated: true)
@@ -47,41 +47,46 @@ class TestListViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let nextViewController  = (segue.destination as! AddTestViewController)
+//        AddTestViewController.someting = ??  ここで次の画面に値を渡す
+        
+    }
 }
 
 
+// MARK: - UITableViewDataSource,UITableViewDelegate
 extension TestListViewController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0{
-            return names.count
-        }else {
-            return 1
-        }
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            return cell
-        }else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "add", for: indexPath)
-            return cell
-        }
+        return names.count
         
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1{
-////            self.performSegue(withIdentifier: "AddTestView", sender: section())
-//            let storyboard: UIStoryboard = self.storyboard!
-//            let nextView = storyboard.instantiateViewController(withIdentifier: "nextView")
-//            present(nextView, animated: true, completion: nil)
-        }
+        print("selected ")
+        //値を渡す
+//        self.performSegue(withIdentifier: "addTest", sender: something)
     }
+}
 
+
+extension TestListViewController{
     
+    func closeThisPage(){
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func addNewTest(){
+        self.performSegue(withIdentifier: "addTest", sender: nil)
+//        let storyboard: UIStoryboard = self.storyboard!
+//        let nextView = storyboard.instantiateViewController(withIdentifier: "addTest")
+//        present(nextView, animated: true, completion: nil)
+    }
 }
