@@ -7,7 +7,7 @@ target 'Test Calendar' do
 
   pod 'MaterialComponents', '33.0.0'
   pod "Koyomi", '1.2.6'
-  pod 'RealmSwift','2.4.3'
+  pod 'RealmSwift','2.8.1'
   pod 'Alamofire','4.0.0'
   pod 'SwiftyJSON','3.1'
 
