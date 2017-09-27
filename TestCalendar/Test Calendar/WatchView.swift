@@ -48,17 +48,17 @@ class WatchView: UIView {
         let marginY: CGFloat = margin - padding - labelHeight * 0.5
         let labelRadius: CGFloat = radius + padding
         let circle = UIView()
-        let labelPosition = [(x: (marginX + labelRadius * (1 + 0.5)), y: (marginY + labelRadius * (1 - CGFloat(sqrt(3))/2))),
-                             (x: (marginX + labelRadius * (1 + CGFloat(sqrt(3))/2)), y: (marginY + labelRadius * (1 - 0.5))),
+        let labelPosition = [(x: (marginX + labelRadius * (1 + 0.5)), y: (marginY + labelRadius * (1 - 0.86))),
+                             (x: (marginX + labelRadius * (1 + 0.86)), y: (marginY + labelRadius * (1 - 0.5))),
                              (x: (marginX + labelRadius * (2)), y: (marginY + labelRadius * 1)),
-                             (x: (marginX + labelRadius * (1 + CGFloat(sqrt(3))/2)), y: (marginY + labelRadius * (1 + 0.5))),
-                             (x: (marginX + labelRadius * (1 + 0.5)), y: (marginY + labelRadius * (1 + CGFloat(sqrt(3))/2))),
+                             (x: (marginX + labelRadius * (1 + 0.86)), y: (marginY + labelRadius * (1 + 0.5))),
+                             (x: (marginX + labelRadius * (1 + 0.5)), y: (marginY + labelRadius * (1 + 0.86))),
                              (x: (marginX + labelRadius * (1)), y: (marginY + labelRadius * (2))),
-                             (x: (marginX + labelRadius * (1 - 0.5)),y: (marginY + labelRadius * (1 + CGFloat(sqrt(3))/2))),
-                             (x: (marginX + labelRadius * (1 - CGFloat(sqrt(3)/2))), y: (marginY + labelRadius * (1 + 0.5))),
+                             (x: (marginX + labelRadius * (1 - 0.5)),y: (marginY + labelRadius * (1 + 0.86))),
+                             (x: (marginX + labelRadius * (1 - 0.86)), y: (marginY + labelRadius * (1 + 0.5))),
                              (x: (marginX + labelRadius * (0)), y: (marginY + labelRadius * (1))),
-                             (x: (marginX + labelRadius * (1 - CGFloat(sqrt(3))/2)), y: (marginY + labelRadius * (1 - 0.5))),
-                             (x: (marginX + labelRadius * (1 - 0.5)), y: (marginY + labelRadius * (1 - CGFloat(sqrt(3)/2)))),
+                             (x: (marginX + labelRadius * (1 - 0.86)), y: (marginY + labelRadius * (1 - 0.5))),
+                             (x: (marginX + labelRadius * (1 - 0.5)), y: (marginY + labelRadius * (1 - 0.86))),
                              (x: (marginX + labelRadius * (1)), y: (marginY + labelRadius * (0)))]
         
         for num in 0...11{
