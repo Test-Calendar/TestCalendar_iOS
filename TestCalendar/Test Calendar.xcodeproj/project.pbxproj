@@ -12,6 +12,7 @@
 		4028BC505C58EDEC9584B056 /* Pods_Test_CalendarUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7285DA5458B318F6961A06 /* Pods_Test_CalendarUITests.framework */; };
 		C01422901F7562EB006ECDFA /* AddTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C014228F1F7562EB006ECDFA /* AddTableViewController.swift */; };
 		E60CBE2A1F6229CE004E8D5C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60CBE291F6229CE004E8D5C /* API.swift */; };
+		E610F91D1F7B5C5400A1363A /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E610F91C1F7B5C5400A1363A /* TestTableViewController.swift */; };
 		E64E1FD21F56A38700D12289 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64E1FD11F56A38700D12289 /* AppDelegate.swift */; };
 		E64E1FD71F56A38700D12289 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E64E1FD51F56A38700D12289 /* Main.storyboard */; };
 		E64E1FD91F56A38700D12289 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E64E1FD81F56A38700D12289 /* Assets.xcassets */; };
@@ -77,6 +78,7 @@
 		9447D2D2AD7AC5C382E15A20 /* Pods-Test Calendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test Calendar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Test Calendar/Pods-Test Calendar.debug.xcconfig"; sourceTree = "<group>"; };
 		C014228F1F7562EB006ECDFA /* AddTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTableViewController.swift; sourceTree = "<group>"; };
 		E60CBE291F6229CE004E8D5C /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		E610F91C1F7B5C5400A1363A /* TestTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
 		E64E1FCE1F56A38700D12289 /* Test Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Test Calendar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64E1FD11F56A38700D12289 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E64E1FD61F56A38700D12289 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 				C014228F1F7562EB006ECDFA /* AddTableViewController.swift */,
 				E64E20501F58080A00D12289 /* SetTimeViewController.swift */,
 				E64E20521F58082E00D12289 /* SelectCalendarViewController.swift */,
+				E610F91C1F7B5C5400A1363A /* TestTableViewController.swift */,
 			);
 			name = MakeTestCalendar;
 			sourceTree = "<group>";
@@ -857,6 +860,7 @@
 				E64E208C1F59469200D12289 /* CalendarView.swift in Sources */,
 				E64E208E1F5946DD00D12289 /* CalendarCell.swift in Sources */,
 				E60CBE2A1F6229CE004E8D5C /* API.swift in Sources */,
+				E610F91D1F7B5C5400A1363A /* TestTableViewController.swift in Sources */,
 				E6EAB4A71F66B22F004F45A9 /* WatchView.swift in Sources */,
 				E64E204F1F5807F300D12289 /* AddTestViewController.swift in Sources */,
 				E64E208A1F58963A00D12289 /* Calendar.swift in Sources */,
