@@ -769,15 +769,37 @@
                                     <constraint firstAttribute="trailing" secondItem="PC5-Et-ydl" secondAttribute="trailing" id="PDm-8L-e4A"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="テスト及びレポートの追加" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sam-cK-7nh">
+                                <rect key="frame" x="83" y="40.5" width="208" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="208" id="AlH-VZ-ngS"/>
+                                    <constraint firstAttribute="height" constant="20.5" id="CXK-p1-LUB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lLx-ek-qhE">
+                                <rect key="frame" x="31" y="39" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="22" id="gR5-TP-0c5"/>
+                                    <constraint firstAttribute="height" constant="22" id="mkS-rE-TUc"/>
+                                </constraints>
+                                <state key="normal" image="close"/>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="lLx-ek-qhE" firstAttribute="leading" secondItem="JPd-Ey-5sB" secondAttribute="leadingMargin" constant="15" id="6y2-up-ZvG"/>
                             <constraint firstItem="qjV-BX-1fi" firstAttribute="width" secondItem="JPd-Ey-5sB" secondAttribute="width" multiplier="0.92" id="Azy-ED-8w1"/>
                             <constraint firstItem="HH4-bM-YyQ" firstAttribute="centerX" secondItem="JPd-Ey-5sB" secondAttribute="centerX" id="EoZ-HF-cNG"/>
                             <constraint firstItem="qjV-BX-1fi" firstAttribute="height" secondItem="JPd-Ey-5sB" secondAttribute="height" multiplier="0.67" id="NCj-pC-yVa"/>
                             <constraint firstItem="HH4-bM-YyQ" firstAttribute="leading" secondItem="JPd-Ey-5sB" secondAttribute="leading" id="Q8r-Ob-owG"/>
                             <constraint firstAttribute="trailing" secondItem="HH4-bM-YyQ" secondAttribute="trailing" id="X0K-f1-K0K"/>
+                            <constraint firstItem="Sam-cK-7nh" firstAttribute="centerX" secondItem="JPd-Ey-5sB" secondAttribute="centerX" id="fdw-Ot-YV9"/>
                             <constraint firstItem="HH4-bM-YyQ" firstAttribute="top" secondItem="O33-fW-WMa" secondAttribute="bottom" id="hHw-7m-yIe"/>
                             <constraint firstItem="qjV-BX-1fi" firstAttribute="top" secondItem="HH4-bM-YyQ" secondAttribute="bottom" constant="32" id="jOM-C7-bOl"/>
+                            <constraint firstItem="Sam-cK-7nh" firstAttribute="centerY" secondItem="HH4-bM-YyQ" secondAttribute="centerY" id="t39-Y3-mSW"/>
+                            <constraint firstItem="lLx-ek-qhE" firstAttribute="centerY" secondItem="HH4-bM-YyQ" secondAttribute="centerY" id="uBG-4t-WPu"/>
                             <constraint firstItem="qjV-BX-1fi" firstAttribute="centerX" secondItem="JPd-Ey-5sB" secondAttribute="centerX" id="vfz-Wl-42f"/>
                         </constraints>
                     </scrollView>
@@ -1065,5 +1087,6 @@
     </scenes>
     <resources>
         <image name="arrow-left" width="8" height="12"/>
+        <image name="close" width="15" height="14"/>
     </resources>
 </document>
