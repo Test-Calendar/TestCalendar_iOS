@@ -13,6 +13,7 @@ class TestViewController: UIViewController {
     let button = BottomButton()
     var tableViewCells = [TitleTableViewCell(), TypeTableViewCell(), ColorTableViewCell(), NoticeTableViewCell(), TimeTableViewCell(), DeadlineTableViewCell()]
     
+    @IBOutlet var scrollView: UIScrollView!
     @IBOutlet weak var subjectTextField: UITextField!
     @IBOutlet weak var typeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var collection: UICollectionView!
