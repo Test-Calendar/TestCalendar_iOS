@@ -10,14 +10,19 @@ import UIKit
 
 class TestViewController: UIViewController {
     
-//    let button = BottomButton()
-
+    let button = BottomButton()
     var tableViewCells = [TitleTableViewCell(), TypeTableViewCell(), ColorTableViewCell(), NoticeTableViewCell(), TimeTableViewCell(), DeadlineTableViewCell()]
+    
+    @IBOutlet weak var subjectTextField: UITextField!
+    @IBOutlet weak var typeSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet weak var hourLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(statusBar())
-//        button.delegate = self
+        button.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -25,42 +30,12 @@ class TestViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 
-// MARK: - UITableViewDelegate, UITableViewDataSource
-extension TestViewController: UITableViewDelegate, UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+// MARK: - BottomButtonDelegate
+extension TestViewController: BottomButtonDelegate{
+    func tapped() {
+        print("tapped")
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")!
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected")
-    }
-    
 }
-
-
-//// MARK: - BottomButtonDelegate
-//extension TestViewController: BottomButtonDelegate{
-//    func tapped() {
-//        print("tapped")
-//    }
-//}
