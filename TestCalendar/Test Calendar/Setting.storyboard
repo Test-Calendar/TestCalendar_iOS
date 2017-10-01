@@ -59,30 +59,59 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D3N-up-bY7" id="ZDD-c5-jNU">
                                             <rect key="frame" x="0.0" y="0.0" width="347" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Morning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVj-De-5aI">
+                                                    <rect key="frame" x="29" y="14" width="64" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="PcF-iG-dkr">
-                                        <rect key="frame" x="0.0" y="72" width="347" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="148" id="PcF-iG-dkr">
+                                        <rect key="frame" x="0.0" y="72" width="347" height="148"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PcF-iG-dkr" id="Rf8-kd-Aqq">
-                                            <rect key="frame" x="0.0" y="0.0" width="347" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="347" height="147.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="zpN-Yt-ESD">
+                                                    <rect key="frame" x="13.5" y="0.0" width="320" height="148"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="320" id="7km-rs-XQS"/>
+                                                        <constraint firstAttribute="height" constant="148" id="xtW-ej-z05"/>
+                                                    </constraints>
+                                                    <date key="date" timeIntervalSinceReferenceDate="528198987.781124">
+                                                        <!--2017-09-27 09:56:27 +0000-->
+                                                    </date>
+                                                </datePicker>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="zpN-Yt-ESD" firstAttribute="centerY" secondItem="Rf8-kd-Aqq" secondAttribute="centerY" id="aKM-gI-UZO"/>
+                                                <constraint firstItem="zpN-Yt-ESD" firstAttribute="centerX" secondItem="Rf8-kd-Aqq" secondAttribute="centerX" id="xgD-dU-rgd"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="qdv-t9-Pcw" id="Glv-eE-Cbe"/>
+                                    <outlet property="delegate" destination="qdv-t9-Pcw" id="ZwM-Us-UGR"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="AkY-20-mRZ" secondAttribute="trailing" id="9kM-Jv-INe"/>
-                            <constraint firstItem="AkY-20-mRZ" firstAttribute="top" secondItem="mpz-u1-wYa" secondAttribute="bottom" id="rhm-Xs-7Vv"/>
+                            <constraint firstItem="AkY-20-mRZ" firstAttribute="top" secondItem="mpz-u1-wYa" secondAttribute="bottom" id="XTZ-o8-xnP"/>
                             <constraint firstItem="AkY-20-mRZ" firstAttribute="leading" secondItem="bDw-Nv-f9m" secondAttribute="leading" id="tBF-Ie-d32"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="AccessTitle" destination="8gD-jQ-5Al" id="ZNB-44-zwN"/>
                         <outlet property="header" destination="AkY-20-mRZ" id="2D7-RO-Q6W"/>
                         <outlet property="settingTitle" destination="eAJ-wb-fFp" id="LnP-x3-3Ge"/>
+                        <outlet property="tableView" destination="obh-GQ-JF3" id="pIb-TV-h5o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0C1-fE-dTa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -136,31 +165,11 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DUh-ZT-Vyr" id="1P2-IJ-hJz">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="147.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="zpN-Yt-ESD">
-                                                    <rect key="frame" x="27.5" y="-8" width="320" height="162"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="162" id="Ls7-NZ-lH7"/>
-                                                        <constraint firstAttribute="width" constant="320" id="iyd-fw-Ncf"/>
-                                                    </constraints>
-                                                    <date key="date" timeIntervalSinceReferenceDate="528198987.781124">
-                                                        <!--2017-09-27 09:56:27 +0000-->
-                                                    </date>
-                                                </datePicker>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="zpN-Yt-ESD" firstAttribute="centerY" secondItem="1P2-IJ-hJz" secondAttribute="centerY" id="0wX-X6-kcH"/>
-                                                <constraint firstItem="zpN-Yt-ESD" firstAttribute="centerX" secondItem="1P2-IJ-hJz" secondAttribute="centerX" id="yAh-tj-W7X"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="cns-ZY-Id3" id="xA5-Qu-qXy"/>
-                            <outlet property="delegate" destination="cns-ZY-Id3" id="Tje-NU-MAK"/>
-                        </connections>
                     </tableView>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DEe-T2-9lg" userLabel="First Responder" sceneMemberID="firstResponder"/>

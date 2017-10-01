@@ -9,14 +9,12 @@
 import UIKit
 import MaterialComponents
 
-class SettingViewController: UIViewController {
+class SettingViewController: UIViewController{
     
     @IBOutlet weak var header: UIView!
     @IBOutlet weak var settingTitle: UILabel!
     @IBOutlet weak var notificationTitle: UILabel!
-    @IBOutlet weak var contents: UIView!
-    @IBOutlet weak var morningTitle: UILabel!
-    @IBOutlet weak var MDatePicker: UIDatePicker!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var beforeTimeTitle: UILabel!
     @IBOutlet weak var BTimeDatePicker: UIDatePicker!
     @IBOutlet weak var AccessTitle: UILabel!
@@ -70,6 +68,8 @@ class SettingViewController: UIViewController {
         }
     }
 }
+
+
 
 extension SettingViewController{
     func setButton(){
