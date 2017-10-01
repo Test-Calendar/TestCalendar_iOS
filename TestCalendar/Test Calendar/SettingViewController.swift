@@ -9,17 +9,21 @@
 import UIKit
 import MaterialComponents
 
-class SettingViewController: UIViewController{
+class SettingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var header: UIView!
     @IBOutlet weak var settingTitle: UILabel!
-    @IBOutlet weak var notificationTitle: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var beforeTimeTitle: UILabel!
-    @IBOutlet weak var BTimeDatePicker: UIDatePicker!
-    @IBOutlet weak var AccessTitle: UILabel!
    
+    // section毎の画像配列
+    let Array1: NSArray = ["MorningTitle","MorningPicker","BeforeTimeTitle","BeforeTimePicker"]
+    let Array2: NSArray = [""]
     
+    
+    // Sectionのタイトル
+    var sectionTitle: NSArray = ["通知", "共有"]
+    
+    // 戻るボタンの設定
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -37,7 +41,7 @@ class SettingViewController: UIViewController{
         formatter.dateFormat = "HH:mm"
     }
     
-    
+    // materialButtonの設置
     override func loadView() {
         super.loadView()
         self.view.addSubview(statusBar())
@@ -50,6 +54,43 @@ class SettingViewController: UIViewController{
         
         // Do any additional setup after loading the view.
     }
+    
+    // Table Viewのセルの数を指定
+    func tableView(_ table: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 4
+        }
+        else if section == 1 {
+            return 1
+        }
+        else{
+            return 0
+        }
+    }
+    
+    // セクションのタイトルを返す.
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionTitle[section] as! String
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
+        
+        if indexPath.section == 0 {
+            cell.textLabel?.text = "\(Array1[indexPath.row])"
+        } else if indexPath.section == 1 {
+            cell.textLabel?.text = "\(Array2[indexPath.row])"
+        }
+        
+        return cell
+    }
+    
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sectionTitle.count
+    }
+    
 
     
     override func didReceiveMemoryWarning() {
@@ -74,7 +115,7 @@ class SettingViewController: UIViewController{
 extension SettingViewController{
     func setButton(){
         let flatButton = MDCFlatButton()
-        flatButton.customTitleColor = UIColor.black
+        flatButton.customTitleColor = UIColor.white
         flatButton.setTitle("Flat Button", for: .normal)
         flatButton.sizeToFit()
         flatButton.addTarget(self, action: #selector(SettingViewController.flatButtonDidTap(_:)), for: .touchUpInside)
@@ -92,7 +133,7 @@ extension SettingViewController{
         flatButton.frame = CGRect(x: posX, y: posY, width: bWidth, height: bHeight)
         
         // ボタンの背景色を設定.
-        flatButton.backgroundColor = UIColor.gray
+        flatButton.backgroundColor = UIColor.red
         
         // タイトルを設定する(通常時).
         flatButton.setTitle("iOSカレンダーへのアクセスを許可", for: .normal)
