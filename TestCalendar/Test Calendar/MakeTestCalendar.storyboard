@@ -516,6 +516,9 @@
                                                                     <segment title="テスト"/>
                                                                     <segment title="レポート"/>
                                                                 </segments>
+                                                                <connections>
+                                                                    <action selector="typeSelected:" destination="Ztm-1u-yzh" eventType="valueChanged" id="ySe-wA-WEK"/>
+                                                                </connections>
                                                             </segmentedControl>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

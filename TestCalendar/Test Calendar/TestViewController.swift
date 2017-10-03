@@ -22,6 +22,10 @@ class TestViewController: UIViewController {
     @IBOutlet weak var hourLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    @IBAction func typeSelected(_ sender: Any) {
+        let selectedIndex = typeSegmentedControl.selectedSegmentIndex
+        //ここでデータをselectedIndexにいれる
+    }
     
     
     override func loadView() {
