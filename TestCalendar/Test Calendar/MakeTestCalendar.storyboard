@@ -468,7 +468,7 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FAL-WU-MhE">
-                                                <rect key="frame" x="27.5" y="100" width="320" height="932"/>
+                                                <rect key="frame" x="27.5" y="100" width="320" height="1032"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZKZ-4P-5ng">
                                                         <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
@@ -601,12 +601,52 @@
                                                             <constraint firstItem="Ypn-iA-iKJ" firstAttribute="centerY" secondItem="NSz-L6-xTX" secondAttribute="centerY" id="fHh-3Z-S94"/>
                                                         </constraints>
                                                     </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aTj-uj-qoP">
+                                                        <rect key="frame" x="0.0" y="400" width="320" height="100"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="勉強時間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGo-9I-zov">
+                                                                <rect key="frame" x="30" y="40" width="100" height="20.5"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="100" id="tRc-UZ-hxR"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6時間" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CzM-jc-BLy">
+                                                                <rect key="frame" x="190" y="39.5" width="100" height="20.5"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="100" id="Bm0-k6-RhY"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="37N-ya-2M5">
+                                                                <rect key="frame" x="0.0" y="99" width="320" height="1"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="1" id="hzr-St-2N3"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <constraints>
+                                                            <constraint firstItem="CzM-jc-BLy" firstAttribute="centerY" secondItem="aTj-uj-qoP" secondAttribute="centerY" id="3aa-O7-54p"/>
+                                                            <constraint firstItem="UGo-9I-zov" firstAttribute="leading" secondItem="aTj-uj-qoP" secondAttribute="leading" constant="30" id="BoF-nS-q1l"/>
+                                                            <constraint firstAttribute="bottom" secondItem="37N-ya-2M5" secondAttribute="bottom" id="Lrf-Ra-bs7"/>
+                                                            <constraint firstItem="UGo-9I-zov" firstAttribute="centerY" secondItem="aTj-uj-qoP" secondAttribute="centerY" id="PMn-bX-nLS"/>
+                                                            <constraint firstItem="37N-ya-2M5" firstAttribute="leading" secondItem="aTj-uj-qoP" secondAttribute="leading" id="hAP-jc-h71"/>
+                                                            <constraint firstAttribute="trailing" secondItem="37N-ya-2M5" secondAttribute="trailing" id="mQb-8A-JmH"/>
+                                                            <constraint firstAttribute="trailing" secondItem="CzM-jc-BLy" secondAttribute="trailing" constant="30" id="tms-6a-VBA"/>
+                                                        </constraints>
+                                                    </view>
                                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4w-sY-hXQ">
-                                                        <rect key="frame" x="0.0" y="400" width="320" height="216"/>
+                                                        <rect key="frame" x="0.0" y="500" width="320" height="216"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </pickerView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CHS-P5-dBK">
-                                                        <rect key="frame" x="0.0" y="616" width="320" height="100"/>
+                                                        <rect key="frame" x="0.0" y="716" width="320" height="100"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="テスト開始時刻" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cpl-qB-gyj">
                                                                 <rect key="frame" x="30" y="40" width="150" height="20.5"/>
@@ -645,7 +685,7 @@
                                                         </constraints>
                                                     </view>
                                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="mFg-Km-dvz">
-                                                        <rect key="frame" x="0.0" y="716" width="320" height="216"/>
+                                                        <rect key="frame" x="0.0" y="816" width="320" height="216"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <date key="date" timeIntervalSinceReferenceDate="528719420.271415">
                                                             <!--2017-10-03 10:30:20 +0000-->
@@ -657,6 +697,7 @@
                                                     <constraint firstAttribute="width" constant="320" id="1uf-wT-d61"/>
                                                     <constraint firstItem="NSz-L6-xTX" firstAttribute="height" secondItem="ZKZ-4P-5ng" secondAttribute="height" id="Ocr-rL-V9P"/>
                                                     <constraint firstItem="1Yn-Iz-oEg" firstAttribute="height" secondItem="ZKZ-4P-5ng" secondAttribute="height" id="tGA-1q-Wxo"/>
+                                                    <constraint firstItem="aTj-uj-qoP" firstAttribute="height" secondItem="ZKZ-4P-5ng" secondAttribute="height" id="yyW-H9-YVl"/>
                                                     <constraint firstItem="CHS-P5-dBK" firstAttribute="height" secondItem="ZKZ-4P-5ng" secondAttribute="height" id="zmr-BD-tFn"/>
                                                 </constraints>
                                             </stackView>
@@ -667,7 +708,7 @@
                                             <constraint firstItem="qjN-5Q-kWh" firstAttribute="leading" secondItem="DWc-hl-Yn8" secondAttribute="leading" id="0dd-4D-4xm"/>
                                             <constraint firstAttribute="height" constant="1200" id="AkZ-7G-YWI"/>
                                             <constraint firstItem="FAL-WU-MhE" firstAttribute="centerX" secondItem="DWc-hl-Yn8" secondAttribute="centerX" id="RM7-oj-wBL"/>
-                                            <constraint firstAttribute="bottom" secondItem="FAL-WU-MhE" secondAttribute="bottom" constant="168" id="cWv-O2-hg6"/>
+                                            <constraint firstAttribute="bottom" secondItem="FAL-WU-MhE" secondAttribute="bottom" constant="68" id="cWv-O2-hg6"/>
                                             <constraint firstItem="FAL-WU-MhE" firstAttribute="top" secondItem="qjN-5Q-kWh" secondAttribute="bottom" constant="40" id="rd5-51-XS8"/>
                                             <constraint firstAttribute="trailing" secondItem="qjN-5Q-kWh" secondAttribute="trailing" id="wQD-SX-2dV"/>
                                         </constraints>
