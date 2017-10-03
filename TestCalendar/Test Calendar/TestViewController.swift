@@ -20,9 +20,17 @@ class TestViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var stack: UIStackView!
     
+    override func loadView() {
+        super.loadView()
+        self.scrollView.addSubview(statusBar())
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.addSubview(statusBar())
         button.delegate = self
         // Do any additional setup after loading the view.
     }
