@@ -93,6 +93,7 @@ func getColor(color: String) -> UIColor{
     }
 }
 
+
 struct WatchButtonColor{
     
     static func selected() -> UIColor{

@@ -11,12 +11,18 @@ import UIKit
 class TestViewController: UIViewController {
     
     let button = BottomButton()
+    var colors: [UIColor] = [CalendarColor.redColor(), CalendarColor.orangeColor(), CalendarColor.yellowColor(), CalendarColor.darkGreen(), CalendarColor.green(), CalendarColor.lightGreen(),CalendarColor.darkBlue(), CalendarColor.blue(), CalendarColor.lightBlue(), CalendarColor.darkPurple(), CalendarColor.lightPurple()]
+    var colorNames = ["red", "orange", "yellow", "darkGreen", "green", "lightGreen", "darkBlue", "blue", "lightBlue", "darkPuple", "lightPuple"]
+    
+    var selectedColorNumber = 12
     
     @IBOutlet weak var subjectTextField: UITextField!
     @IBOutlet weak var typeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var hourLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    
+    
     
     override func loadView() {
         super.loadView()
@@ -44,15 +50,11 @@ class TestViewController: UIViewController {
 
 
 // MARK: - BottomButtonDelegate
-extension TestViewController: BottomButtonDelegate{
+extension TestViewController: BottomButtonDelegate, UITextFieldDelegate{
     
     func tapped() {
         print("tapped")
     }
-}
-
-// MARK: - UITextFieldDelegate
-extension TestViewController: UITextFieldDelegate{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         subjectTextField.resignFirstResponder()
@@ -79,6 +81,38 @@ extension TestViewController: UITextFieldDelegate{
         return true
     }
 }
+
+extension TestViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        let radius = cell.frame.width * 0.40
+        let view = UIView()
+        
+        view.frame = CGRect(x: 0, y: 0, width: radius * 2, height: radius * 2 )
+        view.backgroundColor = colors[indexPath.row]
+        if selectedColorNumber == indexPath.row {
+            view.layer.borderColor = CalendarColor.black().cgColor
+            view.layer.borderWidth = 2.0
+        }
+        view.layer.cornerRadius = radius
+        view.clipsToBounds = true
+        cell.addSubview(view)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return colors.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(colorNames[indexPath.row])
+        print(indexPath.row)
+        selectedColorNumber = indexPath.row
+        collectionView.reloadData()
+    }    
+}
+
 
 
 // MARK: - DatePickerを扱う関数群
