@@ -23,12 +23,15 @@ class TestViewController: UIViewController {
         self.view.addSubview(statusBar())
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-    }
+//    override func viewDidLayoutSubviews() {
+//        super.viewDidLayoutSubviews()
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        subjectTextField.clearButtonMode = .always
+        subjectTextField.returnKeyType = .done
+        subjectTextField.delegate = self as UITextFieldDelegate
         button.delegate = self
         // Do any additional setup after loading the view.
     }
@@ -45,6 +48,35 @@ extension TestViewController: BottomButtonDelegate{
     
     func tapped() {
         print("tapped")
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension TestViewController: UITextFieldDelegate{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        subjectTextField.resignFirstResponder()
+        return true
+    }
+    
+    // クリアボタンが押された時の処理
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        
+        print("Clear")
+        return true
+    }
+    
+    // テキストフィールドがフォーカスされた時の処理
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        print("Start")
+        return true
+    }
+    
+    // テキストフィールドでの編集が終わろうとするときの処理
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        print("End")
+        print(textField.text!)
+        return true
     }
 }
 
