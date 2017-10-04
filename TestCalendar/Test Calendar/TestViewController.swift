@@ -131,6 +131,10 @@ extension TestViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return "\(row + 1)"
     }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        hourLabel.text = "\(row + 1)" + "時間"
+    }
 }
 
 // MARK: - DatePickerを扱う関数群
