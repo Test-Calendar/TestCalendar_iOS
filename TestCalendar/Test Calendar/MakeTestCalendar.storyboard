@@ -651,6 +651,10 @@
                                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4w-sY-hXQ">
                                                         <rect key="frame" x="0.0" y="500" width="320" height="216"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="Ztm-1u-yzh" id="XTY-Rz-a1F"/>
+                                                            <outlet property="delegate" destination="Ztm-1u-yzh" id="JTM-EY-88x"/>
+                                                        </connections>
                                                     </pickerView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CHS-P5-dBK">
                                                         <rect key="frame" x="0.0" y="716" width="320" height="100"/>

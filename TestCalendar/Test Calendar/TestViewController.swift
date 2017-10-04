@@ -24,6 +24,7 @@ class TestViewController: UIViewController {
     
     @IBAction func typeSelected(_ sender: Any) {
         let selectedIndex = typeSegmentedControl.selectedSegmentIndex
+        print(typeSegmentedControl.titleForSegment(at: selectedIndex)!)
         //ここでデータをselectedIndexにいれる
     }
     
@@ -117,7 +118,20 @@ extension TestViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }    
 }
 
-
+extension TestViewController: UIPickerViewDelegate, UIPickerViewDataSource{
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 50
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return "\(row + 1)"
+    }
+}
 
 // MARK: - DatePickerを扱う関数群
 extension TestViewController{
