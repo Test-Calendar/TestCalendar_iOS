@@ -10,11 +10,13 @@ import UIKit
 
 
 
+var colors: [UIColor] = [CalendarColor.redColor(), CalendarColor.orangeColor(), CalendarColor.yellowColor(), CalendarColor.darkGreen(), CalendarColor.green(), CalendarColor.lightGreen(),CalendarColor.darkBlue(), CalendarColor.blue(), CalendarColor.lightBlue(), CalendarColor.darkPurple(), CalendarColor.lightPurple()]
+var colorNames = ["red", "orange", "yellow", "darkGreen", "green", "lightGreen", "darkBlue", "blue", "lightBlue", "darkPuple", "lightPuple"]
+
+
 class TestViewController: UIViewController {
     
-    let button = BottomButton()
-    var colors: [UIColor] = [CalendarColor.redColor(), CalendarColor.orangeColor(), CalendarColor.yellowColor(), CalendarColor.darkGreen(), CalendarColor.green(), CalendarColor.lightGreen(),CalendarColor.darkBlue(), CalendarColor.blue(), CalendarColor.lightBlue(), CalendarColor.darkPurple(), CalendarColor.lightPurple()]
-    var colorNames = ["red", "orange", "yellow", "darkGreen", "green", "lightGreen", "darkBlue", "blue", "lightBlue", "darkPuple", "lightPuple"]
+//    let button = BottomButton()
     var selectedColorNumber = 12
     
     @IBOutlet weak var subjectTextField: UITextField!
@@ -22,6 +24,8 @@ class TestViewController: UIViewController {
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var hourLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var baseView: UIView!
+    @IBOutlet weak var bottomButton: BottomButton!
     
     @IBAction func dateSelected(_ sender: Any) {
         let formatter = DateFormatter()
@@ -29,16 +33,24 @@ class TestViewController: UIViewController {
         dateLabel.text = formatter.string(from: (sender as AnyObject).date)
     }
     
-    
     @IBAction func typeSelected(_ sender: Any) {
         let selectedIndex = typeSegmentedControl.selectedSegmentIndex
         print(typeSegmentedControl.titleForSegment(at: selectedIndex)!)
         //ここでデータをselectedIndexにいれる
     }
     
+    
     override func loadView() {
         super.loadView()
         self.view.addSubview(statusBar())
+//        self.baseView.addSubview(button)
+//        self.baseView.addConstraints([
+//            Constraint(item: button, .centerX, to: baseView, .centerX),
+//            Constraint(item: button, .bottom, to: baseView, .bottom, constant: 20),
+//            Constraint(item: button, .height, to: nil, .height, constant: 60),
+//            Constraint(item: button, .left, to: baseView, .left, constant: 10),
+//            Constraint(item: button, .right, to: baseView, .right, constant: 10)
+//        ])
     }
     
     override func viewDidLoad() {
@@ -46,7 +58,8 @@ class TestViewController: UIViewController {
         subjectTextField.clearButtonMode = .always
         subjectTextField.returnKeyType = .done
         subjectTextField.delegate = self as UITextFieldDelegate
-        button.delegate = self
+        bottomButton.delegate = self
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,21 +82,16 @@ extension TestViewController: BottomButtonDelegate, UITextFieldDelegate{
     
     // クリアボタンが押された時の処理
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        
-        print("Clear")
         return true
     }
     
     // テキストフィールドがフォーカスされた時の処理
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        print("Start")
         return true
     }
     
     // テキストフィールドでの編集が終わろうとするときの処理
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        print("End")
-        print(textField.text!)
         return true
     }
 }
@@ -122,6 +130,7 @@ extension TestViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 
+// MARK: - UIPickerViewDelegate, UIPickerViewDataSource
 extension TestViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

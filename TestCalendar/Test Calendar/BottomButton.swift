@@ -34,18 +34,25 @@ class BottomButton: MDCFloatingButton {
     /// ボタンの初期化
     internal func commonInit(){
         let floatingButton = MDCFloatingButton()
-        floatingButton.backgroundColor = CalendarColor.buttonColor()
+        floatingButton.setBackgroundColor(CalendarColor.buttonColor())
+//        floatingButton.backgroundColor = CalendarColor.buttonColor()
         floatingButton.setTitleColor(.white, for: .normal)
+        floatingButton.setTitle("hello", for: .normal)
         floatingButton.sizeToFit()
-        let width = self.frame.width * 0.66
-        let height = 42 as CGFloat
-        let minY = min(self.frame.height * 0.9, self.frame.height - height * 1.5)
-        floatingButton.frame = CGRect(x: 0, y: minY + 10, width: width, height: height)
-        floatingButton.addTarget(self, action: Selector(("tap:")), for: .touchUpInside)
+        floatingButton.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
+        floatingButton.layer.cornerRadius = 0.0
+        floatingButton.clipsToBounds = true
+        floatingButton.layer.masksToBounds = true
+//        let width = self.frame.width * 0.66
+//        let height = 42 as CGFloat
+//        let minY = min(self.frame.height * 0.9, self.frame.height - height * 1.5)
+        floatingButton.addTarget(self, action: #selector(self.tap), for: .touchUpInside)
+//        floatingButton.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         self.addSubview(floatingButton)
     }
     
     func tap(){
         self.delegate?.tapped()
     }
+    
 }

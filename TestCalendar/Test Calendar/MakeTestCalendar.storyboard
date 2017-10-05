@@ -759,6 +759,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1307"/>
                     <connections>
+                        <outlet property="baseView" destination="DWc-hl-Yn8" id="XTG-Ed-cej"/>
                         <outlet property="collection" destination="8i6-Y3-YRP" id="vxw-Kk-7D9"/>
                         <outlet property="dateLabel" destination="Qqz-ih-4vv" id="KJh-1d-mcd"/>
                         <outlet property="hourLabel" destination="CzM-jc-BLy" id="yGw-y1-wad"/>
