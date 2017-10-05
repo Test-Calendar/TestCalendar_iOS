@@ -659,8 +659,8 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CHS-P5-dBK">
                                                         <rect key="frame" x="0.0" y="716" width="320" height="100"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017/08/20 8:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qqz-ih-4vv">
-                                                                <rect key="frame" x="160" y="39.5" width="150" height="20.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="選択してください" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qqz-ih-4vv">
+                                                                <rect key="frame" x="160" y="40" width="150" height="20.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="150" id="4qi-3P-i8V"/>
                                                                 </constraints>
@@ -712,6 +712,9 @@
                                                         <date key="date" timeIntervalSinceReferenceDate="528719420.271415">
                                                             <!--2017-10-03 10:30:20 +0000-->
                                                         </date>
+                                                        <connections>
+                                                            <action selector="dateSelected:" destination="Ztm-1u-yzh" eventType="valueChanged" id="JKF-NA-zAW"/>
+                                                        </connections>
                                                     </datePicker>
                                                 </subviews>
                                                 <constraints>
