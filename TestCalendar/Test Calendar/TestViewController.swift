@@ -25,8 +25,11 @@ var colorNames = ["red", "orange", "yellow", "darkGreen", "green", "lightGreen",
 class TestViewController: UIViewController {
     
     
-    var selectedColorNumber = 12
-    var date = Date()
+    var selectedColorNumber: Int? //色
+    var notification: Bool? //通知
+    var study: Int? //勉強時間
+    var date: Date? //開始時刻
+    
     var model = CalendarModel.sharedInstance
     
     @IBOutlet weak var subjectTextField: UITextField!
@@ -42,7 +45,7 @@ class TestViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.setTemplate(.full)
         date = (sender as AnyObject).date
-        dateLabel.text = formatter.string(from: (sender as AnyObject).date)
+        dateLabel.text = formatter.string(from: (sender as AnyObject).date!!)
     }
     
     @IBAction func typeSelected(_ sender: Any) {
@@ -74,13 +77,43 @@ class TestViewController: UIViewController {
 
 // MARK: - ProcessButtonDelegate
 extension TestViewController: ProcessButtonDelegate{
+    
+    /// 作成ボタンが押された時の処理
     func tapped() {
-        print("データを保存しまーす")
-        let test = model.createTest()
-        test.name = subjectTextField.text!
-        test.type = typeSegmentedControl.selectedSegmentIndex
-        test.startTime = date as NSDate
+//        print("データを保存しまーす")
+        //データがあるかどうかを確認
+        var check = 0
         
+        if selectedColorNumber != nil {
+            check += 1
+        }
+        if notification != nil {
+            check += 1
+        }
+        if subjectTextField.text! != "" {
+            check += 1
+        }
+        if study != nil {
+            check += 1
+        }
+        if date != nil {
+            check += 1
+        }
+        
+        //データの保存
+        if check == 5{
+            print("データ保存開始")
+//            let test = model.createTest()
+//            test.name = subjectTextField.text!
+//            test.type = typeSegmentedControl.selectedSegmentIndex
+//            test.startTime = date! as NSDate
+//            test.color = colorNames[selectedColorNumber!]
+//            model.save(object: test)
+        }else {
+            let alert = UIAlertController(title: "必要な", message: "すべての項目を選択しているか確認して下さい", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
 
@@ -158,6 +191,7 @@ extension TestViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        study = (row + 1)
         hourLabel.text = "\(row + 1)" + "時間"
     }
 }

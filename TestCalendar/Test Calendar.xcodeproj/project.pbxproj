@@ -448,6 +448,7 @@
 			children = (
 				E6EAB4A61F66B22F004F45A9 /* WatchView.swift */,
 				E6579A0A1F6DBA7800136A55 /* WatchButton.swift */,
+				E610F92A1F7BDDE100A1363A /* ProcessButton.swift */,
 				E64E20731F580CD700D12289 /* Home */,
 				E64E20711F580BA200D12289 /* AddEvent */,
 				E64E20701F580B9800D12289 /* MakeTestCalendar */,
@@ -475,7 +476,6 @@
 		E64E20701F580B9800D12289 /* MakeTestCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				E610F92A1F7BDDE100A1363A /* ProcessButton.swift */,
 			);
 			name = MakeTestCalendar;
 			sourceTree = "<group>";
