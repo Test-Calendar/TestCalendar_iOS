@@ -7,8 +7,16 @@
 //
 
 import UIKit
+import MaterialComponents
 
-
+struct TestInfo{
+    var name: String
+    var type: Int
+    var color: String
+    var notification: Bool
+    var study: Int
+    var time: NSDate
+}
 
 var colors: [UIColor] = [CalendarColor.redColor(), CalendarColor.orangeColor(), CalendarColor.yellowColor(), CalendarColor.darkGreen(), CalendarColor.green(), CalendarColor.lightGreen(),CalendarColor.darkBlue(), CalendarColor.blue(), CalendarColor.lightBlue(), CalendarColor.darkPurple(), CalendarColor.lightPurple()]
 var colorNames = ["red", "orange", "yellow", "darkGreen", "green", "lightGreen", "darkBlue", "blue", "lightBlue", "darkPuple", "lightPuple"]
@@ -16,8 +24,10 @@ var colorNames = ["red", "orange", "yellow", "darkGreen", "green", "lightGreen",
 
 class TestViewController: UIViewController {
     
-//    let button = BottomButton()
+    
     var selectedColorNumber = 12
+    var date = Date()
+    var model = CalendarModel.sharedInstance
     
     @IBOutlet weak var subjectTextField: UITextField!
     @IBOutlet weak var typeSegmentedControl: UISegmentedControl!
@@ -25,11 +35,13 @@ class TestViewController: UIViewController {
     @IBOutlet weak var hourLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var baseView: UIView!
-    @IBOutlet weak var bottomButton: BottomButton!
+    @IBOutlet weak var makeButton: ProcessButton!
+    
     
     @IBAction func dateSelected(_ sender: Any) {
         let formatter = DateFormatter()
         formatter.setTemplate(.full)
+        date = (sender as AnyObject).date
         dateLabel.text = formatter.string(from: (sender as AnyObject).date)
     }
     
@@ -43,14 +55,7 @@ class TestViewController: UIViewController {
     override func loadView() {
         super.loadView()
         self.view.addSubview(statusBar())
-//        self.baseView.addSubview(button)
-//        self.baseView.addConstraints([
-//            Constraint(item: button, .centerX, to: baseView, .centerX),
-//            Constraint(item: button, .bottom, to: baseView, .bottom, constant: 20),
-//            Constraint(item: button, .height, to: nil, .height, constant: 60),
-//            Constraint(item: button, .left, to: baseView, .left, constant: 10),
-//            Constraint(item: button, .right, to: baseView, .right, constant: 10)
-//        ])
+        makeButton.setTitle("作成", for: .normal)
     }
     
     override func viewDidLoad() {
@@ -58,8 +63,7 @@ class TestViewController: UIViewController {
         subjectTextField.clearButtonMode = .always
         subjectTextField.returnKeyType = .done
         subjectTextField.delegate = self as UITextFieldDelegate
-        bottomButton.delegate = self
-        
+        makeButton.delegate = self as ProcessButtonDelegate
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,12 +72,20 @@ class TestViewController: UIViewController {
 }
 
 
-// MARK: - BottomButtonDelegate
-extension TestViewController: BottomButtonDelegate, UITextFieldDelegate{
-    
+// MARK: - ProcessButtonDelegate
+extension TestViewController: ProcessButtonDelegate{
     func tapped() {
-        print("tapped")
+        print("データを保存しまーす")
+        let test = model.createTest()
+        test.name = subjectTextField.text!
+        test.type = typeSegmentedControl.selectedSegmentIndex
+        test.startTime = date as NSDate
+        
     }
+}
+
+// MARK: - UITextFieldDelegate
+extension TestViewController: UITextFieldDelegate{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         subjectTextField.resignFirstResponder()
@@ -149,3 +161,4 @@ extension TestViewController: UIPickerViewDelegate, UIPickerViewDataSource{
         hourLabel.text = "\(row + 1)" + "時間"
     }
 }
+
