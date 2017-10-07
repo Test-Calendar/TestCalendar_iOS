@@ -9,11 +9,20 @@
 import UIKit
 import MaterialComponents
 
-class SettingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class SettingViewController: UIViewController{
     
     @IBOutlet weak var header: UIView!
     @IBOutlet weak var settingTitle: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
+    let kDatePickerTag           = 99
+    
+    let kTitleKey = "title" // key for obtaining the data source item's title
+    let kDateKey  = "date"  // key for obtaining the data source item's date value
+    
+    var dataArray: [[String: AnyObject]] = []
+    var dateFormatter = DateFormatter()
+    
    
     // section毎の画像配列
     let Array1: NSArray = ["MorningTitle","MorningPicker","BeforeTimeTitle","BeforeTimePicker"]
@@ -29,11 +38,7 @@ class SettingViewController: UIViewController, UITableViewDataSource, UITableVie
     }
     
     
-    // morningの時間設定
-    @IBAction func mChangeDate(_ sender: Any) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-    }
+    
     
     // beforeTimeの時間設定
     @IBAction func bTimeChangeDate(_ sender: Any) {
@@ -54,6 +59,31 @@ class SettingViewController: UIViewController, UITableViewDataSource, UITableVie
         
         // Do any additional setup after loading the view.
     }
+    
+    
+    
+    
+    
+
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // ボタンを押すとiOS設定を起動、遷移する
+    func flatButtonDidTap(_ sender: UIButton){
+        if let url = URL(string:"App-Prefs:root=NOTIFICATIONS_ID") {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+}
+
+extension SettingViewController: UITableViewDelegate, UITableViewDataSource{
     
     // Table Viewのセルの数を指定
     func tableView(_ table: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -91,25 +121,45 @@ class SettingViewController: UIViewController, UITableViewDataSource, UITableVie
         return sectionTitle.count
     }
     
+    func hasPickerForIndexPath(_ indexPath: IndexPath) -> Bool {
+        var hasDatePicker = false
+        
+        let targetedRow = indexPath.row + 1
+        
+        let checkDatePickerCell = self.tableView.cellForRow(at: IndexPath(row: targetedRow, section: 0))
+        let checkDatePicker = checkDatePickerCell?.viewWithTag(kDatePickerTag)
+        
+        hasDatePicker = checkDatePicker != nil
+        return hasDatePicker
+    }
 
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // morningの時間設定
+    @IBAction func mChangeDate(_ sender: Any) {
+        
+    var targetedCellIndexPath: IndexPath?
+    
+    if self.hasInlineDatePicker() {
+    // inline date picker: update the cell's date "above" the date picker cell
+    //
+        targetedCellIndexPath = IndexPath(row: hasPickerForIndexPath.row - 1, section: 0)
+    } else {
+    // external date picker: update the current "selected" cell's date
+    targetedCellIndexPath = self.tableView.indexPathForSelectedRow!
     }
     
-    // ボタンを押すとiOS設定を起動、遷移する
-    func flatButtonDidTap(_ sender: UIButton){
-        if let url = URL(string:"App-Prefs:root=NOTIFICATIONS_ID") {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
-            } else {
-                UIApplication.shared.openURL(url)
-            }
-        }
+    let cell = self.tableView.cellForRow(at: targetedCellIndexPath!)
+    let targetedDatePicker = sender
+    
+    // update our data model
+    var itemData = dataArray[targetedCellIndexPath!.row]
+        itemData[kDateKey] = (targetedDatePicker as AnyObject).date as AnyObject
+    dataArray[targetedCellIndexPath!.row] = itemData
+    
+    // update the cell's date string
+        cell?.detailTextLabel?.text = DateFormatter.string(from: targetedDatePicker.date)
     }
 }
-
 
 
 extension SettingViewController{
