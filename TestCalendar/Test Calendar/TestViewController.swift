@@ -9,21 +9,20 @@
 import UIKit
 import MaterialComponents
 
-struct TestInfo{
-    var name: String
-    var type: Int
-    var color: String
-    var notification: Bool
-    var study: Int
-    var time: NSDate
-}
+//struct TestInfo{
+//    var name: String
+//    var type: Int
+//    var color: String
+//    var notification: Bool
+//    var study: Int
+//    var time: NSDate
+//}
 
 var colors: [UIColor] = [CalendarColor.redColor(), CalendarColor.orangeColor(), CalendarColor.yellowColor(), CalendarColor.darkGreen(), CalendarColor.green(), CalendarColor.lightGreen(),CalendarColor.darkBlue(), CalendarColor.blue(), CalendarColor.lightBlue(), CalendarColor.darkPurple(), CalendarColor.lightPurple()]
 var colorNames = ["red", "orange", "yellow", "darkGreen", "green", "lightGreen", "darkBlue", "blue", "lightBlue", "darkPuple", "lightPuple"]
 
 
 class TestViewController: UIViewController {
-    
     
     var selectedColorNumber: Int? //色
     var notification: Bool? //通知
@@ -40,7 +39,7 @@ class TestViewController: UIViewController {
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var makeButton: ProcessButton!
     
-    
+    //開始時刻が選択
     @IBAction func dateSelected(_ sender: Any) {
         let formatter = DateFormatter()
         formatter.setTemplate(.full)
@@ -48,6 +47,7 @@ class TestViewController: UIViewController {
         dateLabel.text = formatter.string(from: (sender as AnyObject).date!!)
     }
     
+    //テストかレポートかを選択
     @IBAction func typeSelected(_ sender: Any) {
         let selectedIndex = typeSegmentedControl.selectedSegmentIndex
         print(typeSegmentedControl.titleForSegment(at: selectedIndex)!)
@@ -63,6 +63,7 @@ class TestViewController: UIViewController {
             notification = false
         }
     }
+    
     
     override func loadView() {
         super.loadView()
@@ -122,7 +123,7 @@ extension TestViewController: ProcessButtonDelegate{
 
 
 
-// MARK: - UITextFieldDelegate
+// MARK: - UITextFieldDelegate  タイトルを入力する時の画面
 extension TestViewController: UITextFieldDelegate{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -147,9 +148,10 @@ extension TestViewController: UITextFieldDelegate{
 }
 
 
-// MARK: - UICollectionViewDelegate, UICollectionViewDataSource
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource 色を選ぶ時のcollectionview
 extension TestViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
+    //cellの生成
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         let radius = cell.frame.width * 0.40
@@ -157,7 +159,7 @@ extension TestViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         view.frame = CGRect(x: 0, y: 0, width: radius * 2, height: radius * 2 )
         view.backgroundColor = colors[indexPath.row]
-        if selectedColorNumber == indexPath.row {
+        if selectedColorNumber == indexPath.row { //選択された色の場合周りに黒枠をつける
             view.layer.borderColor = CalendarColor.black().cgColor
             view.layer.borderWidth = 2.0
         }
@@ -168,19 +170,17 @@ extension TestViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return colors.count
+        return colors.count //色の数を返す
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(colorNames[indexPath.row])
-        print(indexPath.row)
-        selectedColorNumber = indexPath.row
-        collectionView.reloadData()
+        selectedColorNumber = indexPath.row  //選択された色の番号を保存
+        collectionView.reloadData()  //collectionViewのデータを再読み込み
     }    
 }
 
 
-// MARK: - UIPickerViewDelegate, UIPickerViewDataSource
+// MARK: - UIPickerViewDelegate, UIPickerViewDataSource  勉強時間を選択
 extension TestViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
