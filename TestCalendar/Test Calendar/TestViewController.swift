@@ -53,7 +53,16 @@ class TestViewController: UIViewController {
         print(typeSegmentedControl.titleForSegment(at: selectedIndex)!)
         //ここでデータをselectedIndexにいれる
     }
-    
+   
+    //通知のon/Offを切り替える
+    @IBAction func notificationSelected(_ sender: Any) {
+        if (sender as AnyObject).isOn == true{
+            notification = true
+        }
+        if (sender as AnyObject).isOn == false{
+            notification = false
+        }
+    }
     
     override func loadView() {
         super.loadView()
@@ -75,30 +84,20 @@ class TestViewController: UIViewController {
 }
 
 
+
 // MARK: - ProcessButtonDelegate
 extension TestViewController: ProcessButtonDelegate{
     
     /// 作成ボタンが押された時の処理
     func tapped() {
-//        print("データを保存しまーす")
         //データがあるかどうかを確認
         var check = 0
         
-        if selectedColorNumber != nil {
-            check += 1
-        }
-        if notification != nil {
-            check += 1
-        }
-        if subjectTextField.text! != "" {
-            check += 1
-        }
-        if study != nil {
-            check += 1
-        }
-        if date != nil {
-            check += 1
-        }
+        if selectedColorNumber != nil { check += 1 }
+        if notification != nil { check += 1 }
+        if subjectTextField.text! != "" { check += 1 }
+        if study != nil { check += 1 }
+        if date != nil { check += 1 }
         
         //データの保存
         if check == 5{
@@ -110,12 +109,18 @@ extension TestViewController: ProcessButtonDelegate{
 //            test.color = colorNames[selectedColorNumber!]
 //            model.save(object: test)
         }else {
-            let alert = UIAlertController(title: "必要な", message: "すべての項目を選択しているか確認して下さい", preferredStyle: .alert)
+            let alert = UIAlertController(title: "入力エラー", message: "すべての項目に記入しているかを確認して下さい", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
+        
+        
+        //画面を遷移する
+//        self.dismiss(animated: true, completion: nil)
     }
 }
+
+
 
 // MARK: - UITextFieldDelegate
 extension TestViewController: UITextFieldDelegate{

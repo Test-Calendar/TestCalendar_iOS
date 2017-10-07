@@ -535,6 +535,7 @@
                                                                     <segment title="テスト"/>
                                                                     <segment title="レポート"/>
                                                                 </segments>
+                                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <connections>
                                                                     <action selector="typeSelected:" destination="Ztm-1u-yzh" eventType="valueChanged" id="ySe-wA-WEK"/>
                                                                 </connections>
@@ -617,11 +618,19 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZQV-dY-mwg">
+                                                                <rect key="frame" x="236" y="25" width="51" height="31"/>
+                                                                <connections>
+                                                                    <action selector="notificationSelected:" destination="Ztm-1u-yzh" eventType="valueChanged" id="VhA-ja-eRf"/>
+                                                                </connections>
+                                                            </switch>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="ZQV-dY-mwg" secondAttribute="trailing" constant="35" id="13x-PE-bj4"/>
                                                             <constraint firstAttribute="trailing" secondItem="cgV-MV-Zc5" secondAttribute="trailing" id="1HY-15-MkJ"/>
                                                             <constraint firstItem="Ypn-iA-iKJ" firstAttribute="leading" secondItem="NSz-L6-xTX" secondAttribute="leading" constant="20" id="Kzm-ka-PNY"/>
+                                                            <constraint firstItem="ZQV-dY-mwg" firstAttribute="centerY" secondItem="NSz-L6-xTX" secondAttribute="centerY" id="PXm-FJ-ieW"/>
                                                             <constraint firstItem="cgV-MV-Zc5" firstAttribute="leading" secondItem="NSz-L6-xTX" secondAttribute="leading" id="aWe-nP-4Pc"/>
                                                             <constraint firstAttribute="bottom" secondItem="cgV-MV-Zc5" secondAttribute="bottom" id="e9D-Iw-yj2"/>
                                                             <constraint firstItem="Ypn-iA-iKJ" firstAttribute="centerY" secondItem="NSz-L6-xTX" secondAttribute="centerY" id="fHh-3Z-S94"/>
