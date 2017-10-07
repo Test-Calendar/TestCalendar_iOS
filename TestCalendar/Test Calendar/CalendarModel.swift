@@ -54,14 +54,29 @@ class CalendarModel{
     
     func lastTestId() -> Int{
         if let event = CalendarModel.realm.objects(Test.self).last{
-            return event.id + 1
             print("last id")
             print(event.id)
+            return event.id + 1
         }else {
             return 1
         }
     }
     
+//    func lastId(object: Object) -> Int{
+//        if let event = CalendarModel.realm.objects(object).last{
+//            return event.id + 1
+//        }else {
+//            return 1
+//        }
+//        if let event = CalendarModel.realm.objects(object).last{
+//            return event.id + 1
+//            print("last id")
+//            print(event.id)
+//        }else {
+//            return 1
+//        }
+//    }
+
     //新しいオブジェクトの作成
     func createTask() -> Task{
         let task = Task()
@@ -94,47 +109,31 @@ class CalendarModel{
         return CalendarModel.realm.objects(Test.self).filter(predicate).map{$0}
     }
     
-    
-    
-
     //１つ保存
-    func save(task: Task){
+    func save(object: Object){
         try! CalendarModel.realm.write {
-            print(task.id)
-            CalendarModel.realm.add(task)
+            CalendarModel.realm.add(object)
         }
     }
     
-    func save(study: Study){
-        try! CalendarModel.realm.write {
-            CalendarModel.realm.add(study)
-        }
-    }
-    
-    func save(test: Test){
-        try! CalendarModel.realm.write {
-            CalendarModel.realm.add(test)
-        }
-    }
-
     //１つ削除
-    func delete(task: Task){
+    func delete(object: Object){
         try! CalendarModel.realm.write {
-            CalendarModel.realm.delete(task)
+            CalendarModel.realm.delete(object)
         }
     }
     
-    func delete(study: Study){
-        try! CalendarModel.realm.write {
-            CalendarModel.realm.delete(study)
-        }
-    }
-    
-    func delete(test: Test){
-        try! CalendarModel.realm.write {
-            CalendarModel.realm.delete(test)
-        }
-    }
+//    func delete(study: Study){
+//        try! CalendarModel.realm.write {
+//            CalendarModel.realm.delete(study)
+//        }
+//    }
+//    
+//    func delete(test: Test){
+//        try! CalendarModel.realm.write {
+//            CalendarModel.realm.delete(test)
+//        }
+//    }
     
     /// タスクを全て渡す関数
     ///
@@ -158,7 +157,3 @@ class CalendarModel{
 enum Genre:Int{
     case task, study, test
 }
-
-
-
-
