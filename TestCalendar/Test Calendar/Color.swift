@@ -76,7 +76,7 @@ struct CalendarColor {
 
 
 
-func getColor(color: String) -> UIColor{
+func getColor(_ color: String) -> UIColor{
     switch color {
     case "red" : return CalendarColor.redColor()
     case "orange" : return CalendarColor.orangeColor()

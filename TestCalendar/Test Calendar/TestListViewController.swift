@@ -8,9 +8,17 @@
 
 import UIKit
 
+protocol TestInfoDelegte: class{
+    func getData()
+    func deleteData()
+    func changedStatus(_: TestInfoStatus)
+}
 
 /// テストとレポート一覧画面
 class TestListViewController: UIViewController {
+    
+    var data: [TestListViewModel] = []
+    var status: TestInfoStatus = .none
     
     @IBOutlet weak var testListTitle: UILabel!
     @IBOutlet weak var testListView: UITableView!
@@ -20,11 +28,10 @@ class TestListViewController: UIViewController {
     @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet weak var nextButton: ProcessButton!
     
-    var names = ["ataso","sazae", "mauso"]
-
-//    @IBAction func backButton(_ sender: Any) {
-//        self.dismiss(animated: true, completion: nil)
-//    }
+    //前の画面に戻る
+    @IBAction func close(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     override func loadView() {
         super.loadView()
@@ -34,11 +41,8 @@ class TestListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        navigationBar.titleView?.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 64)
-//        let leftCloseButton:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(TestListViewController.closeThisPage))
-//        let rightCloseButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(TestListViewController.addNewTest))
-//        self.navigationItem.setLeftBarButton(leftCloseButton, animated: true)
-//        self.navigationItem.setRightBarButton(rightCloseButton, animated: true)
+        self.nextButton.delegate = self
+        //データの取得
     }
 
     
@@ -48,8 +52,44 @@ class TestListViewController: UIViewController {
     
     //画面遷移時にデータの受け渡し
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
 //        let nextViewController  = (segue.destination as! AddTestViewController)
 //        AddTestViewController.someting = ??  ここで次の画面に値を渡す
+    }
+}
+
+
+extension TestListViewController: TestInfoDelegte{
+    
+    //テストデータの削除
+    func deleteData() {
+        
+    }
+
+    //テストの情報を取得
+    func getData() {
+        
+    }
+
+    //情報の状態
+    func changedStatus(_ newStatus: TestInfoStatus) {
+        status = newStatus
+        self.testListView.reloadData()
+    }
+}
+
+
+// MARK: - ProcessButtonDelegate
+extension TestListViewController: ProcessButtonDelegate{
+    //次へボタンがタップされた時に実行
+    func tapped() {
+        if data.isEmpty == false { //テストがゼロでない時は画面を遷移
+            //画面遷移
+        }else { //テストがゼロの時はアラートを表示
+            let alert = UIAlertController(title: "データがありません。", message: "テスト情報を追加して下さい。", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
 
@@ -58,32 +98,38 @@ class TestListViewController: UIViewController {
 extension TestListViewController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return names.count
+        if status == .none {
+            return 1
+        }
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        return cell
+        switch  status {
+        case .normal:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "normal", for: indexPath) as! TestListTableViewCell
+            cell.updateCell(data[indexPath.row])
+            return cell
+        case .none:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "none", for: indexPath)
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected ")
-        //値を渡す
-//        self.performSegue(withIdentifier: "addTest", sender: something)
-    }
-}
-
-
-extension TestListViewController{
-    
-    func closeThisPage(){
-        self.dismiss(animated: true, completion: nil)
+        switch status {
+        case .none: break
+        case .normal:
+            print(indexPath.row)
+            self.performSegue(withIdentifier: "addTest", sender: data) //値を渡す
+        }
     }
     
-    func addNewTest(){
-        self.performSegue(withIdentifier: "addTest", sender: nil)
-        let storyboard: UIStoryboard = self.storyboard!
-        let nextView = storyboard.instantiateViewController(withIdentifier: "addTest")
-        present(nextView, animated: true, completion: nil)
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            data.remove(at: indexPath.row)
+            deleteData()
+            testListView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 }

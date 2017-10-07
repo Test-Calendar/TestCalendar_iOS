@@ -25,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8e-8v-mGB" customClass="ProcessButton" customModule="Test_Calendar" customModuleProvider="target">
-                                <rect key="frame" x="63" y="589" width="248" height="42"/>
+                                <rect key="frame" x="63" y="595" width="248" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="248" id="6EX-VK-X68"/>
                                     <constraint firstAttribute="height" constant="42" id="TPe-7Z-XHH"/>
@@ -43,14 +43,26 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bxs-Gs-z2s">
                                         <rect key="frame" x="15" y="19" width="15" height="22"/>
                                         <state key="normal" image="close"/>
+                                        <connections>
+                                            <action selector="close:" destination="GNh-Mu-yVB" eventType="touchUpInside" id="GUH-Oj-CHF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gO5-HO-VDe">
+                                        <rect key="frame" x="338" y="19" width="17" height="22"/>
+                                        <state key="normal" image="plus"/>
+                                        <connections>
+                                            <segue destination="Ztm-1u-yzh" kind="show" id="8eX-sa-9b2"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Gko-eL-4WC" firstAttribute="centerX" secondItem="13O-Il-EiM" secondAttribute="centerX" id="8rs-Hz-I7d"/>
                                     <constraint firstItem="Bxs-Gs-z2s" firstAttribute="leading" secondItem="13O-Il-EiM" secondAttribute="leading" constant="15" id="Dkf-Iz-oE9"/>
+                                    <constraint firstAttribute="trailing" secondItem="gO5-HO-VDe" secondAttribute="trailing" constant="20" id="GSQ-mJ-0gB"/>
                                     <constraint firstItem="Gko-eL-4WC" firstAttribute="centerY" secondItem="13O-Il-EiM" secondAttribute="centerY" id="Rzt-gD-ZXw"/>
                                     <constraint firstItem="Bxs-Gs-z2s" firstAttribute="centerY" secondItem="13O-Il-EiM" secondAttribute="centerY" id="lSp-uE-vVv"/>
+                                    <constraint firstItem="gO5-HO-VDe" firstAttribute="centerY" secondItem="13O-Il-EiM" secondAttribute="centerY" id="muk-9b-Gin"/>
                                     <constraint firstAttribute="height" constant="60" id="pLU-oH-Oah"/>
                                 </constraints>
                             </view>
@@ -58,7 +70,7 @@
                                 <rect key="frame" x="15" y="95" width="345" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="111" id="Rsj-DT-8Qa">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="normal" rowHeight="111" id="Rsj-DT-8Qa" customClass="TestListTableViewCell" customModule="Test_Calendar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="345" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rsj-DT-8Qa" id="qmo-EK-Mni">
@@ -162,6 +174,33 @@
                                                 <constraint firstItem="Dk7-2r-lIc" firstAttribute="height" secondItem="qmo-EK-Mni" secondAttribute="height" multiplier="0.135" id="yAk-Ex-FgB"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="color" destination="ZVa-1x-XwW" id="4sh-XI-abk"/>
+                                            <outlet property="hour" destination="Grv-kR-ghf" id="Nsh-ix-64E"/>
+                                            <outlet property="name" destination="YQM-8F-tYL" id="A79-f7-Vzc"/>
+                                            <outlet property="startTime" destination="Dk7-2r-lIc" id="Ugk-fU-F55"/>
+                                            <outlet property="type" destination="cBV-J2-2qJ" id="3f3-Or-JBP"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="none" rowHeight="111" id="DX2-DJ-JlW">
+                                        <rect key="frame" x="0.0" y="139" width="345" height="111"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DX2-DJ-JlW" id="pxv-vG-f7m">
+                                            <rect key="frame" x="0.0" y="0.0" width="345" height="110.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="データがありません" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r1q-Jf-qw9">
+                                                    <rect key="frame" x="94" y="45" width="156" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.80392156859999997" green="0.80392156859999997" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="r1q-Jf-qw9" firstAttribute="centerX" secondItem="pxv-vG-f7m" secondAttribute="centerX" id="BYQ-k8-wp4"/>
+                                                <constraint firstItem="r1q-Jf-qw9" firstAttribute="centerY" secondItem="pxv-vG-f7m" secondAttribute="centerY" id="KLE-si-JDh"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -175,7 +214,7 @@
                             <constraint firstItem="oxy-BG-YRZ" firstAttribute="top" secondItem="13O-Il-EiM" secondAttribute="bottom" constant="15" id="2BD-6p-lb5"/>
                             <constraint firstItem="oxy-BG-YRZ" firstAttribute="height" secondItem="V2v-6E-5Bf" secondAttribute="height" multiplier="0.73" id="6ic-7Q-BoB"/>
                             <constraint firstItem="13O-Il-EiM" firstAttribute="top" secondItem="6nd-Ri-vUS" secondAttribute="bottom" id="Agc-8a-Ctq"/>
-                            <constraint firstItem="56o-XW-nbc" firstAttribute="top" secondItem="K8e-8v-mGB" secondAttribute="bottom" constant="36" id="YWy-vO-YEF"/>
+                            <constraint firstItem="56o-XW-nbc" firstAttribute="top" secondItem="K8e-8v-mGB" secondAttribute="bottom" constant="30" id="YWy-vO-YEF"/>
                             <constraint firstItem="K8e-8v-mGB" firstAttribute="centerX" secondItem="V2v-6E-5Bf" secondAttribute="centerX" id="pwe-rM-YGh"/>
                             <constraint firstItem="oxy-BG-YRZ" firstAttribute="centerX" secondItem="V2v-6E-5Bf" secondAttribute="centerX" id="tT0-2F-FV9"/>
                             <constraint firstAttribute="trailing" secondItem="13O-Il-EiM" secondAttribute="trailing" id="ul1-V3-X2p"/>
@@ -866,5 +905,6 @@
     <resources>
         <image name="arrow-left" width="8" height="12"/>
         <image name="close" width="15" height="14"/>
+        <image name="plus" width="17" height="16"/>
     </resources>
 </document>

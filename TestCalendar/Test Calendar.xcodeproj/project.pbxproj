@@ -47,6 +47,8 @@
 		E6579A161F756B6400136A55 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6579A151F756B6400136A55 /* Button.swift */; };
 		E6579A1E1F76C3B900136A55 /* showSchedules.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6579A1D1F76C3B900136A55 /* showSchedules.swift */; };
 		E6579A201F781EFF00136A55 /* AccessDefaultCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6579A1F1F781EFF00136A55 /* AccessDefaultCalendar.swift */; };
+		E6E148EA1F88A0A5007F2E3C /* MakeTestCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E148E91F88A0A5007F2E3C /* MakeTestCalendar.swift */; };
+		E6E148EC1F88FEA3007F2E3C /* TestListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E148EB1F88FEA3007F2E3C /* TestListTableViewCell.swift */; };
 		E6EAB4A71F66B22F004F45A9 /* WatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EAB4A61F66B22F004F45A9 /* WatchView.swift */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +122,8 @@
 		E6579A151F756B6400136A55 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		E6579A1D1F76C3B900136A55 /* showSchedules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = showSchedules.swift; sourceTree = "<group>"; };
 		E6579A1F1F781EFF00136A55 /* AccessDefaultCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessDefaultCalendar.swift; sourceTree = "<group>"; };
+		E6E148E91F88A0A5007F2E3C /* MakeTestCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeTestCalendar.swift; sourceTree = "<group>"; };
+		E6E148EB1F88FEA3007F2E3C /* TestListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestListTableViewCell.swift; sourceTree = "<group>"; };
 		E6EAB4A61F66B22F004F45A9 /* WatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchView.swift; sourceTree = "<group>"; };
 		FBB319E5C383253FC2A354F6 /* Pods-Test CalendarTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test CalendarTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Test CalendarTests/Pods-Test CalendarTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -424,6 +428,7 @@
 		E64E206A1F580A6000D12289 /* MakeTestCalendar */ = {
 			isa = PBXGroup;
 			children = (
+				E6E148E91F88A0A5007F2E3C /* MakeTestCalendar.swift */,
 			);
 			name = MakeTestCalendar;
 			sourceTree = "<group>";
@@ -476,6 +481,7 @@
 		E64E20701F580B9800D12289 /* MakeTestCalendar */ = {
 			isa = PBXGroup;
 			children = (
+				E6E148EB1F88FEA3007F2E3C /* TestListTableViewCell.swift */,
 			);
 			name = MakeTestCalendar;
 			sourceTree = "<group>";
@@ -864,8 +870,10 @@
 				E64E204F1F5807F300D12289 /* AddTestViewController.swift in Sources */,
 				E64E208A1F58963A00D12289 /* Calendar.swift in Sources */,
 				E610F92B1F7BDDE100A1363A /* ProcessButton.swift in Sources */,
+				E6E148EC1F88FEA3007F2E3C /* TestListTableViewCell.swift in Sources */,
 				E64E20471F58075C00D12289 /* AddEventViewController.swift in Sources */,
 				E64E20861F5862E300D12289 /* View.swift in Sources */,
+				E6E148EA1F88A0A5007F2E3C /* MakeTestCalendar.swift in Sources */,
 				E64E1FD21F56A38700D12289 /* AppDelegate.swift in Sources */,
 				E64E209C1F5D603200D12289 /* DefaultCalendar.swift in Sources */,
 				E6579A091F6DB31300136A55 /* ShowDayTableViewCell.swift in Sources */,

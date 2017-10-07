@@ -9,14 +9,6 @@
 import UIKit
 import MaterialComponents
 
-//struct TestInfo{
-//    var name: String
-//    var type: Int
-//    var color: String
-//    var notification: Bool
-//    var study: Int
-//    var time: NSDate
-//}
 
 var colors: [UIColor] = [CalendarColor.redColor(), CalendarColor.orangeColor(), CalendarColor.yellowColor(), CalendarColor.darkGreen(), CalendarColor.green(), CalendarColor.lightGreen(),CalendarColor.darkBlue(), CalendarColor.blue(), CalendarColor.lightBlue(), CalendarColor.darkPurple(), CalendarColor.lightPurple()]
 var colorNames = ["red", "orange", "yellow", "darkGreen", "green", "lightGreen", "darkBlue", "blue", "lightBlue", "darkPuple", "lightPuple"]
