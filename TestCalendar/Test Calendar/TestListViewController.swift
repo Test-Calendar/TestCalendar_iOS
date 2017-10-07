@@ -11,12 +11,14 @@ import UIKit
 
 /// テストとレポート一覧画面
 class TestListViewController: UIViewController {
+    
     @IBOutlet weak var testListTitle: UILabel!
     @IBOutlet weak var testListView: UITableView!
     @IBOutlet weak var testListCell: UITableViewCell!
     @IBOutlet weak var addCell: UITableViewCell!
     @IBOutlet weak var ListCellBack: UIView!
     @IBOutlet weak var navigationBar: UINavigationItem!
+    @IBOutlet weak var nextButton: ProcessButton!
     
     var names = ["ataso","sazae", "mauso"]
 
@@ -27,21 +29,24 @@ class TestListViewController: UIViewController {
     override func loadView() {
         super.loadView()
         self.view.addSubview(statusBar())
+        nextButton.setTitle("次へ", for: .normal)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationBar.titleView?.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 64)
-        let leftCloseButton:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(TestListViewController.closeThisPage))
-        let rightCloseButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(TestListViewController.addNewTest))
-        self.navigationItem.setLeftBarButton(leftCloseButton, animated: true)
-        self.navigationItem.setRightBarButton(rightCloseButton, animated: true)
+//        navigationBar.titleView?.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 64)
+//        let leftCloseButton:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(TestListViewController.closeThisPage))
+//        let rightCloseButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(TestListViewController.addNewTest))
+//        self.navigationItem.setLeftBarButton(leftCloseButton, animated: true)
+//        self.navigationItem.setRightBarButton(rightCloseButton, animated: true)
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    //画面遷移時にデータの受け渡し
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        let nextViewController  = (segue.destination as! AddTestViewController)
 //        AddTestViewController.someting = ??  ここで次の画面に値を渡す

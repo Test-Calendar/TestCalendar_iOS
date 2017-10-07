@@ -12,7 +12,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--テスト・レポート一覧-->
+        <!--Test List View Controller-->
         <scene sceneID="Ex1-zO-r3G">
             <objects>
                 <viewController id="GNh-Mu-yVB" customClass="TestListViewController" customModule="Test_Calendar" customModuleProvider="target" sceneMemberID="viewController">
@@ -24,8 +24,38 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8e-8v-mGB" customClass="ProcessButton" customModule="Test_Calendar" customModuleProvider="target">
+                                <rect key="frame" x="63" y="589" width="248" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="248" id="6EX-VK-X68"/>
+                                    <constraint firstAttribute="height" constant="42" id="TPe-7Z-XHH"/>
+                                </constraints>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="13O-Il-EiM">
+                                <rect key="frame" x="0.0" y="20" width="375" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="テスト及びレポート一覧" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gko-eL-4WC">
+                                        <rect key="frame" x="91.5" y="19.5" width="191" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bxs-Gs-z2s">
+                                        <rect key="frame" x="15" y="19" width="15" height="22"/>
+                                        <state key="normal" image="close"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Gko-eL-4WC" firstAttribute="centerX" secondItem="13O-Il-EiM" secondAttribute="centerX" id="8rs-Hz-I7d"/>
+                                    <constraint firstItem="Bxs-Gs-z2s" firstAttribute="leading" secondItem="13O-Il-EiM" secondAttribute="leading" constant="15" id="Dkf-Iz-oE9"/>
+                                    <constraint firstItem="Gko-eL-4WC" firstAttribute="centerY" secondItem="13O-Il-EiM" secondAttribute="centerY" id="Rzt-gD-ZXw"/>
+                                    <constraint firstItem="Bxs-Gs-z2s" firstAttribute="centerY" secondItem="13O-Il-EiM" secondAttribute="centerY" id="lSp-uE-vVv"/>
+                                    <constraint firstAttribute="height" constant="60" id="pLU-oH-Oah"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="111" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oxy-BG-YRZ">
-                                <rect key="frame" x="15" y="47" width="345" height="487"/>
+                                <rect key="frame" x="15" y="95" width="345" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="111" id="Rsj-DT-8Qa">
@@ -142,21 +172,25 @@
                         </subviews>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="oxy-BG-YRZ" firstAttribute="top" secondItem="13O-Il-EiM" secondAttribute="bottom" constant="15" id="2BD-6p-lb5"/>
                             <constraint firstItem="oxy-BG-YRZ" firstAttribute="height" secondItem="V2v-6E-5Bf" secondAttribute="height" multiplier="0.73" id="6ic-7Q-BoB"/>
-                            <constraint firstItem="oxy-BG-YRZ" firstAttribute="top" secondItem="6nd-Ri-vUS" secondAttribute="bottom" constant="27" id="O1R-a6-Ruj"/>
+                            <constraint firstItem="13O-Il-EiM" firstAttribute="top" secondItem="6nd-Ri-vUS" secondAttribute="bottom" id="Agc-8a-Ctq"/>
+                            <constraint firstItem="56o-XW-nbc" firstAttribute="top" secondItem="K8e-8v-mGB" secondAttribute="bottom" constant="36" id="YWy-vO-YEF"/>
+                            <constraint firstItem="K8e-8v-mGB" firstAttribute="centerX" secondItem="V2v-6E-5Bf" secondAttribute="centerX" id="pwe-rM-YGh"/>
                             <constraint firstItem="oxy-BG-YRZ" firstAttribute="centerX" secondItem="V2v-6E-5Bf" secondAttribute="centerX" id="tT0-2F-FV9"/>
+                            <constraint firstAttribute="trailing" secondItem="13O-Il-EiM" secondAttribute="trailing" id="ul1-V3-X2p"/>
+                            <constraint firstItem="13O-Il-EiM" firstAttribute="leading" secondItem="V2v-6E-5Bf" secondAttribute="leading" id="vEQ-FX-WSv"/>
                             <constraint firstItem="oxy-BG-YRZ" firstAttribute="width" secondItem="V2v-6E-5Bf" secondAttribute="width" multiplier="0.92" id="vf5-Gc-eaD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="テスト・レポート一覧" id="w4Q-n1-5CG"/>
                     <connections>
-                        <outlet property="navigationBar" destination="w4Q-n1-5CG" id="6eZ-Oi-0t0"/>
+                        <outlet property="nextButton" destination="K8e-8v-mGB" id="POy-wa-wJf"/>
                         <outlet property="testListView" destination="oxy-BG-YRZ" id="03F-n6-xpk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o5C-xw-upa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-953" y="170"/>
+            <point key="canvasLocation" x="-954.39999999999998" y="169.56521739130437"/>
         </scene>
         <!--SetTimeViewController-->
         <scene sceneID="RVY-5Q-Y0G">
@@ -171,7 +205,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h6B-sq-RxM" userLabel="header">
-                                <rect key="frame" x="0.0" y="20" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="勉強する時間帯の追加" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1BS-ii-Ztz">
                                         <rect key="frame" x="88" y="15" width="200" height="30"/>
@@ -205,7 +239,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="勉強する時間帯を選択して下さい" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fmg-VM-Nvv">
-                                <rect key="frame" x="37.5" y="100" width="300" height="30"/>
+                                <rect key="frame" x="37.5" y="144" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="Uxi-QA-8jB"/>
                                     <constraint firstAttribute="height" constant="30" id="rtI-UC-27N"/>
@@ -215,7 +249,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYW-xZ-kbJ" userLabel="watch" customClass="WatchView" customModule="Test_Calendar" customModuleProvider="target">
-                                <rect key="frame" x="32" y="133" width="311" height="311.5"/>
+                                <rect key="frame" x="32" y="177" width="311" height="311.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gxg-jS-mHK" userLabel="PM" customClass="WatchButton" customModule="Test_Calendar" customModuleProvider="target">
                                         <rect key="frame" x="267" y="267.5" width="44" height="44"/>
@@ -248,7 +282,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eML-ch-TJH">
-                                <rect key="frame" x="50.5" y="475.5" width="274" height="32"/>
+                                <rect key="frame" x="50.5" y="519.5" width="274" height="32"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tze-Ag-lbz">
                                         <rect key="frame" x="5" y="5.5" width="140" height="21"/>
@@ -279,7 +313,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8sV-i6-7dR">
-                                <rect key="frame" x="50.5" y="521.5" width="274" height="32"/>
+                                <rect key="frame" x="50.5" y="565.5" width="274" height="32"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIn-Kh-hg7">
                                         <rect key="frame" x="5" y="5.5" width="140" height="21"/>
@@ -552,9 +586,6 @@
                                                                     <segment title="レポート"/>
                                                                 </segments>
                                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                                <connections>
-                                                                    <action selector="typeSelected:" destination="Ztm-1u-yzh" eventType="valueChanged" id="ySe-wA-WEK"/>
-                                                                </connections>
                                                             </segmentedControl>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -829,7 +860,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqN-RD-Myz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-954" y="1248"/>
+            <point key="canvasLocation" x="-954" y="1228"/>
         </scene>
     </scenes>
     <resources>

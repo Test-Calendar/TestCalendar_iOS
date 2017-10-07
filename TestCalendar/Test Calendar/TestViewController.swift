@@ -28,7 +28,6 @@ class TestViewController: UIViewController {
     var notification: Bool? //通知
     var study: Int? //勉強時間
     var date: Date? //開始時刻
-    
     var model = CalendarModel.sharedInstance
     
     @IBOutlet weak var subjectTextField: UITextField!
@@ -46,13 +45,6 @@ class TestViewController: UIViewController {
         date = (sender as AnyObject).date
         dateLabel.text = formatter.string(from: (sender as AnyObject).date!!)
     }
-    
-    //テストかレポートかを選択
-    @IBAction func typeSelected(_ sender: Any) {
-        let selectedIndex = typeSegmentedControl.selectedSegmentIndex
-        print(typeSegmentedControl.titleForSegment(at: selectedIndex)!)
-        //ここでデータをselectedIndexにいれる
-    }
    
     //通知のon/Offを切り替える
     @IBAction func notificationSelected(_ sender: Any) {
@@ -64,7 +56,6 @@ class TestViewController: UIViewController {
         }
     }
     
-    
     override func loadView() {
         super.loadView()
         self.view.addSubview(statusBar())
@@ -73,9 +64,7 @@ class TestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        subjectTextField.clearButtonMode = .always
-        subjectTextField.returnKeyType = .done
-        subjectTextField.delegate = self as UITextFieldDelegate
+        setTextField()
         makeButton.delegate = self as ProcessButtonDelegate
     }
 
@@ -83,7 +72,6 @@ class TestViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 }
-
 
 
 // MARK: - ProcessButtonDelegate
@@ -122,9 +110,16 @@ extension TestViewController: ProcessButtonDelegate{
 }
 
 
-
 // MARK: - UITextFieldDelegate  タイトルを入力する時の画面
 extension TestViewController: UITextFieldDelegate{
+    
+    /// TextFieldの初期設定
+    func setTextField(){
+        subjectTextField.clearButtonMode = .always
+        subjectTextField.returnKeyType = .done
+        subjectTextField.delegate = self as UITextFieldDelegate
+        
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         subjectTextField.resignFirstResponder()
@@ -200,4 +195,3 @@ extension TestViewController: UIPickerViewDelegate, UIPickerViewDataSource{
         hourLabel.text = "\(row + 1)" + "時間"
     }
 }
-
