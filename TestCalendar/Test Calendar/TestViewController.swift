@@ -12,6 +12,7 @@ import UIKit
 class TestViewController: UIViewController {
     
     var data: TestListViewModel?
+    var presenter: AddTestPresenter?
     var selectedColorNumber: Int? //色
 //    var model = CalendarModel.sharedInstance
     
@@ -70,7 +71,7 @@ extension TestViewController: ProcessButtonDelegate{
         if data?.time != nil { check += 1 }
         
         if check == 5{
-            saveData()
+            self.presenter?.updateTest(data!)
         }else {
             showAlert()
         }
@@ -80,15 +81,6 @@ extension TestViewController: ProcessButtonDelegate{
 
 // MARK: - Private
 extension TestViewController{
-    
-    fileprivate func saveData(){
-        //            let test = model.createTest()
-        //            test.name = subjectTextField.text!
-        //            test.type = typeSegmentedControl.selectedSegmentIndex
-        //            test.startTime = date! as NSDate
-        //            test.color = colorNames[selectedColorNumber!]
-        //            model.save(object: test)
-    }
     
     fileprivate func showAlert(){
         let alert = UIAlertController(title: "入力エラー", message: "すべての項目に記入しているかを確認して下さい", preferredStyle: .alert)

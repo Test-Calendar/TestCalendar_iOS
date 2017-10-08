@@ -20,8 +20,8 @@ class HomeAddTestPresenter: AddTestPresenter{
     
     func updateTest(_ data: TestListViewModel){
         let predicate = NSPredicate(format: "name == %@", data.name)
-        let tests = model.searchTest(predicate: predicate)
-        if tests.isEmpty == true{
+        let test = model.searchTest(predicate: predicate)
+        if test.isEmpty == true{
             let newTest = model.createTest()
             newTest.name = data.name
             newTest.type = data.type
@@ -31,6 +31,13 @@ class HomeAddTestPresenter: AddTestPresenter{
             newTest.startTime = data.time
             model.save(object: newTest)
         } else {
+            test[0].name = data.name
+            test[0].type = data.type
+            test[0].color = data.color
+            test[0].notification = data.notification
+            test[0].studyHour = data.study
+            test[0].startTime = data.time
+            model.save(object: test[0])
         }
     }
 }
