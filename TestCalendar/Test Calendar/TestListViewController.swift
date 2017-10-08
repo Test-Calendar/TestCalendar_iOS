@@ -8,17 +8,17 @@
 
 import UIKit
 
-protocol TestInfoDelegte: class{
-    func getData()
-    func deleteData()
-    func changedStatus(_: TestInfoStatus)
+protocol TestListDelegate: class{
+    func setTestListsModel(_: TestListsViewModel)
+    func changedStatus(_: TestListStatus)
 }
 
 /// テストとレポート一覧画面
 class TestListViewController: UIViewController {
     
     var data: [TestListViewModel] = []
-    var status: TestInfoStatus = .none
+    var status: TestListStatus = .none
+    var presenter: TestListPresenter?
     
     @IBOutlet weak var testListTitle: UILabel!
     @IBOutlet weak var testListView: UITableView!
@@ -42,7 +42,7 @@ class TestListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nextButton.delegate = self
-        //データの取得
+        self.presenter?.loadTestLists() //データの取得
     }
 
     
@@ -59,20 +59,15 @@ class TestListViewController: UIViewController {
 }
 
 
-extension TestListViewController: TestInfoDelegte{
+// MARK: - TestListDelegate
+extension TestListViewController: TestListDelegate{
+   
+    func setTestListsModel(_ viewModel: TestListsViewModel) {
+        self.data  = viewModel.testLists
+        self.testListView.reloadData()
+    }
     
-    //テストデータの削除
-    func deleteData() {
-        
-    }
-
-    //テストの情報を取得
-    func getData() {
-        
-    }
-
-    //情報の状態
-    func changedStatus(_ newStatus: TestInfoStatus) {
+    func changedStatus(_ newStatus: TestListStatus) {
         status = newStatus
         self.testListView.reloadData()
     }
@@ -81,11 +76,12 @@ extension TestListViewController: TestInfoDelegte{
 
 // MARK: - ProcessButtonDelegate
 extension TestListViewController: ProcessButtonDelegate{
-    //次へボタンがタップされた時に実行
+    
+    /// 「次へ」ボタンがタップされた時に実行
     func tapped() {
-        if data.isEmpty == false { //テストがゼロでない時は画面を遷移
+        if data.isEmpty == false {
             //画面遷移
-        }else { //テストがゼロの時はアラートを表示
+        }else {
             let alert = UIAlertController(title: "データがありません。", message: "テスト情報を追加して下さい。", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
@@ -126,10 +122,12 @@ extension TestListViewController: UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete{
-            data.remove(at: indexPath.row)
-            deleteData()
-            testListView.deleteRows(at: [indexPath], with: .fade)
+        if status == .normal{
+            if editingStyle == .delete{
+                data.remove(at: indexPath.row)
+                self.presenter?.deleteTestList(indexPath.row)
+                testListView.deleteRows(at: [indexPath], with: .fade)
+            }
         }
     }
 }

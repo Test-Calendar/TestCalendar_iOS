@@ -182,7 +182,7 @@
                                             <outlet property="type" destination="cBV-J2-2qJ" id="3f3-Or-JBP"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="none" rowHeight="111" id="DX2-DJ-JlW">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="none" rowHeight="111" id="DX2-DJ-JlW">
                                         <rect key="frame" x="0.0" y="139" width="345" height="111"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DX2-DJ-JlW" id="pxv-vG-f7m">
