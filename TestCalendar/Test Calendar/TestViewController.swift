@@ -7,20 +7,13 @@
 //
 
 import UIKit
-import MaterialComponents
-
-
-var colors: [UIColor] = [CalendarColor.redColor(), CalendarColor.orangeColor(), CalendarColor.yellowColor(), CalendarColor.darkGreen(), CalendarColor.green(), CalendarColor.lightGreen(),CalendarColor.darkBlue(), CalendarColor.blue(), CalendarColor.lightBlue(), CalendarColor.darkPurple(), CalendarColor.lightPurple()]
-var colorNames = ["red", "orange", "yellow", "darkGreen", "green", "lightGreen", "darkBlue", "blue", "lightBlue", "darkPuple", "lightPuple"]
 
 
 class TestViewController: UIViewController {
     
+    var data: TestListViewModel?
     var selectedColorNumber: Int? //色
-    var notification: Bool? //通知
-    var study: Int? //勉強時間
-    var date: Date? //開始時刻
-    var model = CalendarModel.sharedInstance
+//    var model = CalendarModel.sharedInstance
     
     @IBOutlet weak var subjectTextField: UITextField!
     @IBOutlet weak var typeSegmentedControl: UISegmentedControl!
@@ -30,23 +23,19 @@ class TestViewController: UIViewController {
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var makeButton: ProcessButton!
     
-    //開始時刻が選択
-    @IBAction func dateSelected(_ sender: Any) {
+    
+    @IBAction func dateSelected(_ sender: Any) { //開始時刻が選択
         let formatter = DateFormatter()
         formatter.setTemplate(.full)
-        date = (sender as AnyObject).date
+        data?.time = (sender as AnyObject).date as NSDate
         dateLabel.text = formatter.string(from: (sender as AnyObject).date!!)
     }
    
-    //通知のon/Offを切り替える
-    @IBAction func notificationSelected(_ sender: Any) {
-        if (sender as AnyObject).isOn == true{
-            notification = true
-        }
-        if (sender as AnyObject).isOn == false{
-            notification = false
-        }
+    @IBAction func notificationSelected(_ sender: Any) { //通知のon/Offを切り替える
+        if (sender as AnyObject).isOn == true{ data?.notification = true }
+        if (sender as AnyObject).isOn == false{ data?.notification = false }
     }
+    
     
     override func loadView() {
         super.loadView()
@@ -75,29 +64,36 @@ extension TestViewController: ProcessButtonDelegate{
         var check = 0
         
         if selectedColorNumber != nil { check += 1 }
-        if notification != nil { check += 1 }
+        if data?.notification != nil { check += 1 }
         if subjectTextField.text! != "" { check += 1 }
-        if study != nil { check += 1 }
-        if date != nil { check += 1 }
+        if data?.study != nil { check += 1 }
+        if data?.time != nil { check += 1 }
         
-        //データの保存
         if check == 5{
-            print("データ保存開始")
-//            let test = model.createTest()
-//            test.name = subjectTextField.text!
-//            test.type = typeSegmentedControl.selectedSegmentIndex
-//            test.startTime = date! as NSDate
-//            test.color = colorNames[selectedColorNumber!]
-//            model.save(object: test)
+            saveData()
         }else {
-            let alert = UIAlertController(title: "入力エラー", message: "すべての項目に記入しているかを確認して下さい", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            showAlert()
         }
-        
-        
-        //画面を遷移する
-//        self.dismiss(animated: true, completion: nil)
+    }
+}
+
+
+// MARK: - Private
+extension TestViewController{
+    
+    fileprivate func saveData(){
+        //            let test = model.createTest()
+        //            test.name = subjectTextField.text!
+        //            test.type = typeSegmentedControl.selectedSegmentIndex
+        //            test.startTime = date! as NSDate
+        //            test.color = colorNames[selectedColorNumber!]
+        //            model.save(object: test)
+    }
+    
+    fileprivate func showAlert(){
+        let alert = UIAlertController(title: "入力エラー", message: "すべての項目に記入しているかを確認して下さい", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -105,12 +101,10 @@ extension TestViewController: ProcessButtonDelegate{
 // MARK: - UITextFieldDelegate  タイトルを入力する時の画面
 extension TestViewController: UITextFieldDelegate{
     
-    /// TextFieldの初期設定
     func setTextField(){
         subjectTextField.clearButtonMode = .always
         subjectTextField.returnKeyType = .done
         subjectTextField.delegate = self as UITextFieldDelegate
-        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -118,17 +112,14 @@ extension TestViewController: UITextFieldDelegate{
         return true
     }
     
-    // クリアボタンが押された時の処理
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         return true
     }
     
-    // テキストフィールドがフォーカスされた時の処理
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         return true
     }
     
-    // テキストフィールドでの編集が終わろうとするときの処理
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         return true
     }
@@ -138,21 +129,13 @@ extension TestViewController: UITextFieldDelegate{
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource 色を選ぶ時のcollectionview
 extension TestViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
-    //cellの生成
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
-        let radius = cell.frame.width * 0.40
-        let view = UIView()
-        
-        view.frame = CGRect(x: 0, y: 0, width: radius * 2, height: radius * 2 )
-        view.backgroundColor = colors[indexPath.row]
-        if selectedColorNumber == indexPath.row { //選択された色の場合周りに黒枠をつける
-            view.layer.borderColor = CalendarColor.black().cgColor
-            view.layer.borderWidth = 2.0
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ColorCollectionViewCell
+        if selectedColorNumber == indexPath.row {
+            cell.updateCell(indexPath.row, select: true)
+        } else {
+            cell.updateCell(indexPath.row, select: false)
         }
-        view.layer.cornerRadius = radius
-        view.clipsToBounds = true
-        cell.addSubview(view)
         return cell
     }
     
@@ -161,8 +144,8 @@ extension TestViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedColorNumber = indexPath.row  //選択された色の番号を保存
-        collectionView.reloadData()  //collectionViewのデータを再読み込み
+        selectedColorNumber = indexPath.row
+        collectionView.reloadData()
     }    
 }
 
@@ -183,7 +166,7 @@ extension TestViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        study = (row + 1)
+        data?.study = (row + 1)
         hourLabel.text = "\(row + 1)" + "時間"
     }
 }

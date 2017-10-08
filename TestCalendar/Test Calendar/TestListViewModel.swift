@@ -10,14 +10,14 @@ import Foundation
 
 
 /// MTCViewModel　is used in MakeTestCalendar
-protocol MTCViewModel {
-    var name: String { get }
-    var type: Int { get }
-    var color: String { get }
-    var notification: Bool { get }
-    var study: Int { get }
-    var time: NSDate { get }
-}
+//protocol MTCViewModel {
+//    var name: String { get }
+//    var type: Int { get }
+//    var color: String { get }
+//    var notification: Bool { get }
+//    var study: Int { get }
+//    var time: NSDate { get }
+//}
 
 
 
