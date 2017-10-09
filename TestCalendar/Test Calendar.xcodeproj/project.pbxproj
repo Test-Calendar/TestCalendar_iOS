@@ -10,6 +10,9 @@
 		0BB8D9EBCA73FBD7BB5955D4 /* Pods_Test_CalendarTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0168220AA979CE2FB3D3CC80 /* Pods_Test_CalendarTests.framework */; };
 		34A8465CB240BA9B543A3334 /* Pods_Test_Calendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ADB4A1E3B893686245122C1 /* Pods_Test_Calendar.framework */; };
 		4028BC505C58EDEC9584B056 /* Pods_Test_CalendarUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7285DA5458B318F6961A06 /* Pods_Test_CalendarUITests.framework */; };
+		C0ABBB461F89DEF000830369 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ABBB451F89DEF000830369 /* TitleTableViewCell.swift */; };
+		C0ABBB481F89E29F00830369 /* PickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ABBB471F89E29F00830369 /* PickerTableViewCell.swift */; };
+		C0F3CDB91F8B4B15008DF2B8 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F3CDB81F8B4B15008DF2B8 /* ButtonTableViewCell.swift */; };
 		E60CBE2A1F6229CE004E8D5C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60CBE291F6229CE004E8D5C /* API.swift */; };
 		E610F92B1F7BDDE100A1363A /* ProcessButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E610F92A1F7BDDE100A1363A /* ProcessButton.swift */; };
 		E610F92D1F7C772900A1363A /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E610F92C1F7C772900A1363A /* TestViewController.swift */; };
@@ -80,6 +83,9 @@
 		7678F89AF58914281312F68E /* Pods-Test Calendar.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test Calendar.release.xcconfig"; path = "Pods/Target Support Files/Pods-Test Calendar/Pods-Test Calendar.release.xcconfig"; sourceTree = "<group>"; };
 		8ADB4A1E3B893686245122C1 /* Pods_Test_Calendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Test_Calendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9447D2D2AD7AC5C382E15A20 /* Pods-Test Calendar.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test Calendar.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Test Calendar/Pods-Test Calendar.debug.xcconfig"; sourceTree = "<group>"; };
+		C0ABBB451F89DEF000830369 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
+		C0ABBB471F89E29F00830369 /* PickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTableViewCell.swift; sourceTree = "<group>"; };
+		C0F3CDB81F8B4B15008DF2B8 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
 		E60CBE291F6229CE004E8D5C /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		E610F92A1F7BDDE100A1363A /* ProcessButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessButton.swift; sourceTree = "<group>"; };
 		E610F92C1F7C772900A1363A /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -250,6 +256,9 @@
 			isa = PBXGroup;
 			children = (
 				E64E20541F58084B00D12289 /* SettingViewController.swift */,
+				C0ABBB451F89DEF000830369 /* TitleTableViewCell.swift */,
+				C0ABBB471F89E29F00830369 /* PickerTableViewCell.swift */,
+				C0F3CDB81F8B4B15008DF2B8 /* ButtonTableViewCell.swift */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -852,7 +861,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0F3CDB91F8B4B15008DF2B8 /* ButtonTableViewCell.swift in Sources */,
 				E610F92D1F7C772900A1363A /* TestViewController.swift in Sources */,
+				C0ABBB481F89E29F00830369 /* PickerTableViewCell.swift in Sources */,
 				E6579A201F781EFF00136A55 /* AccessDefaultCalendar.swift in Sources */,
 				E64E20511F58080A00D12289 /* SetTimeViewController.swift in Sources */,
 				E64E20881F5895CA00D12289 /* CalendarModel.swift in Sources */,
@@ -881,6 +892,7 @@
 				E64E1FD21F56A38700D12289 /* AppDelegate.swift in Sources */,
 				E64F64021F8A013F0038B593 /* AddTestPresenter.swift in Sources */,
 				E64F64001F89E60E0038B593 /* TestListPresenter.swift in Sources */,
+				C0ABBB461F89DEF000830369 /* TitleTableViewCell.swift in Sources */,
 				E64E209C1F5D603200D12289 /* DefaultCalendar.swift in Sources */,
 				E64F64061F8A053E0038B593 /* ColorCollectionViewCell.swift in Sources */,
 				E6579A091F6DB31300136A55 /* ShowDayTableViewCell.swift in Sources */,
