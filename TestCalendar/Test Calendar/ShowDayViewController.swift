@@ -92,10 +92,10 @@ extension ShowDayViewController: UITableViewDelegate, UITableViewDataSource {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ShowDayTableViewCell
     
-        cell.colorView.backgroundColor = getColor(color: events[indexPath.row].color)
+        cell.colorView.backgroundColor = getColor(events[indexPath.row].color)
         cell.subjectLabel.text = events[indexPath.row].name
         cell.timeLabel.text = showTime(start: events[indexPath.row].start, end: events[indexPath.row].end)
-        cell.colorView.backgroundColor = getColor(color: events[indexPath.row].color)
+        cell.colorView.backgroundColor = getColor(events[indexPath.row].color)
         return cell
     }
     

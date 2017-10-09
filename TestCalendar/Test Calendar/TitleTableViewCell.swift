@@ -2,7 +2,7 @@
 //  TitleTableViewCell.swift
 //  Test Calendar
 //
-//  Created by 山浦功 on 2017/09/27.
+//  Created by 阿部拓海 on 2017/10/08.
 //  Copyright © 2017年 山浦功. All rights reserved.
 //
 
@@ -10,6 +10,21 @@ import UIKit
 
 class TitleTableViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    let title = ["朝","勉強前"]
+    
+    convenience init() {
+        self.init()
+        
+    }
+    
+    func updateCell(count: Int){
+            titleLabel.text = title[count]
+    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
