@@ -40,6 +40,7 @@ class TestListViewController: UIViewController {
     
     @IBAction func goBack(_ segue:UIStoryboardSegue) {}
     
+    @IBAction func goBackFromSetTime(_ segue:UIStoryboardSegue) {}
     
     override func loadView() {
         super.loadView()
@@ -74,6 +75,7 @@ class TestListViewController: UIViewController {
             let target = sender as! TestListViewModel
             next.data = target
         }
+        
     }
     
     
@@ -131,6 +133,7 @@ extension TestListViewController: ProcessButtonDelegate{
     func tapped() {
         if data.isEmpty == false {
             //画面遷移
+            self.performSegue(withIdentifier: "toNext", sender: nil)
         }else {
             let alert = UIAlertController(title: "データがありません。", message: "テスト情報を追加して下さい。", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
