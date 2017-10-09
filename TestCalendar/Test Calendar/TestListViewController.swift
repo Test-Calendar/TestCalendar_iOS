@@ -80,7 +80,10 @@ class TestListViewController: UIViewController {
             let target = sender as! TestListViewModel
             next.data = target
         }
-        
+        if segue.identifier == "toNext" {
+            let next: SetTimeViewController = segue.destination as! SetTimeViewController
+            next.modalTransitionStyle = .crossDissolve
+        }
     }
     
     
