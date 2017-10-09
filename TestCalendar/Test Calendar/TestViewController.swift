@@ -14,6 +14,7 @@ class TestViewController: UIViewController {
     var data: TestListViewModel!
     var presenter: AddTestPresenter?
     var selectedColorNumber: Int? //色
+    let model = CalendarModel.sharedInstance
     
     @IBOutlet weak var subjectTextField: UITextField!
     @IBOutlet weak var typeSegmentedControl: UISegmentedControl!
@@ -22,6 +23,7 @@ class TestViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var baseView: UIView!
     @IBOutlet weak var makeButton: ProcessButton!
+    @IBOutlet weak var notification: UISwitch!
     
     
     @IBAction func dateSelected(_ sender: Any) { //開始時刻が選択
@@ -50,6 +52,7 @@ class TestViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTextField()
+        setUpData()
         makeButton.delegate = self as ProcessButtonDelegate
     }
 
@@ -69,14 +72,20 @@ extension TestViewController: ProcessButtonDelegate{
         var check = 0
         
         if selectedColorNumber != nil { check += 1 }
-        if data?.notification != nil { check += 1 }
-        print(subjectTextField.text!)
+//        if data?.notification != nil { check += 1 }
         if subjectTextField.text! != "" { check += 1 }
-        if data?.study != nil { check += 1 }
-        if data?.time != nil { check += 1 }
+        if data?.study != 0 { check += 1 }
+//        if data?.time != nil { check += 1 }
         
-        if check == 5{
-            self.presenter?.updateTest(data!)
+        if check == 3{
+            let test = model.createTest()
+            test.name = data.name
+            test.type = data.type
+            test.color = data.color
+            test.notification = data.notification
+            test.studyHour = data.study
+            test.startTime = data.time
+            model.save(object: test)
             self.dismiss(animated: true, completion: nil)
         }else {
             showAlert()
@@ -88,6 +97,24 @@ extension TestViewController: ProcessButtonDelegate{
 
 // MARK: - Private
 extension TestViewController{
+    
+    fileprivate func setUpData(){
+        subjectTextField.text = data.name
+        typeSegmentedControl.isSelected = true
+        for i in 0 ... 10 {
+            if colorNames[i] == data.color {
+                selectedColorNumber = i
+                self.collection.reloadData()
+            }
+        }
+        if data.notification == true {
+            notification.isSelected = true
+        }
+        hourLabel.text = "\(data.study)" + "時間"
+        let formatter = DateFormatter()
+        formatter.setTemplate(.full)
+        dateLabel.text = formatter.string(from: data.time as Date)
+    }
     
     fileprivate func showAlert(){
         let alert = UIAlertController(title: "入力エラー", message: "すべての項目に記入しているかを確認して下さい", preferredStyle: .alert)
@@ -107,6 +134,7 @@ extension TestViewController: UITextFieldDelegate{
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        data.name = subjectTextField.text!
         subjectTextField.resignFirstResponder()
         return true
     }
@@ -144,6 +172,7 @@ extension TestViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedColorNumber = indexPath.row
+        data.color = colorNames[selectedColorNumber!]
         collectionView.reloadData()
     }    
 }

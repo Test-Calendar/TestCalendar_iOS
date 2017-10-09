@@ -5,7 +5,6 @@
 //  Created by 山浦功 on 2017/10/08.
 //  Copyright © 2017年 山浦功. All rights reserved.
 //
-
 import Foundation
 
 
@@ -25,10 +24,14 @@ class HomeTestListViewPresenter: TestListPresenter {
     var data: TestListsViewModel?
     var delegate: TestListDelegate?
     var model = CalendarModel.sharedInstance
-    
+        
     func deleteTestList( _ number: Int) {
-        data?.testLists.remove(at: number)
-        self.delegate?.setTestListsModel(data!)
+        if data?.testLists.isEmpty == true{
+            data?.testLists.remove(at: number)
+            self.delegate?.setTestListsModel(data!)
+        }else {
+            print("error there is no data to delete")
+        }
     }
 
     func loadTestLists() {

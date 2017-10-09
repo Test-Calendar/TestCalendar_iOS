@@ -898,6 +898,7 @@
                         <outlet property="dateLabel" destination="Qqz-ih-4vv" id="KJh-1d-mcd"/>
                         <outlet property="hourLabel" destination="CzM-jc-BLy" id="yGw-y1-wad"/>
                         <outlet property="makeButton" destination="dq3-Yc-pD2" id="HpZ-q5-Ud6"/>
+                        <outlet property="notification" destination="ZQV-dY-mwg" id="gJr-7F-lUb"/>
                         <outlet property="subjectTextField" destination="qKt-T9-87T" id="JoE-Gj-aNU"/>
                         <outlet property="typeSegmentedControl" destination="uvW-Cy-pmJ" id="k0g-yX-sng"/>
                     </connections>

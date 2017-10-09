@@ -31,7 +31,11 @@ class TestListTableViewCell: UITableViewCell {
     /// - Parameter timeListViewModel: 表示したいテスト情報モデル
     func updateCell(_ timeListViewModel: TestListViewModel){
         self.name.text = timeListViewModel.name
-        self.type.text = "\(timeListViewModel.type)"
+        if timeListViewModel.type == 0 {
+            self.type.text = "テスト"
+        }else {
+            self.type.text = "レポート"
+        }
         setColorView(timeListViewModel.color)
         self.hour.text = "\(timeListViewModel.study)"
         let formatter = DateFormatter()

@@ -18,7 +18,8 @@ class TestListViewController: UIViewController {
     
     var data: [TestListViewModel] = []
     var status: TestListStatus = .none
-    var presenter: TestListPresenter?
+    var model = CalendarModel.sharedInstance
+//    var presenter: HomeTestListViewPresenter!
     
     @IBOutlet weak var testListTitle: UILabel!
     @IBOutlet weak var testListView: UITableView!
@@ -39,6 +40,7 @@ class TestListViewController: UIViewController {
     
     @IBAction func goBack(_ segue:UIStoryboardSegue) {}
     
+    
     override func loadView() {
         super.loadView()
         self.view.addSubview(statusBar())
@@ -48,10 +50,14 @@ class TestListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nextButton.delegate = self
-        self.presenter?.loadTestLists() //データの取得
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(TestListViewController.refreshControlValueChanged(sender:)), for: .valueChanged)
+        self.testListView.addSubview(refreshControl)
+        loadData()
+//        self.presenter?.delegate = self
+//        self.presenter?.loadTestLists() //データの取得
     }
 
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -68,6 +74,37 @@ class TestListViewController: UIViewController {
             let target = sender as! TestListViewModel
             next.data = target
         }
+    }
+    
+    
+    func refreshControlValueChanged(sender: UIRefreshControl) {
+        loadData()
+        sender.endRefreshing()
+    }
+}
+
+
+extension TestListViewController{
+    func loadData(){
+        data.removeAll()
+        let tests = model.getAllTest()
+        for i in tests {
+            let test = TestListViewModel(name: i.name, type: i.type, color: i.color, notification: i.notification, study: i.studyHour, time: i.startTime)
+            data.append(test)
+        }
+        if tests.isEmpty == true{
+            print("なんもねー")
+            status = .none
+        }else {
+            status = .normal
+        }
+        self.testListView.reloadData()
+    }
+    
+    func removeData(_ data: TestListViewModel){
+        let predicate = NSPredicate(format: "name == %@", data.name)
+        let target = model.searchTest(predicate: predicate)
+        model.delete(object: target[0])
     }
 }
 
@@ -129,6 +166,10 @@ extension TestListViewController: UITableViewDataSource,UITableViewDelegate{
         switch status {
         case .none: break
         case .normal:
+            let name = data[indexPath.row].name
+            let predicate = NSPredicate(format: "name == %@", name)
+            let target = model.searchTest(predicate: predicate)
+            model.delete(object: target[0])
             self.performSegue(withIdentifier: "toEdit", sender: data[indexPath.row]) //値を渡す
         }
     }
@@ -136,9 +177,10 @@ extension TestListViewController: UITableViewDataSource,UITableViewDelegate{
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if status == .normal{
             if editingStyle == .delete{
+                removeData(data[indexPath.row])
                 data.remove(at: indexPath.row)
-                self.presenter?.deleteTestList(indexPath.row)
                 testListView.deleteRows(at: [indexPath], with: .fade)
+                self.testListView.reloadData()
             }
         }
     }
