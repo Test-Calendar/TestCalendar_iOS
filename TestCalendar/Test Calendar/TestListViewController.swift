@@ -59,6 +59,11 @@ class TestListViewController: UIViewController {
 //        self.presenter?.loadTestLists() //データの取得
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        loadData()
+        self.testListView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -169,10 +174,10 @@ extension TestListViewController: UITableViewDataSource,UITableViewDelegate{
         switch status {
         case .none: break
         case .normal:
-            let name = data[indexPath.row].name
-            let predicate = NSPredicate(format: "name == %@", name)
-            let target = model.searchTest(predicate: predicate)
-            model.delete(object: target[0])
+//            let name = data[indexPath.row].name
+//            let predicate = NSPredicate(format: "name == %@", name)
+//            let target = model.searchTest(predicate: predicate)
+//            model.delete(object: target[0])
             self.performSegue(withIdentifier: "toEdit", sender: data[indexPath.row]) //値を渡す
         }
     }
