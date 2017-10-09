@@ -11,10 +11,9 @@ import UIKit
 
 class TestViewController: UIViewController {
     
-    var data: TestListViewModel?
+    var data: TestListViewModel!
     var presenter: AddTestPresenter?
     var selectedColorNumber: Int? //色
-//    var model = CalendarModel.sharedInstance
     
     @IBOutlet weak var subjectTextField: UITextField!
     @IBOutlet weak var typeSegmentedControl: UISegmentedControl!
@@ -33,8 +32,12 @@ class TestViewController: UIViewController {
     }
    
     @IBAction func notificationSelected(_ sender: Any) { //通知のon/Offを切り替える
-        if (sender as AnyObject).isOn == true{ data?.notification = true }
-        if (sender as AnyObject).isOn == false{ data?.notification = false }
+        if (sender as AnyObject).isOn == true{
+            data?.notification = true
+        }
+        if (sender as AnyObject).isOn == false{
+            data?.notification = false
+        }
     }
     
     
@@ -61,20 +64,24 @@ extension TestViewController: ProcessButtonDelegate{
     
     /// 作成ボタンが押された時の処理
     func tapped() {
+        
         //データがあるかどうかを確認
         var check = 0
         
         if selectedColorNumber != nil { check += 1 }
         if data?.notification != nil { check += 1 }
+        print(subjectTextField.text!)
         if subjectTextField.text! != "" { check += 1 }
         if data?.study != nil { check += 1 }
         if data?.time != nil { check += 1 }
         
         if check == 5{
             self.presenter?.updateTest(data!)
+            self.dismiss(animated: true, completion: nil)
         }else {
             showAlert()
         }
+        
     }
 }
 

@@ -51,7 +51,8 @@
                                         <rect key="frame" x="338" y="19" width="17" height="22"/>
                                         <state key="normal" image="plus"/>
                                         <connections>
-                                            <segue destination="Ztm-1u-yzh" kind="show" id="8eX-sa-9b2"/>
+                                            <action selector="segueToAdd:" destination="GNh-Mu-yVB" eventType="touchUpInside" id="59h-jh-bhp"/>
+                                            <segue destination="Ztm-1u-yzh" kind="show" identifier="toAdd" id="I3Q-qa-SVJ"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -180,6 +181,7 @@
                                             <outlet property="name" destination="YQM-8F-tYL" id="A79-f7-Vzc"/>
                                             <outlet property="startTime" destination="Dk7-2r-lIc" id="Ugk-fU-F55"/>
                                             <outlet property="type" destination="cBV-J2-2qJ" id="3f3-Or-JBP"/>
+                                            <segue destination="Ztm-1u-yzh" kind="show" identifier=" toEdit" id="8ir-jT-UdD"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="none" rowHeight="111" id="DX2-DJ-JlW">
@@ -653,7 +655,7 @@
                                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                 </collectionViewFlowLayout>
                                                                 <cells>
-                                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="SFh-Kf-7xn">
+                                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="SFh-Kf-7xn" customClass="ColorCollectionViewCell" customModule="Test_Calendar" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="5" width="50" height="50"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -907,4 +909,7 @@
         <image name="close" width="15" height="14"/>
         <image name="plus" width="17" height="16"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="I3Q-qa-SVJ"/>
+    </inferredMetricsTieBreakers>
 </document>

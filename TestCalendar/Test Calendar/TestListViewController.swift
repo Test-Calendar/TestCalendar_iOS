@@ -32,6 +32,9 @@ class TestListViewController: UIViewController {
     @IBAction func close(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    @IBAction func segueToAdd(_ sender: Any) {
+        performSegue(withIdentifier: "toAdd", sender: nil)
+    }
     
     override func loadView() {
         super.loadView()
@@ -52,9 +55,16 @@ class TestListViewController: UIViewController {
     
     //画面遷移時にデータの受け渡し
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-//        let nextViewController  = (segue.destination as! AddTestViewController)
-//        AddTestViewController.someting = ??  ここで次の画面に値を渡す
+        if segue.identifier == "toAdd" {
+            let next: TestViewController = segue.destination as! TestViewController
+            let data = TestListViewModel(name: "", type: 0, color: "", notification: false, study: 0, time: NSDate())
+            next.data = data
+        }
+        if segue.identifier == "toEdit" {
+            let next: TestViewController = segue.destination as! TestViewController
+            let target = sender as! TestListViewModel
+            next.data = target
+        }
     }
 }
 
@@ -116,8 +126,7 @@ extension TestListViewController: UITableViewDataSource,UITableViewDelegate{
         switch status {
         case .none: break
         case .normal:
-            print(indexPath.row)
-            self.performSegue(withIdentifier: "addTest", sender: data) //値を渡す
+            self.performSegue(withIdentifier: "toEdit", sender: data[indexPath.row]) //値を渡す
         }
     }
     
