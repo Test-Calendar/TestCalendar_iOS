@@ -54,7 +54,7 @@ class SettingViewController: UIViewController{
 //        formatter.setTemplate(.full)
 //        before = (sender as AnyObject).date
 //        beforeLabel.text = formatter.string(from: (sender as AnyObject).date!!)
-//    }git
+//    }
     
     // 朝の通知のon/offを切り替える
     @IBAction func morningNotificationSelected(_ sender: Any) {
@@ -116,7 +116,7 @@ extension SettingViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 50
+        return 60
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
