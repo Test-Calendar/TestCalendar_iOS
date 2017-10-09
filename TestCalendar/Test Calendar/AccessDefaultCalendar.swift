@@ -56,7 +56,7 @@ class AccessDefaultCalendar{
                     task.name = i.title
                     task.startTime = i.startDate as NSDate
                     task.endTime = i.endDate as NSDate
-                    model.save(task: task)
+                    model.save(object: task)
                 } else {
                     print("すでにあるデータです")
                 }

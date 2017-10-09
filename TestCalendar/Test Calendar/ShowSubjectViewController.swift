@@ -68,7 +68,7 @@ class ShowSubjectViewController: UIViewController {
 extension ShowSubjectViewController: UICollectionViewDelegate,UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if colors[indexPath.row] != getColor(color: event.color){
+        if colors[indexPath.row] != getColor(event.color){
             //色を変えるのかダイアログの表示
             //色の入れ替えができるか検討
             //他に使われてたら変更するかダイアログを表示
@@ -88,7 +88,7 @@ extension ShowSubjectViewController: UICollectionViewDelegate,UICollectionViewDa
         
         view.frame = CGRect(x: 0, y: 0, width: radius * 2, height: radius * 2 )
         view.backgroundColor = colors[indexPath.row]
-        if getColor(color: event.color) == colors[indexPath.row] {
+        if getColor(event.color) == colors[indexPath.row] {
             view.layer.borderColor = CalendarColor.black().cgColor
             view.layer.borderWidth = 2.0
         }
@@ -120,6 +120,6 @@ extension ShowSubjectViewController{
         time.text = showTime(start: event.start, end: event.end)
         //通知の更新
         collection.reloadData()
-        watch.addSchedule(events: [WatchEvent(color: getColor(color: event.color), start: event.start, end: event.end)])
+        watch.addSchedule(events: [WatchEvent(color: getColor(event.color), start: event.start, end: event.end)])
     }
 }

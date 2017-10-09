@@ -36,7 +36,7 @@ func showSchedules(calendar: Koyomi, model: CalendarModel){
     
     func showTests(){
         for test in model.tests{
-            calendar.selectedStyleColor = getColor(color: test.color)
+            calendar.selectedStyleColor = getColor(test.color)
             calendar.selectionMode = .single(style: .line)
             calendar.lineView.height = 0.5
             calendar.lineView.position = .center
@@ -48,7 +48,7 @@ func showSchedules(calendar: Koyomi, model: CalendarModel){
     
     func showStudies(){
         for study in model.studies{
-            calendar.selectedStyleColor = getColor(color: study.color)
+            calendar.selectedStyleColor = getColor(study.color)
             calendar.selectionMode = .multiple(style: .background)
             calendar.select(date: study.startTime as Date)
         }
