@@ -566,6 +566,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pq9-B1-ZDq">
                                                         <rect key="frame" x="15" y="18.5" width="69" height="22"/>
                                                         <state key="normal" title="Button" image="close"/>
+                                                        <connections>
+                                                            <segue destination="gLi-gD-HXN" kind="unwind" unwindAction="goBack:" id="SEx-St-lhh"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -900,6 +903,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqN-RD-Myz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="gLi-gD-HXN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-954" y="1228"/>
         </scene>

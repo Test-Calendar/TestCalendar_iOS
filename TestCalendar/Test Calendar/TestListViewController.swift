@@ -28,13 +28,16 @@ class TestListViewController: UIViewController {
     @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet weak var nextButton: ProcessButton!
     
-    //前の画面に戻る
-    @IBAction func close(_ sender: Any) {
+    
+    @IBAction func close(_ sender: Any) { //前の画面に戻る
         self.dismiss(animated: true, completion: nil)
     }
-    @IBAction func segueToAdd(_ sender: Any) {
+    
+    @IBAction func segueToAdd(_ sender: Any) { //addへ
         performSegue(withIdentifier: "toAdd", sender: nil)
     }
+    
+    @IBAction func goBack(_ segue:UIStoryboardSegue) {}
     
     override func loadView() {
         super.loadView()
