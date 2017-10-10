@@ -405,6 +405,8 @@
                     </view>
                     <connections>
                         <outlet property="amButton" destination="etb-L7-Tp6" id="pi3-lo-g8p"/>
+                        <outlet property="beginField" destination="cNg-iw-VXb" id="tXZ-iM-wfL"/>
+                        <outlet property="finishField" destination="nmb-a0-uyg" id="75t-tW-dC5"/>
                         <outlet property="makeButton" destination="jY0-ib-Ef4" id="5WY-6J-oXk"/>
                         <outlet property="pmButton" destination="Gxg-jS-mHK" id="nV8-Hr-vId"/>
                         <outlet property="scrollView" destination="tac-fM-rgw" id="igi-gQ-dQ3"/>

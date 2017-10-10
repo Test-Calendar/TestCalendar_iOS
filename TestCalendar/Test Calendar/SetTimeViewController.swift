@@ -13,6 +13,8 @@ class SetTimeViewController: UIViewController {
 
     var begin = NSDate()
     var finish = NSDate()
+    var picker = UIDatePicker()
+    let formatter = DateFormatter()
     
     @IBOutlet weak var watch: WatchView!
     @IBOutlet weak var amButton: WatchButton!
@@ -21,12 +23,12 @@ class SetTimeViewController: UIViewController {
     @IBOutlet weak var beginButton: UIButton!
     @IBOutlet weak var finishButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var beginField: UITextField!
+    @IBOutlet weak var finishField: UITextField!
     
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-   
     
     @IBAction func changeToAM(_ sender: Any) {
         watch.changeAmPm()
@@ -51,6 +53,13 @@ class SetTimeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         makeButton.delegate = self
+        
+        let datePicker = UIDatePicker()
+        beginField.inputView = datePicker
+        finishField.inputView = datePicker
+        datePicker.locale = NSLocale(localeIdentifier: "ja_JP") as Locale
+        setUpDatePicker(beginField)
+        setUpDatePicker(finishField)
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,20 +70,28 @@ class SetTimeViewController: UIViewController {
 
 // MARK: - Private
 extension SetTimeViewController{
-    func showAlart(_ title: String){
-//        let alert = UIAlertController(title: title, message: "時間を選択してください", preferredStyle: .alert)
-//        let margin: CGFloat = 10.0
-//        let rect = CGRect(x: margin, y: margin, width: alert.view.bounds.size.width - margin * 4 , height: 120)
-//        let picker = UIDatePicker()
-//        
-//        picker.backgroundColor = .white
-//        picker.frame = rect
-//        alert.view.addSubview(picker)
-//        alert.addAction(UIAlertAction(title: "OK", style: .default , handler: nil))
-//        alert.addAction(UIAlertAction(title: "キャンセル", style: .cancel, handler: nil))
-//        DispatchQueue.main.async {
-//            self.present(alert, animated: true, completion: nil)
-//        }
+    
+    fileprivate func setUpDatePicker(_ field: UITextField){
+        formatter.setTemplate(.time)
+        
+        let pickerToolBar = UIToolbar(frame: CGRect(x: 0, y: self.view.frame.size.height/6, width: self.view.frame.size.width, height: 40.0))
+        pickerToolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
+        pickerToolBar.barStyle = .blackTranslucent
+        pickerToolBar.tintColor = UIColor.white
+        pickerToolBar.backgroundColor = UIColor.black
+        
+        let spaceBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace,target: self, action: nil)
+        let toolBarBtn = UIBarButtonItem(title: "完了", style: .done, target: self, action: Selector(("toolBarBtnPush:")))
+        
+        pickerToolBar.items = [spaceBarBtn,toolBarBtn]
+        field.inputAccessoryView = pickerToolBar
+    }
+    
+    fileprivate func toolBarBtnPush(sender: UIBarButtonItem){
+        
+        let pickerDate = picker.date
+        beginField.text = formatter.string(from: pickerDate)
+        self.scrollView.endEditing(true)
     }
 }
 
