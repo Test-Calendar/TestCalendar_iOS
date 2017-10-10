@@ -54,7 +54,7 @@ class TestListViewController: UIViewController {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(TestListViewController.refreshControlValueChanged(sender:)), for: .valueChanged)
         self.testListView.addSubview(refreshControl)
-        loadData()
+//        loadData()
 //        self.presenter?.delegate = self
 //        self.presenter?.loadTestLists() //データの取得
     }
