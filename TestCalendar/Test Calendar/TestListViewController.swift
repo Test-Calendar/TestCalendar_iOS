@@ -94,7 +94,17 @@ class TestListViewController: UIViewController {
 }
 
 
+
+
+
+
+// MARK: - Private
 extension TestListViewController{
+    
+    func segue(_ target: TestListViewModel){
+        self.performSegue(withIdentifier: "toEdit", sender: target)
+    }
+    
     func loadData(){
         data.removeAll()
         let tests = model.getAllTest()
@@ -103,7 +113,6 @@ extension TestListViewController{
             data.append(test)
         }
         if tests.isEmpty == true{
-            print("なんもねー")
             status = .none
         }else {
             status = .normal
@@ -163,13 +172,18 @@ extension TestListViewController: UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch  status {
-        case .normal:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "normal", for: indexPath) as! TestListTableViewCell
-            cell.updateCell(data[indexPath.row])
-            return cell
         case .none:
             let cell = tableView.dequeueReusableCell(withIdentifier: "none", for: indexPath)
             return cell
+        default :
+            let cell = tableView.dequeueReusableCell(withIdentifier: "normal", for: indexPath) as! TestListTableViewCell
+            cell.updateCell(data[indexPath.row])
+            return cell
+
+//        case .update:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "normal", for: indexPath) as! TestListTableViewCell
+//            cell.updateCell(data[indexPath.row])
+//            return cell
         }
     }
     
@@ -177,11 +191,10 @@ extension TestListViewController: UITableViewDataSource,UITableViewDelegate{
         switch status {
         case .none: break
         case .normal:
-//            let name = data[indexPath.row].name
-//            let predicate = NSPredicate(format: "name == %@", name)
-//            let target = model.searchTest(predicate: predicate)
-//            model.delete(object: target[0])
-            self.performSegue(withIdentifier: "toEdit", sender: data[indexPath.row]) //値を渡す
+            segue(data[indexPath.row])
+//            self.performSegue(withIdentifier: "toEdit", sender: data[indexPath.row])
+        case .update:
+            segue(data[indexPath.row])
         }
     }
     
@@ -191,6 +204,7 @@ extension TestListViewController: UITableViewDataSource,UITableViewDelegate{
                 removeData(data[indexPath.row])
                 data.remove(at: indexPath.row)
                 testListView.deleteRows(at: [indexPath], with: .fade)
+                if data.isEmpty == true { status = .none }
                 self.testListView.reloadData()
             }
         }

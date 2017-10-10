@@ -37,7 +37,7 @@ class TestListTableViewCell: UITableViewCell {
             self.type.text = "レポート"
         }
         setColorView(timeListViewModel.color)
-        self.hour.text = "\(timeListViewModel.study)"
+        self.hour.text = "\(timeListViewModel.study)" + "時間"
         let formatter = DateFormatter()
         formatter.setTemplate(.full)
         self.startTime.text = formatter.string(from: timeListViewModel.time as Date)

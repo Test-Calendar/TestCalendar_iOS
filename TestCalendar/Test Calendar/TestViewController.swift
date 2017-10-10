@@ -79,6 +79,7 @@ extension TestViewController: ProcessButtonDelegate{
         
         if check == 3{
             let test = model.createTest()
+            data.name = subjectTextField.text!
             test.name = data.name
             test.type = data.type
             test.color = data.color
@@ -86,6 +87,8 @@ extension TestViewController: ProcessButtonDelegate{
             test.studyHour = data.study
             test.startTime = data.time
             model.save(object: test)
+            let next = TestListViewController()
+            next.status = .update
             self.dismiss(animated: true, completion: nil)
         }else {
             showAlert()

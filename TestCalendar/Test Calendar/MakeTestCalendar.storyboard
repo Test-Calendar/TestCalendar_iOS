@@ -103,7 +103,7 @@
                                                         <constraint firstAttribute="width" constant="34" id="bHl-jN-y42"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="数学" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQM-8F-tYL">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="教科名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQM-8F-tYL">
                                                     <rect key="frame" x="69" y="15" width="124" height="21"/>
                                                     <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -129,8 +129,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6時間" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Grv-kR-ghf">
-                                                    <rect key="frame" x="274.5" y="52" width="44.5" height="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="時間" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Grv-kR-ghf">
+                                                    <rect key="frame" x="250" y="52" width="69" height="15"/>
                                                     <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -179,7 +179,7 @@
                                                 <constraint firstItem="DWR-DK-n37" firstAttribute="top" secondItem="YQM-8F-tYL" secondAttribute="bottom" constant="3" id="XkM-21-k8Q"/>
                                                 <constraint firstItem="vJ6-Du-OlT" firstAttribute="leading" secondItem="YwP-dr-dqu" secondAttribute="leading" id="Y4l-Wd-ygD"/>
                                                 <constraint firstItem="cBV-J2-2qJ" firstAttribute="centerY" secondItem="YQM-8F-tYL" secondAttribute="centerY" id="YdV-eA-lip"/>
-                                                <constraint firstItem="Grv-kR-ghf" firstAttribute="width" secondItem="qmo-EK-Mni" secondAttribute="width" multiplier="0.13" id="brq-ec-d6Z"/>
+                                                <constraint firstItem="Grv-kR-ghf" firstAttribute="width" secondItem="qmo-EK-Mni" secondAttribute="width" multiplier="0.2" id="brq-ec-d6Z"/>
                                                 <constraint firstItem="Grv-kR-ghf" firstAttribute="centerY" secondItem="YwP-dr-dqu" secondAttribute="centerY" id="fQ6-zu-0GK"/>
                                                 <constraint firstItem="vJ6-Du-OlT" firstAttribute="width" secondItem="qmo-EK-Mni" secondAttribute="width" multiplier="0.319" id="gfm-bi-Sh4"/>
                                                 <constraint firstItem="Dk7-2r-lIc" firstAttribute="centerY" secondItem="vJ6-Du-OlT" secondAttribute="centerY" id="ihj-GP-Bck"/>
@@ -198,7 +198,7 @@
                                             <outlet property="name" destination="YQM-8F-tYL" id="A79-f7-Vzc"/>
                                             <outlet property="startTime" destination="Dk7-2r-lIc" id="Ugk-fU-F55"/>
                                             <outlet property="type" destination="cBV-J2-2qJ" id="3f3-Or-JBP"/>
-                                            <segue destination="Ztm-1u-yzh" kind="show" identifier=" toEdit" id="8ir-jT-UdD"/>
+                                            <segue destination="Ztm-1u-yzh" kind="show" identifier="toEdit" id="8ir-jT-UdD"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="none" rowHeight="111" id="DX2-DJ-JlW">
@@ -484,7 +484,7 @@
                                             <constraint firstAttribute="width" constant="175" id="17u-OT-16c"/>
                                             <constraint firstAttribute="height" constant="25" id="Kmg-qp-fdv"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -504,7 +504,7 @@
                                     <constraint firstAttribute="width" constant="280" id="Fuo-Se-SiV"/>
                                     <constraint firstAttribute="height" constant="70" id="zD3-4w-eBv"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -932,6 +932,6 @@
         <image name="plus" width="17" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="I3Q-qa-SVJ"/>
+        <segue reference="8ir-jT-UdD"/>
     </inferredMetricsTieBreakers>
 </document>

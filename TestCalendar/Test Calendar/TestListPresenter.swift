@@ -11,6 +11,7 @@ import Foundation
 enum TestListStatus {
     case normal
     case none
+    case update
 }
 
 protocol TestListPresenter {
