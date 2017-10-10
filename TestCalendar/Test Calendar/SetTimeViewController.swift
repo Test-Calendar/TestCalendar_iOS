@@ -11,14 +11,10 @@ import MaterialComponents
 
 class SetTimeViewController: UIViewController {
 
-    
     @IBOutlet weak var watch: WatchView!
-    
     @IBOutlet weak var amButton: WatchButton!
     @IBOutlet weak var pmButton: WatchButton!
     @IBOutlet weak var makeButton: ProcessButton!
-    
-    
     
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -37,30 +33,29 @@ class SetTimeViewController: UIViewController {
     override func loadView() {
         super.loadView()
         self.view.addSubview(statusBar())
+        amButton.setTitle("AM", for: .normal)
+        pmButton.setTitle("PM", for: .normal)
+        changeWatchButtonType(am: amButton, pm: pmButton, type: .pm)
         makeButton.setTitle("テストスケジュール作成", for: .normal)
-//        setButton()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         makeButton.delegate = self
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    func flatButtonDidTap(_ sender: UIButton){
-        let SetTimeViewController = self.storyboard!.instantiateViewController( withIdentifier: "SelectCalendar" ) as! SelectCalendarViewController
-        performSegue(withIdentifier: "SelectCalendarViewController", sender: nil)
-        self.present(SetTimeViewController, animated: true, completion: nil)
     }
 }
 
 
+// MARK: - Private
+extension SetTimeViewController{
+    
+}
+
+// MARK: - ProcessButtonDelegate
 extension SetTimeViewController: ProcessButtonDelegate{
     func tapped() {
         print("スケジュール作成")
