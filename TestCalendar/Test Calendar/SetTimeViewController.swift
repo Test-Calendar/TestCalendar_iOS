@@ -9,11 +9,6 @@
 import UIKit
 import MaterialComponents
 
-enum fieldStatus {
-    case begin
-    case finish
-    case none
-}
 
 class SetTimeViewController: UIViewController {
 
@@ -27,7 +22,6 @@ class SetTimeViewController: UIViewController {
     @IBOutlet weak var beginField: UITextField!
     @IBOutlet weak var finishField: UITextField!
     
-    var status:fieldStatus = .none
     var begin = NSDate()
     var finish = NSDate()
     var picker = UIDatePicker()
@@ -37,9 +31,9 @@ class SetTimeViewController: UIViewController {
     
     
     @IBAction func beginFieldEditing(_ sender: UITextField) {
-        status = .begin
-        picker.addTarget(self, action: #selector(SetTimeViewController.datePickerValueChanged(sender:)), for: UIControlEvents.valueChanged)
+        
     }
+    
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -56,8 +50,7 @@ class SetTimeViewController: UIViewController {
 
     override func loadView() {
         super.loadView()
-        self.scrollView.addSubview(statusBar())
-//        self.view.addSubview(statusBar())
+        self.view.addSubview(statusBar())
         amButton.setTitle("AM", for: .normal)
         pmButton.setTitle("PM", for: .normal)
         changeWatchButtonType(am: amButton, pm: pmButton, type: .pm)
@@ -71,11 +64,8 @@ class SetTimeViewController: UIViewController {
         finishField.delegate = self
         scrollView.delegate = self
         setUpDatePicker()
-////        NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -92,14 +82,13 @@ class SetTimeViewController: UIViewController {
 extension SetTimeViewController: UIScrollViewDelegate{
     
     func handleKeyboardWillShowNotification(_ notification: Notification) {
+        
         let userInfo = notification.userInfo!
         let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         let myBoundSize: CGSize = UIScreen.main.bounds.size
-        let txtLimit = txtActiveField.frame.origin.y + txtActiveField.frame.height + 8.0
+        let txtLimit = txtActiveField.frame.origin.y + txtActiveField.frame.height + 25.0
         let kbdLimit = myBoundSize.height - keyboardScreenEndFrame.size.height
         
-        print("テキストフィールドの下辺：(\(txtLimit))")
-        print("キーボードの上辺：(\(kbdLimit))")
         if txtLimit >= kbdLimit {
             scrollView.contentOffset.y = txtLimit - kbdLimit
         }
@@ -110,16 +99,15 @@ extension SetTimeViewController: UIScrollViewDelegate{
         scrollView.contentOffset.y = 0
     }
 
-    /// DatePickerの初期設定
     fileprivate func setUpDatePicker(){
         picker.datePickerMode = .time
         beginField.inputView = picker
         finishField.inputView = picker
     }
-    
-    @objc fileprivate func datePickerValueChanged(sender: UIDatePicker) {
-        beginField.text = formatter.string(from: sender.date)
-    }
+}
+
+// MARK: - UITextFieldDelegate
+extension SetTimeViewController: UITextFieldDelegate{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -130,19 +118,6 @@ extension SetTimeViewController: UIScrollViewDelegate{
         txtActiveField = textField
         return true
     }
-}
-
-
-extension SetTimeViewController: UITextFieldDelegate{
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        if textField == beginField {
-//            status = .begin
-//        }
-//        if textField == finishField{
-//            status = .finish
-//        }
-//        keyboardWillShow()
-//    }
 }
 
 // MARK: - ProcessButtonDelegate
