@@ -9,13 +9,14 @@
 import UIKit
 import MaterialComponents
 
+enum fieldStatus {
+    case begin
+    case finish
+    case none
+}
+
 class SetTimeViewController: UIViewController {
 
-    var begin = NSDate()
-    var finish = NSDate()
-    var picker = UIDatePicker()
-    let formatter = DateFormatter()
-    
     @IBOutlet weak var watch: WatchView!
     @IBOutlet weak var amButton: WatchButton!
     @IBOutlet weak var pmButton: WatchButton!
@@ -26,6 +27,19 @@ class SetTimeViewController: UIViewController {
     @IBOutlet weak var beginField: UITextField!
     @IBOutlet weak var finishField: UITextField!
     
+    var status:fieldStatus = .none
+    var begin = NSDate()
+    var finish = NSDate()
+    var picker = UIDatePicker()
+    var txtActiveField = UITextField()
+    let formatter = DateFormatter()
+    let screenSize = UIScreen.main.bounds.size
+    
+    
+    @IBAction func beginFieldEditing(_ sender: UITextField) {
+        status = .begin
+        picker.addTarget(self, action: #selector(SetTimeViewController.datePickerValueChanged(sender:)), for: UIControlEvents.valueChanged)
+    }
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -53,46 +67,82 @@ class SetTimeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         makeButton.delegate = self
-        
-        let datePicker = UIDatePicker()
-        beginField.inputView = datePicker
-        finishField.inputView = datePicker
-        datePicker.locale = NSLocale(localeIdentifier: "ja_JP") as Locale
-        setUpDatePicker(beginField)
-        setUpDatePicker(finishField)
+        beginField.delegate = self
+        finishField.delegate = self
+        scrollView.delegate = self
+        setUpDatePicker()
+////        NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true) //close picker
+    }
 }
 
 
 // MARK: - Private
-extension SetTimeViewController{
+extension SetTimeViewController: UIScrollViewDelegate{
     
-    fileprivate func setUpDatePicker(_ field: UITextField){
-        formatter.setTemplate(.time)
+    func handleKeyboardWillShowNotification(_ notification: Notification) {
+        let userInfo = notification.userInfo!
+        let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let myBoundSize: CGSize = UIScreen.main.bounds.size
+        let txtLimit = txtActiveField.frame.origin.y + txtActiveField.frame.height + 8.0
+        let kbdLimit = myBoundSize.height - keyboardScreenEndFrame.size.height
         
-        let pickerToolBar = UIToolbar(frame: CGRect(x: 0, y: self.view.frame.size.height/6, width: self.view.frame.size.width, height: 40.0))
-        pickerToolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
-        pickerToolBar.barStyle = .blackTranslucent
-        pickerToolBar.tintColor = UIColor.white
-        pickerToolBar.backgroundColor = UIColor.black
-        
-        let spaceBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace,target: self, action: nil)
-        let toolBarBtn = UIBarButtonItem(title: "完了", style: .done, target: self, action: Selector(("toolBarBtnPush:")))
-        
-        pickerToolBar.items = [spaceBarBtn,toolBarBtn]
-        field.inputAccessoryView = pickerToolBar
+        print("テキストフィールドの下辺：(\(txtLimit))")
+        print("キーボードの上辺：(\(kbdLimit))")
+        if txtLimit >= kbdLimit {
+            scrollView.contentOffset.y = txtLimit - kbdLimit
+        }
     }
     
-    fileprivate func toolBarBtnPush(sender: UIBarButtonItem){
-        
-        let pickerDate = picker.date
-        beginField.text = formatter.string(from: pickerDate)
-        self.scrollView.endEditing(true)
+    
+    func handleKeyboardWillHideNotification(_ notification: Notification) {
+        scrollView.contentOffset.y = 0
     }
+
+    /// DatePickerの初期設定
+    fileprivate func setUpDatePicker(){
+        picker.datePickerMode = .time
+        beginField.inputView = picker
+        finishField.inputView = picker
+    }
+    
+    @objc fileprivate func datePickerValueChanged(sender: UIDatePicker) {
+        beginField.text = formatter.string(from: sender.date)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        txtActiveField = textField
+        return true
+    }
+}
+
+
+extension SetTimeViewController: UITextFieldDelegate{
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        if textField == beginField {
+//            status = .begin
+//        }
+//        if textField == finishField{
+//            status = .finish
+//        }
+//        keyboardWillShow()
+//    }
 }
 
 // MARK: - ProcessButtonDelegate

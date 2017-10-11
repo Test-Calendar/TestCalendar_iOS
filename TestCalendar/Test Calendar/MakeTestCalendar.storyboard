@@ -371,6 +371,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="beginFieldEditing:" destination="DHT-LE-U2V" eventType="editingDidEnd" id="IV4-7O-xXp"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
