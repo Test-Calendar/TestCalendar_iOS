@@ -42,7 +42,6 @@ class TestViewController: UIViewController {
         }
     }
     
-    
     override func loadView() {
         super.loadView()
         self.view.addSubview(statusBar())
@@ -67,10 +66,8 @@ extension TestViewController: ProcessButtonDelegate{
     
     /// 作成ボタンが押された時の処理
     func tapped() {
-        
         //データがあるかどうかを確認
         var check = 0
-        
         if selectedColorNumber != nil { check += 1 }
 //        if data?.notification != nil { check += 1 }
         if subjectTextField.text! != "" { check += 1 }

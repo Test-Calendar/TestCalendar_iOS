@@ -81,8 +81,8 @@ class TestListViewController: UIViewController {
             next.data = target
         }
         if segue.identifier == "toNext" {
-            let next: SetTimeViewController = segue.destination as! SetTimeViewController
-            next.modalTransitionStyle = .crossDissolve
+//            let next: SetTimeViewController = segue.destination as! SetTimeViewController
+//            next.modalTransitionStyle = .crossDissolve
         }
     }
     
@@ -150,6 +150,10 @@ extension TestListViewController: ProcessButtonDelegate{
     func tapped() {
         if data.isEmpty == false {
             //画面遷移
+//            let storyboard: UIStoryboard = self.storyboard!
+//            let nextView = SetTimeViewController()
+//            let navigation = UINavigationController(rootViewController: nextView)
+//            present(navigation, animated: true, completion: nil)
             self.performSegue(withIdentifier: "toNext", sender: nil)
         }else {
             let alert = UIAlertController(title: "データがありません。", message: "テスト情報を追加して下さい。", preferredStyle: .alert)

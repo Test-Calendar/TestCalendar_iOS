@@ -152,7 +152,8 @@ extension HomeViewController:AddButtonDelegate, AddSmallDelegate{
             //画面遷移
             let storyboard: UIStoryboard = UIStoryboard(name: "MakeTestCalendar", bundle: nil)
             let inital = storyboard.instantiateInitialViewController()
-            self.showDetailViewController(inital!, sender: nil)
+            let navi = UINavigationController(rootViewController: inital!)
+            self.showDetailViewController(navi, sender: nil)
         }
     }
 }

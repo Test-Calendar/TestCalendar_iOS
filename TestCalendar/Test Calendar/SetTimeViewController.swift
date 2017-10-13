@@ -16,8 +16,6 @@ class SetTimeViewController: UIViewController {
     @IBOutlet weak var amButton: WatchButton!
     @IBOutlet weak var pmButton: WatchButton!
     @IBOutlet weak var makeButton: ProcessButton!
-    @IBOutlet weak var beginButton: UIButton!
-    @IBOutlet weak var finishButton: UIButton!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var beginField: UITextField!
     @IBOutlet weak var finishField: UITextField!
@@ -31,7 +29,6 @@ class SetTimeViewController: UIViewController {
     
     
     @IBAction func beginFieldEditing(_ sender: UITextField) {
-        
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -51,10 +48,6 @@ class SetTimeViewController: UIViewController {
     override func loadView() {
         super.loadView()
         self.view.addSubview(statusBar())
-        amButton.setTitle("AM", for: .normal)
-        pmButton.setTitle("PM", for: .normal)
-        changeWatchButtonType(am: amButton, pm: pmButton, type: .pm)
-        makeButton.setTitle("テストスケジュール作成", for: .normal)
     }
     
     override func viewDidLoad() {
@@ -63,6 +56,10 @@ class SetTimeViewController: UIViewController {
         beginField.delegate = self
         finishField.delegate = self
         scrollView.delegate = self
+        amButton.setTitle("AM", for: .normal)
+        pmButton.setTitle("PM", for: .normal)
+        changeWatchButtonType(am: amButton, pm: pmButton, type: .pm)
+        makeButton.setTitle("テストスケジュール作成", for: .normal)
         setUpDatePicker()
         NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -93,7 +90,6 @@ extension SetTimeViewController: UIScrollViewDelegate{
             scrollView.contentOffset.y = txtLimit - kbdLimit
         }
     }
-    
     
     func handleKeyboardWillHideNotification(_ notification: Notification) {
         scrollView.contentOffset.y = 0

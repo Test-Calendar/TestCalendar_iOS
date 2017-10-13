@@ -18,10 +18,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Test List View Controller-->
+        <!--テスト及びレポート一覧-->
         <scene sceneID="Ex1-zO-r3G">
             <objects>
-                <viewController id="GNh-Mu-yVB" customClass="TestListViewController" customModule="Test_Calendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="GNh-Mu-yVB" customClass="TestListViewController" customModule="Test_Calendar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6nd-Ri-vUS"/>
                         <viewControllerLayoutGuide type="bottom" id="56o-XW-nbc"/>
@@ -38,54 +38,11 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="16"/>
                                 <connections>
-                                    <segue destination="DHT-LE-U2V" kind="showDetail" identifier="toNext" id="JaE-2d-vAZ"/>
+                                    <segue destination="DHT-LE-U2V" kind="show" identifier="toNext" id="qhz-I2-h2y"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="13O-Il-EiM">
-                                <rect key="frame" x="0.0" y="20" width="375" height="60"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="テスト及びレポート一覧" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gko-eL-4WC">
-                                        <rect key="frame" x="87" y="21.5" width="200" height="17"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="EqO-zc-HXh"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bxs-Gs-z2s">
-                                        <rect key="frame" x="15" y="19" width="15" height="22"/>
-                                        <state key="normal" image="close"/>
-                                        <connections>
-                                            <action selector="close:" destination="GNh-Mu-yVB" eventType="touchUpInside" id="GUH-Oj-CHF"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gO5-HO-VDe">
-                                        <rect key="frame" x="325" y="15" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="pfE-ui-8XN"/>
-                                            <constraint firstAttribute="width" constant="30" id="rCH-eP-6Zl"/>
-                                        </constraints>
-                                        <state key="normal" image="plus"/>
-                                        <connections>
-                                            <action selector="segueToAdd:" destination="GNh-Mu-yVB" eventType="touchUpInside" id="59h-jh-bhp"/>
-                                            <segue destination="Ztm-1u-yzh" kind="show" identifier="toAdd" id="I3Q-qa-SVJ"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="Gko-eL-4WC" firstAttribute="centerX" secondItem="13O-Il-EiM" secondAttribute="centerX" id="8rs-Hz-I7d"/>
-                                    <constraint firstItem="Bxs-Gs-z2s" firstAttribute="leading" secondItem="13O-Il-EiM" secondAttribute="leading" constant="15" id="Dkf-Iz-oE9"/>
-                                    <constraint firstAttribute="trailing" secondItem="gO5-HO-VDe" secondAttribute="trailing" constant="20" id="GSQ-mJ-0gB"/>
-                                    <constraint firstItem="Gko-eL-4WC" firstAttribute="centerY" secondItem="13O-Il-EiM" secondAttribute="centerY" id="Rzt-gD-ZXw"/>
-                                    <constraint firstItem="Bxs-Gs-z2s" firstAttribute="centerY" secondItem="13O-Il-EiM" secondAttribute="centerY" id="lSp-uE-vVv"/>
-                                    <constraint firstItem="gO5-HO-VDe" firstAttribute="centerY" secondItem="13O-Il-EiM" secondAttribute="centerY" id="muk-9b-Gin"/>
-                                    <constraint firstAttribute="height" constant="60" id="pLU-oH-Oah"/>
-                                </constraints>
-                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="111" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oxy-BG-YRZ">
-                                <rect key="frame" x="15" y="95" width="345" height="487"/>
+                                <rect key="frame" x="15" y="79" width="345" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="normal" rowHeight="111" id="Rsj-DT-8Qa" customClass="TestListTableViewCell" customModule="Test_Calendar" customModuleProvider="target">
@@ -230,17 +187,15 @@
                         </subviews>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="oxy-BG-YRZ" firstAttribute="top" secondItem="13O-Il-EiM" secondAttribute="bottom" constant="15" id="2BD-6p-lb5"/>
                             <constraint firstItem="oxy-BG-YRZ" firstAttribute="height" secondItem="V2v-6E-5Bf" secondAttribute="height" multiplier="0.73" id="6ic-7Q-BoB"/>
-                            <constraint firstItem="13O-Il-EiM" firstAttribute="top" secondItem="6nd-Ri-vUS" secondAttribute="bottom" id="Agc-8a-Ctq"/>
+                            <constraint firstItem="oxy-BG-YRZ" firstAttribute="top" secondItem="6nd-Ri-vUS" secondAttribute="bottom" constant="15" id="Mrw-eG-ghr"/>
                             <constraint firstItem="56o-XW-nbc" firstAttribute="top" secondItem="K8e-8v-mGB" secondAttribute="bottom" constant="30" id="YWy-vO-YEF"/>
                             <constraint firstItem="K8e-8v-mGB" firstAttribute="centerX" secondItem="V2v-6E-5Bf" secondAttribute="centerX" id="pwe-rM-YGh"/>
                             <constraint firstItem="oxy-BG-YRZ" firstAttribute="centerX" secondItem="V2v-6E-5Bf" secondAttribute="centerX" id="tT0-2F-FV9"/>
-                            <constraint firstAttribute="trailing" secondItem="13O-Il-EiM" secondAttribute="trailing" id="ul1-V3-X2p"/>
-                            <constraint firstItem="13O-Il-EiM" firstAttribute="leading" secondItem="V2v-6E-5Bf" secondAttribute="leading" id="vEQ-FX-WSv"/>
                             <constraint firstItem="oxy-BG-YRZ" firstAttribute="width" secondItem="V2v-6E-5Bf" secondAttribute="width" multiplier="0.92" id="vf5-Gc-eaD"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="テスト及びレポート一覧" id="KCH-kV-EJQ"/>
                     <connections>
                         <outlet property="nextButton" destination="K8e-8v-mGB" id="POy-wa-wJf"/>
                         <outlet property="testListView" destination="oxy-BG-YRZ" id="03F-n6-xpk"/>
@@ -253,7 +208,7 @@
         <!--SetTimeViewController-->
         <scene sceneID="RVY-5Q-Y0G">
             <objects>
-                <viewController storyboardIdentifier="SetTime" title="SetTimeViewController" id="DHT-LE-U2V" customClass="SetTimeViewController" customModule="Test_Calendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="SetTimeViewController" id="DHT-LE-U2V" customClass="SetTimeViewController" customModule="Test_Calendar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wR2-RG-PJF"/>
                         <viewControllerLayoutGuide type="bottom" id="a16-hc-s4I"/>
@@ -263,57 +218,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tac-fM-rgw">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XF8-2b-xxE">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eK9-ZR-WUe">
-                                                <rect key="frame" x="20" y="20" width="20" height="20"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="20" id="IWd-Xb-dkb"/>
-                                                    <constraint firstAttribute="height" constant="20" id="rkC-Xo-g4v"/>
-                                                </constraints>
-                                                <state key="normal" image="arrow-left"/>
-                                                <connections>
-                                                    <segue destination="PiZ-S4-1Gh" kind="unwind" unwindAction="goBackFromSetTime:" id="AJb-6o-0rq"/>
-                                                </connections>
-                                            </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="勉強する時間帯の指定" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5d-3M-DwL">
-                                                <rect key="frame" x="103" y="22" width="170" height="17"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="170" id="XMt-IJ-96i"/>
-                                                    <constraint firstAttribute="height" constant="17" id="pPb-MO-PTC"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstItem="b5d-3M-DwL" firstAttribute="centerY" secondItem="XF8-2b-xxE" secondAttribute="centerY" id="B8Q-td-8I6"/>
-                                            <constraint firstAttribute="height" constant="60" id="XbO-6F-ZKT"/>
-                                            <constraint firstItem="eK9-ZR-WUe" firstAttribute="leading" secondItem="XF8-2b-xxE" secondAttribute="leading" constant="20" id="Xyk-gJ-DgI"/>
-                                            <constraint firstItem="eK9-ZR-WUe" firstAttribute="centerY" secondItem="XF8-2b-xxE" secondAttribute="centerY" id="eSz-vJ-zpX"/>
-                                            <constraint firstItem="b5d-3M-DwL" firstAttribute="centerX" secondItem="XF8-2b-xxE" secondAttribute="centerX" id="h3W-nN-Gts"/>
-                                        </constraints>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="勉強する時間帯を選択して下さい" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fmg-VM-Nvv">
-                                        <rect key="frame" x="37" y="75" width="300" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="300" id="Uxi-QA-8jB"/>
-                                            <constraint firstAttribute="height" constant="30" id="rtI-UC-27N"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYW-xZ-kbJ" userLabel="watch" customClass="WatchView" customModule="Test_Calendar" customModuleProvider="target">
-                                        <rect key="frame" x="32" y="120" width="311" height="311.5"/>
+                                        <rect key="frame" x="32" y="20" width="311" height="311"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gxg-jS-mHK" userLabel="PM" customClass="WatchButton" customModule="Test_Calendar" customModuleProvider="target">
-                                                <rect key="frame" x="267" y="267.5" width="44" height="44"/>
+                                                <rect key="frame" x="267" y="267" width="44" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="44" id="4Dw-g7-k7H"/>
                                                     <constraint firstAttribute="width" secondItem="Gxg-jS-mHK" secondAttribute="height" multiplier="1:1" id="uG3-vm-k27"/>
@@ -323,7 +234,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="etb-L7-Tp6" userLabel="AM" customClass="WatchButton" customModule="Test_Calendar" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="267.5" width="44" height="44"/>
+                                                <rect key="frame" x="0.0" y="267" width="44" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="44" id="Bxe-H7-eMj"/>
                                                     <constraint firstAttribute="width" secondItem="etb-L7-Tp6" secondAttribute="height" multiplier="1:1" id="K3k-A4-TGg"/>
@@ -345,15 +256,18 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jY0-ib-Ef4" customClass="ProcessButton" customModule="Test_Calendar" customModuleProvider="target">
-                                        <rect key="frame" x="63" y="576" width="248" height="42"/>
+                                        <rect key="frame" x="63" y="475" width="248" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="t5V-Rb-DXh"/>
                                             <constraint firstAttribute="width" constant="248" id="u0m-UH-gd6"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="17"/>
+                                        <connections>
+                                            <segue destination="rAM-Uy-5IW" kind="show" id="PQH-Vx-SLS"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="終了時刻" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nmb-a0-uyg">
-                                        <rect key="frame" x="67.5" y="501.5" width="240" height="40"/>
+                                        <rect key="frame" x="68" y="401" width="240" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="240" id="gGB-we-a7D"/>
                                             <constraint firstAttribute="height" constant="40" id="um2-ut-Nbd"/>
@@ -363,7 +277,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="開始時刻" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cNg-iw-VXb">
-                                        <rect key="frame" x="67.5" y="446.5" width="240" height="40"/>
+                                        <rect key="frame" x="68" y="346" width="240" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="1Ev-XH-zZa"/>
                                             <constraint firstAttribute="width" constant="240" id="BQD-Xd-qQD"/>
@@ -375,16 +289,24 @@
                                             <action selector="beginFieldEditing:" destination="DHT-LE-U2V" eventType="editingDidEnd" id="IV4-7O-xXp"/>
                                         </connections>
                                     </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="勉強する時間帯を選択して下さい" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fmg-VM-Nvv">
+                                        <rect key="frame" x="38" y="-25" width="300" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="Uxi-QA-8jB"/>
+                                            <constraint firstAttribute="height" constant="30" id="rtI-UC-27N"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="jY0-ib-Ef4" firstAttribute="centerX" secondItem="tac-fM-rgw" secondAttribute="centerX" id="1sY-qP-C28"/>
                                     <constraint firstItem="nmb-a0-uyg" firstAttribute="top" secondItem="cNg-iw-VXb" secondAttribute="bottom" constant="15" id="5EV-2U-ZUW"/>
-                                    <constraint firstAttribute="trailing" secondItem="XF8-2b-xxE" secondAttribute="trailing" id="6yW-by-BcM"/>
+                                    <constraint firstAttribute="trailing" secondItem="aYW-xZ-kbJ" secondAttribute="trailing" constant="32" id="Eay-th-gA5"/>
                                     <constraint firstItem="aYW-xZ-kbJ" firstAttribute="top" secondItem="Fmg-VM-Nvv" secondAttribute="bottom" constant="15" id="Frg-a3-xIf"/>
-                                    <constraint firstItem="XF8-2b-xxE" firstAttribute="centerX" secondItem="tac-fM-rgw" secondAttribute="centerX" id="Leh-a5-qkh"/>
-                                    <constraint firstItem="XF8-2b-xxE" firstAttribute="top" secondItem="tac-fM-rgw" secondAttribute="top" id="Mag-3i-KeR"/>
-                                    <constraint firstItem="XF8-2b-xxE" firstAttribute="leading" secondItem="tac-fM-rgw" secondAttribute="leading" id="U6q-dI-zAd"/>
+                                    <constraint firstItem="Fmg-VM-Nvv" firstAttribute="top" secondItem="tac-fM-rgw" secondAttribute="top" constant="-25" id="N3C-Gi-jjs"/>
                                     <constraint firstItem="Fmg-VM-Nvv" firstAttribute="centerX" secondItem="tac-fM-rgw" secondAttribute="centerX" id="Wim-Ro-CaH"/>
                                     <constraint firstItem="cNg-iw-VXb" firstAttribute="centerX" secondItem="tac-fM-rgw" secondAttribute="centerX" id="Y1a-eg-Rmk"/>
                                     <constraint firstItem="nmb-a0-uyg" firstAttribute="centerX" secondItem="tac-fM-rgw" secondAttribute="centerX" id="YB7-Dt-8Rk"/>
@@ -392,19 +314,19 @@
                                     <constraint firstAttribute="bottom" secondItem="jY0-ib-Ef4" secondAttribute="bottom" constant="30" id="dE4-7r-8yY"/>
                                     <constraint firstItem="aYW-xZ-kbJ" firstAttribute="centerX" secondItem="tac-fM-rgw" secondAttribute="centerX" id="drV-7K-M7O"/>
                                     <constraint firstItem="jY0-ib-Ef4" firstAttribute="top" secondItem="nmb-a0-uyg" secondAttribute="bottom" constant="34.5" id="f1I-GA-JbX"/>
-                                    <constraint firstItem="Fmg-VM-Nvv" firstAttribute="top" secondItem="XF8-2b-xxE" secondAttribute="bottom" constant="15" id="jvu-je-eGK"/>
                                     <constraint firstItem="cNg-iw-VXb" firstAttribute="top" secondItem="aYW-xZ-kbJ" secondAttribute="bottom" constant="15" id="pB7-Zj-CTm"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="tac-fM-rgw" firstAttribute="top" secondItem="wR2-RG-PJF" secondAttribute="bottom" id="5OE-bz-SgK"/>
-                            <constraint firstItem="a16-hc-s4I" firstAttribute="top" secondItem="tac-fM-rgw" secondAttribute="bottom" id="EZM-Zr-Q8t"/>
                             <constraint firstItem="tac-fM-rgw" firstAttribute="leading" secondItem="og8-YI-1VP" secondAttribute="leading" id="GIo-c9-hcz"/>
+                            <constraint firstItem="tac-fM-rgw" firstAttribute="top" secondItem="wR2-RG-PJF" secondAttribute="bottom" id="Yft-jW-ubv"/>
                             <constraint firstItem="tac-fM-rgw" firstAttribute="centerX" secondItem="og8-YI-1VP" secondAttribute="centerX" id="mwy-Tw-lzX"/>
+                            <constraint firstItem="tac-fM-rgw" firstAttribute="bottom" secondItem="a16-hc-s4I" secondAttribute="top" id="qWd-kd-G0e"/>
                             <constraint firstAttribute="trailing" secondItem="tac-fM-rgw" secondAttribute="trailing" id="z34-ZO-JcX"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="勉強する時間帯の指定" id="nCW-FO-Sx6"/>
                     <connections>
                         <outlet property="amButton" destination="etb-L7-Tp6" id="pi3-lo-g8p"/>
                         <outlet property="beginField" destination="cNg-iw-VXb" id="tXZ-iM-wfL"/>
@@ -416,9 +338,25 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HJ7-0Q-E4W" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="PiZ-S4-1Gh" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="280.80000000000001" y="169.56521739130437"/>
+            <point key="canvasLocation" x="17" y="170"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eAu-hi-Qnq">
+            <objects>
+                <navigationController id="8sW-kD-Ht3" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OAc-Yd-zjT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="GNh-Mu-yVB" kind="relationship" relationship="rootViewController" id="fUR-xD-QMt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cwo-xL-WEV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2103" y="170"/>
         </scene>
         <!--Select Calendar View Controller-->
         <scene sceneID="Rth-iR-qTn">
@@ -435,37 +373,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="drt-rf-rMD">
                                 <rect key="frame" x="15" y="195" width="345" height="320"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVQ-Hg-dnm">
-                                <rect key="frame" x="0.0" y="20" width="375" height="60"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24h-j9-DPA">
-                                        <rect key="frame" x="19.5" y="18" width="24" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="24h-j9-DPA" secondAttribute="height" multiplier="1:1" id="GAm-M2-XeS"/>
-                                            <constraint firstAttribute="width" constant="24" id="wxn-sQ-qil"/>
-                                        </constraints>
-                                        <state key="normal" title="Button" image="arrow-left"/>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="スケジュールを選択" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFq-FI-NGP">
-                                        <rect key="frame" x="100" y="18" width="175" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="175" id="17u-OT-16c"/>
-                                            <constraint firstAttribute="height" constant="25" id="Kmg-qp-fdv"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="dFq-FI-NGP" firstAttribute="centerY" secondItem="UVQ-Hg-dnm" secondAttribute="centerY" id="7xq-pw-FNg"/>
-                                    <constraint firstItem="24h-j9-DPA" firstAttribute="leading" secondItem="UVQ-Hg-dnm" secondAttribute="leading" constant="19.5" id="P5S-QM-zor"/>
-                                    <constraint firstItem="24h-j9-DPA" firstAttribute="centerY" secondItem="UVQ-Hg-dnm" secondAttribute="centerY" id="jeX-j2-spF"/>
-                                    <constraint firstAttribute="height" constant="60" id="oth-X0-HcD"/>
-                                    <constraint firstItem="dFq-FI-NGP" firstAttribute="centerX" secondItem="UVQ-Hg-dnm" secondAttribute="centerX" id="qdo-AL-b37"/>
-                                </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="適用するテストの勉強スケジュールを選択して下さい。" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txm-N4-dDx">
                                 <rect key="frame" x="47.5" y="100" width="280" height="70"/>
@@ -496,15 +403,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="UVQ-Hg-dnm" secondAttribute="trailing" id="3ym-oA-3zC"/>
                             <constraint firstItem="drt-rf-rMD" firstAttribute="width" secondItem="U1F-ZJ-LDl" secondAttribute="width" multiplier="0.92" id="6u2-Kx-uuc"/>
                             <constraint firstItem="drt-rf-rMD" firstAttribute="top" secondItem="U1F-ZJ-LDl" secondAttribute="top" constant="195" id="82d-Mn-iOo"/>
                             <constraint firstItem="txm-N4-dDx" firstAttribute="top" secondItem="U1F-ZJ-LDl" secondAttribute="topMargin" constant="100" id="QMl-FW-LJN"/>
-                            <constraint firstItem="UVQ-Hg-dnm" firstAttribute="top" secondItem="jqj-K7-Rl6" secondAttribute="bottom" id="RkH-IT-dju"/>
                             <constraint firstItem="TVN-Jk-Brg" firstAttribute="top" secondItem="drt-rf-rMD" secondAttribute="bottom" constant="10" id="SXD-1h-GFk"/>
                             <constraint firstItem="TVN-Jk-Brg" firstAttribute="centerX" secondItem="U1F-ZJ-LDl" secondAttribute="centerX" id="hFn-kH-MMY"/>
                             <constraint firstItem="drt-rf-rMD" firstAttribute="height" secondItem="U1F-ZJ-LDl" secondAttribute="height" multiplier="0.48" id="hGE-Z1-C3h"/>
-                            <constraint firstItem="UVQ-Hg-dnm" firstAttribute="leading" secondItem="U1F-ZJ-LDl" secondAttribute="leading" id="mFf-NU-n7L"/>
                             <constraint firstItem="xxb-TR-dhi" firstAttribute="top" secondItem="iS2-Ip-tHY" secondAttribute="bottom" constant="36" id="nDJ-Pb-zv8"/>
                             <constraint firstItem="iS2-Ip-tHY" firstAttribute="centerX" secondItem="U1F-ZJ-LDl" secondAttribute="centerX" id="nu1-k3-Csb"/>
                             <constraint firstItem="txm-N4-dDx" firstAttribute="centerX" secondItem="U1F-ZJ-LDl" secondAttribute="centerX" id="r2N-J4-3tO"/>
@@ -513,59 +417,36 @@
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hjv-TX-hqj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationBar contentMode="scaleToFill" id="hzF-PS-IJS">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <items>
+                        <navigationItem title="Title" id="DnB-Vi-p17"/>
+                    </items>
+                </navigationBar>
             </objects>
-            <point key="canvasLocation" x="1114" y="170"/>
+            <point key="canvasLocation" x="980" y="170"/>
         </scene>
         <!--Test View Controller-->
         <scene sceneID="1o3-gm-7ct">
             <objects>
-                <viewController id="Ztm-1u-yzh" customClass="TestViewController" customModule="Test_Calendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Ztm-1u-yzh" customClass="TestViewController" customModule="Test_Calendar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yh5-yn-eGH"/>
                         <viewControllerLayoutGuide type="bottom" id="0fs-gB-cOW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CcZ-op-QNV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1167"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nS4-IE-xMy">
-                                <rect key="frame" x="0.0" y="20" width="375" height="1147"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="1036"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DWc-hl-Yn8">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1067"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qjN-5Q-kWh">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="テスト又はレポートの追加" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVk-4f-Bsm">
-                                                        <rect key="frame" x="85.5" y="21.5" width="203.5" height="17"/>
-                                                        <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pq9-B1-ZDq">
-                                                        <rect key="frame" x="15" y="12" width="35" height="35"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="35" id="BB0-Xx-3ax"/>
-                                                            <constraint firstAttribute="height" constant="35" id="V6y-Dt-RTb"/>
-                                                        </constraints>
-                                                        <state key="normal" title="Button" image="close"/>
-                                                        <connections>
-                                                            <segue destination="gLi-gD-HXN" kind="unwind" unwindAction="goBack:" id="SEx-St-lhh"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="ApY-XS-ezk"/>
-                                                    <constraint firstItem="Pq9-B1-ZDq" firstAttribute="centerY" secondItem="qjN-5Q-kWh" secondAttribute="centerY" id="LiG-yC-8Pg"/>
-                                                    <constraint firstItem="Pq9-B1-ZDq" firstAttribute="leading" secondItem="qjN-5Q-kWh" secondAttribute="leading" constant="15" id="hRA-ck-GD2"/>
-                                                    <constraint firstItem="DVk-4f-Bsm" firstAttribute="centerY" secondItem="qjN-5Q-kWh" secondAttribute="centerY" id="vmT-qR-mCz"/>
-                                                    <constraint firstItem="DVk-4f-Bsm" firstAttribute="centerX" secondItem="qjN-5Q-kWh" secondAttribute="centerX" id="zde-VN-QzY"/>
-                                                </constraints>
-                                            </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FAL-WU-MhE">
-                                                <rect key="frame" x="15" y="80" width="345" height="820"/>
+                                                <rect key="frame" x="15" y="40" width="345" height="820"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZKZ-4P-5ng">
                                                         <rect key="frame" x="0.0" y="0.0" width="345" height="70"/>
@@ -837,7 +718,7 @@
                                                 </constraints>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dq3-Yc-pD2" customClass="ProcessButton" customModule="Test_Calendar" customModuleProvider="target">
-                                                <rect key="frame" x="63.5" y="989" width="248" height="42"/>
+                                                <rect key="frame" x="63.5" y="900" width="248" height="42"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="42" id="2ON-Ed-knF"/>
                                                     <constraint firstAttribute="width" constant="248" id="azW-1E-TnG"/>
@@ -847,23 +728,19 @@
                                         </subviews>
                                         <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstItem="qjN-5Q-kWh" firstAttribute="top" secondItem="DWc-hl-Yn8" secondAttribute="top" id="03U-07-wdm"/>
-                                            <constraint firstItem="qjN-5Q-kWh" firstAttribute="leading" secondItem="DWc-hl-Yn8" secondAttribute="leading" id="0dd-4D-4xm"/>
-                                            <constraint firstAttribute="height" constant="1067" id="AkZ-7G-YWI"/>
+                                            <constraint firstAttribute="height" constant="1000" id="AkZ-7G-YWI"/>
                                             <constraint firstItem="FAL-WU-MhE" firstAttribute="centerX" secondItem="DWc-hl-Yn8" secondAttribute="centerX" id="RM7-oj-wBL"/>
-                                            <constraint firstAttribute="bottom" secondItem="FAL-WU-MhE" secondAttribute="bottom" constant="167" id="Wqs-Yy-hDo"/>
                                             <constraint firstItem="dq3-Yc-pD2" firstAttribute="centerX" secondItem="DWc-hl-Yn8" secondAttribute="centerX" id="Y48-Vw-QVl"/>
-                                            <constraint firstAttribute="bottom" secondItem="dq3-Yc-pD2" secondAttribute="bottom" constant="36" id="gbs-Vm-0bV"/>
-                                            <constraint firstItem="FAL-WU-MhE" firstAttribute="top" secondItem="qjN-5Q-kWh" secondAttribute="bottom" constant="20" id="rd5-51-XS8"/>
-                                            <constraint firstAttribute="trailing" secondItem="qjN-5Q-kWh" secondAttribute="trailing" id="wQD-SX-2dV"/>
+                                            <constraint firstItem="FAL-WU-MhE" firstAttribute="top" secondItem="DWc-hl-Yn8" secondAttribute="top" constant="40" id="oQR-VK-MzI"/>
+                                            <constraint firstItem="dq3-Yc-pD2" firstAttribute="top" secondItem="FAL-WU-MhE" secondAttribute="bottom" constant="40" id="uRd-cm-zcT"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="DWc-hl-Yn8" secondAttribute="trailing" id="670-6l-a6c"/>
                                     <constraint firstItem="DWc-hl-Yn8" firstAttribute="leading" secondItem="nS4-IE-xMy" secondAttribute="leading" id="Tr0-30-26I"/>
+                                    <constraint firstItem="DWc-hl-Yn8" firstAttribute="top" secondItem="nS4-IE-xMy" secondAttribute="top" id="d2G-vn-pwi"/>
                                     <constraint firstAttribute="bottom" secondItem="DWc-hl-Yn8" secondAttribute="bottom" id="hD5-ne-Vz6"/>
-                                    <constraint firstItem="DWc-hl-Yn8" firstAttribute="top" secondItem="nS4-IE-xMy" secondAttribute="top" id="idW-fv-scU"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -877,7 +754,7 @@
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="1167"/>
+                    <size key="freeformSize" width="375" height="1100"/>
                     <connections>
                         <outlet property="baseView" destination="DWc-hl-Yn8" id="XTG-Ed-cej"/>
                         <outlet property="collection" destination="8i6-Y3-YRP" id="vxw-Kk-7D9"/>
@@ -890,17 +767,8 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqN-RD-Myz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="gLi-gD-HXN" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-954" y="1228"/>
+            <point key="canvasLocation" x="-954" y="1236"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="arrow-left" width="8" height="12"/>
-        <image name="close" width="15" height="14"/>
-        <image name="plus" width="17" height="16"/>
-    </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="8ir-jT-UdD"/>
-    </inferredMetricsTieBreakers>
 </document>

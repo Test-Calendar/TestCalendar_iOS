@@ -13,6 +13,7 @@
 		C0ABBB461F89DEF000830369 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ABBB451F89DEF000830369 /* TitleTableViewCell.swift */; };
 		C0ABBB481F89E29F00830369 /* PickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0ABBB471F89E29F00830369 /* PickerTableViewCell.swift */; };
 		C0F3CDB91F8B4B15008DF2B8 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F3CDB81F8B4B15008DF2B8 /* ButtonTableViewCell.swift */; };
+		E60050351F8FD46B004A6C3B /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60050341F8FD46B004A6C3B /* NavigationBar.swift */; };
 		E60CBE2A1F6229CE004E8D5C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60CBE291F6229CE004E8D5C /* API.swift */; };
 		E610F92B1F7BDDE100A1363A /* ProcessButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E610F92A1F7BDDE100A1363A /* ProcessButton.swift */; };
 		E610F92D1F7C772900A1363A /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E610F92C1F7C772900A1363A /* TestViewController.swift */; };
@@ -86,6 +87,7 @@
 		C0ABBB451F89DEF000830369 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 		C0ABBB471F89E29F00830369 /* PickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTableViewCell.swift; sourceTree = "<group>"; };
 		C0F3CDB81F8B4B15008DF2B8 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
+		E60050341F8FD46B004A6C3B /* NavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		E60CBE291F6229CE004E8D5C /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		E610F92A1F7BDDE100A1363A /* ProcessButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessButton.swift; sourceTree = "<group>"; };
 		E610F92C1F7C772900A1363A /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				E610F92C1F7C772900A1363A /* TestViewController.swift */,
 				E64E20501F58080A00D12289 /* SetTimeViewController.swift */,
 				E64E20521F58082E00D12289 /* SelectCalendarViewController.swift */,
+				E60050341F8FD46B004A6C3B /* NavigationBar.swift */,
 			);
 			name = MakeTestCalendar;
 			sourceTree = "<group>";
@@ -885,6 +888,7 @@
 				E60CBE2A1F6229CE004E8D5C /* API.swift in Sources */,
 				E6EAB4A71F66B22F004F45A9 /* WatchView.swift in Sources */,
 				E64E208A1F58963A00D12289 /* Calendar.swift in Sources */,
+				E60050351F8FD46B004A6C3B /* NavigationBar.swift in Sources */,
 				E610F92B1F7BDDE100A1363A /* ProcessButton.swift in Sources */,
 				E6E148EC1F88FEA3007F2E3C /* TestListTableViewCell.swift in Sources */,
 				E64E20471F58075C00D12289 /* AddEventViewController.swift in Sources */,
