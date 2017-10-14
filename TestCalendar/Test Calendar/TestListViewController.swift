@@ -16,11 +16,6 @@ protocol TestListDelegate: class{
 /// テストとレポート一覧画面
 class TestListViewController: UIViewController {
     
-    var data: [TestListViewModel] = []
-    var status: TestListStatus = .none
-    var model = CalendarModel.sharedInstance
-//    var presenter: HomeTestListViewPresenter!
-    
     @IBOutlet weak var testListTitle: UILabel!
     @IBOutlet weak var testListView: UITableView!
     @IBOutlet weak var testListCell: UITableViewCell!
@@ -29,13 +24,21 @@ class TestListViewController: UIViewController {
     @IBOutlet weak var navigationBar: UINavigationItem!
     @IBOutlet weak var nextButton: ProcessButton!
     
+    var data: [TestListViewModel] = []
+    var status: TestListStatus = .none
+    var model = CalendarModel.sharedInstance
     
     @IBAction func close(_ sender: Any) { //前の画面に戻る
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func segueToAdd(_ sender: Any) { //addへ
-        performSegue(withIdentifier: "toAdd", sender: nil)
+    @IBAction func segueToAdd(_ sender: Any) {
+//        self.performSegue(withIdentifier: "toAdd", sender: nil)
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "toAdd") as! TestViewController
+        let data = TestListViewModel(name: "", type: 0, color: "", notification: false, study: 0, time: NSDate())
+        nextView.data = data
+        present(nextView, animated: true, completion: nil)
     }
     
     @IBAction func goBack(_ segue:UIStoryboardSegue) {}
@@ -94,13 +97,9 @@ class TestListViewController: UIViewController {
 }
 
 
-
-
-
-
 // MARK: - Private
 extension TestListViewController{
-    
+ 
     func segue(_ target: TestListViewModel){
         self.performSegue(withIdentifier: "toEdit", sender: target)
     }

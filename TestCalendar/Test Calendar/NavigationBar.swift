@@ -11,12 +11,12 @@ import UIKit
 
 
 
-/// <#Description#>
-class navController: UINavigationBar {
+class CustomNavigationBar: UINavigationBar {
     
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         super.sizeThatFits(size)
         var barSize = size
+        barSize.width = self.frame.width
         barSize.height += 50
         return barSize
     }

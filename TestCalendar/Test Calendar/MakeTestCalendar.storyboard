@@ -195,7 +195,21 @@
                             <constraint firstItem="oxy-BG-YRZ" firstAttribute="width" secondItem="V2v-6E-5Bf" secondAttribute="width" multiplier="0.92" id="vf5-Gc-eaD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="テスト及びレポート一覧" id="KCH-kV-EJQ"/>
+                    <navigationItem key="navigationItem" title="テスト及びレポート一覧" id="KCH-kV-EJQ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="tvn-ja-FiK">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="close:" destination="GNh-Mu-yVB" id="iO9-FU-NO3"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="mYs-Lr-1OT">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="segueToAdd:" destination="GNh-Mu-yVB" id="aZk-QQ-8CQ"/>
+                                <segue destination="Ztm-1u-yzh" kind="show" identifier="toAdd" id="BZb-3m-1oU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="nextButton" destination="K8e-8v-mGB" id="POy-wa-wJf"/>
                         <outlet property="testListView" destination="oxy-BG-YRZ" id="03F-n6-xpk"/>
@@ -345,10 +359,9 @@
         <scene sceneID="eAu-hi-Qnq">
             <objects>
                 <navigationController id="8sW-kD-Ht3" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OAc-Yd-zjT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OAc-Yd-zjT" customClass="CustomNavigationBar" customModule="Test_Calendar" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="GNh-Mu-yVB" kind="relationship" relationship="rootViewController" id="fUR-xD-QMt"/>
@@ -430,7 +443,7 @@
         <!--Test View Controller-->
         <scene sceneID="1o3-gm-7ct">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Ztm-1u-yzh" customClass="TestViewController" customModule="Test_Calendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="toAdd" automaticallyAdjustsScrollViewInsets="NO" id="Ztm-1u-yzh" customClass="TestViewController" customModule="Test_Calendar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yh5-yn-eGH"/>
                         <viewControllerLayoutGuide type="bottom" id="0fs-gB-cOW"/>
@@ -440,7 +453,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nS4-IE-xMy">
-                                <rect key="frame" x="0.0" y="64" width="375" height="1036"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="992"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DWc-hl-Yn8">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
@@ -753,6 +766,8 @@
                             <constraint firstItem="nS4-IE-xMy" firstAttribute="leading" secondItem="CcZ-op-QNV" secondAttribute="leading" id="fZ6-8E-aOe"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1100"/>
                     <connections>
@@ -771,4 +786,7 @@
             <point key="canvasLocation" x="-954" y="1236"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="BZb-3m-1oU"/>
+    </inferredMetricsTieBreakers>
 </document>

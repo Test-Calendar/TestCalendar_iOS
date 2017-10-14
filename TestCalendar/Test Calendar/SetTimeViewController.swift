@@ -28,6 +28,36 @@ class SetTimeViewController: UIViewController {
     let screenSize = UIScreen.main.bounds.size
     
     
+    override func loadView() {
+        super.loadView()
+        self.view.addSubview(statusBar())
+        amButton.setTitle("AM", for: .normal)
+        pmButton.setTitle("PM", for: .normal)
+        changeWatchButtonType(am: amButton, pm: pmButton, type: .pm)
+        makeButton.setTitle("テストスケジュール作成", for: .normal)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        makeButton.delegate = self
+        beginField.delegate = self
+        finishField.delegate = self
+        scrollView.delegate = self
+        
+        setUpDatePicker()
+        NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true) //close picker
+    }
+    
+    
     @IBAction func beginFieldEditing(_ sender: UITextField) {
     }
     
@@ -44,38 +74,16 @@ class SetTimeViewController: UIViewController {
         watch.changeAmPm()
         changeWatchButtonType(am: amButton, pm: pmButton, type: .pm)
     }
-
-    override func loadView() {
-        super.loadView()
-        self.view.addSubview(statusBar())
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        makeButton.delegate = self
-        beginField.delegate = self
-        finishField.delegate = self
-        scrollView.delegate = self
-        amButton.setTitle("AM", for: .normal)
-        pmButton.setTitle("PM", for: .normal)
-        changeWatchButtonType(am: amButton, pm: pmButton, type: .pm)
-        makeButton.setTitle("テストスケジュール作成", for: .normal)
-        setUpDatePicker()
-        NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true) //close picker
-    }
 }
 
 
 // MARK: - Private
+extension SetTimeViewController{
+    
+}
+
+
+// MARK: - UIScrollViewDelegate
 extension SetTimeViewController: UIScrollViewDelegate{
     
     func handleKeyboardWillShowNotification(_ notification: Notification) {
@@ -83,7 +91,7 @@ extension SetTimeViewController: UIScrollViewDelegate{
         let userInfo = notification.userInfo!
         let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         let myBoundSize: CGSize = UIScreen.main.bounds.size
-        let txtLimit = txtActiveField.frame.origin.y + txtActiveField.frame.height + 25.0
+        let txtLimit = txtActiveField.frame.origin.y + txtActiveField.frame.height + 50.0
         let kbdLimit = myBoundSize.height - keyboardScreenEndFrame.size.height
         
         if txtLimit >= kbdLimit {
