@@ -47,6 +47,7 @@ class TestListViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.view.addSubview(statusBar())
         nextButton.setTitle("次へ", for: .normal)
     }

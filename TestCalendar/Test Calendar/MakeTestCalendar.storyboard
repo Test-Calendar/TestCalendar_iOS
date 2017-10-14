@@ -38,7 +38,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="16"/>
                                 <connections>
-                                    <segue destination="DHT-LE-U2V" kind="show" identifier="toNext" id="qhz-I2-h2y"/>
+                                    <segue destination="DHT-LE-U2V" kind="show" identifier="toNext" id="PHe-LE-snp"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="111" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oxy-BG-YRZ">
@@ -232,10 +232,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tac-fM-rgw">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jY0-ib-Ef4" customClass="ProcessButton" customModule="Test_Calendar" customModuleProvider="target">
+                                        <rect key="frame" x="63" y="540" width="248" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="t5V-Rb-DXh"/>
+                                            <constraint firstAttribute="width" constant="248" id="u0m-UH-gd6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="17"/>
+                                        <connections>
+                                            <segue destination="rAM-Uy-5IW" kind="show" id="PQH-Vx-SLS"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="終了時刻" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nmb-a0-uyg">
+                                        <rect key="frame" x="68" y="466" width="240" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="gGB-we-a7D"/>
+                                            <constraint firstAttribute="height" constant="40" id="um2-ut-Nbd"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="開始時刻" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cNg-iw-VXb">
+                                        <rect key="frame" x="68" y="411" width="240" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="1Ev-XH-zZa"/>
+                                            <constraint firstAttribute="width" constant="240" id="BQD-Xd-qQD"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="beginFieldEditing:" destination="DHT-LE-U2V" eventType="editingDidEnd" id="IV4-7O-xXp"/>
+                                        </connections>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="勉強する時間帯を選択して下さい" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fmg-VM-Nvv">
+                                        <rect key="frame" x="38" y="30" width="300" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="Uxi-QA-8jB"/>
+                                            <constraint firstAttribute="height" constant="30" id="rtI-UC-27N"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYW-xZ-kbJ" userLabel="watch" customClass="WatchView" customModule="Test_Calendar" customModuleProvider="target">
-                                        <rect key="frame" x="32" y="20" width="311" height="311"/>
+                                        <rect key="frame" x="32" y="85" width="311" height="311"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gxg-jS-mHK" userLabel="PM" customClass="WatchButton" customModule="Test_Calendar" customModuleProvider="target">
                                                 <rect key="frame" x="267" y="267" width="44" height="44"/>
@@ -269,59 +313,15 @@
                                             <constraint firstItem="etb-L7-Tp6" firstAttribute="leading" secondItem="aYW-xZ-kbJ" secondAttribute="leading" id="zhp-3l-nAT"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jY0-ib-Ef4" customClass="ProcessButton" customModule="Test_Calendar" customModuleProvider="target">
-                                        <rect key="frame" x="63" y="475" width="248" height="42"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="42" id="t5V-Rb-DXh"/>
-                                            <constraint firstAttribute="width" constant="248" id="u0m-UH-gd6"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="17"/>
-                                        <connections>
-                                            <segue destination="rAM-Uy-5IW" kind="show" id="PQH-Vx-SLS"/>
-                                        </connections>
-                                    </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="終了時刻" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nmb-a0-uyg">
-                                        <rect key="frame" x="68" y="401" width="240" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="240" id="gGB-we-a7D"/>
-                                            <constraint firstAttribute="height" constant="40" id="um2-ut-Nbd"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="開始時刻" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cNg-iw-VXb">
-                                        <rect key="frame" x="68" y="346" width="240" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="1Ev-XH-zZa"/>
-                                            <constraint firstAttribute="width" constant="240" id="BQD-Xd-qQD"/>
-                                        </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="beginFieldEditing:" destination="DHT-LE-U2V" eventType="editingDidEnd" id="IV4-7O-xXp"/>
-                                        </connections>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="勉強する時間帯を選択して下さい" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fmg-VM-Nvv">
-                                        <rect key="frame" x="38" y="-25" width="300" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="300" id="Uxi-QA-8jB"/>
-                                            <constraint firstAttribute="height" constant="30" id="rtI-UC-27N"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="jY0-ib-Ef4" firstAttribute="centerX" secondItem="tac-fM-rgw" secondAttribute="centerX" id="1sY-qP-C28"/>
                                     <constraint firstItem="nmb-a0-uyg" firstAttribute="top" secondItem="cNg-iw-VXb" secondAttribute="bottom" constant="15" id="5EV-2U-ZUW"/>
                                     <constraint firstAttribute="trailing" secondItem="aYW-xZ-kbJ" secondAttribute="trailing" constant="32" id="Eay-th-gA5"/>
-                                    <constraint firstItem="aYW-xZ-kbJ" firstAttribute="top" secondItem="Fmg-VM-Nvv" secondAttribute="bottom" constant="15" id="Frg-a3-xIf"/>
-                                    <constraint firstItem="Fmg-VM-Nvv" firstAttribute="top" secondItem="tac-fM-rgw" secondAttribute="top" constant="-25" id="N3C-Gi-jjs"/>
+                                    <constraint firstItem="aYW-xZ-kbJ" firstAttribute="top" secondItem="Fmg-VM-Nvv" secondAttribute="bottom" constant="25" id="Frg-a3-xIf"/>
                                     <constraint firstItem="Fmg-VM-Nvv" firstAttribute="centerX" secondItem="tac-fM-rgw" secondAttribute="centerX" id="Wim-Ro-CaH"/>
+                                    <constraint firstItem="Fmg-VM-Nvv" firstAttribute="top" secondItem="tac-fM-rgw" secondAttribute="top" constant="30" id="Wr2-Id-ULp"/>
                                     <constraint firstItem="cNg-iw-VXb" firstAttribute="centerX" secondItem="tac-fM-rgw" secondAttribute="centerX" id="Y1a-eg-Rmk"/>
                                     <constraint firstItem="nmb-a0-uyg" firstAttribute="centerX" secondItem="tac-fM-rgw" secondAttribute="centerX" id="YB7-Dt-8Rk"/>
                                     <constraint firstItem="aYW-xZ-kbJ" firstAttribute="width" secondItem="tac-fM-rgw" secondAttribute="width" multiplier="0.83" id="bsw-P5-j1t"/>
@@ -334,9 +334,9 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="tac-fM-rgw" firstAttribute="leading" secondItem="og8-YI-1VP" secondAttribute="leading" id="GIo-c9-hcz"/>
-                            <constraint firstItem="tac-fM-rgw" firstAttribute="top" secondItem="wR2-RG-PJF" secondAttribute="bottom" id="Yft-jW-ubv"/>
                             <constraint firstItem="tac-fM-rgw" firstAttribute="centerX" secondItem="og8-YI-1VP" secondAttribute="centerX" id="mwy-Tw-lzX"/>
                             <constraint firstItem="tac-fM-rgw" firstAttribute="bottom" secondItem="a16-hc-s4I" secondAttribute="top" id="qWd-kd-G0e"/>
+                            <constraint firstItem="tac-fM-rgw" firstAttribute="top" secondItem="og8-YI-1VP" secondAttribute="top" id="uIM-uZ-ZLv"/>
                             <constraint firstAttribute="trailing" secondItem="tac-fM-rgw" secondAttribute="trailing" id="z34-ZO-JcX"/>
                         </constraints>
                     </view>
@@ -353,13 +353,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HJ7-0Q-E4W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="17" y="170"/>
+            <point key="canvasLocation" x="16.800000000000001" y="169.56521739130437"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eAu-hi-Qnq">
             <objects>
                 <navigationController id="8sW-kD-Ht3" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OAc-Yd-zjT" customClass="CustomNavigationBar" customModule="Test_Calendar" customModuleProvider="target">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="OAc-Yd-zjT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

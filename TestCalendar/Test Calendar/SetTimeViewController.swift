@@ -30,6 +30,7 @@ class SetTimeViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.view.addSubview(statusBar())
         amButton.setTitle("AM", for: .normal)
         pmButton.setTitle("PM", for: .normal)
@@ -43,7 +44,6 @@ class SetTimeViewController: UIViewController {
         beginField.delegate = self
         finishField.delegate = self
         scrollView.delegate = self
-        
         setUpDatePicker()
         NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)

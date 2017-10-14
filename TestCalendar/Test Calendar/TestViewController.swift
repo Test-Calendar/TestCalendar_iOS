@@ -44,6 +44,10 @@ class TestViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
+        self.navigationItem.title = "テスト及びレポートの追加"
+        self.navigationController?.navigationBar.titleTextAttributes
+            = [NSFontAttributeName: UIFont(name: "HiraKakuProN-W6", size: 17)!]
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.view.addSubview(statusBar())
         makeButton.setTitle("作成", for: .normal)
     }
@@ -52,6 +56,7 @@ class TestViewController: UIViewController {
         super.viewDidLoad()
         setTextField()
         setUpData()
+        
         makeButton.delegate = self as ProcessButtonDelegate
     }
 
