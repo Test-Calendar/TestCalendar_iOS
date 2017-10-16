@@ -46,8 +46,8 @@ class SetTimeViewController: UIViewController {
 //        endField.delegate = self
         scrollView.delegate = self
 //        setUpDatePicker()
-//        NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     override func didReceiveMemoryWarning() {
