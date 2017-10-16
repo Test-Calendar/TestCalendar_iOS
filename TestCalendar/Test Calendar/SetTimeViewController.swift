@@ -17,8 +17,9 @@ class SetTimeViewController: UIViewController {
     @IBOutlet weak var pmButton: WatchButton!
     @IBOutlet weak var makeButton: ProcessButton!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var beginField: UITextField!
-    @IBOutlet weak var finishField: UITextField!
+    @IBOutlet weak var beginField: DatePickerTextField!
+    @IBOutlet weak var endField: DatePickerTextField!
+    
     
     var begin = NSDate()
     var finish = NSDate()
@@ -41,12 +42,12 @@ class SetTimeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         makeButton.delegate = self
-        beginField.delegate = self
-        finishField.delegate = self
+//        beginField.delegate = self
+//        endField.delegate = self
         scrollView.delegate = self
-        setUpDatePicker()
-        NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//        setUpDatePicker()
+//        NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -105,10 +106,37 @@ extension SetTimeViewController: UIScrollViewDelegate{
 
     fileprivate func setUpDatePicker(){
         picker.datePickerMode = .time
+        picker.addTarget(self, action: #selector(SetTimeViewController.changeDate(sender:)), for: .valueChanged)
         beginField.inputView = picker
-        finishField.inputView = picker
+        endField.inputView = picker
+        addToolBarButton()
+    }
+    
+    func addToolBarButton(){
+        var toolBar = UIToolbar()
+        toolBar = UIToolbar(frame: CGRect(x: 0, y: self.view.frame.size.height/6, width:self.view.frame.size.width, height:40.0))
+        toolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
+        toolBar.barStyle = .blackTranslucent
+        toolBar.tintColor = UIColor.white
+        toolBar.backgroundColor = UIColor.black
+        let toolBarBtn = UIBarButtonItem(title: "完了", style: .plain, target: self, action: #selector(SetTimeViewController.tappedToolBarBtn(sender:)))
+        toolBar.items = [toolBarBtn]
+        beginField.inputAccessoryView = toolBar
+        endField.inputAccessoryView = toolBar
+    }
+    
+    // 「完了」を押すと閉じる
+    func tappedToolBarBtn(sender: UIBarButtonItem) {
+        txtActiveField.resignFirstResponder()
+    }
+    
+    func changeDate(sender: AnyObject?){
+        let datePicker: UIDatePicker = sender as! UIDatePicker
+        beginField.text = formatter.string(from: datePicker.date)
+        print(formatter.string(from: datePicker.date))
     }
 }
+
 
 // MARK: - UITextFieldDelegate
 extension SetTimeViewController: UITextFieldDelegate{
@@ -128,5 +156,6 @@ extension SetTimeViewController: UITextFieldDelegate{
 extension SetTimeViewController: ProcessButtonDelegate{
     func tapped() {
         print("スケジュール作成")
+//        makeTestScheduele()
     }
 }

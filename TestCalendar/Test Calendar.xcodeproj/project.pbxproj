@@ -17,6 +17,7 @@
 		E60CBE2A1F6229CE004E8D5C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60CBE291F6229CE004E8D5C /* API.swift */; };
 		E610F92B1F7BDDE100A1363A /* ProcessButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E610F92A1F7BDDE100A1363A /* ProcessButton.swift */; };
 		E610F92D1F7C772900A1363A /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E610F92C1F7C772900A1363A /* TestViewController.swift */; };
+		E644DDDB1F94C618008631BB /* DatePickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E644DDDA1F94C618008631BB /* DatePickerTextField.swift */; };
 		E64E1FD21F56A38700D12289 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64E1FD11F56A38700D12289 /* AppDelegate.swift */; };
 		E64E1FD71F56A38700D12289 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E64E1FD51F56A38700D12289 /* Main.storyboard */; };
 		E64E1FD91F56A38700D12289 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E64E1FD81F56A38700D12289 /* Assets.xcassets */; };
@@ -91,6 +92,7 @@
 		E60CBE291F6229CE004E8D5C /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		E610F92A1F7BDDE100A1363A /* ProcessButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessButton.swift; sourceTree = "<group>"; };
 		E610F92C1F7C772900A1363A /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		E644DDDA1F94C618008631BB /* DatePickerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTextField.swift; sourceTree = "<group>"; };
 		E64E1FCE1F56A38700D12289 /* Test Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Test Calendar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64E1FD11F56A38700D12289 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E64E1FD61F56A38700D12289 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -500,6 +502,7 @@
 				E64F63FF1F89E60E0038B593 /* TestListPresenter.swift */,
 				E64F64011F8A013F0038B593 /* AddTestPresenter.swift */,
 				E64F64051F8A053E0038B593 /* ColorCollectionViewCell.swift */,
+				E644DDDA1F94C618008631BB /* DatePickerTextField.swift */,
 			);
 			name = MakeTestCalendar;
 			sourceTree = "<group>";
@@ -894,6 +897,7 @@
 				E64E20471F58075C00D12289 /* AddEventViewController.swift in Sources */,
 				E64E20861F5862E300D12289 /* View.swift in Sources */,
 				E6E148EA1F88A0A5007F2E3C /* TestListViewModel.swift in Sources */,
+				E644DDDB1F94C618008631BB /* DatePickerTextField.swift in Sources */,
 				E64E1FD21F56A38700D12289 /* AppDelegate.swift in Sources */,
 				E64F64021F8A013F0038B593 /* AddTestPresenter.swift in Sources */,
 				E64F64001F89E60E0038B593 /* TestListPresenter.swift in Sources */,

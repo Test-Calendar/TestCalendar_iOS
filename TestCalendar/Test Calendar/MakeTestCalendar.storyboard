@@ -245,7 +245,7 @@
                                             <segue destination="rAM-Uy-5IW" kind="show" id="PQH-Vx-SLS"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="終了時刻" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nmb-a0-uyg">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="終了時刻" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nmb-a0-uyg" customClass="DatePickerTextField" customModule="Test_Calendar" customModuleProvider="target">
                                         <rect key="frame" x="68" y="466" width="240" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="240" id="gGB-we-a7D"/>
@@ -255,7 +255,7 @@
                                         <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="開始時刻" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cNg-iw-VXb">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="開始時刻" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cNg-iw-VXb" customClass="DatePickerTextField" customModule="Test_Calendar" customModuleProvider="target">
                                         <rect key="frame" x="68" y="411" width="240" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="1Ev-XH-zZa"/>
@@ -343,8 +343,8 @@
                     <navigationItem key="navigationItem" title="勉強する時間帯の指定" id="nCW-FO-Sx6"/>
                     <connections>
                         <outlet property="amButton" destination="etb-L7-Tp6" id="pi3-lo-g8p"/>
-                        <outlet property="beginField" destination="cNg-iw-VXb" id="tXZ-iM-wfL"/>
-                        <outlet property="finishField" destination="nmb-a0-uyg" id="75t-tW-dC5"/>
+                        <outlet property="beginField" destination="cNg-iw-VXb" id="RRh-w4-bCt"/>
+                        <outlet property="endField" destination="nmb-a0-uyg" id="jnZ-3z-maP"/>
                         <outlet property="makeButton" destination="jY0-ib-Ef4" id="5WY-6J-oXk"/>
                         <outlet property="pmButton" destination="Gxg-jS-mHK" id="nV8-Hr-vId"/>
                         <outlet property="scrollView" destination="tac-fM-rgw" id="igi-gQ-dQ3"/>
@@ -359,7 +359,7 @@
         <scene sceneID="eAu-hi-Qnq">
             <objects>
                 <navigationController id="8sW-kD-Ht3" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="OAc-Yd-zjT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OAc-Yd-zjT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
