@@ -14,6 +14,7 @@ class DatePickerTextField: UITextField {
     let datePickerView = UIDatePicker()
     let dateFormatter = DateFormatter()
     let toolBar = UIToolbar()
+    var date = NSDate()
     
     override func awakeFromNib() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleFocused(notification:)), name: NSNotification.Name.UITextFieldTextDidBeginEditing, object: nil)
@@ -46,6 +47,7 @@ class DatePickerTextField: UITextField {
     func handleDatePicker(sender: UIDatePicker) {
         dateFormatter.dateFormat = "yyyy/MM/dd"
         super.text = dateFormatter.string(from: sender.date)
+        date = sender.date as NSDate
     }
     
     func tappedToolBarBtn(sender: UIBarButtonItem) {
@@ -57,5 +59,9 @@ class DatePickerTextField: UITextField {
         let currentDate = NSDate()
         datePickerView.date = currentDate as Date
         super.text = dateFormatter.string(from: currentDate as Date)
+    }
+    
+    func getDate() -> NSDate {
+        return date
     }
 }

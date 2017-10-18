@@ -9,6 +9,10 @@
 import UIKit
 import MaterialComponents
 
+struct Period{
+    var begin: NSDate
+    var end: NSDate
+}
 
 class SetTimeViewController: UIViewController {
 
@@ -20,7 +24,7 @@ class SetTimeViewController: UIViewController {
     @IBOutlet weak var beginField: DatePickerTextField!
     @IBOutlet weak var endField: DatePickerTextField!
     
-    
+    var data = CalendarModel.sharedInstance
     var begin = NSDate()
     var finish = NSDate()
     var picker = UIDatePicker()
@@ -31,6 +35,8 @@ class SetTimeViewController: UIViewController {
     
     override func loadView() {
         super.loadView()
+//        let image = UIImage().imageWithColor(tintColor: .gray)
+//        image.imageWithColor(tintColor: .gray)
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.view.addSubview(statusBar())
         amButton.setTitle("AM", for: .normal)
@@ -156,6 +162,29 @@ extension SetTimeViewController: UITextFieldDelegate{
 extension SetTimeViewController: ProcessButtonDelegate{
     func tapped() {
         print("スケジュール作成")
-//        makeTestScheduele()
+        let period = Period(begin: beginField.getDate(), end: endField.getDate())
+        getData()
     }
 }
+
+
+extension UIImage {
+    func imageWithColor(tintColor: UIColor) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        
+        let context = UIGraphicsGetCurrentContext()!
+        context.translateBy(x: 0, y: self.size.height)
+        context.scaleBy(x: 1.0, y: -1.0);
+        context.setBlendMode(.normal)
+        let rect = CGRect(x:0, y:0, width:self.size.width, height:self.size.height) as CGRect
+        context.clip(to: rect, mask: self.cgImage!)
+        tintColor.setFill()
+        context.fill(rect)
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+}
+

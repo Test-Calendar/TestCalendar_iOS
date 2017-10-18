@@ -9,6 +9,7 @@
 import UIKit
 import EventKit
 import RealmSwift
+import SwiftyJSON
 
 class CalendarModel{
     
@@ -84,8 +85,8 @@ class CalendarModel{
         return task
     }
     
-    func createStudy() -> Study{
-        let study = Study()
+    func createStudy(_ json: JSON) -> Study{
+        let study = Study(json: json)
         study.id = self.lastStudyId()
         return study
     }
