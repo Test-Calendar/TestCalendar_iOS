@@ -10,6 +10,8 @@ import RealmSwift
 import Alamofire
 import SwiftyJSON
 
+
+
 enum ApiStatus {
     case update
     case failture
@@ -19,8 +21,6 @@ enum ApiStatus {
 protocol ApiServiceProtocol {
     func pushData(_ period: Period)
 }
-
-
 
 class ApiService: ApiServiceProtocol{
 
@@ -101,7 +101,6 @@ extension ApiService{
                 "end": "23"
             ]
         ]
-        
         return object
     }
 }
