@@ -163,7 +163,8 @@ extension SetTimeViewController: ProcessButtonDelegate{
     func tapped() {
         print("スケジュール作成")
         let period = Period(begin: beginField.getDate(), end: endField.getDate())
-        getData()
+        let service = ApiService()
+        service.pushData(period)
     }
 }
 
