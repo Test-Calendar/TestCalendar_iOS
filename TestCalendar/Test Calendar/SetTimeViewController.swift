@@ -9,15 +9,64 @@
 import UIKit
 import MaterialComponents
 
+struct Period{
+    var begin: NSDate
+    var end: NSDate
+}
+
 class SetTimeViewController: UIViewController {
 
-    
     @IBOutlet weak var watch: WatchView!
-    
     @IBOutlet weak var amButton: WatchButton!
     @IBOutlet weak var pmButton: WatchButton!
+    @IBOutlet weak var makeButton: ProcessButton!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var beginField: DatePickerTextField!
+    @IBOutlet weak var endField: DatePickerTextField!
+    
+    var data = CalendarModel.sharedInstance
+    var begin = NSDate()
+    var finish = NSDate()
+    var picker = UIDatePicker()
+    var txtActiveField = UITextField()
+    let formatter = DateFormatter()
+    let screenSize = UIScreen.main.bounds.size
     
     
+    override func loadView() {
+        super.loadView()
+//        let image = UIImage().imageWithColor(tintColor: .gray)
+//        image.imageWithColor(tintColor: .gray)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.view.addSubview(statusBar())
+        amButton.setTitle("AM", for: .normal)
+        pmButton.setTitle("PM", for: .normal)
+        changeWatchButtonType(am: amButton, pm: pmButton, type: .pm)
+        makeButton.setTitle("テストスケジュール作成", for: .normal)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        makeButton.delegate = self
+//        beginField.delegate = self
+//        endField.delegate = self
+        scrollView.delegate = self
+//        setUpDatePicker()
+        NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SetTimeViewController.handleKeyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true) //close picker
+    }
+    
+    
+    @IBAction func beginFieldEditing(_ sender: UITextField) {
+    }
     
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -32,64 +81,111 @@ class SetTimeViewController: UIViewController {
         watch.changeAmPm()
         changeWatchButtonType(am: amButton, pm: pmButton, type: .pm)
     }
-
-    override func loadView() {
-        super.loadView()
-        setButton()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    func flatButtonDidTap(_ sender: UIButton){
-        let SetTimeViewController = self.storyboard!.instantiateViewController( withIdentifier: "SelectCalendar" ) as! SelectCalendarViewController
-        performSegue(withIdentifier: "SelectCalendarViewController", sender: nil)
-        self.present(SetTimeViewController, animated: true, completion: nil)
-    }
 }
 
+
+// MARK: - Private
 extension SetTimeViewController{
-    func setButton(){
-        let flatButton = MDCFlatButton()
-        flatButton.customTitleColor = UIColor.red
-        flatButton.setTitle("Flat Button", for: .normal)
-        flatButton.sizeToFit()
-        flatButton.addTarget(self, action: #selector(SettingViewController.flatButtonDidTap(_:)), for: .touchUpInside)
+    
+}
+
+
+// MARK: - UIScrollViewDelegate
+extension SetTimeViewController: UIScrollViewDelegate{
+    
+    func handleKeyboardWillShowNotification(_ notification: Notification) {
         
+        let userInfo = notification.userInfo!
+        let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let myBoundSize: CGSize = UIScreen.main.bounds.size
+        let txtLimit = txtActiveField.frame.origin.y + txtActiveField.frame.height + 50.0
+        let kbdLimit = myBoundSize.height - keyboardScreenEndFrame.size.height
         
-        // ボタンのサイズ.
-        let bWidth: CGFloat = 347
-        let bHeight: CGFloat = 46
-        
-        // ボタンのX,Y座標.
-        let posX: CGFloat = self.view.frame.width/2 - bWidth/2
-        let posY: CGFloat = self.view.frame.height - bHeight - 12
-        
-        // ボタンの設置座標とサイズを設定する.
-        flatButton.frame = CGRect(x: posX, y: posY, width: bWidth, height: bHeight)
-        
-        // ボタンの背景色を設定.
-        flatButton.backgroundColor = UIColor.gray
-        
-        // タイトルを設定する(通常時).
-        flatButton.setTitle("テストスケジュールの作成", for: .normal)
-        flatButton.setTitleColor(UIColor.white, for: .normal)
-        
-        // ボタンにタグをつける.
-        flatButton.tag = 1
-        
-        // ボタンをViewに追加.
-        self.view.addSubview(flatButton)
-        
+        if txtLimit >= kbdLimit {
+            scrollView.contentOffset.y = txtLimit - kbdLimit
+        }
+    }
+    
+    func handleKeyboardWillHideNotification(_ notification: Notification) {
+        scrollView.contentOffset.y = 0
     }
 
+    fileprivate func setUpDatePicker(){
+        picker.datePickerMode = .time
+        picker.addTarget(self, action: #selector(SetTimeViewController.changeDate(sender:)), for: .valueChanged)
+        beginField.inputView = picker
+        endField.inputView = picker
+        addToolBarButton()
+    }
+    
+    func addToolBarButton(){
+        var toolBar = UIToolbar()
+        toolBar = UIToolbar(frame: CGRect(x: 0, y: self.view.frame.size.height/6, width:self.view.frame.size.width, height:40.0))
+        toolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
+        toolBar.barStyle = .blackTranslucent
+        toolBar.tintColor = UIColor.white
+        toolBar.backgroundColor = UIColor.black
+        let toolBarBtn = UIBarButtonItem(title: "完了", style: .plain, target: self, action: #selector(SetTimeViewController.tappedToolBarBtn(sender:)))
+        toolBar.items = [toolBarBtn]
+        beginField.inputAccessoryView = toolBar
+        endField.inputAccessoryView = toolBar
+    }
+    
+    // 「完了」を押すと閉じる
+    func tappedToolBarBtn(sender: UIBarButtonItem) {
+        txtActiveField.resignFirstResponder()
+    }
+    
+    func changeDate(sender: AnyObject?){
+        let datePicker: UIDatePicker = sender as! UIDatePicker
+        beginField.text = formatter.string(from: datePicker.date)
+        print(formatter.string(from: datePicker.date))
+    }
 }
+
+
+// MARK: - UITextFieldDelegate
+extension SetTimeViewController: UITextFieldDelegate{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        txtActiveField = textField
+        return true
+    }
+}
+
+// MARK: - ProcessButtonDelegate
+extension SetTimeViewController: ProcessButtonDelegate{
+    func tapped() {
+        print("スケジュール作成")
+        let period = Period(begin: beginField.getDate(), end: endField.getDate())
+        let service = ApiService()
+        service.pushData(period)
+    }
+}
+
+
+extension UIImage {
+    func imageWithColor(tintColor: UIColor) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        
+        let context = UIGraphicsGetCurrentContext()!
+        context.translateBy(x: 0, y: self.size.height)
+        context.scaleBy(x: 1.0, y: -1.0);
+        context.setBlendMode(.normal)
+        let rect = CGRect(x:0, y:0, width:self.size.width, height:self.size.height) as CGRect
+        context.clip(to: rect, mask: self.cgImage!)
+        tintColor.setFill()
+        context.fill(rect)
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+}
+

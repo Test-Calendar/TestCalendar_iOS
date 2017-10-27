@@ -10,6 +10,11 @@ import UIKit
 import MaterialComponents
 
 class SelectCalendarViewController: UIViewController {
+    
+    override func loadView() {
+        super.loadView()
+        self.view.addSubview(statusBar())
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +35,7 @@ extension SelectCalendarViewController{
         flatButton.customTitleColor = UIColor.red
         flatButton.setTitle("Flat Button", for: .normal)
         flatButton.sizeToFit()
-        flatButton.addTarget(self, action: #selector(SettingViewController.flatButtonDidTap(_:)), for: .touchUpInside)
+//        flatButton.addTarget(self, action: #selector(SelectCalendarViewController.flatButtonDidTap(_:)), for: .touchUpInside)
         
         
         // ボタンのサイズ.

@@ -10,25 +10,33 @@ import Foundation
 import Koyomi
 
 
+/// カレンダーにイベントを丸や線で表示する
+///
+/// - Parameters:
+///   - calendar: 読み込むKoyomi
+///   - model: 利用するデータモデル
 func showSchedules(calendar: Koyomi, model: CalendarModel){
-    func showTasks(){
-        var days = [Date]()
-        for task in model.tasks{
-            days.append(task.startTime as Date)
+    print("show Scheduleだよ")
+    
+    calendar.selectionMode = .multiple(style: .line)
+    calendar.selectedStyleColor = .black
+    calendar.lineView.height = 0.3
+    calendar.lineView.position = .bottom
+
+    let tasks = model.getAllTask()
+    var days = [Date]()
+    if tasks.isEmpty == false{
+        for i in tasks{
+            days.append(i.startTime as Date)
         }
-        //draw black circle
-        calendar.selectedStyleColor = .black
-        calendar.selectionMode = .multiple(style: .circle)
-        calendar.lineView.height = 0.2
-        calendar.lineView.position = .bottom
-        calendar.select(dates: days)
-        print("show tasks")
+//        calendar.select(dates: days)
     }
+    calendar.select(dates: days)
     
     
     func showTests(){
         for test in model.tests{
-            calendar.selectedStyleColor = getColor(color: test.color)
+            calendar.selectedStyleColor = getColor(test.color)
             calendar.selectionMode = .single(style: .line)
             calendar.lineView.height = 0.5
             calendar.lineView.position = .center
@@ -40,11 +48,10 @@ func showSchedules(calendar: Koyomi, model: CalendarModel){
     
     func showStudies(){
         for study in model.studies{
-            calendar.selectedStyleColor = getColor(color: study.color)
+            calendar.selectedStyleColor = getColor(study.color)
             calendar.selectionMode = .multiple(style: .background)
             calendar.select(date: study.startTime as Date)
         }
         print("show studies")
     }
-    
 }

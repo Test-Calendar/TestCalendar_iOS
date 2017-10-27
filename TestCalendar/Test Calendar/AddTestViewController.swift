@@ -31,6 +31,7 @@ class AddTestViewController: UIViewController{
     
     override func loadView() {
         super.loadView()
+        self.view.addSubview(statusBar())
         setButton()
     }
     
@@ -46,13 +47,11 @@ class AddTestViewController: UIViewController{
     }
     
     
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 //
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        // Do any additional setup after loading the view.
-//    }
-//    
 //    
 //    override func didReceiveMemoryWarning() {
 //        super.didReceiveMemoryWarning()
@@ -82,7 +81,7 @@ extension AddTestViewController{
         flatButton.customTitleColor = UIColor.red
         flatButton.setTitle("Flat Button", for: .normal)
         flatButton.sizeToFit()
-        flatButton.addTarget(self, action: #selector(SettingViewController.flatButtonDidTap(_:)), for: .touchUpInside)
+        flatButton.addTarget(self, action: #selector(AddTestViewController.flatButtonDidTap(_:)), for: .touchUpInside)
         
         
         // ボタンのサイズ.

@@ -27,10 +27,9 @@ class HomeViewController: UIViewController{
             calendar.cellSpace = 0.5
             calendar.inset = .zero
             calendar.weekCellHeight = 25
-//            calendar.selectionMode = .single(style: .circle)
-//            calendar.selectedStyleColor = .blue
             calendar.weeks = ("日", "月", "火", "水", "木", "金", "土")
             calendar.dayPosition = .topLeft
+//            calendar.selectionMode = .multiple(style: .background)
             calendar.calendarDelegate = self
         }
     }
@@ -56,7 +55,7 @@ class HomeViewController: UIViewController{
     var add = AddButton()
     var todo = AddSmallButton()
     var test = AddSmallButton()
-    
+    let access = AccessDefaultCalendar()
     
     override func loadView() {
         super.loadView()
@@ -73,10 +72,14 @@ class HomeViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        showSchedules(calendar: calendar, model: model)
+        
         add.delegate = self
         todo.delegate = self
         test.delegate = self
+        
+        access.delegate = self
+        access.allowAuthorization()
+        showSchedules(calendar: calendar, model: model)
     }
     
     override func didReceiveMemoryWarning() {
@@ -90,13 +93,15 @@ class HomeViewController: UIViewController{
 extension HomeViewController: KoyomiDelegate{
     
     func koyomi(_ koyomi: Koyomi, didSelect date: Date?, forItemAt indexPath: IndexPath) {
-        print("このセルが選択されました")
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy/MM/dd"
-        print(formatter.string(from: date!))
-        self.performSegue(withIdentifier: "toShowDayViewController", sender: date! as NSDate)
-        //画面を遷移
+        guard let next = UIStoryboard(name: "ShowDetail", bundle: nil).instantiateInitialViewController() as? ShowDayViewController else {
+            print("Could not instantiate view controller with identifier of type SecondViewController")
+            return
+        }
+        next.date = date! as NSDate
+        self.navigationController?.pushViewController(next, animated: true)
+        self.showDetailViewController(next, sender: nil)
     }
+    
     
     func koyomi(_ koyomi: Koyomi, currentDateString dateString: String) {
         print(dateString)
@@ -115,13 +120,14 @@ extension HomeViewController: KoyomiDelegate{
 
 extension HomeViewController:AddButtonDelegate, AddSmallDelegate{
     
-    //+
+    /// 「+」ボタンが押された時に呼ばれる関数
+    ///
+    /// - Parameter type: ボタンの状態(true: +, false: x)
     func tapped(type: Bool) {
         if type == true{
             add.type = false
             add.setTitle("x", for: .normal)
             add.titleLabel?.font = UIFont.systemFont(ofSize: CGFloat(14))
-//            add.titleLabel?.backgroundColor = .white
             self.view.addSubview(todo)
             self.view.addSubview(test)
         }else {
@@ -132,36 +138,43 @@ extension HomeViewController:AddButtonDelegate, AddSmallDelegate{
         }
     }
     
-    //small
+    
+    /// 「テスト」、「TODO」ボタンが押されたに呼ばれる関数
+    ///
+    /// - Parameter tag: ボタンの種類(1: TODO, 2: テスト)
     func tapped(tag: Int) {
-        if tag == 1{ //task
+        if tag == 1{
             //task 画面遷移
-        }else{ //test
+            let storyboard: UIStoryboard = UIStoryboard(name: "AddEvent", bundle: nil)
+            let inital = storyboard.instantiateInitialViewController()
+            self.showDetailViewController(inital!, sender: nil)
+        }else{
             //画面遷移
+            let storyboard: UIStoryboard = UIStoryboard(name: "MakeTestCalendar", bundle: nil)
+            let inital = storyboard.instantiateInitialViewController()
+            let navi = UINavigationController(rootViewController: inital!)
+            self.showDetailViewController(navi, sender: nil)
         }
     }
 }
 
-extension HomeViewController{
+extension HomeViewController: AccessDefaultCalendarDelegate{
     
-//    func segue(){
-//        let storyboard: UIStoryboard =UIStoryboard(name: "ShowDetail", bundle: nil)
-//        let nextView = storyboard.instantiateInitialViewController()
-//        
-//    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toShowDayViewController" {
-//            let storyboard: UIStoryboard = UIStoryboard(name: "AddEvent", bundle: nil)
-//            let next = storyboard.instantiateViewController()
-//            let secondViewController = segue.destination as! ShowDayViewController
-//            secondViewController.date = sender as! NSDate
-        }
-        if segue.identifier == "toAddEventViewController" {
-//            let secondeViewController = segue.destination as! AddEventViewController
-//            secondeViewController.date = sender as! NSDate
-        }
+    /// カレンダーへのアクセスを求める
+    func showAlart() {
+        DispatchQueue.main.async(execute: { () -> Void in
+            let alert = UIAlertController(title: "許可されませんでした", message: "Privacy->App->Reminderで変更してください", preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+            
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+            self.access.allowAuthorization()
+        })
     }
+}
+
+
+extension HomeViewController{
 }
 
 

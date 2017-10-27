@@ -9,6 +9,7 @@
 import UIKit
 import EventKit
 import RealmSwift
+import SwiftyJSON
 
 class CalendarModel{
     
@@ -32,30 +33,67 @@ class CalendarModel{
         self.tests = getAllTest()
     }
     
-    func lastId() -> Int{
-        if let event = CalendarModel.realm.objects(Event.self).last{
+    func lastTaskId() -> Int{
+        if let event = CalendarModel.realm.objects(Task.self).last{
+            return event.id + 1
+            print("last id")
+            print(event.id)
+        }else {
+            return 1
+        }
+    }
+    
+    func lastStudyId() -> Int{
+        if let event = CalendarModel.realm.objects(Study.self).last{
+            return event.id + 1
+            print("last id")
+            print(event.id)
+        }else {
+            return 1
+        }
+    }
+    
+    func lastTestId() -> Int{
+        if let event = CalendarModel.realm.objects(Test.self).last{
+            print("last id")
+            print(event.id)
             return event.id + 1
         }else {
             return 1
         }
     }
     
+//    func lastId(object: Object) -> Int{
+//        if let event = CalendarModel.realm.objects(object).last{
+//            return event.id + 1
+//        }else {
+//            return 1
+//        }
+//        if let event = CalendarModel.realm.objects(object).last{
+//            return event.id + 1
+//            print("last id")
+//            print(event.id)
+//        }else {
+//            return 1
+//        }
+//    }
+
     //新しいオブジェクトの作成
-    func create() -> Task{
+    func createTask() -> Task{
         let task = Task()
-        task.id = self.lastId()
+        task.id = self.lastTaskId()
         return task
     }
     
-    func create() -> Study{
-        let study = Study()
-        study.id = self.lastId()
+    func createStudy(_ json: JSON) -> Study{
+        let study = Study(json: json)
+        study.id = self.lastStudyId()
         return study
     }
     
-    func create() -> Test{
+    func createTest() -> Test{
         let test = Test()
-        test.id = self.lastId()
+        test.id = self.lastTestId()
         return test
     }
 
@@ -72,65 +110,51 @@ class CalendarModel{
         return CalendarModel.realm.objects(Test.self).filter(predicate).map{$0}
     }
     
-    
-    
-
     //１つ保存
-    func save(task: Task){
+    func save(object: Object){
         try! CalendarModel.realm.write {
-            CalendarModel.realm.add(task)
+            CalendarModel.realm.add(object)
         }
     }
     
-    func save(study: Study){
+    //１つ削除
+    func delete(object: Object){
         try! CalendarModel.realm.write {
-            CalendarModel.realm.add(study)
+            CalendarModel.realm.delete(object)
         }
     }
     
-    func save(test: Test){
-        try! CalendarModel.realm.write {
-            CalendarModel.realm.add(test)
-        }
+//    func delete(study: Study){
+//        try! CalendarModel.realm.write {
+//            CalendarModel.realm.delete(study)
+//        }
+//    }
+//    
+//    func delete(test: Test){
+//        try! CalendarModel.realm.write {
+//            CalendarModel.realm.delete(test)
+//        }
+//    }
+    
+    /// タスクを全て渡す関数
+    ///
+    /// - Returns: Taskの配列
+    func getAllTask() -> [Task]{
+        return  CalendarModel.realm.objects(Task.self).map{$0}
+    }
+    
+    func getAllStudy() -> [Study]{
+        return  CalendarModel.realm.objects(Study.self).map{$0}
+    }
+    
+    func getAllTest() -> [Test]{
+        return  CalendarModel.realm.objects(Test.self).map{$0}
     }
 
-    //１つ削除
-    func delete(task: Task){
-        try! CalendarModel.realm.write {
-            CalendarModel.realm.delete(task)
-        }
-    }
-    
-    func delete(study: Study){
-        try! CalendarModel.realm.write {
-            CalendarModel.realm.delete(study)
-        }
-    }
-    
-    func delete(test: Test){
-        try! CalendarModel.realm.write {
-            CalendarModel.realm.delete(test)
-        }
-    }
 }
 
 //種別の全てのオブジェクトの取得
-func getAllTask() -> [Task]{
-    return  CalendarModel.realm.objects(Task.self).map{$0}
-}
-
-func getAllStudy() -> [Study]{
-    return  CalendarModel.realm.objects(Study.self).map{$0}
-}
-
-func getAllTest() -> [Test]{
-    return  CalendarModel.realm.objects(Test.self).map{$0}
-}
 
 enum Genre:Int{
     case task, study, test
 }
-
-
-
-

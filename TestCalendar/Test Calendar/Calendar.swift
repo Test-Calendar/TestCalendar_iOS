@@ -68,14 +68,17 @@ class Study: Event{
 }
 
 
+
 class Test: Event{
     
     dynamic var color = ""
     dynamic var type = 0 //テストかレポートか
+    dynamic var studyHour = 0
     
     convenience init(json: JSON){
         self.init(json: json)
         self.color = json["color"].stringValue
         self.type = json["type"].intValue
+        self.studyHour = json["studyHour"].intValue
     }
 }
