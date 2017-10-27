@@ -34,8 +34,6 @@ class CalendarCell: UICollectionViewCell, UICollectionViewDelegate, UICollection
     
     private func commonInit(){
         setUpView()
-        self.addSubview(dayLabel)
-        self.addSubview(events)
         events.delegate = self
         events.dataSource = self
         events.reloadData()
@@ -97,9 +95,19 @@ extension CalendarCell{
     }
     
     
-    /// 表示する日付ラベルとテスト及び予定を表示する
-    /// collectionViewのAutolayoutを設定する
+    ///表示するラベルとCollectionViewの制約(Autolayout)と
+    ///ラベルの位置や形、collectionViewのscrollをfalseにするなどの初期設定をする。
     func setUpView(){
+        
+        let radius = (dayLabel.frame.height - 10) / 2
+        
+        self.dayLabel.layer.cornerRadius = radius
+        self.dayLabel.layer.masksToBounds = true
+        self.dayLabel.textColor = .black
+        self.dayLabel.textAlignment = .center
+        
+        self.events.isScrollEnabled = false
+        
         self.backgroundView?.addConstraints([
             Constraint(item: dayLabel, .top, to: self, .height, constant: 10),
             Constraint(item: dayLabel, .left, to: self, .left, constant: 10),
@@ -110,5 +118,7 @@ extension CalendarCell{
             Constraint(item: events, .right, to: self, .right, constant: 10),
             Constraint(item: events, .bottom, to: self, .bottom, constant: 10)
         ])
+        self.addSubview(dayLabel)
+        self.addSubview(events)
     }
 }
