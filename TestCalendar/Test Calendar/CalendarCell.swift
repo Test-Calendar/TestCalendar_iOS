@@ -9,13 +9,6 @@
 import UIKit
 
 
-struct CalendarViewModel {
-    var day: String
-    var test: UIColor
-    var colors: [UIColor]
-}
-
-
 class CalendarCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource{
     
     var dayLabel : UILabel!
@@ -50,10 +43,11 @@ extension CalendarCell{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        cell.frame = CGRect(x: 0, y: 0, width: self.frame.width / 3, height: self.frame.height / 2)
         if colors.isEmpty == true {
             cell.backgroundColor = .white
         }else {
-            cell.backgroundView = setUp(colors[indexPath.row])
+            cell.backgroundView = setUpView(colors[indexPath.row])
         }
         return cell
     }
@@ -77,7 +71,7 @@ extension CalendarCell{
     ///
     /// - Parameter color: cellに表示する背景色
     /// - Returns: 表示するUIView
-    func setUp(_ color: UIColor) -> UIView{
+    func setUpView(_ color: UIColor) -> UIView{
         let view = UIView()
         let radius = (self.backgroundView?.frame.height)! / 2
         view.layer.masksToBounds = true
@@ -98,16 +92,13 @@ extension CalendarCell{
     ///表示するラベルとCollectionViewの制約(Autolayout)と
     ///ラベルの位置や形、collectionViewのscrollをfalseにするなどの初期設定をする。
     func setUpView(){
-        
         let radius = (dayLabel.frame.height - 10) / 2
         
         self.dayLabel.layer.cornerRadius = radius
         self.dayLabel.layer.masksToBounds = true
         self.dayLabel.textColor = .black
         self.dayLabel.textAlignment = .center
-        
         self.events.isScrollEnabled = false
-        
         self.backgroundView?.addConstraints([
             Constraint(item: dayLabel, .top, to: self, .height, constant: 10),
             Constraint(item: dayLabel, .left, to: self, .left, constant: 10),

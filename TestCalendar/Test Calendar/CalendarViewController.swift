@@ -12,18 +12,17 @@ import UIKit
 class CalendarViewController: UIViewController {
     
     
-    
-    var model = CalendarModel.sharedInstance
+    let dataManager = CalendarViewManager()
+    var data = [CalendarViewModel]()
+    let weekArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        data = dataManager.getData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 
@@ -36,7 +35,12 @@ class CalendarViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    @IBAction func tappedPrevButton(_ sender: Any) {
+    }
+    
+    @IBAction func tappedNextButton(_ sender: Any) {
+    }
 }
 
 
@@ -49,8 +53,16 @@ extension CalendarViewController{
 // MARK: - UICollectionViewDelegate, UICollectionViewDataSource
 extension CalendarViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        if section == 0 {
+            return 7
+        }else {
+            return dataManager.daysAquisition()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -58,7 +70,27 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        return cell
+        let labelColor:UIColor!
+        
+        //日付の色を決める
+        if(indexPath.row % 7 == 0){
+            labelColor = UIColor.red
+        } else if(indexPath.row % 7 == 6){
+            labelColor = UIColor.blue
+        } else {
+            labelColor = UIColor.black
+        }
+        
+        //cellに日付を表示
+        if indexPath.section == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "header", for: indexPath) as! HeaderCollectionViewCell
+            cell.dayLabel.textColor = labelColor
+            cell.dayLabel.text = weekArray[indexPath.row]
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CalendarCell
+            cell.dayLabel.text = dataManager.conversionDateFormat(indexPath: indexPath)
+            return cell
+        }
     }
 }

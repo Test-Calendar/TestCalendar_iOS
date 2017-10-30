@@ -31,7 +31,7 @@ class AccessDefaultCalendar{
         var eventCalendar = eventStore.calendars(for: .event)
         let yestardayComponents: NSDateComponents = NSDateComponents()
         yestardayComponents.day = -1
-        let yestarday = calendar.date(byAdding: yestardayComponents as DateComponents, to: NSDate() as Date, options: .init(rawValue: .allZeros))
+        let yestarday = calendar.date(byAdding: yestardayComponents as DateComponents, to: Date(), options: .init(rawValue: .allZeros))
         
         let oneYearFromNowComponents: NSDateComponents = NSDateComponents()
         oneYearFromNowComponents.year = 1
