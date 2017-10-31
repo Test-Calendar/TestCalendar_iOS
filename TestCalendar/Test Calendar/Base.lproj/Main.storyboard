@@ -217,6 +217,10 @@
                             <constraint firstItem="niQ-mQ-PMo" firstAttribute="centerX" secondItem="6OO-ic-ujS" secondAttribute="centerX" id="gIg-ZC-HaL"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="collection" destination="jhk-hQ-Ry6" id="Uxm-YI-VTx"/>
+                        <outlet property="headerTitle" destination="hTb-Uc-jeq" id="342-xa-wqd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LEZ-TW-gyI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -123,13 +123,13 @@ class CalendarViewManager: CalendarViewDelegate {
     /// - Parameter numberOfItems: numberOfItems description
     func dateForCellAtIndexPath(numberOfItems: Int) {
         // ①「月の初日が週の何日目か」を計算する
-        let ordinalityOfFirstDay = NSCalendar.current.ordinality(of: .day, in: .weekOfMonth, for: firstDateOfMonth() as Date)
+        let ordinalityOfFirstDay = Calendar.current.ordinality(of: .day, in: .weekOfMonth, for: firstDateOfMonth() as Date)
         for i in 0 ..< numberOfItems {
             // ②「月の初日」と「indexPath.item番目のセルに表示する日」の差を計算する
             let dateComponents = NSDateComponents()
             dateComponents.day = i - (ordinalityOfFirstDay! - 1)
             // ③ 表示する月の初日から②で計算した差を引いた日付を取得
-            let date = NSCalendar.current.date(byAdding: dateComponents as DateComponents, to: firstDateOfMonth() as Date)
+            let date = Calendar.current.date(byAdding: dateComponents as DateComponents, to: firstDateOfMonth() as Date)
 //                                               option: NSCalendar.Options(rawValue: 0))
             currentMonthOfDates.append(date! as NSDate)
         }

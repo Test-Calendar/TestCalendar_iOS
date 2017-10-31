@@ -14,8 +14,14 @@ class CalendarViewController: UIViewController {
     
     let dataManager = CalendarViewManager()
     var data = [CalendarViewModel]()
+    var selectedDate = NSDate()
+    var today: NSDate!
+    let cellMargin: CGFloat = 2.0
     let weekArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
+    @IBOutlet weak var headerTitle: UILabel!
+    @IBOutlet weak var collection: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         data = dataManager.getData()
@@ -37,16 +43,28 @@ class CalendarViewController: UIViewController {
     */
     
     @IBAction func tappedPrevButton(_ sender: Any) {
+        selectedDate = dataManager.prevMonth(date: selectedDate)
+        collection.reloadData()
+        headerTitle.text = changeHeaderTitle(date: selectedDate)
     }
     
     @IBAction func tappedNextButton(_ sender: Any) {
+        selectedDate = dataManager.nextMonth(date: selectedDate)
+        collection.reloadData()
+        headerTitle.text = changeHeaderTitle(date: selectedDate)
     }
 }
 
 
 // MARK: - Action
 extension CalendarViewController{
-    
+    //headerの月を変更
+    func changeHeaderTitle(date: NSDate) -> String {
+        let formatter: DateFormatter = DateFormatter()
+        formatter.dateFormat = "M/yyyy"
+        let selectMonth = formatter.string(from: date as Date)
+        return selectMonth
+    }
 }
 
 
@@ -70,17 +88,14 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let labelColor:UIColor!
+        var labelColor = UIColor.black
         
         //日付の色を決める
         if(indexPath.row % 7 == 0){
             labelColor = UIColor.red
         } else if(indexPath.row % 7 == 6){
             labelColor = UIColor.blue
-        } else {
-            labelColor = UIColor.black
         }
-        
         //cellに日付を表示
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "header", for: indexPath) as! HeaderCollectionViewCell
@@ -92,5 +107,15 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
             cell.dayLabel.text = dataManager.conversionDateFormat(indexPath: indexPath)
             return cell
         }
+    }
+    
+    //セルの垂直方向のマージンを設定
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return cellMargin
+    }
+    
+    //セルの水平方向のマージンを設定
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return cellMargin
     }
 }
