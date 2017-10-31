@@ -25,6 +25,7 @@ class CalendarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         data = dataManager.getData()
+        self.collection.register(UINib(nibName: "HeaderCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "customCell")
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,7 +99,7 @@ extension CalendarViewController: UICollectionViewDelegate, UICollectionViewData
         }
         //cellに日付を表示
         if indexPath.section == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "header", for: indexPath) as! HeaderCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! HeaderCollectionViewCell
             cell.dayLabel.textColor = labelColor
             cell.dayLabel.text = weekArray[indexPath.row]
             return cell
