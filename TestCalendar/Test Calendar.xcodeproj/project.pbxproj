@@ -18,6 +18,7 @@
 		E610F92B1F7BDDE100A1363A /* ProcessButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E610F92A1F7BDDE100A1363A /* ProcessButton.swift */; };
 		E610F92D1F7C772900A1363A /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E610F92C1F7C772900A1363A /* TestViewController.swift */; };
 		E644DDDB1F94C618008631BB /* DatePickerTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E644DDDA1F94C618008631BB /* DatePickerTextField.swift */; };
+		E64B3D3E1FB2B7740009814B /* ShowDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64B3D3D1FB2B7740009814B /* ShowDayView.swift */; };
 		E64E1FD21F56A38700D12289 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64E1FD11F56A38700D12289 /* AppDelegate.swift */; };
 		E64E1FD71F56A38700D12289 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E64E1FD51F56A38700D12289 /* Main.storyboard */; };
 		E64E1FD91F56A38700D12289 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E64E1FD81F56A38700D12289 /* Assets.xcassets */; };
@@ -94,6 +95,7 @@
 		E610F92A1F7BDDE100A1363A /* ProcessButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessButton.swift; sourceTree = "<group>"; };
 		E610F92C1F7C772900A1363A /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		E644DDDA1F94C618008631BB /* DatePickerTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTextField.swift; sourceTree = "<group>"; };
+		E64B3D3D1FB2B7740009814B /* ShowDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowDayView.swift; sourceTree = "<group>"; };
 		E64E1FCE1F56A38700D12289 /* Test Calendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Test Calendar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E64E1FD11F56A38700D12289 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E64E1FD61F56A38700D12289 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -493,6 +495,7 @@
 			isa = PBXGroup;
 			children = (
 				E6579A081F6DB31300136A55 /* ShowDayTableViewCell.swift */,
+				E64B3D3D1FB2B7740009814B /* ShowDayView.swift */,
 			);
 			name = ShowDetail;
 			sourceTree = "<group>";
@@ -890,6 +893,7 @@
 				E64E20531F58082E00D12289 /* SelectCalendarViewController.swift in Sources */,
 				E6579A161F756B6400136A55 /* Button.swift in Sources */,
 				E6579A0B1F6DBA7800136A55 /* WatchButton.swift in Sources */,
+				E64B3D3E1FB2B7740009814B /* ShowDayView.swift in Sources */,
 				E64E20941F59927900D12289 /* CalendarViewModel.swift in Sources */,
 				E64E208E1F5946DD00D12289 /* CalendarCell.swift in Sources */,
 				E60CBE2A1F6229CE004E8D5C /* API.swift in Sources */,

@@ -23,12 +23,14 @@ class ShowDayViewController: UIViewController {
     var date = NSDate()
     var events = [OneDayEvent]()
     var model = CalendarModel.sharedInstance
+
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var watch: WatchView!
     @IBOutlet weak var amButton: WatchButton!
     @IBOutlet weak var pmButton: WatchButton!
+    
     
     override func loadView() {
         super.loadView()
@@ -41,29 +43,38 @@ class ShowDayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        events = loadData(date: date)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        events = loadData(date: date)
+        watch.reloadInputViews()
+        table.reloadData()
+    }
 }
 
+
+// MARK: - Action
 extension ShowDayViewController{
     
     @IBAction func showYesterDay(_ sender: Any) {
         date = getYesterDay(date: date)
         dateLabel.text = showDate(date: date)
-//        events = loadData(date:date)
+        events = loadData(date:date)
         watch.reloadInputViews()
-//        table.reloadData()
+        table.reloadData()
     }
     
     @IBAction func showTomorrow(_ sender: Any) {
         date = getTomorrow(date: date)
         dateLabel.text = showDate(date: date)
-//        events = loadData(date: date)
-//        table.reloadData()
+        events = loadData(date: date)
+        watch.reloadInputViews()
+        table.reloadData()
     }
     
     @IBAction func showAm(_ sender: Any) {
@@ -90,9 +101,8 @@ extension ShowDayViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ShowDayTableViewCell
-    
+        
         cell.colorView.backgroundColor = getColor(events[indexPath.row].color)
         cell.subjectLabel.text = events[indexPath.row].name
         cell.timeLabel.text = showTime(start: events[indexPath.row].start, end: events[indexPath.row].end)
@@ -158,7 +168,7 @@ extension ShowDayViewController{
         print(tasks)
         let studies = model.searchStudy(predicate: predicate)
         let tests = model.searchTest(predicate: predicate)
-        
+        events.removeAll()
         if tasks.isEmpty == false{
             for i in tasks{
                 events.append(OneDayEvent(name: i.name, start: i.startTime, end: i.endTime, color: "black"))
