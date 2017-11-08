@@ -5,7 +5,6 @@
 //  Created by 山浦功 on 2017/08/31.
 //  Copyright © 2017年 山浦功. All rights reserved.
 //
-
 import UIKit
 
 
@@ -31,7 +30,29 @@ class ShowSubjectViewController: UIViewController {
     @IBOutlet weak var pmButton: WatchButton!
     @IBOutlet weak var collection: UICollectionView!
     
+    override func loadView() {
+        super.loadView()
+        self.view.addSubview(statusBar())
+        amButton.setTitle("AM", for: .normal)
+        pmButton.setTitle("PM", for: .normal)
+        changeWatchButtonType(am: amButton, pm: pmButton, type: .pm)
+        getData()
+        setData()
+    }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+
+
+// MARK: - Action
+extension ShowSubjectViewController{
+
     @IBAction func changeToAM(_ sender: Any) {
         watch.changeAmPm()
         changeWatchButtonType(am: amButton, pm: pmButton, type: .am)
@@ -45,23 +66,43 @@ class ShowSubjectViewController: UIViewController {
     @IBAction func dismiss(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    override func loadView() {
-        super.loadView()
-        self.view.addSubview(statusBar())
-        getData() //足りないデータの取得
-        setData() //データを使って表示を更新
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 }
 
+
+// MARK: - Private function
+extension ShowSubjectViewController{
+    
+    /// 初期値に設定してある名前と開始時刻から種類ごとに情報を取得し、その情報をeventに入れる。
+    ///
+    /// testは終了時刻を１時間後に設定して代入している。
+    func getData(){
+        let predicate = NSPredicate(format: "name == %@ AND startTime == %@", "\(event.name)", event.start)
+        let task = model.searchTask(predicate: predicate)
+        let study = model.searchStudy(predicate: predicate)
+        let test = model.searchTest(predicate: predicate)
+        
+        if task.isEmpty == false {
+            event = OneEvent(name: task[0].name, start: task[0].startTime, end: task[0].endTime, notification: task[0].notification, color: "black")
+        }else if study.isEmpty == false {
+            event =  OneEvent(name: study[0].name, start: study[0].startTime, end: study[0].endTime, notification: study[0].notification, color: study[0].color)
+        }else if test.isEmpty == false {
+            var components = DateComponents()
+            components.hour = 1
+            let endTime = Calendar.current.date(byAdding: components, to: test[0].startTime as Date)! as NSDate
+            event = OneEvent(name: test[0].name, start: test[0].startTime, end: endTime, notification: test[0].notification, color: test[0].color)
+        }
+        print(event)
+    }
+    
+    
+    func setData(){
+        subjectLabel.text = event.name
+        time.text = showTime(start: event.start, end: event.end)
+        //通知の更新
+        collection.reloadData()
+        watch.addSchedule(events: [WatchEvent(color: getColor(event.color), start: event.start, end: event.end)])
+    }
+}
 
 
 // MARK: - UICollectionViewDelegate,UICollectionViewDataSource
@@ -96,32 +137,5 @@ extension ShowSubjectViewController: UICollectionViewDelegate,UICollectionViewDa
         view.clipsToBounds = true
         cell.addSubview(view)
         return cell
-    }
-}
-
-
-extension ShowSubjectViewController{
-    
-    func getData(){
-        let predicate = NSPredicate(format: "name == %@ AND startTime == %@", "\(event.name)", event.start)
-        let task = model.searchTask(predicate: predicate)
-        let study = model.searchStudy(predicate: predicate)
-        let test = model.searchTest(predicate: predicate)
-        
-        if task.isEmpty == false {
-            event.notification = model.tasks[0].notification
-        }else if study.isEmpty == false {
-            event.notification = model.studies[0].notification
-        }else if test.isEmpty == false {
-            event.notification = model.tests[0].notification
-        }
-    }
-    
-    func setData(){
-        subjectLabel.text = event.name
-        time.text = showTime(start: event.start, end: event.end)
-        //通知の更新
-        collection.reloadData()
-        watch.addSchedule(events: [WatchEvent(color: getColor(event.color), start: event.start, end: event.end)])
     }
 }
