@@ -51,9 +51,7 @@ class ShowDayViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        events = loadData(date: date)
-        watch.reloadInputViews()
-        table.reloadData()
+        showData()
     }
 }
 
@@ -63,18 +61,12 @@ extension ShowDayViewController{
     
     @IBAction func showYesterDay(_ sender: Any) {
         date = getYesterDay(date: date)
-        dateLabel.text = showDate(date: date)
-        events = loadData(date:date)
-        watch.reloadInputViews()
-        table.reloadData()
+        showData()
     }
     
     @IBAction func showTomorrow(_ sender: Any) {
         date = getTomorrow(date: date)
-        dateLabel.text = showDate(date: date)
-        events = loadData(date: date)
-        watch.reloadInputViews()
-        table.reloadData()
+        showData()
     }
     
     @IBAction func showAm(_ sender: Any) {
@@ -128,6 +120,13 @@ extension ShowDayViewController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - このクラスで利用する関数
 extension ShowDayViewController{
+    
+    func showData(){
+        dateLabel.text = showDate(date: date)
+        events = loadData(date: date)
+        watch.addSchedule(events: wrappDataToWatchEvent(events))
+        table.reloadData()
+    }
     
     /// 表示している日付をUILabelに表示する関数
     ///
@@ -187,6 +186,20 @@ extension ShowDayViewController{
             $0.start.timeIntervalSince1970 < $1.start.timeIntervalSince1970
         }
         return events
+    }
+    
+    /// このViewControllerで使っているデータを時計に表示するためのデータに変換する
+    ///
+    /// - Parameter model: ここで使っているデータ型の配列
+    /// - Returns: 時計表示に使うデータ型の配列
+    func wrappDataToWatchEvent(_ model: [OneDayEvent]) -> [WatchEvent] {
+        var data = [WatchEvent]()
+        if model.isEmpty == false {
+            for i in model {
+                data.append(WatchEvent(color: getColor(i.color), start: i.start, end: i.end))
+            }
+        }
+        return data
     }
 }
 

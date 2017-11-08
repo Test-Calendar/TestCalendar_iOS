@@ -90,7 +90,8 @@ extension WatchView{
         pmView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         amView.viewWithTag(watchType.am.rawValue)
         pmView.viewWithTag(watchType.pm.rawValue)
-        
+        amView.events.removeAll()
+        pmView.events.removeAll()
         //データの代入
         for i in events {
             if type == .am {

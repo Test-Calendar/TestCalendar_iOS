@@ -95,6 +95,7 @@ extension ShowSubjectViewController{
     }
     
     
+    /// 取得したデータを表示する
     func setData(){
         subjectLabel.text = event.name
         time.text = showTime(start: event.start, end: event.end)
