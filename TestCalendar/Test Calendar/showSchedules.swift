@@ -18,8 +18,8 @@ import Koyomi
 func showSchedules(calendar: Koyomi, model: CalendarModel){
     print("show Scheduleだよ")
     
-    calendar.selectionMode = .multiple(style: .line)
-    calendar.selectedStyleColor = .black
+    calendar.selectionMode = .multiple(style: .circle)
+    calendar.selectedStyleColor = .blue
     calendar.lineView.height = 0.3
     calendar.lineView.position = .bottom
 
@@ -54,4 +54,28 @@ func showSchedules(calendar: Koyomi, model: CalendarModel){
         }
         print("show studies")
     }
+}
+
+
+enum DataType{
+    case task
+    case test
+    case study
+}
+
+func getEventDates(_ model: CalendarModel, _ type: DataType) -> [Date] {
+    var data = [Any]()
+    var days = [Date]()
+    switch type {
+    case .task: data = model.getAllTask()
+    case .test: data = model.getAllTest()
+    case .study: data = model.getAllStudy()
+    }
+    
+    if data.isEmpty == false {
+        for i in data {
+            days.append((i as AnyObject).startTime as Date)
+        }
+    }
+    return days
 }

@@ -28,7 +28,7 @@ class HomeViewController: UIViewController{
             calendar.inset = .zero
             calendar.weekCellHeight = 25
             calendar.weeks = ("日", "月", "火", "水", "木", "金", "土")
-            calendar.dayPosition = .topLeft
+            calendar.dayPosition = .center
 //            calendar.selectionMode = .multiple(style: .background)
             calendar.calendarDelegate = self
         }
@@ -79,6 +79,15 @@ class HomeViewController: UIViewController{
         
         access.delegate = self
         access.allowAuthorization()
+        calendar.selectedStyleColor = .blue
+        calendar.select(date: Date())
+        calendar.select(dates: getEventDates(model, .task))
+        calendar.select(dates: getEventDates(model, .test))
+        calendar.select(dates: getEventDates(model, .study))
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         showSchedules(calendar: calendar, model: model)
     }
     
@@ -172,14 +181,3 @@ extension HomeViewController: AccessDefaultCalendarDelegate{
         })
     }
 }
-
-
-extension HomeViewController{
-}
-
-
-
-
-
-
-

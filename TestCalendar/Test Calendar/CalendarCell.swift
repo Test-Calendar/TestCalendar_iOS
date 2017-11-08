@@ -9,10 +9,10 @@
 import UIKit
 
 
-class CalendarCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource{
+class CalendarCell: UICollectionViewCell, UICollectionViewDelegate, UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
-    var dayLabel : UILabel!
-    var events: UICollectionView!
+    var dayLabel = UILabel()
+    var events = UICollectionView()
     var colors = [UIColor]()
     
     required init?(coder aDecoder: NSCoder) {
@@ -26,9 +26,9 @@ class CalendarCell: UICollectionViewCell, UICollectionViewDelegate, UICollection
     }
     
     private func commonInit(){
-        setUpView()
         events.delegate = self
         events.dataSource = self
+        setUpView()
         events.reloadData()
     }
 }
@@ -92,13 +92,8 @@ extension CalendarCell{
     ///表示するラベルとCollectionViewの制約(Autolayout)と
     ///ラベルの位置や形、collectionViewのscrollをfalseにするなどの初期設定をする。
     func setUpView(){
-        let radius = (dayLabel.frame.height - 10) / 2
+        self.dayLabel.frame = CGRect(x: 0, y: 0, width: self.frame.width * 0.8, height: self.frame.height * 0.5)
         
-        self.dayLabel.layer.cornerRadius = radius
-        self.dayLabel.layer.masksToBounds = true
-        self.dayLabel.textColor = .black
-        self.dayLabel.textAlignment = .center
-        self.events.isScrollEnabled = false
         self.backgroundView?.addConstraints([
             Constraint(item: dayLabel, .top, to: self, .height, constant: 10),
             Constraint(item: dayLabel, .left, to: self, .left, constant: 10),
@@ -109,6 +104,14 @@ extension CalendarCell{
             Constraint(item: events, .right, to: self, .right, constant: 10),
             Constraint(item: events, .bottom, to: self, .bottom, constant: 10)
         ])
+        
+//        let radius = (dayLabel.frame.height - 10) / 2
+//        self.dayLabel.layer.cornerRadius = radius
+//        self.dayLabel.layer.masksToBounds = true
+//        self.dayLabel.textColor = .black
+//        self.dayLabel.textAlignment = .center
+//        self.events.isScrollEnabled = false
+//        
         self.addSubview(dayLabel)
         self.addSubview(events)
     }

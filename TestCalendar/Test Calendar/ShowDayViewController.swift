@@ -30,6 +30,26 @@ class ShowDayViewController: UIViewController {
     @IBOutlet weak var amButton: WatchButton!
     @IBOutlet weak var pmButton: WatchButton!
     
+    override func loadView() {
+        super.loadView()
+        self.view.addSubview(statusBar()) //ステータスバーの表示
+        dateLabel.text = showDate(date: date)//日付の表示
+        amButton.setTitle("AM", for: .normal)
+        pmButton.setTitle("PM", for: .normal)
+        changeWatchButtonType(am: amButton, pm: pmButton, type: .pm)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        events = loadData(date: date)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+
+extension ShowDayViewController{
     
     @IBAction func showYesterDay(_ sender: Any) {
         date = getYesterDay(date: date)
@@ -58,25 +78,6 @@ class ShowDayViewController: UIViewController {
     
     @IBAction func dismiss(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    
-    override func loadView() {
-        super.loadView()
-        self.view.addSubview(statusBar()) //ステータスバーの表示
-        dateLabel.text = showDate(date: date)//日付の表示
-        amButton.setTitle("AM", for: .normal)
-        pmButton.setTitle("PM", for: .normal)
-        changeWatchButtonType(am: amButton, pm: pmButton, type: .pm)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        events = loadData(date: date)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 }
 
