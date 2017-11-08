@@ -111,15 +111,14 @@ extension ShowDayViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //画面遷移
-        guard let next = UIStoryboard(name: "ShowDetail", bundle: nil).instantiateInitialViewController() as? ShowSubjectViewController else {
+        guard let next = UIStoryboard(name: "ShowDetail", bundle: nil).instantiateViewController(withIdentifier: "ShowSubject") as? ShowSubjectViewController else {
             print("Could not instantiate view controller with identifier of type SecondViewController")
             return
         }
         next.event.name = events[indexPath.row].name
         next.event.start = events[indexPath.row].start
-//        self.navigationController?.pushViewController(next, animated: true
-        self.showDetailViewController(next, sender: nil)
+        self.present(next, animated: true, completion: nil)
+        print("画面遷移するねー")
     }
 }
 
@@ -184,7 +183,6 @@ extension ShowDayViewController{
                 events.append(OneDayEvent(name: i.name, start: i.startTime, end: i.startTime, color: i.color))
             }
         }
-        print(events)
         events.sort{
             $0.start.timeIntervalSince1970 < $1.start.timeIntervalSince1970
         }

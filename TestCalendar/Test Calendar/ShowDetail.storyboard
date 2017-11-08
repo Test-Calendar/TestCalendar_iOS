@@ -234,7 +234,7 @@
         <!--Show Subject View Controller-->
         <scene sceneID="Nhd-9w-bwc">
             <objects>
-                <viewController id="6F6-3B-djE" customClass="ShowSubjectViewController" customModule="Test_Calendar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShowSubject" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6F6-3B-djE" customClass="ShowSubjectViewController" customModule="Test_Calendar" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fLI-Tt-sba"/>
                         <viewControllerLayoutGuide type="bottom" id="7XE-Dp-naa"/>

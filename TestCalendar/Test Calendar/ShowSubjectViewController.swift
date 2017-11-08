@@ -9,7 +9,7 @@
 import UIKit
 
 
-struct oneEvent{
+struct OneEvent{
     var name: String
     var start: NSDate
     var end: NSDate
@@ -20,7 +20,7 @@ struct oneEvent{
 
 class ShowSubjectViewController: UIViewController {
 
-    var event: oneEvent!
+    var event = OneEvent(name: "", start: NSDate(), end: NSDate(), notification: false, color: "black")
     var model = CalendarModel.sharedInstance
     var colors: [UIColor] = [CalendarColor.redColor(), CalendarColor.orangeColor(), CalendarColor.yellowColor(), CalendarColor.darkGreen(), CalendarColor.green(), CalendarColor.lightGreen(),CalendarColor.darkBlue(), CalendarColor.blue(), CalendarColor.lightBlue(), CalendarColor.darkPurple(), CalendarColor.lightPurple()]
     
@@ -103,16 +103,18 @@ extension ShowSubjectViewController: UICollectionViewDelegate,UICollectionViewDa
 extension ShowSubjectViewController{
     
     func getData(){
-        //データを検索して探す
-        let predicate = NSPredicate(format: "name == %@ AND startTime == %@", "\(event.name)","\(event.start as Date)")
-        model.tasks = model.searchTask(predicate: predicate)
-        model.studies = model.searchStudy(predicate: predicate)
-        model.tests = model.searchTest(predicate: predicate)
+        let predicate = NSPredicate(format: "name == %@ AND startTime == %@", "\(event.name)", event.start)
+        let task = model.searchTask(predicate: predicate)
+        let study = model.searchStudy(predicate: predicate)
+        let test = model.searchTest(predicate: predicate)
         
-        //データをeventに入れる
-        event.notification = model.tasks[0].notification
-        event.notification = model.studies[0].notification
-        event.notification = model.tests[0].notification
+        if task.isEmpty == false {
+            event.notification = model.tasks[0].notification
+        }else if study.isEmpty == false {
+            event.notification = model.studies[0].notification
+        }else if test.isEmpty == false {
+            event.notification = model.tests[0].notification
+        }
     }
     
     func setData(){

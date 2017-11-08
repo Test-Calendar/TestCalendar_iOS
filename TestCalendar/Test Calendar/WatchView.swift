@@ -167,7 +167,7 @@ class SubjectView: UIView {
 func getAngle(date: NSDate) -> CGFloat{
     let  dateFormatter = DateFormatter()
     dateFormatter.setTemplate(.onlyHour)
-    var retTime: CGFloat!
+    var retTime = CGFloat()
     
     for i in 0...23{
         if dateFormatter.string(from: date as Date) == "\(i+1)"{
