@@ -77,7 +77,7 @@
                                             <constraint firstAttribute="width" constant="44" id="bEk-H5-mhY"/>
                                         </constraints>
                                         <connections>
-                                            <action selector="showAm:" destination="T8y-eI-bGT" eventType="touchUpInside" id="Jvv-O9-qSP"/>
+                                            <action selector="showAm:" destination="T8y-eI-bGT" eventType="touchUpInside" id="PlF-1g-OM0"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -275,7 +275,6 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hts-7e-OVv" customClass="WatchButton" customModule="Test_Calendar" customModuleProvider="target">
                                 <rect key="frame" x="32" y="357" width="44" height="44"/>
-                                <color key="backgroundColor" red="0.068248678470000004" green="0.97196739909999996" blue="0.43760405969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="323-Vx-mjz"/>
                                     <constraint firstAttribute="width" secondItem="Hts-7e-OVv" secondAttribute="height" multiplier="1:1" id="znm-A6-APg"/>
@@ -287,7 +286,6 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvj-L1-8G7" customClass="WatchButton" customModule="Test_Calendar" customModuleProvider="target">
                                 <rect key="frame" x="299" y="357" width="44" height="44"/>
-                                <color key="backgroundColor" red="0.068248678470000004" green="0.97196739909999996" blue="0.43760405969999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="pZf-Wi-JU9"/>
                                     <constraint firstAttribute="width" secondItem="Dvj-L1-8G7" secondAttribute="height" multiplier="1:1" id="wlt-Xe-Ged"/>
@@ -309,7 +307,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pE6-dR-4Tg">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pE6-dR-4Tg">
                                                 <rect key="frame" x="165" y="17" width="150" height="23"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="23" id="k3z-bn-FGK"/>
@@ -344,14 +342,19 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Vo-u1-wfc">
+                                                <rect key="frame" x="266" y="12" width="51" height="31"/>
+                                            </switch>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="pN3-ZO-0vN" secondAttribute="trailing" constant="20" id="C1c-LR-wGx"/>
                                             <constraint firstItem="pN3-ZO-0vN" firstAttribute="centerX" secondItem="fXy-0L-oYy" secondAttribute="centerX" id="CPr-QD-dmd"/>
+                                            <constraint firstItem="2Vo-u1-wfc" firstAttribute="centerY" secondItem="fXy-0L-oYy" secondAttribute="centerY" id="Elf-ov-exu"/>
                                             <constraint firstItem="cJv-8i-xhX" firstAttribute="leading" secondItem="pN3-ZO-0vN" secondAttribute="leading" id="IRY-vY-9ub"/>
                                             <constraint firstItem="cJv-8i-xhX" firstAttribute="centerY" secondItem="fXy-0L-oYy" secondAttribute="centerY" id="OJg-4m-Mep"/>
                                             <constraint firstItem="cJv-8i-xhX" firstAttribute="top" secondItem="pN3-ZO-0vN" secondAttribute="bottom" constant="15" id="mQ8-z3-06d"/>
+                                            <constraint firstAttribute="trailing" secondItem="2Vo-u1-wfc" secondAttribute="trailing" constant="30" id="nwF-ay-zYd"/>
                                             <constraint firstItem="pN3-ZO-0vN" firstAttribute="top" secondItem="fXy-0L-oYy" secondAttribute="top" id="toU-Ez-42j"/>
                                         </constraints>
                                     </view>
@@ -451,6 +454,8 @@
                     <connections>
                         <outlet property="amButton" destination="Hts-7e-OVv" id="bFS-Qu-ASx"/>
                         <outlet property="collection" destination="fzi-Fv-is1" id="ekV-gQ-yFq"/>
+                        <outlet property="deleteButton" destination="ubi-3k-0Yn" id="60Y-bb-gJH"/>
+                        <outlet property="notifButton" destination="2Vo-u1-wfc" id="wlC-pY-P5K"/>
                         <outlet property="pmButton" destination="Dvj-L1-8G7" id="QQ0-xX-Tdm"/>
                         <outlet property="subjectLabel" destination="STx-Yk-mhW" id="7od-36-NSV"/>
                         <outlet property="time" destination="pE6-dR-4Tg" id="6wZ-U3-XcX"/>

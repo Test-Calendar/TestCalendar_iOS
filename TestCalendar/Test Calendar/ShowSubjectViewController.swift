@@ -29,6 +29,8 @@ class ShowSubjectViewController: UIViewController {
     @IBOutlet weak var amButton: WatchButton!
     @IBOutlet weak var pmButton: WatchButton!
     @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet weak var notifButton: UISwitch!
+    @IBOutlet weak var deleteButton: ProcessButton!
     
     override func loadView() {
         super.loadView()
@@ -42,6 +44,8 @@ class ShowSubjectViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        deleteButton.setTitle("削除", for: .normal)
+        deleteButton.delegate = self as ProcessButtonDelegate
     }
     
     override func didReceiveMemoryWarning() {
@@ -69,7 +73,7 @@ extension ShowSubjectViewController{
 }
 
 
-// MARK: - Private function
+// MARK: - Private
 extension ShowSubjectViewController{
     
     /// 初期値に設定してある名前と開始時刻から種類ごとに情報を取得し、その情報をeventに入れる。
@@ -100,11 +104,35 @@ extension ShowSubjectViewController{
         subjectLabel.text = event.name
         time.text = showTime(start: event.start, end: event.end)
         //通知の更新
+        if event.notification == true {
+            notifButton.isOn = true
+        }else {
+            notifButton.isOn = false
+        }
         collection.reloadData()
         watch.addSchedule(events: [WatchEvent(color: getColor(event.color), start: event.start, end: event.end)])
     }
+    
+    func removeData(_ data: OneEvent){
+        print("ここでデータの削除")
+    }
 }
 
+
+// MARK: - ProcessButtonDelegate
+extension ShowSubjectViewController: ProcessButtonDelegate{
+    
+    func tapped(){
+        let alert = UIAlertController(title: "データの削除", message: "この" + event.name + "を削除しますか？", preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler:{ (action: UIAlertAction!) -> Void in
+            self.removeData(self.event)
+        })
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        alert.addAction(defaultAction)
+        present(alert, animated: true, completion: nil)
+    }
+}
 
 // MARK: - UICollectionViewDelegate,UICollectionViewDataSource
 extension ShowSubjectViewController: UICollectionViewDelegate,UICollectionViewDataSource{
