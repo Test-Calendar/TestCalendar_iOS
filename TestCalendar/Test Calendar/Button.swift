@@ -82,7 +82,6 @@ class AddSmallButton: MDCFloatingButton{
         self.sizeToFit()
         self.addTarget(self, action: #selector(AddSmallButton.smallTapped(sender:)), for: .touchUpInside)
         self.titleLabel?.adjustsFontSizeToFitWidth = true
-        self.backgroundColor = CalendarColor.black()
     }
     
     /// ボタンが押された時に呼ばれる関数

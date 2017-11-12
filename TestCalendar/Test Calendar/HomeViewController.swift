@@ -61,12 +61,14 @@ class HomeViewController: UIViewController{
         super.loadView()
         self.view.addSubview(statusBar())
         add.frame = CGRect(x: self.view.frame.width * 0.79, y:self.view.frame.height * 0.87 , width: 56, height: 56)
+        todo.setImage(#imageLiteral(resourceName: "todo") , for: .normal)
+        todo.imageView?.contentMode = .scaleAspectFit
+        test.setImage(#imageLiteral(resourceName: "test"), for: .normal)
+        test.imageView?.contentMode = .scaleAspectFit
         todo.frame = CGRect(x: self.view.frame.width * 0.79 + 4, y:self.view.frame.height * 0.87 - 135 , width: 48, height: 48)
         test.frame = CGRect(x: self.view.frame.width * 0.79 + 4, y:self.view.frame.height * 0.87 - 70, width: 48, height: 48)
         todo.buttontag = 1
         test.buttontag = 2
-        todo.setTitle("TASK", for: .normal)
-        test.setTitle("TEST", for: .normal)
         self.view.addSubview(add)
     }
     
