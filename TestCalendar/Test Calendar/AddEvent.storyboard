@@ -136,7 +136,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I2r-Kg-R5o">
                                                 <rect key="frame" x="0.0" y="180" width="345" height="120"/>
                                                 <subviews>
-                                                    <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="HU5-2B-Bta">
+                                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="HU5-2B-Bta">
                                                         <rect key="frame" x="0.0" y="-1" width="345" height="120.5"/>
                                                         <date key="date" timeIntervalSinceReferenceDate="530198162.96957201">
                                                             <!--2017-10-20 13:16:02 +0000-->
@@ -148,6 +148,7 @@
                                                     <constraint firstItem="HU5-2B-Bta" firstAttribute="width" secondItem="I2r-Kg-R5o" secondAttribute="width" id="7pg-57-x4F"/>
                                                     <constraint firstAttribute="height" constant="120" id="CNA-UY-j3V"/>
                                                     <constraint firstItem="HU5-2B-Bta" firstAttribute="height" secondItem="I2r-Kg-R5o" secondAttribute="height" id="SZh-Mg-tHa"/>
+                                                    <constraint firstItem="HU5-2B-Bta" firstAttribute="centerX" secondItem="I2r-Kg-R5o" secondAttribute="centerX" id="uP0-4L-l64"/>
                                                     <constraint firstItem="HU5-2B-Bta" firstAttribute="centerY" secondItem="I2r-Kg-R5o" secondAttribute="centerY" id="yZs-59-Miu"/>
                                                 </constraints>
                                             </view>
