@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9NQ-Iw-hfX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9NQ-Iw-hfX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -57,9 +57,9 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="345" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Part Time Job" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFV-bU-2fg">
-                                                        <rect key="frame" x="30" y="17" width="106.5" height="26"/>
+                                                        <rect key="frame" x="30" y="13" width="106.5" height="35"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="26" id="RKm-nk-Yxy"/>
+                                                            <constraint firstAttribute="height" constant="35" id="0Kc-E2-x9Q"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -136,7 +136,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I2r-Kg-R5o">
                                                 <rect key="frame" x="0.0" y="180" width="345" height="120"/>
                                                 <subviews>
-                                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="HU5-2B-Bta">
+                                                    <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="HU5-2B-Bta">
                                                         <rect key="frame" x="0.0" y="-1" width="345" height="120.5"/>
                                                         <date key="date" timeIntervalSinceReferenceDate="530198162.96957201">
                                                             <!--2017-10-20 13:16:02 +0000-->
@@ -146,7 +146,6 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstItem="HU5-2B-Bta" firstAttribute="width" secondItem="I2r-Kg-R5o" secondAttribute="width" id="7pg-57-x4F"/>
-                                                    <constraint firstItem="HU5-2B-Bta" firstAttribute="centerX" secondItem="I2r-Kg-R5o" secondAttribute="centerX" id="ACU-iD-33r"/>
                                                     <constraint firstAttribute="height" constant="120" id="CNA-UY-j3V"/>
                                                     <constraint firstItem="HU5-2B-Bta" firstAttribute="height" secondItem="I2r-Kg-R5o" secondAttribute="height" id="SZh-Mg-tHa"/>
                                                     <constraint firstItem="HU5-2B-Bta" firstAttribute="centerY" secondItem="I2r-Kg-R5o" secondAttribute="centerY" id="yZs-59-Miu"/>
